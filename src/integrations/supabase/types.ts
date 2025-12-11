@@ -14,7 +14,137 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      discussion_posts: {
+        Row: {
+          anonymous_identifier: string | null
+          author_name: string
+          content: string
+          created_at: string
+          id: string
+          is_anonymous: boolean
+          is_flagged: boolean
+          is_hidden: boolean
+          moderation_notes: string | null
+          post_type: Database["public"]["Enums"]["post_type"]
+          updated_at: string
+          upvotes: number
+        }
+        Insert: {
+          anonymous_identifier?: string | null
+          author_name?: string
+          content: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          is_flagged?: boolean
+          is_hidden?: boolean
+          moderation_notes?: string | null
+          post_type: Database["public"]["Enums"]["post_type"]
+          updated_at?: string
+          upvotes?: number
+        }
+        Update: {
+          anonymous_identifier?: string | null
+          author_name?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          is_flagged?: boolean
+          is_hidden?: boolean
+          moderation_notes?: string | null
+          post_type?: Database["public"]["Enums"]["post_type"]
+          updated_at?: string
+          upvotes?: number
+        }
+        Relationships: []
+      }
+      discussion_replies: {
+        Row: {
+          anonymous_identifier: string | null
+          author_name: string
+          content: string
+          created_at: string
+          id: string
+          is_anonymous: boolean
+          is_flagged: boolean
+          is_hidden: boolean
+          post_id: string
+          upvotes: number
+        }
+        Insert: {
+          anonymous_identifier?: string | null
+          author_name?: string
+          content: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          is_flagged?: boolean
+          is_hidden?: boolean
+          post_id: string
+          upvotes?: number
+        }
+        Update: {
+          anonymous_identifier?: string | null
+          author_name?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          is_flagged?: boolean
+          is_hidden?: boolean
+          post_id?: string
+          upvotes?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discussion_replies_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "discussion_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      discussion_upvotes: {
+        Row: {
+          created_at: string
+          id: string
+          post_id: string | null
+          reply_id: string | null
+          voter_identifier: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          post_id?: string | null
+          reply_id?: string | null
+          voter_identifier: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          post_id?: string | null
+          reply_id?: string | null
+          voter_identifier?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discussion_upvotes_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "discussion_posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "discussion_upvotes_reply_id_fkey"
+            columns: ["reply_id"]
+            isOneToOne: false
+            referencedRelation: "discussion_replies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +153,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      post_type: "question" | "concern" | "excitement"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +280,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      post_type: ["question", "concern", "excitement"],
+    },
   },
 } as const

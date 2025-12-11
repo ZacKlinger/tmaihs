@@ -262,15 +262,31 @@ const EthicsSafety = () => {
               caution.
             </ResearchNote>
 
-            {/* Navigation */}
-            <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild variant="phoenix">
-                <Link to="/classroom-resources">
-                  Explore Classroom Resources
-                  <ArrowRight className="ml-1 h-4 w-4" />
+            {/* Community Discussion CTA */}
+            <div className="mt-12 rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 p-8 text-center">
+              <h3 className="mb-3 font-serif text-xl font-semibold text-charcoal">
+                Join the Conversation
+              </h3>
+              <p className="mb-6 text-muted-foreground">
+                Have questions, concerns, or exciting discoveries about AI in education? 
+                Share with your fellow TMAHS educators in our community discussion.
+              </p>
+              <Button asChild variant="phoenix" size="lg">
+                <Link to="/community">
+                  Visit Community Discussion
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+            </div>
+
+            {/* Navigation */}
+            <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button asChild variant="outline">
+                <Link to="/classroom-resources">
+                  Explore Classroom Resources
+                </Link>
+              </Button>
+              <Button asChild variant="ghost">
                 <Link to="/what-is-ai">
                   Review AI Basics
                 </Link>
