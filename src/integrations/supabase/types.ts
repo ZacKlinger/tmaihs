@@ -104,6 +104,13 @@ export type Database = {
             referencedRelation: "discussion_posts"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "discussion_replies_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "discussion_posts_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       discussion_upvotes: {
@@ -137,6 +144,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "discussion_upvotes_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "discussion_posts_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "discussion_upvotes_reply_id_fkey"
             columns: ["reply_id"]
             isOneToOne: false
@@ -147,7 +161,45 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      discussion_posts_public: {
+        Row: {
+          author_name: string | null
+          content: string | null
+          created_at: string | null
+          id: string | null
+          is_anonymous: boolean | null
+          is_flagged: boolean | null
+          is_hidden: boolean | null
+          post_type: Database["public"]["Enums"]["post_type"] | null
+          updated_at: string | null
+          upvotes: number | null
+        }
+        Insert: {
+          author_name?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_anonymous?: boolean | null
+          is_flagged?: boolean | null
+          is_hidden?: boolean | null
+          post_type?: Database["public"]["Enums"]["post_type"] | null
+          updated_at?: string | null
+          upvotes?: number | null
+        }
+        Update: {
+          author_name?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_anonymous?: boolean | null
+          is_flagged?: boolean | null
+          is_hidden?: boolean | null
+          post_type?: Database["public"]["Enums"]["post_type"] | null
+          updated_at?: string | null
+          upvotes?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
