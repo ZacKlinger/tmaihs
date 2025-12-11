@@ -1,4 +1,4 @@
-import { MessageSquareText, CheckCircle, XCircle, ArrowRight } from "lucide-react";
+import { MessageSquareText, CheckCircle, XCircle, ArrowRight, Wand2, UserCog, HelpCircle, Sparkles } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ContentCard } from "@/components/shared/ContentCard";
@@ -131,6 +131,112 @@ const PromptEngineering = () => {
               </div>
             </div>
 
+            {/* Advanced Techniques */}
+            <div className="mb-12">
+              <h2 className="mb-8 font-serif text-2xl font-semibold text-charcoal text-center">
+                Advanced Techniques
+              </h2>
+              
+              <div className="space-y-6">
+                <ContentCard
+                  title="Persona Prompting: Call in the Expert"
+                  citation="Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in LLMs. NeurIPS."
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-lg bg-primary/10 p-3 flex-shrink-0">
+                      <UserCog className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="mb-4">
+                        One of the most powerful techniques is asking the AI to take on a specific expert persona. 
+                        This primes the model to draw on knowledge patterns associated with that expertise.
+                      </p>
+                      <div className="rounded-lg bg-card border border-border/50 p-4 mb-4">
+                        <p className="text-sm font-medium text-primary mb-2">Example: Expert Persona Prompt</p>
+                        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                          "How would a veteran teacher on the cutting edge of PBL design a semester-long 
+                          project for an Algebra 1 class? Include scaffolding strategies, student 
+                          choice points, and formative assessment checkpoints."
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-card border border-border/50 p-4">
+                        <p className="text-sm font-medium text-primary mb-2">Example: Domain Expert Prompt</p>
+                        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                          "How would a Stanford AI researcher explain prompt engineering to high school 
+                          teachers? Focus on practical techniques they can implement tomorrow."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </ContentCard>
+
+                <ContentCard
+                  title="Force Clarifying Questions"
+                  citation="Lovable AI. Prompt Engineering Best Practices."
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-lg bg-accent/10 p-3 flex-shrink-0">
+                      <HelpCircle className="h-6 w-6 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="mb-4">
+                        Instead of letting the AI make assumptions, ask it to clarify before generating. 
+                        This leads to more tailored outputs and surfaces considerations you might have missed.
+                      </p>
+                      <div className="rounded-lg bg-card border border-border/50 p-4 mb-4">
+                        <p className="text-sm font-medium text-primary mb-2">How to Use It</p>
+                        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                          "I want to create a unit on climate change for my 9th grade science class. 
+                          Before you create anything, ask me 5 clarifying questions about my students, 
+                          resources, and goals that will help you create a better unit plan."
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-secondary p-3">
+                        <p className="text-sm font-medium text-charcoal mb-2">Why this works:</p>
+                        <ul className="text-sm text-muted-foreground space-y-1">
+                          <li>• Surfaces implicit requirements you hadn't articulated</li>
+                          <li>• Creates a collaborative, iterative dynamic</li>
+                          <li>• Results in outputs tailored to your actual context</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </ContentCard>
+
+                <ContentCard
+                  title="Use AI to Improve Your Prompts"
+                  citation="Anthropic. Prompt Engineering Guidelines (2024)."
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-lg bg-primary/10 p-3 flex-shrink-0">
+                      <Wand2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="mb-4">
+                        Meta-prompting—using AI to help write better prompts—is a powerful technique. 
+                        The AI can identify gaps, suggest improvements, and help you articulate what you need.
+                      </p>
+                      <div className="rounded-lg bg-card border border-border/50 p-4 mb-4">
+                        <p className="text-sm font-medium text-primary mb-2">Get Feedback on Your Prompt</p>
+                        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                          "I'm going to share a prompt I wrote. Please analyze it and suggest 3 specific 
+                          improvements that would make it more effective. Here's my prompt: [your prompt]"
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-card border border-border/50 p-4">
+                        <p className="text-sm font-medium text-primary mb-2">Have AI Draft Your Prompt</p>
+                        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                          "I want to create discussion questions about The Great Gatsby that connect to 
+                          my students' lives. Write me an effective prompt I could use to generate these 
+                          questions. Include specific details I should add about my classroom context."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </ContentCard>
+              </div>
+            </div>
+
             {/* Failure Analysis */}
             <div className="mb-12">
               <h2 className="mb-8 font-serif text-2xl font-semibold text-charcoal text-center">
@@ -232,9 +338,9 @@ const PromptEngineering = () => {
 
             <ResearchNote>
               <strong>Research Foundation:</strong> These techniques draw from CHI's Human-AI 
-              Interaction Guidelines, cognitive load theory, and explainable AI research. 
-              Effective prompting is a skill that improves with practice—don't expect perfection 
-              on first attempts.
+              Interaction Guidelines, cognitive load theory, chain-of-thought prompting research, 
+              and explainable AI research. Effective prompting is a skill that improves with 
+              practice—don't expect perfection on first attempts.
             </ResearchNote>
           </div>
         </div>

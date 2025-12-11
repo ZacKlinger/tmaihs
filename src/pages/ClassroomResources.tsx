@@ -10,6 +10,37 @@ import workExample from "@/assets/work-example.jpg";
 
 const aiTools = [
   {
+    id: "playlab",
+    name: "Playlab",
+    provider: "Playlab.ai",
+    icon: Bot,
+    description: "Playlab enables teachers to create custom AI assistants—either student-facing tutors or behind-the-scenes teacher tools. You can train bots on specific documents, rubrics, or instructional frameworks to create tailored learning experiences.",
+    useCases: [
+      {
+        title: "Student-Facing Tutor",
+        description: "Build an AI coach trained on your curriculum materials that guides students through assignments while maintaining your instructional approach."
+      },
+      {
+        title: "Teacher Planning Assistant",
+        description: "Create a private bot trained on your standards, pacing guides, and preferred resources to help with planning and differentiation."
+      },
+      {
+        title: "Workflow Automation",
+        description: "Design bots that structure student input—collecting responses, guiding reflection, or scaffolding complex multi-step tasks."
+      }
+    ],
+    links: {
+      main: "https://www.playlab.ai",
+      training: "https://learn.playlab.ai/getstarted/Creating%20a%20Playlab%20App"
+    },
+    liveExample: {
+      title: "Daily Project Sheet Coach",
+      url: "https://www.playlab.ai/project/cmfbjdhwo1f0io70uxfuxecyr",
+      description: "This Playlab bot was built to support students completing the Daily Project Sheet—a structured worksheet for project-based learning. The AI is trained on the worksheet template, grade-level math standards, and student interest profiles. When students access the bot, they select their interest area and the relevant standard, and the AI coaches them through each section of the worksheet with personalized, Socratic guidance."
+    },
+    citation: "Custom AI tutoring systems that incorporate learner context and structured scaffolding show promise for supporting productive struggle without reducing cognitive demand (Kapur, 2016; VanLehn, 2011)."
+  },
+  {
     id: "khanmigo",
     name: "Khanmigo",
     provider: "Khan Academy",
@@ -92,37 +123,6 @@ c) How many of his next 10 free throws does he need to make to have an overall s
 **Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
     },
     citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023)."
-  },
-  {
-    id: "playlab",
-    name: "Playlab",
-    provider: "Playlab.ai",
-    icon: Bot,
-    description: "Playlab enables teachers to create custom AI assistants—either student-facing tutors or behind-the-scenes teacher tools. You can train bots on specific documents, rubrics, or instructional frameworks to create tailored learning experiences.",
-    useCases: [
-      {
-        title: "Student-Facing Tutor",
-        description: "Build an AI coach trained on your curriculum materials that guides students through assignments while maintaining your instructional approach."
-      },
-      {
-        title: "Teacher Planning Assistant",
-        description: "Create a private bot trained on your standards, pacing guides, and preferred resources to help with planning and differentiation."
-      },
-      {
-        title: "Workflow Automation",
-        description: "Design bots that structure student input—collecting responses, guiding reflection, or scaffolding complex multi-step tasks."
-      }
-    ],
-    links: {
-      main: "https://www.playlab.ai",
-      training: "https://learn.playlab.ai/getstarted/Creating%20a%20Playlab%20App"
-    },
-    liveExample: {
-      title: "Daily Project Sheet Coach",
-      url: "https://www.playlab.ai/project/cmfbjdhwo1f0io70uxfuxecyr",
-      description: "This Playlab bot was built to support students completing the Daily Project Sheet—a structured worksheet for project-based learning. The AI is trained on the worksheet template, grade-level math standards, and student interest profiles. When students access the bot, they select their interest area and the relevant standard, and the AI coaches them through each section of the worksheet with personalized, Socratic guidance."
-    },
-    citation: "Custom AI tutoring systems that incorporate learner context and structured scaffolding show promise for supporting productive struggle without reducing cognitive demand (Kapur, 2016; VanLehn, 2011)."
   }
 ];
 
