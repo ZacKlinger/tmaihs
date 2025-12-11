@@ -114,13 +114,34 @@ export function useDiscussion() {
     };
   }, []);
 
+  const moderateContent = async (content: string): Promise<{ isAppropriate: boolean; reason: string | null }> => {
+    try {
+      const { data, error } = await supabase.functions.invoke('moderate-content', {
+        body: { content }
+      });
+
+      if (error) {
+        console.error('Moderation error:', error);
+        // Fall back to client-side filter if server moderation fails
+        const clientResult = filterContent(content);
+        return { isAppropriate: clientResult.isClean, reason: clientResult.reason || null };
+      }
+
+      return data;
+    } catch (err) {
+      console.error('Moderation request failed:', err);
+      const clientResult = filterContent(content);
+      return { isAppropriate: clientResult.isClean, reason: clientResult.reason || null };
+    }
+  };
+
   const createPost = async (
     content: string,
     postType: PostType,
     authorName: string,
     isAnonymous: boolean
   ) => {
-    // Client-side content filter
+    // Client-side content filter (fast initial check)
     const filterResult = filterContent(content);
     if (!filterResult.isClean) {
       toast({
@@ -133,6 +154,17 @@ export function useDiscussion() {
 
     setSubmitting(true);
     try {
+      // Server-side AI moderation (more thorough check)
+      const moderationResult = await moderateContent(content);
+      if (!moderationResult.isAppropriate) {
+        toast({
+          title: 'Content Not Allowed',
+          description: moderationResult.reason || 'This content does not meet our community guidelines.',
+          variant: 'destructive'
+        });
+        return false;
+      }
+
       const { error } = await supabase.from('discussion_posts').insert({
         content,
         post_type: postType,
@@ -167,6 +199,7 @@ export function useDiscussion() {
     authorName: string,
     isAnonymous: boolean
   ) => {
+    // Client-side content filter (fast initial check)
     const filterResult = filterContent(content);
     if (!filterResult.isClean) {
       toast({
@@ -179,6 +212,17 @@ export function useDiscussion() {
 
     setSubmitting(true);
     try {
+      // Server-side AI moderation (more thorough check)
+      const moderationResult = await moderateContent(content);
+      if (!moderationResult.isAppropriate) {
+        toast({
+          title: 'Content Not Allowed',
+          description: moderationResult.reason || 'This content does not meet our community guidelines.',
+          variant: 'destructive'
+        });
+        return false;
+      }
+
       const { error } = await supabase.from('discussion_replies').insert({
         post_id: postId,
         content,
