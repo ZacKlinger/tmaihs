@@ -1,48 +1,129 @@
-import { FolderOpen, BookOpen, Users, Target, Lightbulb, Clock, ArrowRight } from "lucide-react";
+import { FolderOpen, BookOpen, ExternalLink, Sparkles, MessageSquare, Bot, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ContentCard } from "@/components/shared/ContentCard";
 import { ResearchNote } from "@/components/shared/ResearchNote";
 import { Button } from "@/components/ui/button";
+import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
+import workExample from "@/assets/work-example.jpg";
 
-const pblProjects = [
+const aiTools = [
   {
-    title: "Community Storytelling Archive",
-    subject: "English Language Arts / Social Studies",
-    duration: "4-6 weeks",
-    description: "Students interview community members, transcribe oral histories, and create a digital archive that preserves local narratives.",
-    aiRole: "AI assists with transcription, suggests interview questions, and helps students identify themes across stories.",
-    drivingQuestion: "How do the stories of our community shape our understanding of local history and identity?",
-    icapLevel: "Interactive",
+    id: "khanmigo",
+    name: "Khanmigo",
+    provider: "Khan Academy",
+    icon: Sparkles,
+    description: "Khanmigo is Khan Academy's AI-powered teaching assistant designed specifically for educators. It provides structured tools that generate classroom-ready materials while maintaining pedagogical integrity.",
+    useCases: [
+      {
+        title: "Quiz Generator",
+        description: "Input your content topic and grade level, and Khanmigo generates a ready-to-use Google Form quiz with varied question types aligned to learning objectives."
+      },
+      {
+        title: "Blooket Generator",
+        description: "Create engaging game-based assessments by specifying your topic. Khanmigo produces Blooket-compatible question sets for interactive review sessions."
+      },
+      {
+        title: "Lesson Planner",
+        description: "Outline your learning goals and time constraints, and receive a structured lesson plan with activities, discussion prompts, and formative checks."
+      }
+    ],
+    links: {
+      main: "https://www.khanmigo.ai",
+      training: "https://support.khanacademy.org/hc/en-us/categories/24325692488333-Khanmigo"
+    },
+    exampleOutput: {
+      type: "mockup",
+      title: "Generated Quiz Example",
+      content: `**Topic:** Linear Equations | **Grade:** 8th
+
+**Question 1:** A taxi charges $3.50 plus $2.25 per mile. Write an equation representing the total cost C for m miles.
+A) C = 2.25 + 3.50m
+B) C = 3.50 + 2.25m ✓
+C) C = 5.75m
+D) C = 3.50 × 2.25m
+
+**Question 2:** Solve for x: 2x + 7 = 15
+[Open response field]
+
+**Question 3:** Which graph represents y = -2x + 4?
+[Image options A-D]`
+    },
+    citation: "Khan Academy's Khanmigo leverages GPT-4 with guardrails designed for educational contexts, emphasizing Socratic questioning over direct answers (Khan, 2023)."
   },
   {
-    title: "Environmental Impact Assessment",
-    subject: "Science / Math",
-    duration: "3-4 weeks",
-    description: "Students analyze local environmental data, identify patterns, and propose evidence-based solutions to a community environmental challenge.",
-    aiRole: "AI helps with data analysis prompts, suggests visualization approaches, and provides feedback on scientific writing.",
-    drivingQuestion: "What environmental challenges affect our neighborhood, and what solutions could make a measurable difference?",
-    icapLevel: "Constructive",
+    id: "chatgpt",
+    name: "ChatGPT",
+    provider: "OpenAI",
+    icon: MessageSquare,
+    description: "ChatGPT serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its open-ended nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
+    useCases: [
+      {
+        title: "Feedback on Ideas",
+        description: "Share lesson concepts, project ideas, or assessment drafts with ChatGPT to receive constructive feedback, identify gaps, and explore alternative approaches."
+      },
+      {
+        title: "Tailoring to Student Interests",
+        description: "Describe your students' interests and learning goals, then ask ChatGPT to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
+      },
+      {
+        title: "Question Generation",
+        description: "Generate discussion questions, comprehension checks, or higher-order thinking prompts at various Bloom's taxonomy levels for any content area."
+      }
+    ],
+    links: {
+      main: "https://chat.openai.com",
+      training: "https://help.openai.com/en/collections/3742473-chatgpt"
+    },
+    exampleOutput: {
+      type: "mockup",
+      title: "Student Interest-Tailored Problem",
+      content: `**Teacher Prompt:** "I need a word problem about percentages for 7th graders who are really into basketball."
+
+**ChatGPT Response:**
+
+Marcus is analyzing his free throw stats. Last season, he made 42 out of 60 free throws. This season, he's made 38 out of 50 so far.
+
+a) What was his free throw percentage last season?
+b) What is his current percentage this season?
+c) How many of his next 10 free throws does he need to make to have an overall season percentage of 80%?
+
+**Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
+    },
+    citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023)."
   },
   {
-    title: "Cultural Celebration Design",
-    subject: "Art / World Languages",
-    duration: "3-4 weeks",
-    description: "Students research cultural celebrations, design inclusive event materials, and create multilingual resources for community engagement.",
-    aiRole: "AI supports translation drafts, suggests design principles, and provides cultural context for teacher review.",
-    drivingQuestion: "How can we design an event that authentically celebrates and shares the cultural traditions in our community?",
-    icapLevel: "Constructive",
-  },
-  {
-    title: "Historical Perspective Project",
-    subject: "History / English",
-    duration: "2-3 weeks",
-    description: "Students research a historical event from multiple perspectives, create character journals, and participate in structured dialogue.",
-    aiRole: "AI generates initial perspective prompts, suggests primary sources, and helps students draft character voice examples.",
-    drivingQuestion: "How do different perspectives on the same historical event help us understand its complexity and lasting impact?",
-    icapLevel: "Interactive",
-  },
+    id: "playlab",
+    name: "Playlab",
+    provider: "Playlab.ai",
+    icon: Bot,
+    description: "Playlab enables teachers to create custom AI assistants—either student-facing tutors or behind-the-scenes teacher tools. You can train bots on specific documents, rubrics, or instructional frameworks to create tailored learning experiences.",
+    useCases: [
+      {
+        title: "Student-Facing Tutor",
+        description: "Build an AI coach trained on your curriculum materials that guides students through assignments while maintaining your instructional approach."
+      },
+      {
+        title: "Teacher Planning Assistant",
+        description: "Create a private bot trained on your standards, pacing guides, and preferred resources to help with planning and differentiation."
+      },
+      {
+        title: "Workflow Automation",
+        description: "Design bots that structure student input—collecting responses, guiding reflection, or scaffolding complex multi-step tasks."
+      }
+    ],
+    links: {
+      main: "https://www.playlab.ai",
+      training: "https://learn.playlab.ai/getstarted/Creating%20a%20Playlab%20App"
+    },
+    liveExample: {
+      title: "Daily Project Sheet Coach",
+      url: "https://www.playlab.ai/project/cmfbjdhwo1f0io70uxfuxecyr",
+      description: "This Playlab bot was built to support students completing the Daily Project Sheet—a structured worksheet for project-based learning. The AI is trained on the worksheet template, grade-level math standards, and student interest profiles. When students access the bot, they select their interest area and the relevant standard, and the AI coaches them through each section of the worksheet with personalized, Socratic guidance."
+    },
+    citation: "Custom AI tutoring systems that incorporate learner context and structured scaffolding show promise for supporting productive struggle without reducing cognitive demand (Kapur, 2016; VanLehn, 2011)."
+  }
 ];
 
 const ClassroomResources = () => {
@@ -50,7 +131,7 @@ const ClassroomResources = () => {
     <Layout>
       <PageHeader
         title="Classroom Resources"
-        description="Project-based learning templates and classroom tools grounded in learning sciences research. Each resource includes research rationales, scaffolds, and suggestions for AI integration."
+        description="Curated AI tools for educators, each with specific use cases, training resources, and real examples. These tools can support lesson planning, differentiation, and student engagement."
         icon={<FolderOpen className="h-8 w-8 text-accent" />}
       />
 
@@ -67,123 +148,157 @@ const ClassroomResources = () => {
                 </div>
                 <div>
                   <h2 className="mb-3 font-serif text-xl font-semibold text-charcoal">
-                    Research Foundation: Project-Based Learning
+                    Research Foundation: AI as a Teaching Tool
                   </h2>
                   <p className="mb-4 text-muted-foreground leading-relaxed">
-                    These templates are informed by extensive PBL research, particularly Barron & Darling-Hammond's 
-                    synthesis and Krajcik & Blumenfeld's design principles. Effective PBL includes authentic 
-                    driving questions, sustained inquiry, student voice and choice, critique and revision, 
-                    and public products.
+                    Research on AI in education emphasizes the importance of teacher agency in tool selection and use. 
+                    Effective AI integration occurs when teachers maintain pedagogical decision-making while leveraging 
+                    AI for time-intensive tasks like content generation and differentiation.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Key citations:</strong> Barron, B. & Darling-Hammond, L. (2008). Teaching for Meaningful 
-                    Learning. Krajcik, J. & Blumenfeld, P. (2006). Project-Based Learning. In Cambridge Handbook 
-                    of the Learning Sciences.
+                    <strong>Key citations:</strong> Mollick, E. & Mollick, L. (2023). Assigning AI: Seven Approaches for Students. 
+                    Holmes, W. et al. (2019). Artificial Intelligence in Education. Springer.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* ICAP Framework Explanation */}
-            <div className="mb-12">
-              <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal text-center">
-                Understanding Activity Levels (ICAP Framework)
-              </h2>
-              <p className="mb-8 text-center text-muted-foreground">
-                Each project indicates its primary ICAP level based on Chi & Wylie's framework for 
-                differentiating learning activities by cognitive engagement.
-              </p>
-              
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  { level: "Interactive", description: "Students co-construct knowledge through dialogue", color: "bg-accent/10 border-accent/30" },
-                  { level: "Constructive", description: "Students generate new outputs beyond given information", color: "bg-primary/10 border-primary/30" },
-                  { level: "Active", description: "Students manipulate or act on materials", color: "bg-secondary border-border" },
-                  { level: "Passive", description: "Students receive information without overt action", color: "bg-muted border-border" },
-                ].map((item) => (
-                  <div key={item.level} className={`rounded-xl border p-4 ${item.color}`}>
-                    <p className="font-medium text-charcoal">{item.level}</p>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-center text-sm text-muted-foreground">
-                <em>Citation: Chi, M. T. H. & Wylie, R. (2014). The ICAP Framework. Educational Psychologist.</em>
-              </p>
-            </div>
-
-            {/* PBL Templates */}
+            {/* AI Tools Section */}
             <div className="mb-16">
               <h2 className="mb-8 font-serif text-2xl font-semibold text-charcoal text-center">
-                Project-Based Learning Templates
+                Recommended AI Tools for Teachers
               </h2>
 
-              <div className="space-y-8">
-                {pblProjects.map((project, index) => (
+              <div className="space-y-12">
+                {aiTools.map((tool, index) => (
                   <div
-                    key={project.title}
+                    key={tool.id}
                     className="rounded-2xl border border-border/50 bg-card overflow-hidden shadow-soft opacity-0 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    {/* Project Header */}
+                    {/* Tool Header */}
                     <div className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent p-6">
                       <div className="flex flex-wrap items-start justify-between gap-4">
-                        <div>
-                          <h3 className="font-serif text-xl font-semibold text-charcoal">
-                            {project.title}
-                          </h3>
-                          <div className="mt-2 flex flex-wrap gap-2">
-                            <span className="inline-flex items-center rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
-                              {project.subject}
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                              <Clock className="h-3 w-3" />
-                              {project.duration}
-                            </span>
-                            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                              {project.icapLevel}
-                            </span>
+                        <div className="flex items-center gap-4">
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                            <tool.icon className="h-6 w-6 text-primary" />
                           </div>
+                          <div>
+                            <h3 className="font-serif text-xl font-semibold text-charcoal">
+                              {tool.name}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">{tool.provider}</p>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          <a
+                            href={tool.links.main}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors"
+                          >
+                            Visit Site
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                          <a
+                            href={tool.links.training}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent hover:bg-accent/20 transition-colors"
+                          >
+                            Training & Help
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
                         </div>
                       </div>
                     </div>
 
-                    {/* Project Content */}
+                    {/* Tool Content */}
                     <div className="p-6">
-                      {/* Driving Question */}
-                      <div className="mb-6 rounded-xl bg-secondary/50 p-4">
-                        <div className="flex items-start gap-3">
-                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
-                          <div>
-                            <p className="text-sm font-medium text-charcoal mb-1">Driving Question</p>
-                            <p className="text-muted-foreground italic">"{project.drivingQuestion}"</p>
-                          </div>
+                      <p className="mb-6 text-muted-foreground leading-relaxed">
+                        {tool.description}
+                      </p>
+
+                      {/* Use Cases */}
+                      <div className="mb-6">
+                        <h4 className="mb-4 font-medium text-charcoal">Use Cases</h4>
+                        <div className="grid gap-4 sm:grid-cols-3">
+                          {tool.useCases.map((useCase) => (
+                            <div
+                              key={useCase.title}
+                              className="rounded-xl bg-secondary/50 p-4"
+                            >
+                              <p className="mb-2 font-medium text-charcoal text-sm">{useCase.title}</p>
+                              <p className="text-sm text-muted-foreground">{useCase.description}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
 
-                      <div className="grid gap-6 md:grid-cols-2">
-                        {/* Description */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <Users className="h-4 w-4 text-primary" />
-                            <p className="text-sm font-medium text-charcoal">Project Overview</p>
+                      {/* Example Output or Live Example */}
+                      {tool.exampleOutput && (
+                        <div className="mb-6">
+                          <h4 className="mb-4 font-medium text-charcoal">Example Output</h4>
+                          <div className="rounded-xl border border-border bg-secondary/30 p-5">
+                            <p className="mb-3 text-sm font-medium text-primary">{tool.exampleOutput.title}</p>
+                            <div className="text-sm text-muted-foreground whitespace-pre-line font-mono leading-relaxed">
+                              {tool.exampleOutput.content}
+                            </div>
                           </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {project.description}
-                          </p>
                         </div>
+                      )}
 
-                        {/* AI Role */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <Lightbulb className="h-4 w-4 text-accent" />
-                            <p className="text-sm font-medium text-charcoal">AI Integration (Optional)</p>
-                          </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {project.aiRole}
+                      {tool.liveExample && (
+                        <div className="mb-6">
+                          <h4 className="mb-4 font-medium text-charcoal">Live Example: {tool.liveExample.title}</h4>
+                          <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
+                            {tool.liveExample.description}
                           </p>
+                          
+                          {/* Side-by-side worksheet images */}
+                          <div className="grid gap-6 md:grid-cols-2 mb-4">
+                            <div className="rounded-xl border border-border overflow-hidden">
+                              <div className="bg-secondary/50 px-4 py-2 border-b border-border">
+                                <p className="text-sm font-medium text-charcoal">Blank Worksheet Template</p>
+                              </div>
+                              <div className="p-2 bg-white">
+                                <img 
+                                  src={dailyProjectSheet} 
+                                  alt="Daily Project Sheet - blank template with sections for name, date, topic, do-now, 3 key steps, and practice problems"
+                                  className="w-full h-auto rounded"
+                                />
+                              </div>
+                            </div>
+                            <div className="rounded-xl border border-border overflow-hidden">
+                              <div className="bg-secondary/50 px-4 py-2 border-b border-border">
+                                <p className="text-sm font-medium text-charcoal">Completed Student Work</p>
+                              </div>
+                              <div className="p-2 bg-white">
+                                <img 
+                                  src={workExample} 
+                                  alt="Completed Daily Project Sheet showing student work on San Francisco housing data analysis with calculations and graphs"
+                                  className="w-full h-auto rounded"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <a
+                            href={tool.liveExample.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors"
+                          >
+                            Try the Live Bot
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
                         </div>
-                      </div>
+                      )}
+
+                      {/* Citation */}
+                      <p className="text-xs text-muted-foreground italic border-t border-border/50 pt-4">
+                        {tool.citation}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -201,34 +316,34 @@ const ClassroomResources = () => {
                 citation="Paris, D. & Alim, H. S. (2017). Culturally Sustaining Pedagogies. Teachers College Press."
               >
                 <p className="mb-4">
-                  Each PBL template above is designed to support culturally sustaining practices:
+                  When using AI tools, consider these principles for culturally sustaining practice:
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span><strong>Community connection:</strong> Projects draw on local contexts and student communities</span>
+                    <span><strong>Community connection:</strong> Use AI to generate content that reflects students' cultural contexts and lived experiences</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span><strong>Multiple epistemologies:</strong> Value diverse ways of knowing and expressing understanding</span>
+                    <span><strong>Multiple epistemologies:</strong> Prompt AI tools to present multiple perspectives and ways of knowing</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span><strong>Student voice:</strong> Built-in choice points let students shape their inquiry</span>
+                    <span><strong>Student voice:</strong> Train custom AI tools (like Playlab bots) on student interests and community topics</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span><strong>Multilingual supports:</strong> AI can assist with translation drafts (with teacher review)</span>
+                    <span><strong>Critical review:</strong> Always review AI outputs for bias and cultural relevance before classroom use</span>
                   </li>
                 </ul>
               </ContentCard>
             </div>
 
             <ResearchNote>
-              <strong>Important Note:</strong> These templates are starting points for teacher adaptation, 
-              not prescriptions. Effective PBL requires teacher knowledge of students, context, and 
-              curriculum—elements that cannot be captured in generic templates. Use these as inspiration 
-              and modify extensively for your specific situation.
+              <strong>Important Note:</strong> These tools are resources for teacher exploration, not mandated 
+              solutions. Each tool has strengths and limitations, and their effectiveness depends on thoughtful 
+              integration into your specific instructional context. Start small, experiment, and adapt based 
+              on what works for your students.
             </ResearchNote>
 
             {/* Navigation */}
