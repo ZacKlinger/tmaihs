@@ -4,6 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import WhatIsAI from "./pages/WhatIsAI";
+import WhyAIMatters from "./pages/WhyAIMatters";
+import PromptEngineering from "./pages/PromptEngineering";
+import ClassroomResources from "./pages/ClassroomResources";
+import EthicsSafety from "./pages/EthicsSafety";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +21,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/what-is-ai" element={<WhatIsAI />} />
+          <Route path="/why-ai-matters" element={<WhyAIMatters />} />
+          <Route path="/prompt-engineering" element={<PromptEngineering />} />
+          <Route path="/classroom-resources" element={<ClassroomResources />} />
+          <Route path="/ethics-safety" element={<EthicsSafety />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
