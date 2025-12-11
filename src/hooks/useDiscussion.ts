@@ -232,23 +232,17 @@ export function useDiscussion() {
 
       if (upvoteError) throw upvoteError;
 
-      // Update the count
+      // Use secure RPC functions to increment upvotes
       if (postId) {
-        const post = posts.find(p => p.id === postId);
-        if (post) {
-          await supabase
-            .from('discussion_posts')
-            .update({ upvotes: post.upvotes + 1 })
-            .eq('id', postId);
-        }
+        const { error: rpcError } = await supabase.rpc('increment_post_upvote', { 
+          post_id_param: postId 
+        });
+        if (rpcError) throw rpcError;
       } else if (replyId) {
-        const reply = posts.flatMap(p => p.replies || []).find(r => r.id === replyId);
-        if (reply) {
-          await supabase
-            .from('discussion_replies')
-            .update({ upvotes: reply.upvotes + 1 })
-            .eq('id', replyId);
-        }
+        const { error: rpcError } = await supabase.rpc('increment_reply_upvote', { 
+          reply_id_param: replyId 
+        });
+        if (rpcError) throw rpcError;
       }
 
       setUserVotes(prev => new Set([...prev, targetId]));
