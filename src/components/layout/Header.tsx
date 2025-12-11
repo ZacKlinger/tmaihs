@@ -11,6 +11,7 @@ const navItems = [
   { label: "Prompt Engineering", href: "/prompt-engineering" },
   { label: "Classroom Resources", href: "/classroom-resources" },
   { label: "Ethics & Safety", href: "/ethics-safety" },
+  { label: "Community", href: "/community" },
 ];
 
 export function Header() {
