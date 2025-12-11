@@ -5,6 +5,58 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Content length limits
+const MAX_CONTENT_LENGTH = 5000;
+const MAX_AUTHOR_NAME_LENGTH = 100;
+
+// Rate limiting configuration (in-memory, resets on function cold start)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per 10 minutes per IP
+
+function getClientIP(req: Request): string {
+  // Try various headers for client IP
+  const forwarded = req.headers.get('x-forwarded-for');
+  if (forwarded) {
+    return forwarded.split(',')[0].trim();
+  }
+  const realIP = req.headers.get('x-real-ip');
+  if (realIP) {
+    return realIP;
+  }
+  // Fallback to a hash of user-agent + other headers as identifier
+  const userAgent = req.headers.get('user-agent') || 'unknown';
+  return `ua-${userAgent.substring(0, 50)}`;
+}
+
+function checkRateLimit(clientId: string): { allowed: boolean; retryAfter?: number } {
+  const now = Date.now();
+  const existing = rateLimitMap.get(clientId);
+
+  // Clean up old entries periodically
+  if (rateLimitMap.size > 1000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (value.resetTime < now) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  if (!existing || existing.resetTime < now) {
+    // New window
+    rateLimitMap.set(clientId, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+
+  if (existing.count >= MAX_REQUESTS_PER_WINDOW) {
+    const retryAfter = Math.ceil((existing.resetTime - now) / 1000);
+    return { allowed: false, retryAfter };
+  }
+
+  existing.count++;
+  return { allowed: true };
+}
+
 serve(async (req) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
@@ -12,8 +64,31 @@ serve(async (req) => {
   }
 
   try {
-    const { content } = await req.json();
+    // Rate limiting check
+    const clientId = getClientIP(req);
+    const rateCheck = checkRateLimit(clientId);
     
+    if (!rateCheck.allowed) {
+      console.log(`Rate limit exceeded for client: ${clientId}`);
+      return new Response(
+        JSON.stringify({ 
+          error: 'Too many requests. Please wait before posting again.',
+          retryAfter: rateCheck.retryAfter 
+        }),
+        { 
+          status: 429, 
+          headers: { 
+            ...corsHeaders, 
+            'Content-Type': 'application/json',
+            'Retry-After': String(rateCheck.retryAfter)
+          } 
+        }
+      );
+    }
+
+    const { content, authorName } = await req.json();
+    
+    // Validate content exists and is a string
     if (!content || typeof content !== 'string') {
       return new Response(
         JSON.stringify({ error: 'Content is required' }),
@@ -21,7 +96,31 @@ serve(async (req) => {
       );
     }
 
-    console.log('Moderating content:', content.substring(0, 100) + '...');
+    // Validate content length
+    if (content.length > MAX_CONTENT_LENGTH) {
+      console.log(`Content too long: ${content.length} characters`);
+      return new Response(
+        JSON.stringify({ 
+          isAppropriate: false, 
+          reason: `Content exceeds maximum length of ${MAX_CONTENT_LENGTH} characters.` 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate author name length if provided
+    if (authorName && typeof authorName === 'string' && authorName.length > MAX_AUTHOR_NAME_LENGTH) {
+      console.log(`Author name too long: ${authorName.length} characters`);
+      return new Response(
+        JSON.stringify({ 
+          isAppropriate: false, 
+          reason: `Author name exceeds maximum length of ${MAX_AUTHOR_NAME_LENGTH} characters.` 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log(`Moderating content (${content.length} chars) from client: ${clientId}`);
 
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {

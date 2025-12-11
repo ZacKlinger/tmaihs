@@ -154,18 +154,25 @@ export function PostCard({ post, userVotes, onUpvote, onReply, submitting }: Pos
       {/* Reply Form */}
       {showReplyForm && (
         <div className="mt-4 space-y-3 rounded-lg border border-border bg-secondary/30 p-4">
-          <Textarea
-            placeholder="Write your reply..."
-            value={replyContent}
-            onChange={(e) => setReplyContent(e.target.value)}
-            className="min-h-[80px] resize-none"
-          />
+          <div>
+            <Textarea
+              placeholder="Write your reply..."
+              value={replyContent}
+              onChange={(e) => setReplyContent(e.target.value)}
+              maxLength={5000}
+              className="min-h-[80px] resize-none"
+            />
+            <p className="mt-1 text-xs text-muted-foreground text-right">
+              {replyContent.length}/5000 characters
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-4">
             <Input
               placeholder="Your name (optional)"
               value={replyAuthor}
               onChange={(e) => setReplyAuthor(e.target.value)}
               disabled={replyAnonymous}
+              maxLength={100}
               className="max-w-[200px]"
             />
             <div className="flex items-center gap-2">
