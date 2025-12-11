@@ -24,7 +24,6 @@ export type Database = {
           is_anonymous: boolean
           is_flagged: boolean
           is_hidden: boolean
-          moderation_notes: string | null
           post_type: Database["public"]["Enums"]["post_type"]
           updated_at: string
           upvotes: number
@@ -38,7 +37,6 @@ export type Database = {
           is_anonymous?: boolean
           is_flagged?: boolean
           is_hidden?: boolean
-          moderation_notes?: string | null
           post_type: Database["public"]["Enums"]["post_type"]
           updated_at?: string
           upvotes?: number
@@ -52,7 +50,6 @@ export type Database = {
           is_anonymous?: boolean
           is_flagged?: boolean
           is_hidden?: boolean
-          moderation_notes?: string | null
           post_type?: Database["public"]["Enums"]["post_type"]
           updated_at?: string
           upvotes?: number
@@ -141,6 +138,41 @@ export type Database = {
             columns: ["reply_id"]
             isOneToOne: false
             referencedRelation: "discussion_replies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      post_moderation: {
+        Row: {
+          created_at: string
+          id: string
+          is_flagged: boolean
+          moderated_at: string | null
+          notes: string | null
+          post_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_flagged?: boolean
+          moderated_at?: string | null
+          notes?: string | null
+          post_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_flagged?: boolean
+          moderated_at?: string | null
+          notes?: string | null
+          post_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_moderation_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: true
+            referencedRelation: "discussion_posts"
             referencedColumns: ["id"]
           },
         ]
