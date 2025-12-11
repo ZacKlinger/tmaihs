@@ -296,7 +296,8 @@ export function useDiscussion() {
     try {
       const voterId = getVoterId();
 
-      // Insert upvote record
+      // Insert upvote record - the database trigger automatically increments the counter
+      // This is atomic and secure: UNIQUE constraint prevents duplicates, trigger handles counting
       const { error: upvoteError } = await supabase.from('discussion_upvotes').insert({
         post_id: postId || null,
         reply_id: replyId || null,
@@ -304,19 +305,6 @@ export function useDiscussion() {
       });
 
       if (upvoteError) throw upvoteError;
-
-      // Use secure RPC functions to increment upvotes
-      if (postId) {
-        const { error: rpcError } = await supabase.rpc('increment_post_upvote', { 
-          post_id_param: postId 
-        });
-        if (rpcError) throw rpcError;
-      } else if (replyId) {
-        const { error: rpcError } = await supabase.rpc('increment_reply_upvote', { 
-          reply_id_param: replyId 
-        });
-        if (rpcError) throw rpcError;
-      }
 
       setUserVotes(prev => new Set([...prev, targetId]));
       fetchPosts();

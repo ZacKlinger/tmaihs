@@ -182,14 +182,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      increment_post_upvote: {
-        Args: { post_id_param: string }
-        Returns: undefined
-      }
-      increment_reply_upvote: {
-        Args: { reply_id_param: string }
-        Returns: undefined
-      }
+      [_ in never]: never
     }
     Enums: {
       post_type: "question" | "concern" | "excitement"
