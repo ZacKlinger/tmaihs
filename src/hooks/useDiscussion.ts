@@ -35,16 +35,20 @@ export function useDiscussion() {
 
   const fetchPosts = async () => {
     try {
+      // Select only public fields, excluding moderation_notes and anonymous_identifier
       const { data: postsData, error: postsError } = await supabase
         .from('discussion_posts')
-        .select('*')
+        .select('id, author_name, is_anonymous, post_type, content, upvotes, created_at, updated_at')
+        .eq('is_hidden', false)
         .order('created_at', { ascending: false });
 
       if (postsError) throw postsError;
 
+      // Select only public fields for replies
       const { data: repliesData, error: repliesError } = await supabase
         .from('discussion_replies')
-        .select('*')
+        .select('id, post_id, author_name, is_anonymous, content, upvotes, created_at')
+        .eq('is_hidden', false)
         .order('created_at', { ascending: true });
 
       if (repliesError) throw repliesError;
