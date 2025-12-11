@@ -46,10 +46,10 @@
     --radius: 0.75rem;
 
     /* Phoenix-specific design tokens */
-    --phoenix-gradient-start: 345 55% 28%;
-    --phoenix-gradient-end: 18 75% 55%;
-    --phoenix-glow: 18 85% 65%;
-    --phoenix-ember: 12 90% 60%;
+    --phoenix-gradient-start: 345 55% 38%;
+    --phoenix-gradient-end: 345 55% 28%;
+    --phoenix-glow: 345 55% 35%;
+    --phoenix-ember: 345 60% 32%;
     --phoenix-cream: 40 45% 96%;
 
     /* Typography */
@@ -104,10 +104,10 @@
     --input: 345 15% 20%;
     --ring: 345 50% 45%;
 
-    --phoenix-gradient-start: 345 50% 40%;
-    --phoenix-gradient-end: 18 70% 50%;
-    --phoenix-glow: 18 80% 55%;
-    --phoenix-ember: 12 85% 55%;
+    --phoenix-gradient-start: 345 50% 50%;
+    --phoenix-gradient-end: 345 50% 40%;
+    --phoenix-glow: 345 50% 45%;
+    --phoenix-ember: 345 55% 42%;
     --phoenix-cream: 345 20% 15%;
 
     --sidebar-background: 345 20% 10%;

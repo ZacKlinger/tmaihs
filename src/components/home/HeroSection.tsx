@@ -24,9 +24,8 @@ export function HeroSection() {
 
           {/* Subheading */}
           <p className="mb-10 text-lg text-muted-foreground opacity-0 animate-fade-in sm:text-xl" style={{ animationDelay: "0.2s" }}>
-            A curated collection of research-grounded resources to explore AI at your own pace. 
-            Discover practical tools, thoughtful frameworks, and project-based learning templates 
-            designed to support—never prescribe—your teaching practice.
+            A curated collection of AI resources for your classroom. Discover new tech, 
+            explore on-campus use-cases, and engage in community dialogue.
           </p>
 
           {/* CTAs */}
