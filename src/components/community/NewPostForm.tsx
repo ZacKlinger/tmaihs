@@ -73,12 +73,18 @@ export function NewPostForm({ onSubmit, submitting }: NewPostFormProps) {
       </div>
 
       {/* Content */}
-      <Textarea
-        placeholder="Share your thoughts, questions, or concerns about AI in education..."
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        className="mb-4 min-h-[120px] resize-none"
-      />
+      <div className="mb-4">
+        <Textarea
+          placeholder="Share your thoughts, questions, or concerns about AI in education..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          maxLength={5000}
+          className="min-h-[120px] resize-none"
+        />
+        <p className="mt-1 text-xs text-muted-foreground text-right">
+          {content.length}/5000 characters
+        </p>
+      </div>
 
       {/* Author Info */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
@@ -88,6 +94,7 @@ export function NewPostForm({ onSubmit, submitting }: NewPostFormProps) {
             value={authorName}
             onChange={(e) => setAuthorName(e.target.value)}
             disabled={isAnonymous}
+            maxLength={100}
             className="max-w-[250px]"
           />
         </div>

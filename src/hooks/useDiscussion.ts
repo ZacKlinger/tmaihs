@@ -114,17 +114,44 @@ export function useDiscussion() {
     };
   }, []);
 
-  const moderateContent = async (content: string): Promise<{ isAppropriate: boolean; reason: string | null }> => {
+  // Content length limits (must match server-side)
+  const MAX_CONTENT_LENGTH = 5000;
+  const MAX_AUTHOR_NAME_LENGTH = 100;
+
+  const moderateContent = async (content: string, authorName?: string): Promise<{ isAppropriate: boolean; reason: string | null }> => {
+    // Client-side length validation first
+    if (content.length > MAX_CONTENT_LENGTH) {
+      return { 
+        isAppropriate: false, 
+        reason: `Content exceeds maximum length of ${MAX_CONTENT_LENGTH} characters.` 
+      };
+    }
+    if (authorName && authorName.length > MAX_AUTHOR_NAME_LENGTH) {
+      return { 
+        isAppropriate: false, 
+        reason: `Author name exceeds maximum length of ${MAX_AUTHOR_NAME_LENGTH} characters.` 
+      };
+    }
+
     try {
       const { data, error } = await supabase.functions.invoke('moderate-content', {
-        body: { content }
+        body: { content, authorName }
       });
 
       if (error) {
         console.error('Moderation error:', error);
+        // Check for rate limit error
+        if (error.message?.includes('429') || error.message?.includes('Too many requests')) {
+          return { isAppropriate: false, reason: 'Too many requests. Please wait a moment before posting again.' };
+        }
         // Fall back to client-side filter if server moderation fails
         const clientResult = filterContent(content);
         return { isAppropriate: clientResult.isClean, reason: clientResult.reason || null };
+      }
+
+      // Handle rate limit response
+      if (data?.error && data?.retryAfter) {
+        return { isAppropriate: false, reason: data.error };
       }
 
       return data;
@@ -154,14 +181,15 @@ export function useDiscussion() {
 
     setSubmitting(true);
     try {
-      // Server-side AI moderation (more thorough check)
-      const moderationResult = await moderateContent(content);
+      // Server-side AI moderation with length validation and rate limiting
+      const moderationResult = await moderateContent(content, authorName);
       if (!moderationResult.isAppropriate) {
         toast({
           title: 'Content Not Allowed',
           description: moderationResult.reason || 'This content does not meet our community guidelines.',
           variant: 'destructive'
         });
+        setSubmitting(false);
         return false;
       }
 
@@ -212,14 +240,15 @@ export function useDiscussion() {
 
     setSubmitting(true);
     try {
-      // Server-side AI moderation (more thorough check)
-      const moderationResult = await moderateContent(content);
+      // Server-side AI moderation with length validation and rate limiting
+      const moderationResult = await moderateContent(content, authorName);
       if (!moderationResult.isAppropriate) {
         toast({
           title: 'Content Not Allowed',
           description: moderationResult.reason || 'This content does not meet our community guidelines.',
           variant: 'destructive'
         });
+        setSubmitting(false);
         return false;
       }
 
