@@ -5,6 +5,7 @@ import {
   MessageSquareText, 
   FolderOpen, 
   Shield,
+  Users,
   ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -23,15 +24,15 @@ const sections = [
     description: "Explore workload reduction, enhanced differentiation, and creative augmentation possibilities.",
     href: "/why-ai-matters",
     icon: Lightbulb,
-    color: "from-accent/10 to-accent/5",
-    iconColor: "text-accent",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
   },
   {
     title: "Prompt Engineering",
     description: "Learn instruction-following techniques, specificity strategies, and failure analysis.",
     href: "/prompt-engineering",
     icon: MessageSquareText,
-    color: "from-primary/10 to-accent/5",
+    color: "from-primary/10 to-primary/5",
     iconColor: "text-primary",
   },
   {
@@ -39,8 +40,8 @@ const sections = [
     description: "Project-based learning templates with research rationales and scaffolds for diverse learners.",
     href: "/classroom-resources",
     icon: FolderOpen,
-    color: "from-accent/10 to-primary/5",
-    iconColor: "text-accent",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
     featured: true,
   },
   {
@@ -48,7 +49,15 @@ const sections = [
     description: "Responsible usage frameworks, privacy considerations, and bias mitigation strategies.",
     href: "/ethics-safety",
     icon: Shield,
-    color: "from-primary/5 to-secondary",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
+  },
+  {
+    title: "Community Dialogue",
+    description: "Join the conversation with fellow educators about AI in the classroom.",
+    href: "/community",
+    icon: Users,
+    color: "from-primary/10 to-primary/5",
     iconColor: "text-primary",
   },
 ];
