@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import WhatIsAI from "./pages/WhatIsAI";
 import WhyAIMatters from "./pages/WhyAIMatters";
 import PromptEngineering from "./pages/PromptEngineering";
+import LearningStudio from "./pages/LearningStudio";
 import ClassroomResources from "./pages/ClassroomResources";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/what-is-ai" element={<WhatIsAI />} />
           <Route path="/why-ai-matters" element={<WhyAIMatters />} />
           <Route path="/prompt-engineering" element={<PromptEngineering />} />
+          <Route path="/learning-studio" element={<LearningStudio />} />
           <Route path="/classroom-resources" element={<ClassroomResources />} />
           <Route path="/community" element={<Community />} />
           

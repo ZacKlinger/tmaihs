@@ -22,6 +22,7 @@ const navItems = [
   { label: "What Is AI?", href: "/what-is-ai" },
   { label: "Why AI Matters", href: "/why-ai-matters" },
   { label: "Prompt Engineering", href: "/prompt-engineering" },
+  { label: "Learning Studio", href: "/learning-studio" },
   { label: "Classroom Resources", href: "/classroom-resources" },
   { label: "Community", href: "/community" },
 ];
@@ -59,7 +60,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex lg:items-center lg:gap-1">
-            {navItems.slice(0, 4).map((item) => (
+            {navItems.slice(0, 5).map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
@@ -135,7 +136,7 @@ export function Header() {
         {isMenuOpen && (
           <nav className="border-t border-border/50 py-4 lg:hidden">
             <div className="flex flex-col gap-2">
-              {navItems.slice(0, 4).map((item) => (
+              {navItems.slice(0, 5).map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
