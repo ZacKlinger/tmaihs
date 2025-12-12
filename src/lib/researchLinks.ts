@@ -8,14 +8,14 @@ export const researchLinks: Record<string, string> = {
   "Chi & Wylie": "https://www.lifescied.org/doi/10.1187/cbe.14-06-0095",
   "Chi & Wylie, 2014": "https://www.lifescied.org/doi/10.1187/cbe.14-06-0095",
   
-  "Cognitive Load Theory": "https://www.sciencedirect.com/science/article/abs/pii/S0364021388800237",
-  "Sweller": "https://www.sciencedirect.com/science/article/abs/pii/S0364021388800237",
-  "Sweller, 1988": "https://www.sciencedirect.com/science/article/abs/pii/S0364021388800237",
+  "Cognitive Load Theory": "https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog1202_4",
+  "Sweller": "https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog1202_4",
+  "Sweller, 1988": "https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog1202_4",
   "Paas & Ayres": "https://link.springer.com/article/10.1007/s10648-014-9263-5",
   
-  "Culturally Sustaining Pedagogy": "https://www.hepg.org/hep-home/books/culturally-sustaining-pedagogies",
-  "Paris & Alim": "https://www.hepg.org/hep-home/books/culturally-sustaining-pedagogies",
-  "Paris & Alim, 2017": "https://www.hepg.org/hep-home/books/culturally-sustaining-pedagogies",
+  "Culturally Sustaining Pedagogy": "https://www.tcpress.com/culturally-sustaining-pedagogies-9780807758335",
+  "Paris & Alim": "https://www.tcpress.com/culturally-sustaining-pedagogies-9780807758335",
+  "Paris & Alim, 2017": "https://www.tcpress.com/culturally-sustaining-pedagogies-9780807758335",
   
   "Project-Based Learning": "https://www.edutopia.org/pbl-research-learning-outcomes",
   "Barron & Darling-Hammond": "https://www.edutopia.org/pbl-research-learning-outcomes",
