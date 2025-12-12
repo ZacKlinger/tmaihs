@@ -2,15 +2,20 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import WhatIsAI from "./pages/WhatIsAI";
 import WhyAIMatters from "./pages/WhyAIMatters";
 import PromptEngineering from "./pages/PromptEngineering";
 import ClassroomResources from "./pages/ClassroomResources";
-import EthicsSafety from "./pages/EthicsSafety";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
+
+// Ethics pages
+import EnvironmentalConsiderations from "./pages/ethics/EnvironmentalConsiderations";
+import SocialImplications from "./pages/ethics/SocialImplications";
+import Plagiarism from "./pages/ethics/Plagiarism";
+import DataPrivacy from "./pages/ethics/DataPrivacy";
 
 const queryClient = new QueryClient();
 
@@ -26,8 +31,15 @@ const App = () => (
           <Route path="/why-ai-matters" element={<WhyAIMatters />} />
           <Route path="/prompt-engineering" element={<PromptEngineering />} />
           <Route path="/classroom-resources" element={<ClassroomResources />} />
-          <Route path="/ethics-safety" element={<EthicsSafety />} />
           <Route path="/community" element={<Community />} />
+          
+          {/* Ethics & Safety Routes */}
+          <Route path="/ethics-safety" element={<Navigate to="/ethics/environmental" replace />} />
+          <Route path="/ethics/environmental" element={<EnvironmentalConsiderations />} />
+          <Route path="/ethics/social-implications" element={<SocialImplications />} />
+          <Route path="/ethics/plagiarism" element={<Plagiarism />} />
+          <Route path="/ethics/data-privacy" element={<DataPrivacy />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
