@@ -6,7 +6,8 @@ import {
   FolderOpen, 
   Shield,
   Users,
-  ArrowRight
+  ArrowRight,
+  GraduationCap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -36,13 +37,21 @@ const sections = [
     iconColor: "text-primary",
   },
   {
+    title: "Micro-courses",
+    description: "Interactive mini-lessons with hands-on exercises to build your AI skills step by step.",
+    href: "/learning-studio",
+    icon: GraduationCap,
+    color: "from-accent/10 to-accent/5",
+    iconColor: "text-accent",
+    featured: true,
+  },
+  {
     title: "Classroom Resources",
     description: "Project-based learning templates with research rationales and scaffolds for diverse learners.",
     href: "/classroom-resources",
     icon: FolderOpen,
     color: "from-primary/10 to-primary/5",
     iconColor: "text-primary",
-    featured: true,
   },
   {
     title: "Ethics & Safety",
