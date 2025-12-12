@@ -1,6 +1,15 @@
 import { BookOpen } from "lucide-react";
+import { ResearchBadge } from "@/components/shared/ResearchBadge";
 
 export function ResearchBanner() {
+  const frameworks = [
+    "ICAP Framework",
+    "Cognitive Load Theory", 
+    "Culturally Sustaining Pedagogy",
+    "NIST AI RMF",
+    "Stanford HAI Guidelines",
+  ];
+
   return (
     <section className="bg-secondary/50 py-16">
       <div className="section-container">
@@ -19,19 +28,8 @@ export function ResearchBanner() {
           </p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-3">
-            {[
-              "ICAP Framework",
-              "Cognitive Load Theory", 
-              "Culturally Sustaining Pedagogy",
-              "NIST AI RMF",
-              "Stanford HAI Guidelines",
-            ].map((tag) => (
-              <span 
-                key={tag}
-                className="rounded-full border border-primary/20 bg-background px-4 py-1.5 text-sm text-muted-foreground"
-              >
-                {tag}
-              </span>
+            {frameworks.map((framework) => (
+              <ResearchBadge key={framework} label={framework} />
             ))}
           </div>
         </div>
