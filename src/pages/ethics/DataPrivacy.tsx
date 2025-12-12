@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ContentCard } from "@/components/shared/ContentCard";
 import { ResearchNote } from "@/components/shared/ResearchNote";
+import { ResearchBadge } from "@/components/shared/ResearchBadge";
 import { Button } from "@/components/ui/button";
 
 const DataPrivacy = () => {
@@ -46,19 +47,10 @@ const DataPrivacy = () => {
                 This section synthesizes guidance from leading data privacy frameworks:
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                {[
-                  "FERPA (Family Educational Rights and Privacy Act)",
-                  "COPPA (Children's Online Privacy Protection Act)",
-                  "NIST Privacy Framework",
-                  "Future of Privacy Forum Guidelines",
-                ].map((framework) => (
-                  <span 
-                    key={framework}
-                    className="rounded-full border border-primary/20 bg-background px-4 py-2 text-sm text-muted-foreground"
-                  >
-                    {framework}
-                  </span>
-                ))}
+                <ResearchBadge label="FERPA" href="https://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html" />
+                <ResearchBadge label="COPPA" href="https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa" />
+                <ResearchBadge label="NIST Privacy Framework" />
+                <ResearchBadge label="Future of Privacy Forum" href="https://fpf.org/" />
               </div>
             </div>
 
