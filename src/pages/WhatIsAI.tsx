@@ -3,15 +3,9 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ContentCard } from "@/components/shared/ContentCard";
 import { ResearchNote } from "@/components/shared/ResearchNote";
-
 const WhatIsAI = () => {
-  return (
-    <Layout>
-      <PageHeader
-        title="What Is AI?"
-        description="Clear, jargon-free explanations of AI technology—what it can do, what it can't, and how it actually works."
-        icon={<Brain className="h-8 w-8 text-primary" />}
-      />
+  return <Layout>
+      <PageHeader title="What Is AI?" description="Clear, jargon-free explanations of AI technology—what it can do, what it can't, and how it actually works." icon={<Brain className="h-8 w-8 text-primary" />} />
 
       <section className="py-16 lg:py-20">
         <div className="section-container">
@@ -77,15 +71,10 @@ const WhatIsAI = () => {
               </h2>
               
               <div className="space-y-6">
-                <ContentCard
-                  title="Large Language Models (LLMs)"
-                  citation="Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS."
-                >
+                <ContentCard title="Large Language Models (LLMs)" citation="Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS.">
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
-                      <p className="mb-3">
-                        ChatGPT, Claude, and similar tools are called "Large Language Models" because they:
-                      </p>
+                      <p className="mb-3">ChatGPT, Claude, and similar tools are called "Large Language Models" because they are:</p>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
@@ -103,18 +92,12 @@ const WhatIsAI = () => {
                     </div>
                     <div className="md:w-48 rounded-lg bg-secondary/50 p-4">
                       <p className="text-xs font-medium text-charcoal mb-2">Think of it like:</p>
-                      <p className="text-sm text-muted-foreground italic">
-                        The world's most sophisticated autocomplete—predicting text based on everything 
-                        it's ever read.
-                      </p>
+                      <p className="text-sm text-muted-foreground italic">Autocomplete with texting—it predicts text based on what is has read before, and makes inferences about where it is going</p>
                     </div>
                   </div>
                 </ContentCard>
 
-                <ContentCard
-                  title="Hallucinations: When AI Gets It Wrong"
-                  citation="Ji, Z. et al. (2023). Survey of Hallucination in Natural Language Generation. ACM."
-                >
+                <ContentCard title="Hallucinations: When AI Gets It Wrong" citation="Ji, Z. et al. (2023). Survey of Hallucination in Natural Language Generation. ACM.">
                   <div className="flex items-start gap-4">
                     <div className="rounded-lg bg-destructive/10 p-3 flex-shrink-0">
                       <AlertTriangle className="h-6 w-6 text-destructive" />
@@ -137,10 +120,7 @@ const WhatIsAI = () => {
                   </div>
                 </ContentCard>
 
-                <ContentCard
-                  title="Types of AI You'll Encounter"
-                  citation="NASEM (2023). Artificial Intelligence in Science. National Academies Press."
-                >
+                <ContentCard title="Types of AI You'll Encounter" citation="NASEM (2023). Artificial Intelligence in Science. National Academies Press.">
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-lg bg-secondary/50 p-4">
                       <div className="flex items-center gap-2 mb-2">
@@ -185,10 +165,7 @@ const WhatIsAI = () => {
 
             {/* What AI Cannot Do */}
             <div className="mb-12">
-              <ContentCard
-                title="What AI Cannot Do"
-                citation="Marcus, G. & Davis, E. (2019). Rebooting AI: Building Artificial Intelligence We Can Trust."
-              >
+              <ContentCard title="What AI Cannot Do" citation="Marcus, G. & Davis, E. (2019). Rebooting AI: Building Artificial Intelligence We Can Trust.">
                 <p className="mb-4">
                   Understanding AI's limitations is just as important as knowing its capabilities:
                 </p>
@@ -230,8 +207,6 @@ const WhatIsAI = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default WhatIsAI;
