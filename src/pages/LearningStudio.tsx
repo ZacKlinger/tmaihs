@@ -212,7 +212,10 @@ const LearningStudio = () => {
       courseProgress: progress.courses[activeCourse!],
       onCompleteSection: (sectionId: string) => completeSection(activeCourse!, sectionId),
       onAnswerCFU: (cfuId: string, selected: string, correct: boolean) => answerCFU(activeCourse!, cfuId, selected, correct),
-      onCompleteCourse: () => completeCourse(activeCourse!),
+      onCompleteCourse: () => {
+        completeCourse(activeCourse!);
+        setActiveCourse(null);
+      },
       onBack: handleBack,
       overallProgress: getCourseProgress(activeCourse!, course.totalSections, course.totalCFUs)
     };
