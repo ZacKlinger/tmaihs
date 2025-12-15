@@ -13,7 +13,7 @@ export const TIERS: TierConfig[] = [
   {
     id: 1,
     name: "Foundations",
-    description: "Establish AI as a default thinking partner when approaching new instructional problems.",
+    description: "Establish AI as a thinking partner when approaching new instructional problems.",
     unlockCriteria: "Available immediately",
     courseIds: ["constraints-101", "role-assignment-101", "iteration-101"],
   },
