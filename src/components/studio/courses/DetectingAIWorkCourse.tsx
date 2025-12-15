@@ -130,10 +130,10 @@ It's important to note that the setting contributes to the theme. The ranch is i
 
 In conclusion, isolation is a central theme that Steinbeck develops through character, setting, and historical context.`,
         dimensions: [
-          { id: "voice", name: "Voice Consistency", description: "Does this sound like a real student?", correctRange: [20, 45], explanation: "Mixed signals: informal moments ('very important') alongside formulaic AI phrases ('It's important to note')" },
-          { id: "structure", name: "Structural Naturalness", description: "Is the organization authentic?", correctRange: [15, 35], explanation: "Suspiciously perfect 5-paragraph structure with uniform paragraph lengths" },
-          { id: "insight", name: "Original Thinking", description: "Are there genuine insights?", correctRange: [30, 55], explanation: "Content is accurate but generic—hits expected points without original analysis" },
-          { id: "errors", name: "Natural Imperfection", description: "Are there human-like variations?", correctRange: [10, 30], explanation: "Too clean—no grammar variations, no crossed-out thinking, no rough edges" },
+          { id: "voice", name: "Voice Consistency", description: "Does this sound like a real student?", correctRange: [20, 45] as [number, number], explanation: "Mixed signals: informal moments ('very important') alongside formulaic AI phrases ('It's important to note')" },
+          { id: "structure", name: "Structural Naturalness", description: "Is the organization authentic?", correctRange: [15, 35] as [number, number], explanation: "Suspiciously perfect 5-paragraph structure with uniform paragraph lengths" },
+          { id: "insight", name: "Original Thinking", description: "Are there genuine insights?", correctRange: [30, 55] as [number, number], explanation: "Content is accurate but generic—hits expected points without original analysis" },
+          { id: "errors", name: "Natural Imperfection", description: "Are there human-like variations?", correctRange: [10, 30] as [number, number], explanation: "Too clean—no grammar variations, no crossed-out thinking, no rough edges" },
         ],
       },
     },
