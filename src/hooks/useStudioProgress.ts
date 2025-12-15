@@ -11,12 +11,14 @@ export interface CourseProgress {
 export interface StudioProgress {
   courses: Record<string, CourseProgress>;
   totalCoursesCompleted: number;
+  bypassAttempts: Record<number, boolean>; // tier -> has attempted
 }
 
 export const useStudioProgress = () => {
   const [progress, setProgress] = useState<StudioProgress>({
     courses: {},
     totalCoursesCompleted: 0,
+    bypassAttempts: {},
   });
 
   const initCourse = useCallback((courseId: string) => {
@@ -95,6 +97,51 @@ export const useStudioProgress = () => {
     });
   }, []);
 
+  // Mark module complete via bypass quiz
+  const markModuleCompleteViaQuiz = useCallback((moduleId: string) => {
+    setProgress((prev) => {
+      // Initialize course if needed and mark as complete
+      const existingCourse = prev.courses[moduleId];
+      const updatedCourse = existingCourse 
+        ? { ...existingCourse, isCompleted: true }
+        : {
+            courseId: moduleId,
+            completedSections: [],
+            cfuAnswers: {},
+            isCompleted: true,
+          };
+      
+      const wasAlreadyComplete = existingCourse?.isCompleted || false;
+      
+      return {
+        ...prev,
+        totalCoursesCompleted: wasAlreadyComplete 
+          ? prev.totalCoursesCompleted 
+          : prev.totalCoursesCompleted + 1,
+        courses: {
+          ...prev.courses,
+          [moduleId]: updatedCourse,
+        },
+      };
+    });
+  }, []);
+
+  // Record that a bypass attempt was made for a tier
+  const recordBypassAttempt = useCallback((tierNumber: number) => {
+    setProgress((prev) => ({
+      ...prev,
+      bypassAttempts: {
+        ...prev.bypassAttempts,
+        [tierNumber]: true,
+      },
+    }));
+  }, []);
+
+  // Check if bypass has been attempted for a tier
+  const hasAttemptedBypass = useCallback((tierNumber: number): boolean => {
+    return progress.bypassAttempts[tierNumber] || false;
+  }, [progress.bypassAttempts]);
+
   const getCourseProgress = useCallback(
     (courseId: string, totalSections: number, totalCFUs: number): number => {
       const course = progress.courses[courseId];
@@ -145,6 +192,10 @@ export const useStudioProgress = () => {
     answerCFU,
     completeCourse,
     getCourseProgress,
+    // Bypass quiz methods
+    markModuleCompleteViaQuiz,
+    recordBypassAttempt,
+    hasAttemptedBypass,
     // Tier methods
     getCompletedCourseIds,
     getTierProgress: getTierProgressValue,

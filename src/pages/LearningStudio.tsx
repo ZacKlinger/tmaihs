@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { MicroCourseCard } from "@/components/studio/MicroCourseCard";
 import { TierNavigation } from "@/components/studio/TierNavigation";
+import { TierBypassQuiz } from "@/components/studio/TierBypassQuiz";
 import { ConstraintsCourse } from "@/components/studio/courses/ConstraintsCourse";
 import { RoleAssignmentCourse } from "@/components/studio/courses/RoleAssignmentCourse";
 import { IterationCourse } from "@/components/studio/courses/IterationCourse";
@@ -162,6 +163,8 @@ const microCourses: MicroCourse[] = [
 const LearningStudio = () => {
   const [selectedTier, setSelectedTier] = useState(1);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
+  const [showBypassQuiz, setShowBypassQuiz] = useState(false);
+  const [bypassTargetTier, setBypassTargetTier] = useState<number>(2);
   
   const {
     progress,
@@ -172,6 +175,9 @@ const LearningStudio = () => {
     getCourseProgress,
     getCompletedCourseIds,
     isTierUnlocked,
+    markModuleCompleteViaQuiz,
+    recordBypassAttempt,
+    hasAttemptedBypass,
   } = useStudioProgress();
 
   const completedCourseIds = getCompletedCourseIds();
@@ -195,6 +201,22 @@ const LearningStudio = () => {
 
   const handleBack = () => {
     setActiveCourse(null);
+  };
+
+  const handleSkipTier = (targetTier: number) => {
+    setBypassTargetTier(targetTier);
+    setShowBypassQuiz(true);
+  };
+
+  const handleQuizComplete = (passedModuleIds: string[]) => {
+    // Mark each passed module as complete
+    passedModuleIds.forEach(moduleId => {
+      markModuleCompleteViaQuiz(moduleId);
+    });
+  };
+
+  const handleBypassAttempted = () => {
+    recordBypassAttempt(bypassTargetTier);
   };
 
   // Render active course
@@ -290,6 +312,8 @@ const LearningStudio = () => {
             selectedTier={selectedTier}
             onSelectTier={setSelectedTier}
             completedCourseIds={completedCourseIds}
+            onSkipTier={handleSkipTier}
+            hasAttemptedBypass={hasAttemptedBypass}
           />
           
           {/* Tier Description */}
@@ -328,6 +352,16 @@ const LearningStudio = () => {
           })}
         </div>
       </section>
+
+      {/* Bypass Quiz Modal */}
+      <TierBypassQuiz
+        open={showBypassQuiz}
+        onOpenChange={setShowBypassQuiz}
+        targetTier={bypassTargetTier}
+        completedCourseIds={completedCourseIds}
+        onQuizComplete={handleQuizComplete}
+        onBypassAttempted={handleBypassAttempted}
+      />
     </Layout>
   );
 };
