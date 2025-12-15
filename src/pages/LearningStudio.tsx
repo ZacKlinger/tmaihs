@@ -6,11 +6,18 @@ import { TierNavigation } from "@/components/studio/TierNavigation";
 import { ConstraintsCourse } from "@/components/studio/courses/ConstraintsCourse";
 import { RoleAssignmentCourse } from "@/components/studio/courses/RoleAssignmentCourse";
 import { IterationCourse } from "@/components/studio/courses/IterationCourse";
+import { MetaPromptingCourse } from "@/components/studio/courses/MetaPromptingCourse";
+import { PersonaCallingCourse } from "@/components/studio/courses/PersonaCallingCourse";
+import { WorkflowDesignCourse } from "@/components/studio/courses/WorkflowDesignCourse";
+import { CriticalEvaluationCourse } from "@/components/studio/courses/CriticalEvaluationCourse";
+import { DetectingAIWorkCourse } from "@/components/studio/courses/DetectingAIWorkCourse";
+import { StudentAIActivitiesCourse } from "@/components/studio/courses/StudentAIActivitiesCourse";
+import { CurriculumAIDesignCourse } from "@/components/studio/courses/CurriculumAIDesignCourse";
 import { StudioProgressBar } from "@/components/studio/StudioProgressBar";
 import { useStudioProgress } from "@/hooks/useStudioProgress";
 import { TIERS, getTierForCourse } from "@/lib/studioTiers";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Users, RefreshCw, Sparkles, Brain, GitBranch, Search, FileSearch, Layers, Compass } from "lucide-react";
+import { Target, Users, RefreshCw, Sparkles, Brain, GitBranch, Search, FileSearch, Layers, Compass, GraduationCap } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
 interface MicroCourse {
@@ -73,9 +80,9 @@ const microCourses: MicroCourse[] = [
     mentalModel: "Meta-Prompting",
     icon: Brain,
     tier: 2,
-    isPlaceholder: true,
-    totalSections: 7,
-    totalCFUs: 3,
+    isPlaceholder: false,
+    totalSections: 6,
+    totalCFUs: 2,
   },
   {
     id: "persona-calling-201",
@@ -85,58 +92,70 @@ const microCourses: MicroCourse[] = [
     mentalModel: "Persona Calling",
     icon: Sparkles,
     tier: 2,
-    isPlaceholder: true,
+    isPlaceholder: false,
     totalSections: 6,
     totalCFUs: 2,
   },
   {
     id: "workflow-design-201",
-    title: "Workflow Design: AI-Assisted Processes",
-    description: "Design multi-step workflows that combine AI assistance with your professional judgment.",
+    title: "Workflow Design: Chaining Prompts for Complex Tasks",
+    description: "Design multi-step prompt workflows where each output feeds the next for coherent, interconnected results.",
     duration: "25-30 min",
     mentalModel: "Workflow Design",
     icon: GitBranch,
     tier: 2,
-    isPlaceholder: true,
-    totalSections: 8,
+    isPlaceholder: false,
+    totalSections: 7,
     totalCFUs: 3,
   },
   // Tier 3: Studio Practice
   {
     id: "critical-evaluation-301",
-    title: "Critical Evaluation: Judging AI Output",
-    description: "Develop systematic approaches to evaluating AI-generated content for accuracy, appropriateness, and bias.",
+    title: "Critical Evaluation: Accuracy, Bias, and Appropriateness",
+    description: "Develop systematic approaches to evaluating AI-generated content across three critical lenses.",
     duration: "20-25 min",
     mentalModel: "Critical Evaluation",
     icon: Search,
     tier: 3,
-    isPlaceholder: true,
+    isPlaceholder: false,
     totalSections: 7,
     totalCFUs: 3,
   },
   {
     id: "detecting-ai-work-301",
-    title: "Detecting AI in Student Work",
-    description: "Learn to identify likely AI-generated content and design assignments that encourage authentic student work.",
+    title: "Detecting AI Work: Patterns and Pedagogical Design",
+    description: "Recognize AI-generated student work through patterns and design assignments that encourage authenticity.",
     duration: "25-30 min",
     mentalModel: "Detection & Design",
     icon: FileSearch,
     tier: 3,
-    isPlaceholder: true,
-    totalSections: 8,
+    isPlaceholder: false,
+    totalSections: 7,
     totalCFUs: 4,
   },
   {
-    id: "ai-integrated-design-301",
-    title: "AI-Integrated Learning Design",
-    description: "Create learning experiences that thoughtfully integrate AI as a tool for student exploration and growth.",
-    duration: "30-35 min",
-    mentalModel: "Integrated Design",
+    id: "student-ai-activities-301",
+    title: "Student AI Activities: Designing for Productive Use",
+    description: "Design student-facing AI activities where AI becomes a thinking tool rather than an answer machine.",
+    duration: "20-25 min",
+    mentalModel: "Student AI Design",
+    icon: GraduationCap,
+    tier: 3,
+    isPlaceholder: false,
+    totalSections: 7,
+    totalCFUs: 3,
+  },
+  {
+    id: "curriculum-ai-design-301",
+    title: "Curriculum AI Design: Strategic Integration",
+    description: "Develop judgment about when, where, and how to integrate AI across your curriculum.",
+    duration: "25-30 min",
+    mentalModel: "Curriculum Integration",
     icon: Layers,
     tier: 3,
-    isPlaceholder: true,
-    totalSections: 9,
-    totalCFUs: 4,
+    isPlaceholder: false,
+    totalSections: 7,
+    totalCFUs: 3,
   },
 ];
 
@@ -199,6 +218,20 @@ const LearningStudio = () => {
         return <RoleAssignmentCourse {...courseProps} />;
       case "iteration-101":
         return <IterationCourse {...courseProps} />;
+      case "meta-prompting-201":
+        return <MetaPromptingCourse {...courseProps} />;
+      case "persona-calling-201":
+        return <PersonaCallingCourse {...courseProps} />;
+      case "workflow-design-201":
+        return <WorkflowDesignCourse {...courseProps} />;
+      case "critical-evaluation-301":
+        return <CriticalEvaluationCourse {...courseProps} />;
+      case "detecting-ai-work-301":
+        return <DetectingAIWorkCourse {...courseProps} />;
+      case "student-ai-activities-301":
+        return <StudentAIActivitiesCourse {...courseProps} />;
+      case "curriculum-ai-design-301":
+        return <CurriculumAIDesignCourse {...courseProps} />;
       default:
         return null;
     }
