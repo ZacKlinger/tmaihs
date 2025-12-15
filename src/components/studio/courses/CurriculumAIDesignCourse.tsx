@@ -38,7 +38,7 @@ export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) =
             AI across your curriculum.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This draws on <ResearchLink term="Stanford HAI" /> principles for human-centered AI: technology 
+            This draws on <ResearchLink text="Stanford HAI" /> principles for human-centered AI: technology 
             should augment human capability, not replace human judgment.
           </div>
         </div>
@@ -102,7 +102,7 @@ export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) =
             <p className="text-sm">
               <strong>Key insight:</strong> The best AI integration often happens at transition points—between 
               drafts, after initial attempts, before peer review—not as the main learning activity. 
-              AI is a <ResearchLink term="Scaffolding" /> tool, not a replacement for the learning itself.
+              AI is a <ResearchLink text="Scaffolding" /> tool, not a replacement for the learning itself.
             </p>
           </div>
         </div>

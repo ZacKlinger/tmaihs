@@ -36,7 +36,7 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
             interconnected project materials.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This mirrors <ResearchLink term="Backward Design" /> (Wiggins & McTighe)—start with the end in mind, 
+            This mirrors <ResearchLink text="Backward Design" /> (Wiggins & McTighe)—start with the end in mind, 
             then design backward to ensure alignment.
           </div>
         </div>
@@ -91,7 +91,7 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
               <strong>Key insight:</strong> Workflows aren't just efficient—they produce more coherent outputs 
-              because each step is aware of what came before. This mirrors <ResearchLink term="Gold Standard PBL" />: 
+              because each step is aware of what came before. This mirrors <ResearchLink text="Gold Standard PBL" />: 
               every activity should connect to the driving question and final product.
             </p>
           </div>

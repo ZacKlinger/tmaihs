@@ -36,7 +36,7 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
             In this micro-course, you'll learn to match personas to tasks for maximum usefulness.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This technique draws on <ResearchLink term="Culturally Sustaining Pedagogy" /> (Paris & Alim)—ensuring 
+            This technique draws on <ResearchLink text="Culturally Sustaining Pedagogy" /> (Paris & Alim)—ensuring 
             multiple perspectives are centered, not just dominant voices.
           </div>
         </div>
