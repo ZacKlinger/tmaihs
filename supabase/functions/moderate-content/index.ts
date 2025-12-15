@@ -12,7 +12,7 @@ const MAX_AUTHOR_NAME_LENGTH = 100;
 // Rate limiting configuration (in-memory, resets on function cold start)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per 10 minutes per IP
+const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per 10 minutes per IP (tightened for security)
 
 function getClientIP(req: Request): string {
   // Try various headers for client IP

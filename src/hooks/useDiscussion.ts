@@ -81,14 +81,19 @@ export function useDiscussion() {
 
   const fetchUserVotes = async () => {
     const voterId = getVoterId();
-    const { data } = await supabase
-      .from('discussion_upvotes')
-      .select('post_id, reply_id')
-      .eq('voter_identifier', voterId);
+    // Use secure RPC function instead of direct SELECT to prevent voting pattern tracking
+    const { data, error } = await supabase.rpc('check_user_votes', {
+      p_voter_identifier: voterId
+    });
+
+    if (error) {
+      console.error('Error fetching user votes:', error);
+      return;
+    }
 
     if (data) {
       const voteIds = new Set(
-        data.map(v => v.post_id || v.reply_id).filter(Boolean) as string[]
+        data.map((v: { target_id: string }) => v.target_id).filter(Boolean)
       );
       setUserVotes(voteIds);
     }
