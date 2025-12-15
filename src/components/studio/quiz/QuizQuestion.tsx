@@ -97,7 +97,8 @@ export const createEmptyAnswer = (question: QuizQuestionType): QuizAnswer => {
   }
 };
 
-export const isAnswerComplete = (question: QuizQuestionType, answer: QuizAnswer): boolean => {
+export const isAnswerComplete = (question: QuizQuestionType, answer: QuizAnswer | undefined): boolean => {
+  if (!answer) return false;
   switch (question.type) {
     case 'multiple-choice':
       return answer.type === 'multiple-choice' && answer.value !== null;
