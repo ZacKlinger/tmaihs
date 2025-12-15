@@ -11,6 +11,8 @@ import LearningStudio from "./pages/LearningStudio";
 import ClassroomResources from "./pages/ClassroomResources";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+import Certificate from "./pages/Certificate";
 
 // Ethics pages
 import EnvironmentalConsiderations from "./pages/ethics/EnvironmentalConsiderations";
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/learning-studio" element={<LearningStudio />} />
           <Route path="/classroom-resources" element={<ClassroomResources />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/certificate" element={<Certificate />} />
           
           {/* Ethics & Safety Routes */}
           <Route path="/ethics-safety" element={<Navigate to="/ethics/environmental" replace />} />

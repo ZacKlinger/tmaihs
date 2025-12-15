@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      bypass_attempts: {
+        Row: {
+          attempted: boolean
+          created_at: string
+          id: string
+          tier_number: number
+          user_id: string
+        }
+        Insert: {
+          attempted?: boolean
+          created_at?: string
+          id?: string
+          tier_number: number
+          user_id: string
+        }
+        Update: {
+          attempted?: boolean
+          created_at?: string
+          id?: string
+          tier_number?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      course_progress: {
+        Row: {
+          cfu_answers: Json
+          completed_sections: string[]
+          course_id: string
+          created_at: string
+          id: string
+          is_completed: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cfu_answers?: Json
+          completed_sections?: string[]
+          course_id: string
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cfu_answers?: Json
+          completed_sections?: string[]
+          course_id?: string
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       discussion_posts: {
         Row: {
           anonymous_identifier: string | null
@@ -176,6 +233,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_progress: {
+        Row: {
+          all_courses_completed: boolean
+          completed_at: string | null
+          created_at: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          all_courses_completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          all_courses_completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
     }
     Views: {

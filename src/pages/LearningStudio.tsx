@@ -4,6 +4,8 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { MicroCourseCard } from "@/components/studio/MicroCourseCard";
 import { TierNavigation } from "@/components/studio/TierNavigation";
 import { TierBypassQuiz } from "@/components/studio/TierBypassQuiz";
+import { SaveProgressBanner } from "@/components/studio/SaveProgressBanner";
+import { CompletionBadge } from "@/components/studio/CompletionBadge";
 import { ConstraintsCourse } from "@/components/studio/courses/ConstraintsCourse";
 import { RoleAssignmentCourse } from "@/components/studio/courses/RoleAssignmentCourse";
 import { IterationCourse } from "@/components/studio/courses/IterationCourse";
@@ -15,11 +17,12 @@ import { DetectingAIWorkCourse } from "@/components/studio/courses/DetectingAIWo
 import { StudentAIActivitiesCourse } from "@/components/studio/courses/StudentAIActivitiesCourse";
 import { CurriculumAIDesignCourse } from "@/components/studio/courses/CurriculumAIDesignCourse";
 import { StudioProgressBar } from "@/components/studio/StudioProgressBar";
-import { useStudioProgress } from "@/hooks/useStudioProgress";
+import { usePersistentProgress } from "@/hooks/usePersistentProgress";
 import { TIERS, getTierForCourse } from "@/lib/studioTiers";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Users, RefreshCw, Sparkles, Brain, GitBranch, Search, FileSearch, Layers, Compass, GraduationCap } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import { isTierUnlocked as checkTierUnlocked } from "@/lib/studioTiers";
 interface MicroCourse {
   id: string;
   title: string;
@@ -162,12 +165,14 @@ const LearningStudio = () => {
     completeCourse,
     getCourseProgress,
     getCompletedCourseIds,
-    isTierUnlocked,
     markModuleCompleteViaQuiz,
     recordBypassAttempt,
-    hasAttemptedBypass
-  } = useStudioProgress();
+    hasAttemptedBypass,
+    isAuthenticated,
+    allCoursesCompleted,
+  } = usePersistentProgress();
   const completedCourseIds = getCompletedCourseIds();
+  const isTierUnlocked = (tierNumber: number) => checkTierUnlocked(tierNumber, completedCourseIds);
   const filteredCourses = useMemo(() => {
     return microCourses.filter(course => course.tier === selectedTier);
   }, [selectedTier]);
@@ -247,6 +252,16 @@ const LearningStudio = () => {
       <PageHeader title="Learning Studio" description="A focused workspace for developing AI fluency through real prep-period work" icon={<Compass className="w-12 h-12 text-primary" />} />
 
       <section className="container mx-auto px-4 pb-16">
+        {/* Save Progress Banner for guests */}
+        {!isAuthenticated && <SaveProgressBanner />}
+
+        {/* Completion Badge */}
+        {allCoursesCompleted && (
+          <div className="mb-6 flex justify-center">
+            <CompletionBadge />
+          </div>
+        )}
+
         {/* Introduction Card */}
         <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
           <CardContent className="pt-6">
