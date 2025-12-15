@@ -1,5 +1,6 @@
 import { MicroCourseViewer } from "../MicroCourseViewer";
 import { CourseProgress } from "@/hooks/useStudioProgress";
+import { ResearchLink } from "@/components/shared/ResearchLink";
 
 interface ConstraintsCourseProps {
   courseProgress: CourseProgress | undefined;
@@ -21,19 +22,22 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "It's your prep period. You need tomorrow's lesson differentiated for three reading levels, 
-              checked for clarity, and aligned to your learning objective—all before the bell rings in 45 minutes."
+              "You're designing a semester-long immigration history project. Right now, you're in Week 4—primary source analysis. 
+              You need differentiated materials for students at three reading levels, and you have 40 minutes before your next class."
             </p>
           </div>
           <p>
-            Sound familiar? This scenario is where AI can genuinely help—but only if you know how to 
-            give it the right constraints. Vague requests lead to generic outputs. Specific constraints 
-            lead to usable materials.
+            This is exactly where AI can help—but only if you give it the right constraints. 
+            Vague requests produce generic outputs. Specific constraints produce materials you can actually use.
           </p>
           <p>
-            In this micro-course, you'll learn the <strong>Constraints mental model</strong>—the single 
-            most powerful technique for getting useful outputs from AI tools.
+            In this micro-course, you'll learn the <strong>Constraints mental model</strong>—the foundation 
+            of getting useful, classroom-ready outputs from any AI tool.
           </p>
+          <div className="text-xs text-muted-foreground mt-4">
+            This approach draws on <ResearchLink term="Cognitive Load Theory" /> (Sweller)—by constraining the task, 
+            you reduce extraneous cognitive load for both you and the AI.
+          </div>
         </div>
       ),
     },
@@ -45,48 +49,44 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">The Constraints Mental Model</h2>
           <p className="text-lg">
-            AI models are trained on vast amounts of text. Without constraints, they default to 
-            <strong> average patterns</strong>—the most common way something is typically written.
-          </p>
-          <p>
-            Constraints narrow the possibility space. They tell the AI: "Don't give me everything. 
-            Give me <em>this specific thing</em>."
+            AI models default to <strong>average patterns</strong>—the most common way something is typically done.
+            Constraints narrow the possibility space to exactly what you need.
           </p>
           
           <div className="grid md:grid-cols-2 gap-4 my-6">
             <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/20">
               <p className="font-medium text-destructive mb-2">Without Constraints:</p>
-              <p className="text-sm">"Write a lesson about photosynthesis"</p>
+              <p className="text-sm">"Create activities for my immigration project"</p>
               <p className="text-xs text-muted-foreground mt-2">
-                → Generic, grade-agnostic, unfocused output
+                → Generic, grade-agnostic, disconnected from your specific project phase
               </p>
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
               <p className="font-medium text-green-700 dark:text-green-300 mb-2">With Constraints:</p>
               <p className="text-sm">
-                "Write a 10-minute mini-lesson on photosynthesis for 7th graders. 
-                Include one hands-on demo using materials found in a typical classroom. 
-                End with 3 discussion questions."
+                "Create a primary source analysis activity for 10th graders using this 1910 immigration interview transcript. 
+                Include guiding questions at three reading levels. Students should be able to complete this in 25 minutes. 
+                This is Week 4 of a 14-week documentary project."
               </p>
               <p className="text-xs text-muted-foreground mt-2">
-                → Specific, usable, grade-appropriate output
+                → Specific, scaffolded, aligned to your project arc
               </p>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold">Types of Constraints</h3>
+          <h3 className="text-lg font-semibold">Types of Constraints for PBL</h3>
           <ul>
-            <li><strong>Format:</strong> bullet points, numbered steps, table, paragraph</li>
-            <li><strong>Length:</strong> word count, time duration, number of items</li>
-            <li><strong>Audience:</strong> grade level, reading level, prior knowledge</li>
-            <li><strong>Purpose:</strong> assess, introduce, review, extend</li>
-            <li><strong>Materials:</strong> available resources, technology access</li>
+            <li><strong>Project Phase:</strong> Where are students in the semester arc? (Research, prototyping, revision, presentation)</li>
+            <li><strong>Prior Work:</strong> What have students already produced that this builds on?</li>
+            <li><strong>Time Box:</strong> How long should this activity take?</li>
+            <li><strong>Differentiation:</strong> What reading levels, scaffolds, or extensions are needed?</li>
+            <li><strong>Final Product Connection:</strong> How does this connect to the public-facing deliverable?</li>
           </ul>
 
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Key insight:</strong> The more constraints you provide, the more useful the output becomes. 
-              You're not limiting the AI—you're focusing it on exactly what you need.
+              <strong>Key insight:</strong> In <ResearchLink term="Gold Standard PBL" />, every activity connects 
+              to a driving question and public product. Your constraints should make those connections explicit.
             </p>
           </div>
         </div>
@@ -99,31 +99,30 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
       advancedCfuData: {
         id: "constraints-cfu-1",
         type: "prompt-compare" as const,
-        question: "Which prompt is more likely to produce immediately usable classroom materials?",
-        context: "Consider what constraints each prompt provides to the AI.",
+        question: "Which prompt would produce immediately usable materials for a semester-long project?",
+        context: "A teacher is in Week 6 of a 14-week documentary project on local environmental issues. Students need to conduct community interviews.",
         options: [
           {
             id: "A",
-            prompt: "Create a worksheet about fractions for my math class.",
+            prompt: "Create interview questions for students doing a documentary project about the environment.",
             isCorrect: false,
             annotations: [
-              { text: "worksheet about fractions", label: "Vague topic", color: "bg-amber-500/20" },
-              { text: "my math class", label: "No grade level", color: "bg-amber-500/20" },
+              { text: "documentary project", label: "No project phase specified", color: "bg-amber-500/20" },
+              { text: "about the environment", label: "Too broad", color: "bg-amber-500/20" },
             ],
-            explanation: "This prompt lacks constraints on grade level, specific fraction concepts, length, and format. The AI has to guess at nearly everything.",
+            explanation: "This prompt lacks constraints about where students are in the project arc, what they've already learned, and what their specific focus is. AI will produce generic journalism questions.",
           },
           {
             id: "B",
-            prompt: "Create a 15-question worksheet on adding fractions with unlike denominators for 5th graders. Include 5 visual models, 5 word problems, and 5 computation problems. Answers should be on a separate page.",
+            prompt: "Create 8 interview questions for 10th graders interviewing local residents about water quality concerns. This is Week 6 of a 14-week documentary project. Students have already researched EPA data and identified 3 key pollution sources. Questions should help them gather personal stories that complement their data. Include 2 warm-up questions, 4 substantive questions, and 2 follow-up probes.",
             isCorrect: true,
             annotations: [
-              { text: "15-question", label: "Length constraint", color: "bg-green-500/20" },
-              { text: "adding fractions with unlike denominators", label: "Specific topic", color: "bg-green-500/20" },
-              { text: "5th graders", label: "Grade level", color: "bg-green-500/20" },
-              { text: "5 visual models, 5 word problems, and 5 computation", label: "Format structure", color: "bg-green-500/20" },
-              { text: "Answers should be on a separate page", label: "Output format", color: "bg-green-500/20" },
+              { text: "Week 6 of a 14-week", label: "Project phase", color: "bg-green-500/20" },
+              { text: "already researched EPA data", label: "Prior work", color: "bg-green-500/20" },
+              { text: "complement their data", label: "Product connection", color: "bg-green-500/20" },
+              { text: "2 warm-up, 4 substantive, 2 follow-up", label: "Structure", color: "bg-green-500/20" },
             ],
-            explanation: "This prompt includes specific constraints: grade level, topic focus, question count, variety of problem types, and format requirements. The AI knows exactly what to produce.",
+            explanation: "This prompt situates the task in the project arc, builds on prior student work, and specifies how outputs connect to the final documentary. The AI knows exactly what to produce.",
           },
         ] as [
           { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
@@ -136,8 +135,8 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Applying Constraints",
-        description: "Now it's your turn. Use the starter prompts below as templates, then modify them for your actual classroom needs. Open an AI tool and test your prompts.",
+        title: "Prompt Workshop: Constraints for PBL",
+        description: "Apply constraints to your own project-based work. Use these templates, then iterate based on your actual classroom context.",
         toolLinks: [
           { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
@@ -145,31 +144,39 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
         ],
         starterPrompts: [
           {
-            label: "Differentiated Reading Guide",
-            prompt: `Create a reading guide for [ARTICLE/TEXT TITLE] at three reading levels:
-- Approaching: 5th grade reading level, with vocabulary support and guided questions
-- On-level: 7th grade reading level, with analysis questions
-- Advanced: 9th grade reading level, with synthesis and evaluation questions
+            label: "Semester Project Checkpoint",
+            prompt: `I'm designing Week [NUMBER] of a [TOTAL WEEKS]-week project on [TOPIC].
 
-Each version should be 1 page and include the same core learning objective: [YOUR OBJECTIVE]`,
+Project context:
+- Driving question: [YOUR DRIVING QUESTION]
+- Final product: [WHAT STUDENTS WILL CREATE]
+- What students have completed so far: [PRIOR WORK]
+
+Create a [TYPE OF ACTIVITY] that:
+- Takes approximately [TIME] minutes
+- Builds directly on their prior work
+- Moves them toward the final product
+- Includes differentiation for [DESCRIBE YOUR LEARNERS]`,
           },
           {
-            label: "Exit Ticket Generator",
-            prompt: `Design a 5-minute exit ticket for a lesson on [TOPIC] for [GRADE] students.
+            label: "Primary Source Analysis (Differentiated)",
+            prompt: `Create a primary source analysis activity for [GRADE] students using this source: [DESCRIBE OR PASTE SOURCE]
 
-Include:
-- 2 multiple choice questions checking factual understanding
-- 1 short response question requiring application
-- 1 self-assessment question ("Rate your confidence from 1-4")
+Project context: This is part of a semester-long [PROJECT TYPE] project. Students are in the [PHASE] phase.
 
-Format for easy grading: all questions on one half-page.`,
+Create guiding questions at three levels:
+- Approaching: Focus on comprehension, include vocabulary support
+- On-level: Focus on analysis and evidence
+- Advanced: Focus on synthesis and connection to broader themes
+
+Each version should take 20-25 minutes and prepare students for [NEXT STEP IN PROJECT].`,
           },
         ],
         iterationTips: [
-          "If the output is too generic, add more constraints about your specific students or classroom context.",
-          "If it's too complex, add a constraint like 'Use vocabulary appropriate for students reading 2 grades below level.'",
-          "If format is wrong, be explicit: 'Use a table format with columns for...' or 'Number each step.'",
-          "Try adding 'Do not include...' statements to remove unwanted elements.",
+          "Always include where students are in the project arc—Week 3 materials differ from Week 10 materials.",
+          "Specify what students have already produced. AI can't build on prior work it doesn't know about.",
+          "Connect activities to the final public product: 'This will become part of their documentary/exhibition/website.'",
+          "If output is too generic, add constraints about your specific student population and school context.",
         ],
       },
     },
@@ -180,15 +187,15 @@ Format for easy grading: all questions on one half-page.`,
       advancedCfuData: {
         id: "constraints-cfu-2",
         type: "identify-missing" as const,
-        prompt: "Make a rubric for essays.",
-        context: "A teacher wants to create a rubric but gets generic output. What constraints are missing?",
+        prompt: "Create a rubric for my students' history project presentations.",
+        context: "A teacher wants a rubric for a semester-long PBL project but gets generic output. What constraints are missing?",
         elements: [
-          { id: "essay-type", label: "Essay type (argumentative, narrative, expository)", isMissing: true, explanation: "Different essay types require different criteria" },
-          { id: "grade-level", label: "Grade level", isMissing: true, explanation: "Expectations vary significantly by grade" },
-          { id: "point-scale", label: "Point scale (4-point, 6-point, etc.)", isMissing: true, explanation: "The rubric structure depends on this" },
-          { id: "key-criteria", label: "Specific criteria to evaluate", isMissing: true, explanation: "Thesis, evidence, organization—which matter most?" },
-          { id: "ai-tool", label: "Which AI tool to use", isMissing: false, explanation: "This isn't a constraint—any tool can create rubrics with good prompts" },
-          { id: "word-count", label: "Student essay word count", isMissing: false, explanation: "While helpful, the rubric itself doesn't depend heavily on this" },
+          { id: "project-specifics", label: "Specific project topic and driving question", isMissing: true, explanation: "The rubric should assess how well students addressed THEIR driving question, not generic 'research skills'" },
+          { id: "prior-milestones", label: "Connection to prior project milestones", isMissing: true, explanation: "A good PBL rubric references the checkpoints students completed throughout the project" },
+          { id: "audience-context", label: "Who the audience is for the presentation", isMissing: true, explanation: "A presentation to community partners requires different criteria than a classroom presentation" },
+          { id: "point-scale", label: "Point scale (4-point, 6-point, etc.)", isMissing: true, explanation: "The rubric structure depends on your grading system" },
+          { id: "ai-tool", label: "Which AI tool to use", isMissing: false, explanation: "Tool choice doesn't affect rubric quality—constraints do" },
+          { id: "rubric-format", label: "Whether to use a table format", isMissing: false, explanation: "Format is secondary to content; AI will default to a sensible format" },
         ],
         minCorrect: 3,
       },
@@ -202,26 +209,27 @@ Format for easy grading: all questions on one half-page.`,
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Reflection Question:</p>
+            <p className="font-medium mb-2">Metacognitive Check:</p>
             <p className="text-muted-foreground">
-              Think about a task you regularly do during prep periods. What specific constraints 
-              would you need to include in a prompt to get output that's actually usable without 
-              significant editing?
+              Think about a project you're currently planning or running. What phase are students in right now? 
+              What specific constraints would you need to include to get AI output that connects to both their 
+              prior work AND their final product?
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Classroom Transfer:</p>
+            <p className="font-medium mb-2">Transfer Challenge:</p>
             <p className="text-muted-foreground">
-              Tomorrow, before you use an AI tool for any task, pause and list at least 4 constraints 
-              before you write your prompt. Notice how this changes the quality of your first output.
+              Before your next AI prompt for project materials, write down at least 5 constraints first: 
+              project phase, prior student work, time available, differentiation needs, and connection to final product. 
+              Notice how this changes the usefulness of your first output.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Remember:</strong> This micro-course was designed to save you time tomorrow, 
-              not add effort. The few seconds spent adding constraints will save minutes of editing later.
+              <strong>Remember:</strong> In <ResearchLink term="Backward Design" />, you start with the end in mind. 
+              The same principle applies to prompts—your constraints should reflect your learning goals.
             </p>
           </div>
         </div>

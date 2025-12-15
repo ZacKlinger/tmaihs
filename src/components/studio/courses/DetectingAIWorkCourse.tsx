@@ -1,5 +1,6 @@
 import { MicroCourseViewer } from "../MicroCourseViewer";
 import { CourseProgress } from "@/hooks/useStudioProgress";
+import { ResearchLink } from "@/components/shared/ResearchLink";
 
 interface DetectingAIWorkCourseProps {
   courseProgress: CourseProgress | undefined;
@@ -21,20 +22,23 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "A student submits an essay. It's well-structured, uses sophisticated vocabulary, 
-              and makes compelling arguments. But something feels... off. The rhythm is too uniform. 
-              The voice doesn't match what you've seen from this student before."
+              "Students submitted their Week 6 project reflections—journals documenting their research process, 
+              struggles, and insights. Most read like authentic student thinking. But a few are... perfect. 
+              Smooth transitions, sophisticated vocabulary, no rough edges. Something feels off."
             </p>
           </div>
           <p>
             AI detection software is unreliable—it produces false positives and misses actual AI use. 
-            But <strong>pattern recognition</strong> combined with <strong>pedagogical knowledge</strong> 
-            gives you a more accurate sense of authenticity.
+            But the real question isn't "Did they use AI?" It's "Did they do the thinking?"
           </p>
           <p>
-            In this micro-course, you'll learn to identify AI-generated student work through linguistic 
-            patterns and pedagogical red flags—and design assignments that encourage authentic work.
+            In this micro-course, you'll learn to <strong>design for authenticity</strong>—creating project 
+            structures where AI shortcuts are obvious and genuine student thinking is the path of least resistance.
           </p>
+          <div className="text-xs text-muted-foreground mt-4">
+            This approach draws on <ResearchLink term="Productive Failure" /> research (Kapur)—struggle is 
+            where learning happens. We want to preserve productive struggle, not eliminate all friction.
+          </div>
         </div>
       ),
     },
@@ -44,39 +48,48 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
       title: "Mental Model",
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
-          <h2 className="text-xl font-semibold text-foreground">Two Detection Lenses</h2>
+          <h2 className="text-xl font-semibold text-foreground">Designing for Authenticity</h2>
+          <p className="text-lg">
+            Instead of detecting AI after the fact, design project checkpoints that make authentic work 
+            <strong> easier and more rewarding</strong> than AI shortcuts.
+          </p>
           
           <div className="grid md:grid-cols-2 gap-4 my-6">
-            <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
-              <p className="font-medium text-foreground mb-3">🔍 Linguistic Patterns</p>
-              <p className="text-sm text-muted-foreground mb-3">AI text has detectable stylistic signatures:</p>
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li><strong>Uniform rhythm:</strong> Sentences follow predictable length patterns</li>
-                <li><strong>Hedge phrases:</strong> "It's important to note," "One might argue"</li>
-                <li><strong>Unusual transitions:</strong> "Furthermore," "Moreover" overused</li>
-                <li><strong>Perfect structure:</strong> Every paragraph follows the same formula</li>
-                <li><strong>Vocabulary jumps:</strong> Suddenly sophisticated word choices</li>
+            <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/20">
+              <p className="font-medium text-destructive mb-2">🎯 Detection Mindset (Reactive)</p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Run submissions through detection software</li>
+                <li>• Look for "tells" after submission</li>
+                <li>• Confrontation-based when suspicious</li>
+                <li>• Creates adversarial dynamic</li>
               </ul>
             </div>
-            
-            <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
-              <p className="font-medium text-primary mb-3">🎓 Pedagogical Red Flags</p>
-              <p className="text-sm text-muted-foreground mb-3">Misalignment with what you know about the student:</p>
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li><strong>Voice mismatch:</strong> Doesn't sound like their class discussions</li>
-                <li><strong>Knowledge gaps:</strong> Uses concepts not covered in class</li>
-                <li><strong>Missing errors:</strong> No grammar mistakes when they usually have some</li>
-                <li><strong>Generic specifics:</strong> Examples that don't connect to your class content</li>
-                <li><strong>Process evidence:</strong> No drafts, no struggle, instant polish</li>
+            <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+              <p className="font-medium text-green-700 dark:text-green-300 mb-2">🎯 Authenticity Mindset (Proactive)</p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Design checkpoints that require genuine process</li>
+                <li>• Build in oral components and in-class work</li>
+                <li>• Make authentic work the efficient path</li>
+                <li>• Creates partnership around learning</li>
               </ul>
             </div>
           </div>
 
-          <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
+          <h3 className="text-lg font-semibold">Authenticity Structures for PBL</h3>
+          <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
+            <ul className="text-sm text-muted-foreground space-y-2">
+              <li><strong>Process Documentation:</strong> Students capture thinking as it happens (voice memos, photos of work, timestamped notes)</li>
+              <li><strong>Iterative Checkpoints:</strong> Multiple drafts with visible evolution—AI produces polished first drafts</li>
+              <li><strong>Oral Defense:</strong> Students explain their work verbally—can't explain what they didn't think through</li>
+              <li><strong>Local/Personal Connection:</strong> Require specific details from their research, interviews, or community context</li>
+              <li><strong>Visible Struggle:</strong> Reflection questions that ask "Where did you get stuck? What changed your thinking?"</li>
+            </ul>
+          </div>
+
+          <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Critical note:</strong> Detection should inform conversation, not accusation. 
-              These patterns suggest investigation, not proof. Many students write formally. 
-              Some students improve dramatically. Use patterns as starting points for dialogue.
+              <strong>Key insight:</strong> The goal isn't to catch cheaters—it's to design experiences where 
+              authentic engagement is the path to success. Make AI shortcuts harder than genuine work.
             </p>
           </div>
         </div>
@@ -89,29 +102,29 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
       advancedCfuData: {
         id: "detecting-ai-cfu-1",
         type: "pattern-identifier" as const,
-        question: "Classify each sample as likely human-written or AI-generated.",
-        description: "Consider linguistic patterns and authenticity markers.",
+        question: "Classify each project reflection as likely showing authentic process or possible AI generation.",
+        description: "Consider what these samples reveal about the student's actual thinking process.",
         samples: [
           {
             id: "s1",
-            content: "The Great Gatsby is a book about the American Dream. It's important to note that Fitzgerald uses symbolism throughout the novel. Furthermore, the green light represents hope. Moreover, the eyes of Doctor T.J. Eckleburg symbolize moral decay. In conclusion, symbolism is a key element of this work.",
+            content: "My research process was highly systematic. I began by identifying key stakeholders, then developed a comprehensive interview protocol. The data analysis revealed several important themes. In conclusion, the project enhanced my understanding of community engagement methodologies.",
             isAI: true,
-            indicators: ["Uniform paragraph structure", "Overused transitions (Furthermore, Moreover)", "Generic analysis", "Formulaic intro/conclusion"],
-            explanation: "Classic AI pattern: hedge phrases, predictable transitions, surface-level analysis that hits expected points without original insight.",
+            indicators: ["Generic process description", "No specific struggles", "Academic jargon", "Conclusions without evidence of journey"],
+            explanation: "This reads like a summary of what research SHOULD look like, not what it actually felt like. No specific details, no struggles, no surprises—just a polished process narrative.",
           },
           {
             id: "s2",
-            content: "ok so gatsby is lowkey obsessed w/ daisy and the green light thing is kinda creepy when u think about it?? like he just stares at it for years. also nick is unreliable af as a narrator but we're supposed to trust him which is weird",
+            content: "Week 3 was rough. I kept trying to get Ms. Rodriguez to do an interview but she didn't respond to my emails. Finally went to her bakery in person and she said yes but only had 10 minutes. My questions were too long so I had to improvise. Got way better stuff than I expected—she's been in the neighborhood 40 years.",
             isAI: false,
-            indicators: ["Informal voice", "Original observation", "Personal reaction", "Authentic punctuation"],
-            explanation: "Human markers: casual register, genuine insight (unreliable narrator), emotional reaction, unconventional structure that reflects thinking process.",
+            indicators: ["Specific names and places", "Real obstacles described", "Adaptation/improvisation", "Unexpected outcomes"],
+            explanation: "This reflects actual experience—specific struggles, real names, genuine surprises. You can't generate this without having done the work.",
           },
           {
             id: "s3",
-            content: "Fitzgerald crafts a nuanced critique of the American Dream through his portrayal of Jay Gatsby. The protagonist's relentless pursuit of wealth and status ultimately proves hollow, as evidenced by his inability to recapture the past. This theme resonates with contemporary discussions of materialism and social mobility.",
+            content: "The interview process taught me valuable lessons about community engagement. It's important to be flexible and adapt to interviewees' schedules. Building rapport is essential before asking substantive questions. These skills will serve me well in future research endeavors.",
             isAI: true,
-            indicators: ["Perfect structure", "Academic vocabulary", "No personal voice", "Generic contemporary connection"],
-            explanation: "AI pattern: technically competent but impersonal, uses expected academic vocabulary, makes vague 'contemporary' connection without specifics.",
+            indicators: ["Generic lessons", "No specific examples", "Future-focused platitudes", "Could apply to any project"],
+            explanation: "Abstract lessons without concrete grounding. Compare to the authentic example—this student talks ABOUT interviewing without evidence of having done it.",
           },
         ],
       },
@@ -123,17 +136,17 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
       advancedCfuData: {
         id: "detecting-ai-cfu-2",
         type: "authenticity-rubric" as const,
-        question: "Rate this student submission on authenticity dimensions.",
-        studentWork: `The theme of isolation in "Of Mice and Men" is very important. Steinbeck shows how loneliness affects different characters. For example, Crooks is isolated because of racism. Curley's wife is isolated because she is the only woman. George and Lennie are different because they have each other.
+        question: "Rate this project checkpoint submission on authenticity dimensions.",
+        studentWork: `My documentary interview process went well. I interviewed three community members about the neighborhood changes. They shared important perspectives on development in the area.
 
-It's important to note that the setting contributes to the theme. The ranch is isolated, which mirrors the characters' emotional isolation. Furthermore, the Great Depression made people more isolated as they competed for jobs.
+The interviews taught me that community voices matter in urban planning decisions. Furthermore, it's essential to consider multiple stakeholder perspectives. The residents I spoke with had valuable insights about neighborhood history.
 
-In conclusion, isolation is a central theme that Steinbeck develops through character, setting, and historical context.`,
+In conclusion, this experience enhanced my understanding of qualitative research methods and community engagement strategies.`,
         dimensions: [
-          { id: "voice", name: "Voice Consistency", description: "Does this sound like a real student?", correctRange: [20, 45] as [number, number], explanation: "Mixed signals: informal moments ('very important') alongside formulaic AI phrases ('It's important to note')" },
-          { id: "structure", name: "Structural Naturalness", description: "Is the organization authentic?", correctRange: [15, 35] as [number, number], explanation: "Suspiciously perfect 5-paragraph structure with uniform paragraph lengths" },
-          { id: "insight", name: "Original Thinking", description: "Are there genuine insights?", correctRange: [30, 55] as [number, number], explanation: "Content is accurate but generic—hits expected points without original analysis" },
-          { id: "errors", name: "Natural Imperfection", description: "Are there human-like variations?", correctRange: [10, 30] as [number, number], explanation: "Too clean—no grammar variations, no crossed-out thinking, no rough edges" },
+          { id: "specificity", name: "Specificity", description: "Does this include specific names, places, dates, or details from actual research?", correctRange: [10, 30] as [number, number], explanation: "Vague references to 'community members' and 'the neighborhood' without specific details suggest this wasn't written from actual experience" },
+          { id: "struggle", name: "Visible Struggle", description: "Does this describe real obstacles, confusion, or changes in thinking?", correctRange: [5, 25] as [number, number], explanation: "Everything 'went well'—no struggles, no surprises, no adaptation. Real research is messier." },
+          { id: "voice", name: "Authentic Voice", description: "Does this sound like a student reflecting, or like a formal report?", correctRange: [15, 35] as [number, number], explanation: "'Furthermore,' 'In conclusion,' 'enhanced my understanding'—this reads like generated academic prose, not student reflection." },
+          { id: "evolution", name: "Thinking Evolution", description: "Does this show how ideas changed through the process?", correctRange: [10, 30] as [number, number], explanation: "No evidence of thinking that evolved—just conclusions without journey. What surprised them? What changed?" },
         ],
       },
     },
@@ -144,29 +157,30 @@ In conclusion, isolation is a central theme that Steinbeck develops through char
       advancedCfuData: {
         id: "detecting-ai-cfu-3",
         type: "prompt-compare" as const,
-        question: "Which assignment design better encourages authentic student work?",
-        context: "You want students to analyze a poem without simply using AI to generate analysis.",
+        question: "Which checkpoint structure better encourages authentic student work in a semester project?",
+        context: "Week 8 checkpoint: Students have completed interviews and are synthesizing findings for their documentary.",
         options: [
           {
             id: "A",
-            prompt: "Write a 500-word analysis of the poem's use of imagery and symbolism.",
+            prompt: "Submit a 2-page reflection on your interview process and key findings. Discuss what you learned and how it will shape your documentary.",
             isCorrect: false,
             annotations: [
-              { text: "500-word analysis", label: "Easy to outsource to AI", color: "bg-amber-500/20" },
-              { text: "imagery and symbolism", label: "Generic focus AI handles well", color: "bg-amber-500/20" },
+              { text: "2-page reflection", label: "Easy to generate", color: "bg-amber-500/20" },
+              { text: "Discuss what you learned", label: "Vague requirement", color: "bg-amber-500/20" },
             ],
-            explanation: "This is exactly what AI excels at—generic literary analysis at a specified length. No personal connection, no process evidence.",
+            explanation: "Open-ended reflection with no specificity requirements is the easiest type of assignment to complete with AI. There's no need to have actually done the work.",
           },
           {
             id: "B",
-            prompt: "Choose one image from the poem that confused or surprised you. In class, you'll share your choice and explain your reaction in a 2-minute talk. Bring notes.",
+            prompt: "Submit: (1) Audio clips from 2 interviews (2-3 min each) with timestamps for key moments. (2) Your interview notes with annotations showing what surprised you. (3) In class Friday, you'll explain one quote that changed your thinking and answer questions from peers.",
             isCorrect: true,
             annotations: [
-              { text: "confused or surprised you", label: "Requires personal reaction", color: "bg-green-500/20" },
-              { text: "In class, you'll share", label: "Oral component deters copying", color: "bg-green-500/20" },
-              { text: "2-minute talk", label: "Oral delivery requires understanding", color: "bg-green-500/20" },
+              { text: "Audio clips", label: "Process evidence", color: "bg-green-500/20" },
+              { text: "timestamps for key moments", label: "Shows engagement", color: "bg-green-500/20" },
+              { text: "annotations showing what surprised you", label: "Requires genuine reaction", color: "bg-green-500/20" },
+              { text: "explain one quote", label: "Oral accountability", color: "bg-green-500/20" },
             ],
-            explanation: "Personal reaction + oral presentation + brief format makes AI assistance less useful and more detectable. Students must own their ideas.",
+            explanation: "Multiple evidence types (audio, notes, oral defense) require actual work. AI can't produce audio clips, and students must understand their material well enough to explain and defend it.",
           },
         ] as [
           { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
@@ -179,8 +193,8 @@ In conclusion, isolation is a central theme that Steinbeck develops through char
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Designing Authentic Assignments",
-        description: "Redesign an existing assignment to encourage authentic work while still meeting learning objectives.",
+        title: "Prompt Workshop: Designing Authentic Checkpoints",
+        description: "Redesign your project checkpoints to encourage authentic work.",
         toolLinks: [
           { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
@@ -188,30 +202,36 @@ In conclusion, isolation is a central theme that Steinbeck develops through char
         ],
         starterPrompts: [
           {
-            label: "Test Your Assignment",
-            prompt: `I'm going to give you a student assignment. Complete it as a student would, using AI assistance.
+            label: "Authenticity Audit",
+            prompt: `Here's my current project checkpoint: [PASTE YOUR CHECKPOINT]
 
-[PASTE YOUR ASSIGNMENT]
+Audit this for authenticity vulnerability:
+1. Could a student complete this without doing the actual project work? How?
+2. What evidence of PROCESS (not just product) does it require?
+3. What makes AI-generated responses obvious or difficult?
+4. What oral or in-class component could strengthen authenticity?
 
-After completing it, tell me: How easy was this to complete with AI? What would make it harder to outsource?`,
+Suggest a redesigned version that makes genuine work the easier path.`,
           },
           {
-            label: "Redesign for Authenticity",
-            prompt: `Here's my current assignment: [YOUR ASSIGNMENT]
+            label: "Process Evidence Builder",
+            prompt: `I'm designing Week [X] of a [LENGTH]-week project. Students have just completed [MILESTONE].
 
-Redesign it to:
-1. Require personal connection or reaction
-2. Include process evidence (drafts, annotations, or oral component)
-3. Make AI-generated responses detectable or less useful
-4. Still meet this learning objective: [YOUR OBJECTIVE]`,
+Design a checkpoint that requires:
+- Evidence of actual process (not reconstructed narrative)
+- Specific details only someone who did the work would have
+- A component that can't be AI-generated (oral, visual, etc.)
+- Reflection on struggle or surprise (not just success)
+
+Keep the checkpoint realistic—students should be able to complete it in [TIME].`,
           },
         ],
         iterationTips: [
-          "Add an oral component—students must explain their written work verbally.",
-          "Require process evidence: annotations, drafts, or in-class components.",
-          "Ask for personal reactions, not just analysis ('What surprised you?').",
-          "Make assignments specific to your class content that AI wouldn't know.",
-          "Use constraints (Tier 1) that AI would struggle with: 'Use only examples from our class discussions.'",
+          "Add oral components—students explain their work and answer questions.",
+          "Require process evidence: photos, audio clips, timestamped notes, visible drafts.",
+          "Ask about specific surprises and struggles—AI generates smooth narratives, not messy reality.",
+          "Make checkpoints reference specific details from earlier work—AI can't maintain that thread.",
+          "Build in peer accountability: students share work and ask each other questions.",
         ],
       },
     },
@@ -224,25 +244,27 @@ Redesign it to:
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Reflection Question:</p>
+            <p className="font-medium mb-2">Metacognitive Check:</p>
             <p className="text-muted-foreground">
-              Think about your current assignments. Which ones would be easiest for students 
-              to complete with AI? What one change could you make to encourage more authentic work?
+              Think about your current project checkpoints. Which ones could a student complete without 
+              doing the actual work? What's one change you could make to require evidence of genuine process?
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Classroom Transfer:</p>
+            <p className="font-medium mb-2">Transfer Challenge:</p>
             <p className="text-muted-foreground">
-              Pick one upcoming assignment. Add one of these elements: oral explanation, 
-              personal reaction requirement, or process evidence. Notice how submissions change.
+              Pick one upcoming checkpoint. Add one of these elements: oral explanation, process evidence 
+              (audio/visual), or specificity requirement (names, dates, quotes from actual research). 
+              Notice how submissions change.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Remember:</strong> The goal isn't to catch cheaters—it's to design learning 
-              experiences where AI assistance is either transparent, productive, or unnecessary.
+              <strong>Remember:</strong> The goal isn't to catch AI use—it's to design learning experiences 
+              where the authentic path is the best path. When genuine engagement is easier than AI shortcuts, 
+              students choose genuine engagement.
             </p>
           </div>
         </div>
@@ -253,7 +275,7 @@ Redesign it to:
   return (
     <MicroCourseViewer
       courseId="detecting-ai-work-301"
-      title="Detecting AI Work: Patterns and Pedagogical Design"
+      title="Designing for Authenticity: Beyond AI Detection"
       sections={sections}
       {...props}
     />

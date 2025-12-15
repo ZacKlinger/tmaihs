@@ -1,5 +1,6 @@
 import { MicroCourseViewer } from "../MicroCourseViewer";
 import { CourseProgress } from "@/hooks/useStudioProgress";
+import { ResearchLink } from "@/components/shared/ResearchLink";
 
 interface WorkflowDesignCourseProps {
   courseProgress: CourseProgress | undefined;
@@ -21,20 +22,23 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "You need to create a complete unit: learning objectives, lesson sequence, assessments, 
-              and differentiated materials. No single prompt can handle all of that well. 
-              But what if you chained prompts together—each output feeding the next?"
+              "You need to design a complete 14-week documentary project: driving question, milestone sequence, 
+              formative assessments, differentiated scaffolds, and public presentation criteria. No single prompt 
+              can handle all of that well. But what if you chained prompts together—each output feeding the next?"
             </p>
           </div>
           <p>
-            Complex instructional design tasks can't be solved with one prompt. <strong>Workflow 
-            design</strong> is the practice of chaining prompts in purposeful sequences, where each 
-            step builds on the previous.
+            Complex project design can't be solved with one prompt. <strong>Workflow design</strong> is the 
+            practice of chaining prompts in purposeful sequences, where each step builds on the previous.
           </p>
           <p>
             In this micro-course, you'll learn to design prompt chains that produce coherent, 
-            interconnected outputs.
+            interconnected project materials.
           </p>
+          <div className="text-xs text-muted-foreground mt-4">
+            This mirrors <ResearchLink term="Backward Design" /> (Wiggins & McTighe)—start with the end in mind, 
+            then design backward to ensure alignment.
+          </div>
         </div>
       ),
     },
@@ -47,27 +51,31 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Workflow Design Mental Model</h2>
           <p className="text-lg">
             A prompt workflow is a <strong>sequence where outputs become inputs</strong>. Each step 
-            is designed to produce exactly what the next step needs.
+            produces exactly what the next step needs.
           </p>
           
           <div className="bg-muted/50 p-4 rounded-lg border border-border/50 my-6">
-            <p className="font-medium text-foreground mb-3">Example: Unit Planning Workflow</p>
+            <p className="font-medium text-foreground mb-3">Example: Semester Project Workflow (Backward Design)</p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-3">
                 <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">1</span>
-                <span>Define learning objectives → <em>Output: 3-5 measurable objectives</em></span>
+                <span><strong>Define the public product</strong> → <em>What will students create and for whom?</em></span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">2</span>
-                <span>Design summative assessment aligned to objectives → <em>Output: Assessment + rubric</em></span>
+                <span><strong>Craft the driving question</strong> → <em>What question drives the investigation?</em></span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">3</span>
-                <span>Create lesson sequence that builds to assessment → <em>Output: 5-lesson arc</em></span>
+                <span><strong>Design the final assessment</strong> → <em>Rubric aligned to driving question + product</em></span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">4</span>
-                <span>Generate differentiated materials for one lesson → <em>Output: Tiered resources</em></span>
+                <span><strong>Map backward to milestones</strong> → <em>What checkpoints build to the final product?</em></span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">5</span>
+                <span><strong>Generate scaffolds</strong> → <em>What support do students need at each milestone?</em></span>
               </div>
             </div>
           </div>
@@ -75,15 +83,16 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
           <h3 className="text-lg font-semibold">Workflow Design Principles</h3>
           <ul>
             <li><strong>Each step has one job.</strong> Don't ask for too much at once.</li>
-            <li><strong>Outputs are formatted for inputs.</strong> Ask for outputs in the format you'll paste into the next prompt.</li>
-            <li><strong>Early steps constrain later steps.</strong> Objectives set in step 1 should appear in step 3.</li>
+            <li><strong>Outputs are formatted for inputs.</strong> Ask for outputs you can paste into the next prompt.</li>
+            <li><strong>Early steps constrain later steps.</strong> The driving question should appear in every subsequent step.</li>
             <li><strong>Include context carryover.</strong> Remind later prompts of decisions from earlier steps.</li>
           </ul>
 
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Key insight:</strong> Workflows aren't just efficient—they produce more 
-              <em>coherent</em> outputs because each step is aware of what came before.
+              <strong>Key insight:</strong> Workflows aren't just efficient—they produce more coherent outputs 
+              because each step is aware of what came before. This mirrors <ResearchLink term="Gold Standard PBL" />: 
+              every activity should connect to the driving question and final product.
             </p>
           </div>
         </div>
@@ -96,14 +105,14 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
       advancedCfuData: {
         id: "workflow-design-cfu-1",
         type: "sequence-order" as const,
-        question: "Put these prompt steps in the correct order for designing a project-based unit.",
+        question: "Put these prompt steps in the correct backward design order.",
         description: "Think about what information each step needs from the previous step.",
         steps: [
-          { id: "objectives", text: "Define 3 learning objectives for the unit", correctPosition: 1 },
-          { id: "summative", text: "Design the final project/assessment aligned to objectives", correctPosition: 2 },
-          { id: "scaffolds", text: "Break the project into checkpoints with success criteria", correctPosition: 3 },
-          { id: "lessons", text: "Create lessons that teach skills needed for each checkpoint", correctPosition: 4 },
-          { id: "resources", text: "Generate differentiated resources for struggling learners", correctPosition: 5 },
+          { id: "product", text: "Define the public product and authentic audience", correctPosition: 1 },
+          { id: "question", text: "Craft a driving question that guides the investigation", correctPosition: 2 },
+          { id: "rubric", text: "Design the final assessment rubric aligned to both", correctPosition: 3 },
+          { id: "milestones", text: "Map milestone checkpoints that build toward the product", correctPosition: 4 },
+          { id: "scaffolds", text: "Generate differentiated scaffolds for each milestone", correctPosition: 5 },
         ],
       },
     },
@@ -114,14 +123,14 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
       advancedCfuData: {
         id: "workflow-design-cfu-2",
         type: "identify-missing" as const,
-        prompt: "Workflow for creating a formative assessment sequence:",
-        context: "Step 1: List unit objectives. Step 2: Create final test. Step 3: Create study guide. What's missing?",
+        prompt: "Workflow for designing a semester documentary project:",
+        context: "Step 1: Generate weekly topics. Step 2: Create final presentation rubric. Step 3: Write lesson plans. What's missing?",
         elements: [
-          { id: "diagnostic", label: "Pre-assessment to identify starting points", isMissing: true, explanation: "Understanding where students begin helps target instruction" },
-          { id: "checkpoints", label: "Mid-unit check-ins aligned to objectives", isMissing: true, explanation: "Formative assessment means checking throughout, not just at the end" },
-          { id: "feedback", label: "Feedback mechanisms between assessments", isMissing: true, explanation: "Assessments need to inform instruction, not just measure" },
-          { id: "objectives", label: "Clear learning objectives", isMissing: false, explanation: "This is already in Step 1" },
-          { id: "final", label: "Summative assessment", isMissing: false, explanation: "This is already in Step 2" },
+          { id: "driving-q", label: "Driving question before weekly topics", isMissing: true, explanation: "Weekly topics should emerge from the driving question, not precede it" },
+          { id: "product-def", label: "Public product definition before rubric", isMissing: true, explanation: "The rubric should assess the product students will actually create" },
+          { id: "milestones", label: "Milestone checkpoints before full lesson plans", isMissing: true, explanation: "Lesson plans should support milestone checkpoints, not exist independently" },
+          { id: "topics", label: "Weekly topics", isMissing: false, explanation: "This is in Step 1 (though it's in the wrong sequence)" },
+          { id: "rubric", label: "Presentation rubric", isMissing: false, explanation: "This is in Step 2 (though it needs product definition first)" },
         ],
         minCorrect: 2,
       },
@@ -133,15 +142,15 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
       advancedCfuData: {
         id: "workflow-design-cfu-3",
         type: "workflow-builder" as const,
-        question: "Build a workflow for differentiating a lesson.",
-        goal: "Take an existing lesson and create three versions: approaching, on-level, and advanced.",
+        question: "Build a workflow for designing differentiated milestone activities.",
+        goal: "Create scaffolded activities for students at three levels for a single project milestone.",
         prompts: [
-          { id: "p1", text: "Analyze the original lesson and identify the core skill being taught", isCorrect: true, explanation: "You need to know what to preserve across all versions" },
-          { id: "p2", text: "Create the advanced version with extension activities", isCorrect: false, explanation: "Starting with advanced risks losing alignment to core skill; start with on-level" },
-          { id: "p3", text: "Define what success looks like at each level", isCorrect: true, explanation: "Clear criteria ensure differentiation is meaningful, not just harder/easier" },
-          { id: "p4", text: "Generate all three versions in one prompt", isCorrect: false, explanation: "This violates 'one job per step'—quality suffers when combining" },
-          { id: "p5", text: "Create the on-level version as the baseline", isCorrect: true, explanation: "On-level is the anchor; other versions modify from there" },
-          { id: "p6", text: "Adapt the on-level version down (approaching) and up (advanced)", isCorrect: true, explanation: "Systematic adaptation maintains coherence across versions" },
+          { id: "p1", text: "Start with the milestone's learning objective and success criteria", isCorrect: true, explanation: "Clear objectives ensure all levels aim for the same learning goal" },
+          { id: "p2", text: "Generate all three levels in a single prompt for efficiency", isCorrect: false, explanation: "This violates 'one job per step'—quality suffers when combining complex tasks" },
+          { id: "p3", text: "Create the on-level version as the baseline first", isCorrect: true, explanation: "On-level is the anchor; other versions adapt from there" },
+          { id: "p4", text: "Adapt upward (advanced) and downward (approaching) in separate steps", isCorrect: true, explanation: "Systematic adaptation maintains coherence across all versions" },
+          { id: "p5", text: "Start with the most advanced version and simplify down", isCorrect: false, explanation: "Starting advanced risks losing alignment to core objective—start at grade level" },
+          { id: "p6", text: "Check that all versions still connect to the driving question", isCorrect: true, explanation: "Differentiation should change difficulty, not relevance to the project" },
         ],
       },
     },
@@ -150,8 +159,8 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Design Your Own Workflow",
-        description: "Create a multi-step prompt workflow for a task you actually need to complete.",
+        title: "Prompt Workshop: Design Your Project Workflow",
+        description: "Create a multi-step prompt workflow for a semester-long project you're planning.",
         toolLinks: [
           { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
@@ -159,29 +168,42 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
         ],
         starterPrompts: [
           {
-            label: "Workflow Planning Template",
-            prompt: `I need to complete this instructional design task: [YOUR TASK]
+            label: "Complete Project Workflow Template",
+            prompt: `STEP 1 - Public Product:
+"Define a public product for a [LENGTH]-week [SUBJECT] project for [GRADE] students on [TOPIC]. The product should have a real audience and demonstrate [LEARNING GOALS]. Output: Product description, target audience, success criteria."
 
-Help me design a prompt workflow:
-1. What are the 3-4 key steps?
-2. What output format should each step produce?
-3. What information carries forward from each step to the next?
-4. Write the actual prompts for each step.`,
+STEP 2 - Driving Question (use Step 1 output):
+"Given this public product: [PASTE FROM STEP 1], craft a driving question that is open-ended, connects to students' lives, and requires sustained inquiry. Output: 3 candidate driving questions with rationale."
+
+STEP 3 - Assessment (use Steps 1-2 output):
+"Given this product and driving question: [PASTE FROM STEPS 1-2], design a rubric with 4 criteria. Each criterion should connect to the driving question. Output: Full rubric in table format."
+
+STEP 4 - Milestone Map (use Steps 1-3 output):
+"Given the above, map [NUMBER] milestone checkpoints across the [LENGTH] weeks. Each milestone should build toward the final product. Output: Timeline with milestone descriptions and success criteria."
+
+STEP 5 - Scaffold One Milestone (use Step 4 output):
+"For milestone [X]: [PASTE DESCRIPTION], create differentiated activities at three levels. All should meet the same learning objective. Output: Three activity versions with teacher notes."`,
           },
           {
             label: "Context Carryover Template",
-            prompt: `Context from previous steps:
-- Learning objectives: [PASTE FROM STEP 1]
-- Assessment design: [PASTE FROM STEP 2]
+            prompt: `CONTEXT FROM PRIOR STEPS:
+- Driving question: [PASTE]
+- Public product: [PASTE]
+- Current milestone: Week [X] of [TOTAL]
 
-Given this context, now [YOUR NEXT TASK]. Make sure all outputs align with the objectives and assessment above.`,
+Given this context, [YOUR NEXT TASK].
+
+Ensure all outputs:
+1. Explicitly reference the driving question
+2. Build toward the public product
+3. Are appropriate for students at this point in the project arc`,
           },
         ],
         iterationTips: [
-          "Start workflows with high-level decisions (objectives, outcomes) before details.",
-          "Format each output explicitly: 'Output as a numbered list I can paste into the next prompt.'",
-          "Use 'context carryover' prompts to maintain coherence across a long conversation.",
-          "If a step produces poor output, that step's prompt needs better constraints (Tier 1).",
+          "Start workflows with high-level decisions (driving question, final product) before details.",
+          "Format each output for pasting: 'Output as a numbered list I can paste into the next prompt.'",
+          "Use context carryover prompts to maintain coherence across long conversations.",
+          "If a step produces poor output, that step's constraints need work (revisit Tier 1).",
         ],
       },
     },
@@ -194,25 +216,26 @@ Given this context, now [YOUR NEXT TASK]. Make sure all outputs align with the o
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Reflection Question:</p>
+            <p className="font-medium mb-2">Metacognitive Check:</p>
             <p className="text-muted-foreground">
-              What complex task do you repeat each semester (unit planning, assessment design, 
-              report writing)? Sketch a 3-4 step workflow that could streamline it.
+              Think about a complex planning task you repeat each semester—designing a unit, creating assessments, 
+              building project materials. What steps do you currently do manually that could become a reusable workflow? 
+              Which decisions early in the process constrain everything that follows?
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Classroom Transfer:</p>
+            <p className="font-medium mb-2">Transfer Challenge:</p>
             <p className="text-muted-foreground">
-              Save your best workflows as templates. A good workflow is reusable—swap in new 
-              content while keeping the structure.
+              Design and save one reusable workflow template for a task you do regularly. A good workflow is 
+              content-agnostic—you can swap in different topics while keeping the structure.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1:</strong> Every step in a workflow should use strong 
-              constraints. Weak prompts in any step break the chain.
+              <strong>Connection to Tier 1:</strong> Every step in a workflow should use strong constraints. 
+              Weak prompts at any step break the chain's coherence.
             </p>
           </div>
         </div>
