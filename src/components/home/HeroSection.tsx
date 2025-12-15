@@ -35,14 +35,14 @@ export function HeroSection() {
           animationDelay: "0.3s"
         }}>
             <Button asChild variant="phoenix" size="lg">
-              <Link to="/classroom-resources">
-                Explore Resources
+              <Link to="/learning-studio">
+                Start Learning
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/what-is-ai">
-                Start with AI Basics
+              <Link to="/classroom-resources">
+                Classroom Resources
               </Link>
             </Button>
           </div>
