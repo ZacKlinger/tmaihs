@@ -35,7 +35,7 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
             of getting useful, classroom-ready outputs from any AI tool.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This approach draws on <ResearchLink term="Cognitive Load Theory" /> (Sweller)—by constraining the task, 
+            This approach draws on <ResearchLink text="Cognitive Load Theory" /> (Sweller)—by constraining the task, 
             you reduce extraneous cognitive load for both you and the AI.
           </div>
         </div>
@@ -85,7 +85,7 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
 
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Key insight:</strong> In <ResearchLink term="Gold Standard PBL" />, every activity connects 
+              <strong>Key insight:</strong> In <ResearchLink text="Gold Standard PBL" />, every activity connects 
               to a driving question and public product. Your constraints should make those connections explicit.
             </p>
           </div>
@@ -228,7 +228,7 @@ Each version should take 20-25 minutes and prepare students for [NEXT STEP IN PR
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Remember:</strong> In <ResearchLink term="Backward Design" />, you start with the end in mind. 
+              <strong>Remember:</strong> In <ResearchLink text="Backward Design" />, you start with the end in mind. 
               The same principle applies to prompts—your constraints should reflect your learning goals.
             </p>
           </div>

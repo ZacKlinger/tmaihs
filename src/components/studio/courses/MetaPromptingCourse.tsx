@@ -37,7 +37,7 @@ export const MetaPromptingCourse = (props: MetaPromptingCourseProps) => {
             that lead to better project materials.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This approach mirrors <ResearchLink term="Self-Regulated Learning" /> (Zimmerman)—monitoring and adjusting 
+            This approach mirrors <ResearchLink text="Self-Regulated Learning" /> (Zimmerman)—monitoring and adjusting 
             your own thinking process rather than just executing it.
           </div>
         </div>

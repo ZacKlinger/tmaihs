@@ -36,7 +36,7 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
             structures where AI shortcuts are obvious and genuine student thinking is the path of least resistance.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This approach draws on <ResearchLink term="Productive Failure" /> research (Kapur)—struggle is 
+            This approach draws on <ResearchLink text="Productive Failure" /> research (Kapur)—struggle is 
             where learning happens. We want to preserve productive struggle, not eliminate all friction.
           </div>
         </div>

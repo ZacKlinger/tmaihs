@@ -36,7 +36,7 @@ export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {
             AI output by defining whose perspective it should take.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This technique draws on <ResearchLink term="Perspective-Taking" /> research (Galinsky et al.)—the same 
+            This technique draws on <ResearchLink text="Perspective-Taking" /> research (Galinsky et al.)—the same 
             cognitive skill we want students to develop.
           </div>
         </div>
@@ -107,7 +107,7 @@ export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {
 
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Key insight:</strong> Role assignment is like creating a <ResearchLink term="Empathy Maps" /> (d.school)—you're 
+              <strong>Key insight:</strong> Role assignment is like creating a <ResearchLink text="Empathy Maps" /> (d.school)—you're 
               defining what a persona thinks, feels, and prioritizes. The more specific the role, the more useful the output.
             </p>
           </div>

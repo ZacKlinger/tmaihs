@@ -37,7 +37,7 @@ export const StudentAIActivitiesCourse = (props: StudentAIActivitiesCourseProps)
             thinking rather than replacing it.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This approach draws on the <ResearchLink term="ICAP Framework" /> (Chi & Wylie)—designing for 
+            This approach draws on the <ResearchLink text="ICAP Framework" /> (Chi & Wylie)—designing for 
             Interactive and Constructive engagement, not Passive consumption.
           </div>
         </div>

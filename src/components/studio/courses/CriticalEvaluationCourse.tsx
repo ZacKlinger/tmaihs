@@ -35,7 +35,7 @@ export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) =
           </p>
           <p>
             In this micro-course, you'll develop a personal evaluation framework using the 
-            <ResearchLink term="SIFT Method" />—a technique originally designed for evaluating online sources.
+            <ResearchLink text="SIFT Method" />—a technique originally designed for evaluating online sources.
           </p>
         </div>
       ),
@@ -90,7 +90,7 @@ export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) =
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
             <p className="text-sm">
               <strong>Key insight:</strong> The more confident AI sounds, the more carefully you should verify. 
-              This is why the <ResearchLink term="Stanford History Education Group" /> recommends lateral reading—checking 
+              This is why the <ResearchLink text="Stanford History Education Group" /> recommends lateral reading—checking 
               claims against outside sources rather than trusting internal consistency.
             </p>
           </div>

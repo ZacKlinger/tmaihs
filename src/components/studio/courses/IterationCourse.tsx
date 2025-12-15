@@ -36,7 +36,7 @@ export const IterationCourse = (props: IterationCourseProps) => {
             outputs through targeted follow-ups rather than starting over.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This mirrors the <ResearchLink term="Design Thinking" /> prototyping cycle: build, test, refine. 
+            This mirrors the <ResearchLink text="Design Thinking" /> prototyping cycle: build, test, refine. 
             Your first prompt is a prototype, not a final product.
           </div>
         </div>
@@ -91,7 +91,7 @@ export const IterationCourse = (props: IterationCourseProps) => {
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
               <strong>Key insight:</strong> It's almost always faster to iterate than to craft a "perfect" initial prompt. 
-              Start with 70% right, then refine to 95%. This reflects <ResearchLink term="Hattie" />'s finding that 
+              Start with 70% right, then refine to 95%. This reflects <ResearchLink text="Hattie" />'s finding that 
               feedback loops are among the highest-impact teaching practices.
             </p>
           </div>
