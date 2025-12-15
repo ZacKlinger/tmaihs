@@ -121,7 +121,7 @@ export const TierBypassQuiz = ({
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="flex-1 min-h-0 pr-4">
+        <ScrollArea className="max-h-[calc(90vh-180px)] pr-4">
           {!showResults ? (
             <div className="space-y-8 py-4">
               {questions.map((question, index) => (
