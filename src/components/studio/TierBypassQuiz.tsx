@@ -107,7 +107,7 @@ export const TierBypassQuiz = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-3xl max-h-[90vh] flex flex-col">
+      <DialogContent className="max-w-3xl max-h-[90vh] !flex !flex-col overflow-hidden">
         <DialogHeader>
           <DialogTitle>
             {showResults 
@@ -121,7 +121,7 @@ export const TierBypassQuiz = ({
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="flex-1 pr-4">
+        <ScrollArea className="flex-1 min-h-0 pr-4">
           {!showResults ? (
             <div className="space-y-8 py-4">
               {questions.map((question, index) => (
