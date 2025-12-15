@@ -2,13 +2,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { MatchingQuestion } from "@/lib/bypassQuizData";
 import { Check, X } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 interface QuizMatchingProps {
   question: MatchingQuestion;
@@ -25,6 +19,9 @@ export const QuizMatching = ({
   showResults,
   questionNumber,
 }: QuizMatchingProps) => {
+  // Track which left item is currently being matched
+  const [activeLeftIndex, setActiveLeftIndex] = useState<number | null>(null);
+  
   // Shuffle right options for display
   const [shuffledRightIndices, setShuffledRightIndices] = useState<number[]>([]);
   
@@ -40,7 +37,31 @@ export const QuizMatching = ({
 
   const isCorrect = question.pairs.every((_, idx) => selectedMatches[idx] === idx);
   
-  const usedRightIndices = Object.values(selectedMatches);
+  // Get which right indices are already used
+  const usedRightIndices = new Set(Object.values(selectedMatches));
+  
+  // Get which left index a right index is matched to (for display)
+  const rightToLeftMap: Record<number, number> = {};
+  Object.entries(selectedMatches).forEach(([leftIdx, rightIdx]) => {
+    rightToLeftMap[rightIdx] = parseInt(leftIdx);
+  });
+
+  const handleLeftClick = (leftIndex: number) => {
+    if (showResults) return;
+    setActiveLeftIndex(activeLeftIndex === leftIndex ? null : leftIndex);
+  };
+
+  const handleRightClick = (rightIndex: number) => {
+    if (showResults || activeLeftIndex === null) return;
+    onMatch(activeLeftIndex, rightIndex);
+    setActiveLeftIndex(null);
+  };
+
+  const clearMatch = (leftIndex: number) => {
+    if (showResults) return;
+    // Clear by setting to -1 (invalid), parent should handle this
+    onMatch(leftIndex, -1);
+  };
 
   return (
     <div className="space-y-4">
@@ -48,69 +69,103 @@ export const QuizMatching = ({
         {questionNumber}. {question.question}
       </p>
       
-      <div className="space-y-3">
-        {question.pairs.map((pair, leftIndex) => {
-          const selectedRight = selectedMatches[leftIndex];
-          const isThisCorrect = selectedRight === leftIndex;
-          
-          return (
-            <div 
-              key={leftIndex}
-              className={cn(
-                "flex items-center gap-3 p-3 rounded-lg border",
-                showResults && isThisCorrect && "border-green-500 bg-green-500/10",
-                showResults && selectedRight !== undefined && !isThisCorrect && "border-destructive bg-destructive/10",
-                !showResults && "border-border"
-              )}
-            >
-              <div className="flex-1 text-sm font-medium">{pair.left}</div>
-              
-              <div className="w-8 text-center text-muted-foreground">→</div>
-              
-              <div className="flex-1">
-                <Select
-                  value={selectedRight !== undefined ? String(selectedRight) : ""}
-                  onValueChange={(value) => !showResults && onMatch(leftIndex, parseInt(value))}
+      <p className="text-sm text-muted-foreground">
+        Click a term on the left, then click its match on the right.
+      </p>
+      
+      <div className="grid grid-cols-2 gap-4">
+        {/* Left column - terms to match */}
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Terms</p>
+          {question.pairs.map((pair, leftIndex) => {
+            const isActive = activeLeftIndex === leftIndex;
+            const hasMatch = selectedMatches[leftIndex] !== undefined;
+            const isThisCorrect = selectedMatches[leftIndex] === leftIndex;
+            
+            return (
+              <div key={leftIndex} className="flex items-center gap-2">
+                <Button
+                  variant={isActive ? "default" : hasMatch ? "secondary" : "outline"}
+                  size="sm"
+                  className={cn(
+                    "w-full justify-start text-left h-auto py-2 px-3",
+                    showResults && isThisCorrect && "border-green-500 bg-green-500/10",
+                    showResults && hasMatch && !isThisCorrect && "border-destructive bg-destructive/10"
+                  )}
+                  onClick={() => handleLeftClick(leftIndex)}
                   disabled={showResults}
                 >
-                  <SelectTrigger className={cn(
-                    "w-full",
-                    showResults && isThisCorrect && "border-green-500",
-                    showResults && selectedRight !== undefined && !isThisCorrect && "border-destructive"
-                  )}>
-                    <SelectValue placeholder="Select match..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {shuffledRightIndices.map((rightIndex) => {
-                      const isUsed = usedRightIndices.includes(rightIndex) && selectedRight !== rightIndex;
-                      return (
-                        <SelectItem 
-                          key={rightIndex} 
-                          value={String(rightIndex)}
-                          disabled={isUsed}
-                          className={cn(isUsed && "opacity-50")}
-                        >
-                          {question.pairs[rightIndex].right}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
+                  <span className="truncate">{pair.left}</span>
+                </Button>
+                
+                {showResults && (
+                  <div className="w-5 flex-shrink-0">
+                    {isThisCorrect ? (
+                      <Check className="w-4 h-4 text-green-500" />
+                    ) : hasMatch ? (
+                      <X className="w-4 h-4 text-destructive" />
+                    ) : null}
+                  </div>
+                )}
               </div>
+            );
+          })}
+        </div>
 
-              {showResults && (
-                <div className="w-6">
-                  {isThisCorrect ? (
-                    <Check className="w-5 h-5 text-green-500" />
-                  ) : (
-                    <X className="w-5 h-5 text-destructive" />
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {/* Right column - options to match to */}
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">Matches</p>
+          {shuffledRightIndices.map((rightIndex) => {
+            const isUsed = usedRightIndices.has(rightIndex);
+            const matchedLeftIndex = rightToLeftMap[rightIndex];
+            const isThisCorrect = matchedLeftIndex === rightIndex;
+            
+            return (
+              <Button
+                key={rightIndex}
+                variant={isUsed ? "secondary" : "outline"}
+                size="sm"
+                className={cn(
+                  "w-full justify-start text-left h-auto py-2 px-3",
+                  activeLeftIndex !== null && !isUsed && "ring-2 ring-primary/50",
+                  showResults && isUsed && isThisCorrect && "border-green-500 bg-green-500/10",
+                  showResults && isUsed && !isThisCorrect && "border-destructive bg-destructive/10"
+                )}
+                onClick={() => handleRightClick(rightIndex)}
+                disabled={showResults || (isUsed && activeLeftIndex === null)}
+              >
+                <span className="truncate">{question.pairs[rightIndex].right}</span>
+              </Button>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Current matches display */}
+      {!showResults && Object.keys(selectedMatches).length > 0 && (
+        <div className="mt-4 p-3 rounded-lg bg-muted/50 space-y-1">
+          <p className="text-xs font-medium text-muted-foreground mb-2">Your matches:</p>
+          {Object.entries(selectedMatches).map(([leftIdx, rightIdx]) => {
+            const leftIndex = parseInt(leftIdx);
+            if (rightIdx === -1) return null;
+            return (
+              <div key={leftIdx} className="flex items-center justify-between text-sm">
+                <span>
+                  {question.pairs[leftIndex].left} → {question.pairs[rightIdx].right}
+                </span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-6 px-2 text-xs"
+                  onClick={() => clearMatch(leftIndex)}
+                >
+                  Clear
+                </Button>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       {showResults && !isCorrect && (
         <div className="p-3 rounded-lg bg-muted text-sm">
