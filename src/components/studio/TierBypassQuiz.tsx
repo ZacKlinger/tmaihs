@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { QuizQuestion, QuizAnswer, createEmptyAnswer, isAnswerComplete, isAnswerCorrect } from "./quiz";
 import { getQuestionsForModules, QuizQuestion as QuizQuestionType, getModulesFromQuestions } from "@/lib/bypassQuizData";
 import { TIERS, COURSE_NAMES } from "@/lib/studioTiers";
@@ -121,7 +121,7 @@ export const TierBypassQuiz = ({
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="max-h-[calc(90vh-180px)] pr-4">
+        <div className="max-h-[calc(90vh-180px)] overflow-y-auto pr-4">
           {!showResults ? (
             <div className="space-y-8 py-4">
               {questions.map((question, index) => (
@@ -233,7 +233,7 @@ export const TierBypassQuiz = ({
               </div>
             </div>
           )}
-        </ScrollArea>
+        </div>
 
         <div className="flex justify-end gap-3 pt-4 border-t border-border">
           {!showResults ? (
