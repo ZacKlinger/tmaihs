@@ -4,7 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { StudioProgressBar } from "./StudioProgressBar";
 import { CFUQuestion } from "./CFUQuestion";
 import { PromptWorkshop } from "./PromptWorkshop";
-import { PromptCompare, PromptRemix, SequenceOrder, IdentifyMissing, AnnotatePrompt, OutputMatch } from "./cfu";
+import { 
+  PromptCompare, PromptRemix, SequenceOrder, IdentifyMissing, AnnotatePrompt, OutputMatch,
+  SpotTheDifference, PersonaTaskMatch, WorkflowBuilder, BiasSpotter, PatternIdentifier,
+  AuthenticityRubric, GuardrailDesigner, IntegrationMapper
+} from "./cfu";
 import { ArrowLeft, ArrowRight, BookOpen, Lightbulb, Wrench, CheckSquare, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -17,7 +21,6 @@ interface CFUData {
   type: "multiple-choice" | "spot-the-better-prompt" | "identify-mental-model";
 }
 
-// New CFU types data interfaces
 interface PromptCompareData {
   id: string;
   type: "prompt-compare";
@@ -72,7 +75,76 @@ interface OutputMatchData {
   pairs: { promptId: string; prompt: string; outputId: string; output: string; explanation: string }[];
 }
 
-type AdvancedCFUData = PromptCompareData | PromptRemixData | SequenceOrderData | IdentifyMissingData | AnnotatePromptData | OutputMatchData;
+interface SpotTheDifferenceData {
+  id: string;
+  type: "spot-the-difference";
+  question: string;
+  description?: string;
+  promptA: string;
+  promptB: string;
+  segmentsB: { id: string; text: string; isDifferent: boolean; effect: string }[];
+}
+
+interface PersonaTaskMatchData {
+  id: string;
+  type: "persona-task-match";
+  question: string;
+  description?: string;
+  tasks: { id: string; description: string; correctPersonaId: string; explanation: string }[];
+  personas: { id: string; name: string; description: string }[];
+}
+
+interface WorkflowBuilderData {
+  id: string;
+  type: "workflow-builder";
+  question: string;
+  goal: string;
+  prompts: { id: string; text: string; isCorrect: boolean; explanation: string }[];
+}
+
+interface BiasSpotterData {
+  id: string;
+  type: "bias-spotter";
+  question: string;
+  context: string;
+  aiOutput: string;
+  segments: { id: string; text: string; hasBias: boolean; biasType?: string; explanation: string }[];
+}
+
+interface PatternIdentifierData {
+  id: string;
+  type: "pattern-identifier";
+  question: string;
+  description?: string;
+  samples: { id: string; content: string; isAI: boolean; indicators: string[]; explanation: string }[];
+}
+
+interface AuthenticityRubricData {
+  id: string;
+  type: "authenticity-rubric";
+  question: string;
+  studentWork: string;
+  dimensions: { id: string; name: string; description: string; correctRange: [number, number]; explanation: string }[];
+}
+
+interface GuardrailDesignerData {
+  id: string;
+  type: "guardrail-designer";
+  question: string;
+  scenario: string;
+  learningObjective: string;
+  guardrails: { id: string; name: string; description: string; isAppropriate: boolean; tradeoff: string }[];
+}
+
+interface IntegrationMapperData {
+  id: string;
+  type: "integration-mapper";
+  question: string;
+  unitContext: string;
+  objectives: { id: string; objective: string; shouldIntegrate: boolean; rationale: string }[];
+}
+
+type AdvancedCFUData = PromptCompareData | PromptRemixData | SequenceOrderData | IdentifyMissingData | AnnotatePromptData | OutputMatchData | SpotTheDifferenceData | PersonaTaskMatchData | WorkflowBuilderData | BiasSpotterData | PatternIdentifierData | AuthenticityRubricData | GuardrailDesignerData | IntegrationMapperData;
 
 interface CourseSection {
   id: string;
@@ -254,6 +326,99 @@ export const MicroCourseViewer = ({
             question={data.question}
             description={data.description}
             pairs={data.pairs}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "spot-the-difference":
+        return (
+          <SpotTheDifference
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            promptA={data.promptA}
+            promptB={data.promptB}
+            segmentsB={data.segmentsB}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "persona-task-match":
+        return (
+          <PersonaTaskMatch
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            tasks={data.tasks}
+            personas={data.personas}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "workflow-builder":
+        return (
+          <WorkflowBuilder
+            id={data.id}
+            question={data.question}
+            goal={data.goal}
+            prompts={data.prompts}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "bias-spotter":
+        return (
+          <BiasSpotter
+            id={data.id}
+            question={data.question}
+            context={data.context}
+            aiOutput={data.aiOutput}
+            segments={data.segments}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "pattern-identifier":
+        return (
+          <PatternIdentifier
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            samples={data.samples}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "authenticity-rubric":
+        return (
+          <AuthenticityRubric
+            id={data.id}
+            question={data.question}
+            studentWork={data.studentWork}
+            dimensions={data.dimensions}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "guardrail-designer":
+        return (
+          <GuardrailDesigner
+            id={data.id}
+            question={data.question}
+            scenario={data.scenario}
+            learningObjective={data.learningObjective}
+            guardrails={data.guardrails}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "integration-mapper":
+        return (
+          <IntegrationMapper
+            id={data.id}
+            question={data.question}
+            unitContext={data.unitContext}
+            objectives={data.objectives}
             onAnswer={handleAnswer}
             previousAnswer={previousAnswer}
           />

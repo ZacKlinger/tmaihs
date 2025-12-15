@@ -9,6 +9,24 @@ export interface TierConfig {
   courseIds: string[];
 }
 
+export interface CourseInfo {
+  id: string;
+  name: string;
+}
+
+export const COURSE_NAMES: Record<string, string> = {
+  "constraints-101": "Constraints",
+  "role-assignment-101": "Role Assignment",
+  "iteration-101": "Iteration",
+  "meta-prompting-201": "Meta-Prompting",
+  "persona-calling-201": "Persona Calling",
+  "workflow-design-201": "Workflow Design",
+  "critical-evaluation-301": "Critical Evaluation",
+  "detecting-ai-work-301": "Detecting AI Work",
+  "student-ai-activities-301": "Student AI Activities",
+  "curriculum-ai-design-301": "Curriculum AI Design",
+};
+
 export const TIERS: TierConfig[] = [
   {
     id: 1,
@@ -29,7 +47,7 @@ export const TIERS: TierConfig[] = [
     name: "Studio Practice",
     description: "Develop judgment, critique, and transfer.",
     unlockCriteria: "Complete all Tier 2 courses",
-    courseIds: ["critical-evaluation-301", "detecting-ai-work-301", "ai-integrated-design-301"],
+    courseIds: ["critical-evaluation-301", "detecting-ai-work-301", "student-ai-activities-301", "curriculum-ai-design-301"],
   },
 ];
 
