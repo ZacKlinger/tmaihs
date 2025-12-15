@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
+import { UserMenu } from "@/components/layout/UserMenu";
 
 const ethicsSubItems = [
   { label: "Environmental Considerations", href: "/ethics/environmental" },
@@ -35,6 +37,7 @@ export function Header() {
   const [isEthicsOpen, setIsEthicsOpen] = useState(false);
   const [isStudioOpen, setIsStudioOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, loading } = useAuth();
 
   const isEthicsActive = location.pathname.startsWith("/ethics");
   const isStudioActive = ["/what-is-ai", "/why-ai-matters", "/prompt-engineering", "/learning-studio"].includes(location.pathname);
@@ -143,6 +146,17 @@ export function Header() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Auth Section */}
+            {!loading && (
+              isAuthenticated ? (
+                <UserMenu />
+              ) : (
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+              )
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
