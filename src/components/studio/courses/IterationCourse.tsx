@@ -1,5 +1,6 @@
 import { MicroCourseViewer } from "../MicroCourseViewer";
 import { CourseProgress } from "@/hooks/useStudioProgress";
+import { ResearchLink } from "@/components/shared/ResearchLink";
 
 interface IterationCourseProps {
   courseProgress: CourseProgress | undefined;
@@ -21,20 +22,23 @@ export const IterationCourse = (props: IterationCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "The AI gave you a lesson plan, but it's not quite right. The examples are too advanced. 
-              The timing is off. The discussion questions are surface-level. You could rewrite your 
-              entire prompt from scratch... or you could have a conversation."
+              "You asked AI to generate a 14-week project arc for your documentary unit. The milestones look reasonable, 
+              but the transition from Week 4 (research) to Week 5 (storyboarding) feels abrupt. Students won't be ready. 
+              You could rewrite the whole prompt from scratch... or you could have a conversation."
             </p>
           </div>
           <p>
-            Most people treat AI as a vending machine: put in a prompt, get an output, done. But AI 
-            becomes dramatically more useful when you treat it as a <strong>thinking partner</strong> you 
-            can iterate with.
+            Most people treat AI like a vending machine: input prompt, receive output, done. But AI becomes 
+            dramatically more useful when you treat it as a <strong>thinking partner</strong> you can iterate with.
           </p>
           <p>
-            In this micro-course, you'll learn the <strong>Iteration mental model</strong>—how to 
-            refine AI outputs through follow-up prompts rather than starting over.
+            In this micro-course, you'll learn the <strong>Iteration mental model</strong>—how to refine AI 
+            outputs through targeted follow-ups rather than starting over.
           </p>
+          <div className="text-xs text-muted-foreground mt-4">
+            This mirrors the <ResearchLink term="Design Thinking" /> prototyping cycle: build, test, refine. 
+            Your first prompt is a prototype, not a final product.
+          </div>
         </div>
       ),
     },
@@ -46,45 +50,49 @@ export const IterationCourse = (props: IterationCourseProps) => {
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">The Iteration Mental Model</h2>
           <p className="text-lg">
-            AI conversations have memory within a session. Each follow-up prompt builds on what came before. 
-            This means you can <strong>steer</strong> outputs rather than hoping to get it perfect on the first try.
+            AI conversations have memory within a session. Each follow-up builds on what came before. 
+            This means you can <strong>steer</strong> outputs rather than hoping to get it perfect on try one.
           </p>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-6">
-            <h3 className="text-lg font-semibold mb-4">The Iteration Loop</h3>
+            <h3 className="text-lg font-semibold mb-4">The Critique Protocol</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              In PBL, students learn through critique and revision cycles. Apply the same approach to AI output:
+            </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">1</span>
-                <span><strong>Initial prompt:</strong> Get a first draft with your key constraints</span>
+                <span><strong>Generate:</strong> Get a first draft with your key constraints</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">2</span>
-                <span><strong>Evaluate:</strong> What's working? What's not?</span>
+                <span><strong>Critique:</strong> What's working? What's not? Be specific.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">3</span>
-                <span><strong>Targeted refinement:</strong> Ask for specific changes, not a complete redo</span>
+                <span><strong>Refine:</strong> Ask for targeted changes, not a complete redo</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">4</span>
-                <span><strong>Repeat:</strong> Until the output is usable</span>
+                <span><strong>Repeat:</strong> Until the output is classroom-ready</span>
               </div>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold">Powerful Iteration Prompts</h3>
+          <h3 className="text-lg font-semibold">Powerful Iteration Prompts for Projects</h3>
           <ul>
-            <li><strong>Adjust scope:</strong> "Keep the structure, but simplify the vocabulary for struggling readers"</li>
-            <li><strong>Target sections:</strong> "The introduction is good. Rewrite only the discussion questions to require evidence"</li>
-            <li><strong>Add elements:</strong> "Add a visual model before step 3"</li>
-            <li><strong>Remove elements:</strong> "Remove the extension activity—we won't have time"</li>
-            <li><strong>Change perspective:</strong> "Reframe this for students who think they 'hate' writing"</li>
+            <li><strong>Adjust pacing:</strong> "The transition from Week 4 to Week 5 is too abrupt. Add a bridge activity."</li>
+            <li><strong>Add scaffolding:</strong> "Students won't have the skills for Week 7 yet. What prerequisite activities are missing?"</li>
+            <li><strong>Increase rigor:</strong> "The reflection prompts are surface-level. Rewrite them to require evidence from student work."</li>
+            <li><strong>Improve coherence:</strong> "The milestones don't clearly build toward the final product. Show me how each connects."</li>
+            <li><strong>Differentiate:</strong> "Keep everything else, but add scaffolds for students who struggled with the research phase."</li>
           </ul>
 
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
             <p className="text-sm">
-              <strong>Key insight:</strong> It's almost always faster to iterate than to craft a "perfect" 
-              initial prompt. Start with 70% right, then refine to 95%.
+              <strong>Key insight:</strong> It's almost always faster to iterate than to craft a "perfect" initial prompt. 
+              Start with 70% right, then refine to 95%. This reflects <ResearchLink term="Hattie" />'s finding that 
+              feedback loops are among the highest-impact teaching practices.
             </p>
           </div>
         </div>
@@ -98,12 +106,12 @@ export const IterationCourse = (props: IterationCourseProps) => {
         id: "iteration-cfu-1",
         type: "sequence-order" as const,
         question: "Put these iteration steps in the most effective order",
-        description: "A teacher got a lesson plan where the examples are too advanced. What's the best sequence?",
+        description: "A teacher's AI-generated project timeline has milestones that don't build coherently toward the final documentary. What's the best sequence for fixing this?",
         steps: [
-          { id: "a", text: "Ask AI to simplify examples while keeping the structure", correctPosition: 2 },
-          { id: "b", text: "Review the output to identify what's working", correctPosition: 1 },
-          { id: "c", text: "Request one more alternative example for diverse learners", correctPosition: 4 },
-          { id: "d", text: "Check if the simplified version matches your grade level", correctPosition: 3 },
+          { id: "a", text: "Review the timeline to identify which specific transitions feel disconnected", correctPosition: 1 },
+          { id: "b", text: "Ask AI to explain how each milestone builds toward the final product", correctPosition: 2 },
+          { id: "c", text: "Request targeted adjustments to the weakest transition points", correctPosition: 3 },
+          { id: "d", text: "Check if the revised timeline maintains realistic pacing for your students", correctPosition: 4 },
         ],
       },
     },
@@ -113,7 +121,7 @@ export const IterationCourse = (props: IterationCourseProps) => {
       title: "Practice",
       workshopData: {
         title: "Prompt Workshop: Iterative Refinement",
-        description: "Practice the iteration loop. Start with a basic prompt, then use follow-ups to shape the output. Track how many iterations it takes to get something usable.",
+        description: "Practice the critique and revision cycle with your own project materials. The goal is to reach 'classroom-ready' in 2-3 iterations, not endless polishing.",
         toolLinks: [
           { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
@@ -121,31 +129,39 @@ export const IterationCourse = (props: IterationCourseProps) => {
         ],
         starterPrompts: [
           {
-            label: "Initial Prompt",
-            prompt: `Create a 20-minute lesson on [TOPIC] for [GRADE] students that includes:
-- A hook/opening (2-3 min)
-- Direct instruction (7-8 min)  
-- Guided practice (5 min)
-- Independent check (3-4 min)`,
+            label: "Project Arc Generator + Iteration",
+            prompt: `Create a [NUMBER]-week project arc for [GRADE] students on [TOPIC].
+
+Driving question: [YOUR DRIVING QUESTION]
+Final product: [WHAT STUDENTS WILL CREATE]
+Key constraints: [TIME PER WEEK, RESOURCES AVAILABLE, etc.]
+
+Include weekly milestones and checkpoints.
+
+---
+ITERATION FOLLOW-UPS TO TRY:
+"The transition from Week [X] to Week [Y] assumes skills students won't have yet. Add a bridge activity."
+"The formative checkpoints are too infrequent. Add a quick check-in at Week [X]."
+"Show me how each milestone explicitly connects to the driving question."`,
           },
           {
-            label: "Iteration Follow-ups",
-            prompt: `After getting the initial output, try these follow-up prompts:
+            label: "Differentiated Materials + Iteration",
+            prompt: `Create a [ACTIVITY TYPE] for [TOPIC] at three levels: approaching, on-level, and advanced.
 
-"The hook is too long—make it snappier, under 90 seconds."
+Context: Week [X] of a [TOTAL]-week project. Students are [DESCRIBE CURRENT PHASE].
 
-"Change the guided practice to partner work instead of whole-class."
-
-"The independent check is too easy. Add one question that requires synthesis."
-
-"Keep everything else, but rewrite the direct instruction assuming students have no background."`,
+---
+ITERATION FOLLOW-UPS TO TRY:
+"The 'approaching' level is still too difficult for students reading 2 grades below level. Simplify vocabulary."
+"The 'advanced' level is just longer, not deeper. Add synthesis or evaluation tasks instead."
+"Keep the structure, but rewrite the instructions assuming students have never seen this format before."`,
           },
         ],
         iterationTips: [
-          "Be specific about WHAT to change and WHERE. 'Make it better' forces the AI to guess.",
+          "Be specific about WHAT to change and WHERE. 'Make it better' forces AI to guess.",
           "Use 'Keep X, change Y' framing to preserve what's working.",
           "If you're iterating more than 4-5 times on the same element, your initial constraints might need rethinking.",
-          "Sometimes the best iteration is: 'Give me 3 alternative versions of just the [section].'",
+          "Set a 'good enough' threshold—classroom materials don't need to be perfect, just usable.",
         ],
       },
     },
@@ -156,29 +172,29 @@ export const IterationCourse = (props: IterationCourseProps) => {
       advancedCfuData: {
         id: "iteration-cfu-2",
         type: "output-match" as const,
-        question: "Match each follow-up prompt to the output it would produce",
-        description: "Given an initial lesson plan output, predict what each iteration prompt would change.",
+        question: "Match each iteration prompt to the change it would produce",
+        description: "Given an AI-generated project timeline, predict what each follow-up prompt would fix.",
         pairs: [
           {
             promptId: "1",
-            prompt: "Keep the structure but simplify vocabulary to 5th grade reading level",
+            prompt: "The milestones don't clearly connect to the driving question. Revise each milestone to explicitly reference it.",
             outputId: "A",
-            output: "Same lesson flow with shorter sentences, simpler word choices, and grade-appropriate examples",
-            explanation: "This targets vocabulary specifically while preserving the overall structure the teacher liked.",
+            output: "Revised timeline where each weekly milestone begins with 'Students will explore [aspect of driving question] by...'",
+            explanation: "This targets coherence—ensuring every activity connects to the central question students are investigating.",
           },
           {
             promptId: "2", 
-            prompt: "The discussion questions are surface-level. Rewrite them to require text evidence",
+            prompt: "Week 6 assumes students can storyboard, but we haven't taught that skill. Add a mini-lesson on storyboarding in Week 5.",
             outputId: "B",
-            output: "Original lesson with new discussion questions like: 'What evidence from paragraph 3 supports...?'",
-            explanation: "Targeted refinement of one specific section without affecting the rest of the lesson.",
+            output: "Week 5 now includes a 30-minute storyboarding introduction with examples before students apply the skill in Week 6",
+            explanation: "This addresses a skill gap by adding scaffolding before the point where students need to apply the skill.",
           },
           {
             promptId: "3",
-            prompt: "Add a 2-minute formative check after the direct instruction",
+            prompt: "The reflection prompts are too generic. Rewrite them to require students to cite specific evidence from their project work.",
             outputId: "C",
-            output: "Same lesson with a new quick-check activity inserted between instruction and guided practice",
-            explanation: "Adding elements is a simple iteration—the AI knows exactly where and what to insert.",
+            output: "Revised prompts like 'Quote one piece of feedback you received and explain how you addressed it' instead of 'What did you learn?'",
+            explanation: "This increases rigor by requiring concrete evidence rather than vague self-assessment.",
           },
         ],
       },
@@ -190,14 +206,14 @@ export const IterationCourse = (props: IterationCourseProps) => {
       advancedCfuData: {
         id: "iteration-cfu-3",
         type: "prompt-remix" as const,
-        originalPrompt: "Make the examples easier for my students.",
-        originalContext: "Teacher has a lesson plan where examples are too advanced.",
-        newContext: "Teacher now has a different lesson where the pacing is off—too much content for the time available.",
+        originalPrompt: "The examples are too hard for my students. Make them easier.",
+        originalContext: "Teacher has lesson materials where examples are too advanced.",
+        newContext: "Teacher now has a project timeline where the pacing is too rushed—students won't have time to complete Week 8 tasks.",
         constraints: [
-          { id: "c1", text: "Make the examples easier", shouldChange: true, reason: "The issue isn't examples, it's pacing/time." },
-          { id: "c2", text: "for my students", shouldChange: false, reason: "Still relevant—changes should work for the same students." },
-          { id: "c3", text: "Keep the structure", shouldChange: false, reason: "Preserving structure while adjusting scope is still good practice." },
-          { id: "c4", text: "Identify what can be cut to fit 30 minutes", shouldChange: true, reason: "This addresses the actual pacing problem." },
+          { id: "c1", text: "The examples are too hard", shouldChange: true, reason: "The issue isn't difficulty, it's pacing and time allocation." },
+          { id: "c2", text: "for my students", shouldChange: false, reason: "Student context is still relevant—changes should work for your specific class." },
+          { id: "c3", text: "Make them easier", shouldChange: true, reason: "Need to address time, not difficulty: 'Redistribute Week 8 tasks across Weeks 7-9.'" },
+          { id: "c4", text: "Keep the learning goals the same", shouldChange: false, reason: "Good practice—preserve objectives while adjusting pacing." },
         ],
       },
     },
@@ -210,26 +226,26 @@ export const IterationCourse = (props: IterationCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Reflection Question:</p>
+            <p className="font-medium mb-2">Metacognitive Check:</p>
             <p className="text-muted-foreground">
-              Think about the last time you used AI and weren't satisfied with the output. 
-              What follow-up prompt could you have used instead of starting over or giving up?
+              Think about the last time AI output wasn't quite right. Did you start over, or did you iterate? 
+              What's one follow-up prompt you could have used to fix the specific problem rather than regenerating everything?
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Classroom Transfer:</p>
+            <p className="font-medium mb-2">Transfer Challenge:</p>
             <p className="text-muted-foreground">
-              This week, when AI output isn't quite right, resist the urge to rewrite from scratch. 
+              This week, when AI output isn't right, resist the urge to rewrite from scratch. 
               Instead, identify the ONE thing that's most wrong and ask for a targeted fix. 
-              Notice how this changes your workflow.
+              Track how many iterations it takes to reach "classroom-ready."
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Mindset shift:</strong> Your first prompt isn't a final request—it's the start of a conversation. 
-              Plan to iterate. It's faster and produces better results.
+              <strong>Mindset shift:</strong> Your first prompt is a prototype, not a final draft. 
+              Plan to iterate—just like you teach students to revise their project work.
             </p>
           </div>
         </div>

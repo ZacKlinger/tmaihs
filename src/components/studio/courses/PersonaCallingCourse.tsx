@@ -1,5 +1,6 @@
 import { MicroCourseViewer } from "../MicroCourseViewer";
 import { CourseProgress } from "@/hooks/useStudioProgress";
+import { ResearchLink } from "@/components/shared/ResearchLink";
 
 interface PersonaCallingCourseProps {
   courseProgress: CourseProgress | undefined;
@@ -21,19 +22,23 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
           <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "You need to design a semester-long project, but you want expert-level thinking—not generic 
-              suggestions. What if you could consult a veteran PBL teacher, a curriculum specialist, 
-              AND a student engagement researcher... all in one prep period?"
+              "You're planning a semester-long civic engagement project where students will propose solutions to 
+              local housing issues. You need to design materials that consider multiple perspectives—housing advocates, 
+              city planners, longtime residents, developers. What if you could consult each of these experts during 
+              your prep period?"
             </p>
           </div>
           <p>
-            <strong>Persona calling</strong> is the technique of explicitly telling AI to respond 
-            from a specific expert perspective. Different personas bring different expertise, 
-            priorities, and blind spots.
+            <strong>Persona calling</strong> extends role assignment by strategically selecting expert perspectives 
+            that match specific task types. Different personas bring different expertise, priorities, and blind spots.
           </p>
           <p>
-            In this micro-course, you'll learn to strategically select personas that match your task type.
+            In this micro-course, you'll learn to match personas to tasks for maximum usefulness.
           </p>
+          <div className="text-xs text-muted-foreground mt-4">
+            This technique draws on <ResearchLink term="Culturally Sustaining Pedagogy" /> (Paris & Alim)—ensuring 
+            multiple perspectives are centered, not just dominant voices.
+          </div>
         </div>
       ),
     },
@@ -45,60 +50,68 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">The Persona Calling Mental Model</h2>
           <p className="text-lg">
-            AI defaults to a "helpful assistant" voice—balanced but generic. Personas shift the 
-            <strong> lens</strong> through which AI approaches your task.
+            Different tasks benefit from different expert lenses. The key is matching the right persona 
+            to your specific need—not just calling any expert.
           </p>
           
-          <h3 className="text-lg font-semibold mt-6">Persona Categories for Teachers</h3>
+          <h3 className="text-lg font-semibold mt-6">Persona Categories for PBL</h3>
           <div className="grid md:grid-cols-2 gap-4 my-4">
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
-              <p className="font-medium text-foreground mb-2">Practitioner Personas</p>
+              <p className="font-medium text-foreground mb-2">Content & Design Personas</p>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Veteran teacher (classroom-tested wisdom)</li>
-                <li>• Department chair (alignment, coordination)</li>
-                <li>• Special education specialist (accessibility)</li>
-                <li>• Instructional coach (implementation strategies)</li>
+                <li>• Subject matter expert (accuracy, depth)</li>
+                <li>• Curriculum designer (scope, sequence, alignment)</li>
+                <li>• PBL specialist (authentic tasks, driving questions)</li>
+                <li>• Assessment expert (validity, evidence of learning)</li>
               </ul>
             </div>
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
-              <p className="font-medium text-foreground mb-2">Specialist Personas</p>
+              <p className="font-medium text-foreground mb-2">Perspective & Critique Personas</p>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Curriculum designer (scope, sequence, objectives)</li>
-                <li>• Assessment expert (validity, reliability)</li>
-                <li>• Student engagement researcher (motivation)</li>
-                <li>• Content expert in [subject] (depth, accuracy)</li>
+                <li>• Community stakeholder (real-world relevance)</li>
+                <li>• Skeptical audience member (challenge assumptions)</li>
+                <li>• End user of student work (usability, impact)</li>
+                <li>• Student voice (confusion points, engagement)</li>
               </ul>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold">Matching Personas to Tasks</h3>
+          <h3 className="text-lg font-semibold">Matching Personas to Project Phases</h3>
           <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-2">Task Type</th>
-                  <th className="text-left py-2">Best Persona</th>
+                  <th className="text-left py-2">Project Phase</th>
+                  <th className="text-left py-2">Best Personas</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border/50">
-                  <td className="py-2">Lesson planning</td>
-                  <td>Veteran teacher + content expert</td>
+                  <td className="py-2">Driving question design</td>
+                  <td>PBL specialist, community member with lived experience</td>
                 </tr>
                 <tr className="border-b border-border/50">
-                  <td className="py-2">Assessment design</td>
-                  <td>Assessment expert</td>
+                  <td className="py-2">Research scaffolding</td>
+                  <td>Subject expert, librarian/research specialist</td>
                 </tr>
                 <tr className="border-b border-border/50">
-                  <td className="py-2">Differentiation</td>
-                  <td>Special education specialist</td>
+                  <td className="py-2">Prototype critique</td>
+                  <td>End user, skeptical stakeholder, design critic</td>
                 </tr>
                 <tr>
-                  <td className="py-2">Project design</td>
-                  <td>PBL researcher + veteran teacher</td>
+                  <td className="py-2">Presentation prep</td>
+                  <td>Target audience member, media/communication coach</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20 mt-6">
+            <p className="text-sm">
+              <strong>Caution:</strong> Personas can inadvertently reinforce stereotypes. Be specific about 
+              individual perspectives rather than demographic categories. "A housing advocate who has worked with 
+              displaced families for 10 years" is better than "a Latino community member."
+            </p>
           </div>
         </div>
       ),
@@ -110,29 +123,29 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
       advancedCfuData: {
         id: "persona-calling-cfu-1",
         type: "output-match" as const,
-        question: "Match each persona to the output style it would produce.",
-        description: "Different personas prioritize different aspects of a response.",
+        question: "Match each persona to the type of feedback they would provide.",
+        description: "Different personas prioritize different aspects of project work.",
         pairs: [
           {
             promptId: "p1",
-            prompt: "Veteran high school teacher with 20 years of classroom experience",
+            prompt: "PBL curriculum designer with 15 years experience at High Tech High",
             outputId: "o1",
-            output: "Here's what actually works: Start with a hook that connects to their lives. I've found that 10th graders disengage after 15 minutes of direct instruction, so chunk it...",
-            explanation: "Veteran teachers emphasize practical, tested strategies and realistic timing based on experience.",
+            output: "The driving question is too broad—students won't know where to start. Try: 'How can we reduce food waste in our school cafeteria by 30%?' This is specific, measurable, and actionable.",
+            explanation: "PBL specialists focus on driving question quality, authenticity, and manageable scope.",
           },
           {
             promptId: "p2",
-            prompt: "Curriculum alignment specialist",
+            prompt: "City council member who reviews student proposals annually",
             outputId: "o2",
-            output: "This lesson addresses Standard RL.9-10.2 (central theme analysis). The learning objective should be measurable. Consider: 'Students will identify and explain...'",
-            explanation: "Curriculum specialists focus on standards alignment, measurable objectives, and formal structure.",
+            output: "Nice ideas, but I need to see budget projections and a realistic timeline. Who's responsible for maintenance after students graduate? These are the questions I'll ask in the meeting.",
+            explanation: "Real stakeholders focus on feasibility, sustainability, and accountability—not just ideas.",
           },
           {
             promptId: "p3",
-            prompt: "Student engagement researcher",
+            prompt: "10th grader who struggled with last semester's project",
             outputId: "o3",
-            output: "Research shows that student choice increases intrinsic motivation (Deci & Ryan, 2000). Consider offering three text options that all address the same skill...",
-            explanation: "Researchers cite evidence and focus on underlying principles of motivation and learning.",
+            output: "I don't understand what 'synthesize multiple sources' means. Can I see an example of what a good one looks like? Also, when you say 'present to stakeholders,' who are they exactly?",
+            explanation: "Student personas surface confusion points, jargon, and missing scaffolds that teachers overlook.",
           },
         ],
       },
@@ -145,32 +158,32 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
         id: "persona-calling-cfu-2",
         type: "persona-task-match" as const,
         question: "Select the most effective persona for each task.",
-        description: "Consider what expertise each task requires.",
+        description: "Consider what expertise each task requires at this project phase.",
         tasks: [
           {
             id: "t1",
-            description: "You need to create accommodations for a unit assessment to support students with IEPs.",
-            correctPersonaId: "sped",
-            explanation: "Special education specialists understand legal requirements, specific accommodation strategies, and how to maintain rigor while providing access.",
+            description: "Students are interviewing community members next week. You need to prepare them for conversations with people who have strong opinions about the issue.",
+            correctPersonaId: "community",
+            explanation: "A community member with lived experience can model the types of responses students will encounter and prepare them for emotional or complex conversations.",
           },
           {
             id: "t2",
-            description: "You want to design a semester project that builds from simple skills to a complex final product.",
-            correctPersonaId: "curriculum",
-            explanation: "Curriculum designers excel at scope and sequence, scaffolding complexity, and backward design from final outcomes.",
+            description: "You're designing the project milestones and need to ensure each checkpoint builds toward the final product.",
+            correctPersonaId: "pbl",
+            explanation: "A PBL specialist understands backward design and can ensure milestones create a coherent arc, not disconnected activities.",
           },
           {
             id: "t3",
-            description: "Your students are disengaged during the research phase of projects. You need ideas to increase motivation.",
-            correctPersonaId: "engagement",
-            explanation: "Engagement researchers understand motivation theory and can suggest evidence-based strategies for increasing student investment.",
+            description: "Students have drafted their proposals. You want to identify where their arguments are weakest before the public presentation.",
+            correctPersonaId: "skeptic",
+            explanation: "A skeptical stakeholder will find holes in reasoning and ask the tough questions students will face, allowing time to strengthen arguments.",
           },
         ],
         personas: [
-          { id: "veteran", name: "Veteran Teacher", description: "20+ years classroom experience" },
-          { id: "sped", name: "Special Education Specialist", description: "Expertise in accommodations and accessibility" },
-          { id: "curriculum", name: "Curriculum Designer", description: "Scope, sequence, and backward design" },
-          { id: "engagement", name: "Student Engagement Researcher", description: "Motivation and learning science" },
+          { id: "expert", name: "Subject Matter Expert", description: "Deep content knowledge" },
+          { id: "community", name: "Community Member with Lived Experience", description: "Real-world perspective on the issue" },
+          { id: "pbl", name: "PBL Curriculum Designer", description: "Project structure and scaffolding expertise" },
+          { id: "skeptic", name: "Skeptical Stakeholder", description: "Critical evaluation of proposals" },
         ],
       },
     },
@@ -180,7 +193,7 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
       title: "Practice",
       workshopData: {
         title: "Prompt Workshop: Strategic Persona Selection",
-        description: "Practice calling different personas for the same task and comparing outputs.",
+        description: "Practice calling different personas for different project phases.",
         toolLinks: [
           { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
@@ -188,31 +201,40 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
         ],
         starterPrompts: [
           {
-            label: "Compare Persona Outputs",
-            prompt: `You are a [PERSONA 1]. I need help designing a [TASK]. 
-Approach this from your specific expertise and priorities.
+            label: "Multi-Perspective Project Review",
+            prompt: `I'm planning a [LENGTH]-week project on [TOPIC] for [GRADE] students.
 
-[Describe your task]
+Review this project from THREE different perspectives:
 
----
-Now, respond as a [PERSONA 2] to the same task. 
-How does your advice differ?`,
+PERSPECTIVE 1: As a PBL curriculum specialist, evaluate the driving question and project structure.
+
+PERSPECTIVE 2: As a [RELEVANT COMMUNITY STAKEHOLDER], evaluate whether this project would produce work you'd actually find useful.
+
+PERSPECTIVE 3: As a struggling student who has difficulty with [RELEVANT SKILL], identify where you'd get stuck.
+
+For each perspective, give me specific, actionable feedback.
+
+[PASTE PROJECT OUTLINE]`,
           },
           {
-            label: "Build a Persona Library",
-            prompt: `I often need help with these teaching tasks:
-- [Task 1]
-- [Task 2]  
-- [Task 3]
+            label: "Community Interview Preparation",
+            prompt: `You are a [SPECIFIC COMMUNITY MEMBER TYPE] who will be interviewed by high school students about [TOPIC].
 
-For each task, recommend the single best persona I should call, and explain why that expertise matters for that specific task.`,
+Your perspective:
+- You've been affected by this issue for [X] years
+- You're [supportive/skeptical/conflicted] about proposed solutions because [REASON]
+- You communicate in a [direct/emotional/guarded] way
+
+A student asks you: "[SAMPLE QUESTION]"
+
+Respond as you authentically would. Then, as yourself, tell me: What should students be prepared for when interviewing people like me?`,
           },
         ],
         iterationTips: [
-          "Combine personas: 'You are a veteran teacher WHO IS ALSO a curriculum designer.'",
-          "Add context to personas: 'You are a veteran teacher at a Title I urban high school.'",
-          "Use role assignment (Tier 1) within persona calls: 'As an assessment expert, your task is to...'",
-          "Build a personal 'persona library' for your most common tasks.",
+          "Be specific about personas: 'longtime resident who remembers the neighborhood before gentrification' vs. 'community member.'",
+          "Use personas to surface blind spots: 'What would a [skeptic/expert/affected person] say is missing from this plan?'",
+          "Combine personas: 'You are a city planner WHO IS ALSO a parent of a student at this school.'",
+          "Rotate personas across project phases—research benefits from experts; presentations benefit from audience members.",
         ],
       },
     },
@@ -225,25 +247,26 @@ For each task, recommend the single best persona I should call, and explain why 
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Reflection Question:</p>
+            <p className="font-medium mb-2">Metacognitive Check:</p>
             <p className="text-muted-foreground">
-              What are your 3-4 most common prep tasks? For each, which persona would bring 
-              the most useful perspective?
+              Think about your current project. What perspectives are missing from your planning? 
+              Whose voices should be centered that you haven't considered? How could persona calling 
+              help you design more equitable and relevant project experiences?
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Classroom Transfer:</p>
+            <p className="font-medium mb-2">Transfer Challenge:</p>
             <p className="text-muted-foreground">
-              Create a simple reference card with your top 5 personas and when to use each. 
-              Keep it visible during prep periods.
+              Create a "persona library" for your most common project types. For each project phase, 
+              identify 2-3 personas that would provide the most useful feedback. Save these as templates.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1:</strong> Persona calling builds on Role Assignment—you're 
-              not just giving AI a task, you're defining WHO it should be while completing that task.
+              <strong>Connection to Tier 1:</strong> Persona calling builds on Role Assignment—you're not just 
+              giving AI a role, you're strategically selecting which role matches which task.
             </p>
           </div>
         </div>
