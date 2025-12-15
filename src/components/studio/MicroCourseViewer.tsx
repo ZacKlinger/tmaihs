@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { StudioProgressBar } from "./StudioProgressBar";
 import { CFUQuestion } from "./CFUQuestion";
 import { PromptWorkshop } from "./PromptWorkshop";
+import { PromptCompare, PromptRemix, SequenceOrder, IdentifyMissing, AnnotatePrompt, OutputMatch } from "./cfu";
 import { ArrowLeft, ArrowRight, BookOpen, Lightbulb, Wrench, CheckSquare, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -16,6 +17,63 @@ interface CFUData {
   type: "multiple-choice" | "spot-the-better-prompt" | "identify-mental-model";
 }
 
+// New CFU types data interfaces
+interface PromptCompareData {
+  id: string;
+  type: "prompt-compare";
+  question: string;
+  context?: string;
+  options: [
+    { id: string; prompt: string; isCorrect: boolean; annotations?: { text: string; label: string; color: string }[]; explanation: string },
+    { id: string; prompt: string; isCorrect: boolean; annotations?: { text: string; label: string; color: string }[]; explanation: string }
+  ];
+}
+
+interface PromptRemixData {
+  id: string;
+  type: "prompt-remix";
+  originalPrompt: string;
+  originalContext: string;
+  newContext: string;
+  constraints: { id: string; text: string; shouldChange: boolean; reason: string }[];
+}
+
+interface SequenceOrderData {
+  id: string;
+  type: "sequence-order";
+  question: string;
+  description?: string;
+  steps: { id: string; text: string; correctPosition: number }[];
+}
+
+interface IdentifyMissingData {
+  id: string;
+  type: "identify-missing";
+  prompt: string;
+  context?: string;
+  elements: { id: string; label: string; isMissing: boolean; explanation: string }[];
+  minCorrect?: number;
+}
+
+interface AnnotatePromptData {
+  id: string;
+  type: "annotate-prompt";
+  question: string;
+  description?: string;
+  segments: { id: string; text: string; correctLabel: string }[];
+  labels: string[];
+}
+
+interface OutputMatchData {
+  id: string;
+  type: "output-match";
+  question: string;
+  description?: string;
+  pairs: { promptId: string; prompt: string; outputId: string; output: string; explanation: string }[];
+}
+
+type AdvancedCFUData = PromptCompareData | PromptRemixData | SequenceOrderData | IdentifyMissingData | AnnotatePromptData | OutputMatchData;
+
 interface CourseSection {
   id: string;
   type: "context" | "mental-model" | "workshop" | "cfu" | "reflection";
@@ -23,6 +81,7 @@ interface CourseSection {
   content?: React.ReactNode;
   workshopData?: React.ComponentProps<typeof PromptWorkshop>;
   cfuData?: CFUData;
+  advancedCfuData?: AdvancedCFUData;
 }
 
 interface MicroCourseViewerProps {
@@ -59,6 +118,7 @@ export const MicroCourseViewer = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentSection = sections[currentIndex];
   const Icon = sectionIcons[currentSection.type];
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const isCurrentCompleted = courseProgress?.completedSections.includes(currentSection.id) || false;
   const isLastSection = currentIndex === sections.length - 1;
@@ -66,15 +126,41 @@ export const MicroCourseViewer = ({
     (s) => courseProgress?.completedSections.includes(s.id)
   );
 
-  useEffect(() => {
-    // Auto-mark non-interactive sections as complete when viewed
-    if (currentSection.type !== "cfu" && currentSection.type !== "workshop") {
-      const timer = setTimeout(() => {
-        onCompleteSection(currentSection.id);
-      }, 2000);
-      return () => clearTimeout(timer);
+  // Scroll-based completion for content sections
+  const handleScroll = useCallback(() => {
+    if (currentSection.type === "cfu" || currentSection.type === "workshop") return;
+    if (isCurrentCompleted) return;
+    if (!contentRef.current) return;
+
+    const container = contentRef.current;
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight;
+    const clientHeight = container.clientHeight;
+
+    // If content doesn't need scrolling, mark complete after viewing
+    if (scrollHeight <= clientHeight + 10) {
+      onCompleteSection(currentSection.id);
+      return;
     }
-  }, [currentIndex, currentSection, onCompleteSection]);
+
+    // Check if scrolled to bottom (90% threshold)
+    const scrollPercentage = (scrollTop + clientHeight) / scrollHeight;
+    if (scrollPercentage >= 0.9) {
+      onCompleteSection(currentSection.id);
+    }
+  }, [currentSection, isCurrentCompleted, onCompleteSection]);
+
+  // Check completion on mount and section change
+  useEffect(() => {
+    if (currentSection.type === "cfu" || currentSection.type === "workshop") return;
+    
+    // Small delay to let content render
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, handleScroll, currentSection.type]);
 
   const handleNext = () => {
     if (!isLastSection) {
@@ -92,6 +178,89 @@ export const MicroCourseViewer = ({
 
   const handleWorkshopComplete = () => {
     onCompleteSection(currentSection.id);
+  };
+
+  const renderAdvancedCFU = (data: AdvancedCFUData) => {
+    const rawAnswer = courseProgress?.cfuAnswers[data.id];
+    const previousAnswer = rawAnswer ? { selected: rawAnswer.selectedAnswer, isCorrect: rawAnswer.correct } : undefined;
+    const handleAnswer = (cfuId: string, selected: string, correct: boolean) => {
+      onAnswerCFU(cfuId, selected, correct);
+      onCompleteSection(currentSection.id);
+    };
+
+    switch (data.type) {
+      case "prompt-compare":
+        return (
+          <PromptCompare
+            id={data.id}
+            question={data.question}
+            context={data.context}
+            options={data.options}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "prompt-remix":
+        return (
+          <PromptRemix
+            id={data.id}
+            originalPrompt={data.originalPrompt}
+            originalContext={data.originalContext}
+            newContext={data.newContext}
+            constraints={data.constraints}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "sequence-order":
+        return (
+          <SequenceOrder
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            steps={data.steps}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "identify-missing":
+        return (
+          <IdentifyMissing
+            id={data.id}
+            prompt={data.prompt}
+            context={data.context}
+            elements={data.elements}
+            minCorrect={data.minCorrect}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "annotate-prompt":
+        return (
+          <AnnotatePrompt
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            segments={data.segments}
+            labels={data.labels}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      case "output-match":
+        return (
+          <OutputMatch
+            id={data.id}
+            question={data.question}
+            description={data.description}
+            pairs={data.pairs}
+            onAnswer={handleAnswer}
+            previousAnswer={previousAnswer}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -159,6 +328,8 @@ export const MicroCourseViewer = ({
                 </Button>
               )}
             </div>
+          ) : currentSection.type === "cfu" && currentSection.advancedCfuData ? (
+            renderAdvancedCFU(currentSection.advancedCfuData)
           ) : currentSection.type === "cfu" && currentSection.cfuData ? (
             <CFUQuestion
               {...currentSection.cfuData}
@@ -169,21 +340,34 @@ export const MicroCourseViewer = ({
               previousAnswer={courseProgress?.cfuAnswers[currentSection.cfuData.id]}
             />
           ) : currentSection.type === "reflection" ? (
-            <div className="space-y-6">
+            <div 
+              ref={contentRef}
+              onScroll={handleScroll}
+              className="space-y-6 max-h-[60vh] overflow-y-auto"
+            >
               {currentSection.content}
-              <Card className="border-primary/20 bg-primary/5">
+              <Card className="border-border/50 bg-muted/30">
                 <CardContent className="pt-6">
                   <p className="text-sm text-muted-foreground mb-3">
-                    Share your experience with the community:
+                    Have questions or something to share? The community is here:
                   </p>
-                  <Button variant="outline" asChild>
-                    <Link to="/community">Visit Community Discussion</Link>
-                  </Button>
+                  <Link 
+                    to="/community" 
+                    className="text-sm text-primary hover:underline"
+                  >
+                    Visit Community Discussion →
+                  </Link>
                 </CardContent>
               </Card>
             </div>
           ) : (
-            currentSection.content
+            <div 
+              ref={contentRef}
+              onScroll={handleScroll}
+              className="max-h-[60vh] overflow-y-auto"
+            >
+              {currentSection.content}
+            </div>
           )}
         </CardContent>
       </Card>

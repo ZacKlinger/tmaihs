@@ -96,29 +96,38 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
       id: "cfu-1",
       type: "cfu" as const,
       title: "Check 1",
-      cfuData: {
+      advancedCfuData: {
         id: "constraints-cfu-1",
+        type: "prompt-compare" as const,
         question: "Which prompt is more likely to produce immediately usable classroom materials?",
-        type: "spot-the-better-prompt" as const,
+        context: "Consider what constraints each prompt provides to the AI.",
         options: [
           {
-            id: "a",
-            text: "Create a worksheet about fractions for my math class.",
+            id: "A",
+            prompt: "Create a worksheet about fractions for my math class.",
             isCorrect: false,
-            explanation: "This prompt lacks constraints on grade level, specific fraction concepts, length, and format.",
+            annotations: [
+              { text: "worksheet about fractions", label: "Vague topic", color: "bg-amber-500/20" },
+              { text: "my math class", label: "No grade level", color: "bg-amber-500/20" },
+            ],
+            explanation: "This prompt lacks constraints on grade level, specific fraction concepts, length, and format. The AI has to guess at nearly everything.",
           },
           {
-            id: "b",
-            text: "Create a 15-question worksheet on adding fractions with unlike denominators for 5th graders. Include 5 visual models, 5 word problems, and 5 computation problems. Answers should be on a separate page.",
+            id: "B",
+            prompt: "Create a 15-question worksheet on adding fractions with unlike denominators for 5th graders. Include 5 visual models, 5 word problems, and 5 computation problems. Answers should be on a separate page.",
             isCorrect: true,
-            explanation: "This prompt includes specific constraints: grade level, topic focus, question count, variety of problem types, and format requirements.",
+            annotations: [
+              { text: "15-question", label: "Length constraint", color: "bg-green-500/20" },
+              { text: "adding fractions with unlike denominators", label: "Specific topic", color: "bg-green-500/20" },
+              { text: "5th graders", label: "Grade level", color: "bg-green-500/20" },
+              { text: "5 visual models, 5 word problems, and 5 computation", label: "Format structure", color: "bg-green-500/20" },
+              { text: "Answers should be on a separate page", label: "Output format", color: "bg-green-500/20" },
+            ],
+            explanation: "This prompt includes specific constraints: grade level, topic focus, question count, variety of problem types, and format requirements. The AI knows exactly what to produce.",
           },
-          {
-            id: "c",
-            text: "I need something for fractions. Make it good and engaging for students.",
-            isCorrect: false,
-            explanation: "'Good' and 'engaging' are subjective. Without specific constraints, the AI has to guess what you mean.",
-          },
+        ] as [
+          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
+          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string }
         ],
       },
     },
@@ -168,30 +177,20 @@ Format for easy grading: all questions on one half-page.`,
       id: "cfu-2",
       type: "cfu" as const,
       title: "Check 2",
-      cfuData: {
+      advancedCfuData: {
         id: "constraints-cfu-2",
-        question: "A teacher prompts: 'Make a rubric for essays.' The AI returns a generic 4-point rubric that doesn't match their assignment. What mental model would help fix this?",
-        type: "identify-mental-model" as const,
-        options: [
-          {
-            id: "a",
-            text: "Add constraints: specify essay type, grade level, key criteria, and point values",
-            isCorrect: true,
-            explanation: "Exactly! Adding constraints like 'argumentative essay for 10th grade, focusing on thesis clarity, evidence use, and counterargument' would yield a much more useful rubric.",
-          },
-          {
-            id: "b",
-            text: "Try a different AI tool",
-            isCorrect: false,
-            explanation: "The issue isn't the tool—it's the prompt. Any AI will struggle with vague requests.",
-          },
-          {
-            id: "c",
-            text: "Ask the AI to 'make it better'",
-            isCorrect: false,
-            explanation: "'Better' is subjective. The AI doesn't know what 'better' means for your specific context without constraints.",
-          },
+        type: "identify-missing" as const,
+        prompt: "Make a rubric for essays.",
+        context: "A teacher wants to create a rubric but gets generic output. What constraints are missing?",
+        elements: [
+          { id: "essay-type", label: "Essay type (argumentative, narrative, expository)", isMissing: true, explanation: "Different essay types require different criteria" },
+          { id: "grade-level", label: "Grade level", isMissing: true, explanation: "Expectations vary significantly by grade" },
+          { id: "point-scale", label: "Point scale (4-point, 6-point, etc.)", isMissing: true, explanation: "The rubric structure depends on this" },
+          { id: "key-criteria", label: "Specific criteria to evaluate", isMissing: true, explanation: "Thesis, evidence, organization—which matter most?" },
+          { id: "ai-tool", label: "Which AI tool to use", isMissing: false, explanation: "This isn't a constraint—any tool can create rubrics with good prompts" },
+          { id: "word-count", label: "Student essay word count", isMissing: false, explanation: "While helpful, the rubric itself doesn't depend heavily on this" },
         ],
+        minCorrect: 3,
       },
     },
     {

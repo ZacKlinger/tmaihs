@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { TIERS, isTierUnlocked, isTierComplete, getTierProgress as calculateTierProgress, getUnlockedTiers } from '@/lib/studioTiers';
 
 export interface CourseProgress {
   courseId: string;
@@ -110,6 +111,33 @@ export const useStudioProgress = () => {
     [progress]
   );
 
+  // Tier-specific methods
+  const getCompletedCourseIds = useCallback((): string[] => {
+    return Object.values(progress.courses)
+      .filter(course => course.isCompleted)
+      .map(course => course.courseId);
+  }, [progress]);
+
+  const getTierProgressValue = useCallback((tierNumber: number): number => {
+    const completedIds = getCompletedCourseIds();
+    return calculateTierProgress(tierNumber, completedIds);
+  }, [getCompletedCourseIds]);
+
+  const checkTierComplete = useCallback((tierNumber: number): boolean => {
+    const completedIds = getCompletedCourseIds();
+    return isTierComplete(tierNumber, completedIds);
+  }, [getCompletedCourseIds]);
+
+  const checkTierUnlocked = useCallback((tierNumber: number): boolean => {
+    const completedIds = getCompletedCourseIds();
+    return isTierUnlocked(tierNumber, completedIds);
+  }, [getCompletedCourseIds]);
+
+  const getUnlockedTiersList = useCallback((): number[] => {
+    const completedIds = getCompletedCourseIds();
+    return getUnlockedTiers(completedIds);
+  }, [getCompletedCourseIds]);
+
   return {
     progress,
     initCourse,
@@ -117,5 +145,11 @@ export const useStudioProgress = () => {
     answerCFU,
     completeCourse,
     getCourseProgress,
+    // Tier methods
+    getCompletedCourseIds,
+    getTierProgress: getTierProgressValue,
+    isTierComplete: checkTierComplete,
+    isTierUnlocked: checkTierUnlocked,
+    getUnlockedTiers: getUnlockedTiersList,
   };
 };

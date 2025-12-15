@@ -1,9 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle2 } from "lucide-react";
+import { Clock, CheckCircle2, Lock } from "lucide-react";
 import { StudioProgressBar } from "./StudioProgressBar";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface MicroCourseCardProps {
   id: string;
@@ -18,6 +19,9 @@ interface MicroCourseCardProps {
   progress: number;
   isCompleted: boolean;
   isPlaceholder?: boolean;
+  isLocked?: boolean;
+  lockReason?: string;
+  tier?: number;
   icon: LucideIcon;
   onClick: () => void;
 }
@@ -27,40 +31,62 @@ export const MicroCourseCard = ({
   description,
   duration,
   mentalModel,
-  tags,
   progress,
   isCompleted,
   isPlaceholder,
+  isLocked,
+  lockReason,
+  tier,
   icon: Icon,
   onClick,
 }: MicroCourseCardProps) => {
-  return (
+  const cardContent = (
     <Card 
       className={cn(
-        "cursor-pointer transition-all hover:shadow-lg hover:border-primary/30",
-        "group relative overflow-hidden",
-        isPlaceholder && "opacity-60"
+        "transition-all group relative overflow-hidden",
+        !isLocked && !isPlaceholder && "cursor-pointer hover:shadow-lg hover:border-primary/30",
+        (isPlaceholder || isLocked) && "opacity-60 cursor-not-allowed"
       )}
-      onClick={onClick}
+      onClick={() => {
+        if (!isLocked && !isPlaceholder) onClick();
+      }}
     >
-      {isCompleted && (
-        <div className="absolute top-3 right-3">
-          <CheckCircle2 className="w-5 h-5 text-green-500" />
+      {/* Locked overlay */}
+      {isLocked && (
+        <div className="absolute inset-0 bg-background/50 backdrop-blur-[1px] z-10 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-2 text-muted-foreground">
+            <Lock className="w-8 h-8" />
+            <span className="text-xs font-medium">Locked</span>
+          </div>
         </div>
       )}
-      
-      {isPlaceholder && (
-        <Badge variant="secondary" className="absolute top-3 right-3">
-          Coming Soon
-        </Badge>
-      )}
+
+      {/* Status badges */}
+      <div className="absolute top-3 right-3 flex items-center gap-2 z-20">
+        {tier && (
+          <Badge variant="outline" className="text-xs bg-background/80">
+            Tier {tier}
+          </Badge>
+        )}
+        {isCompleted && (
+          <CheckCircle2 className="w-5 h-5 text-green-500" />
+        )}
+        {isPlaceholder && !isLocked && (
+          <Badge variant="secondary">Coming Soon</Badge>
+        )}
+      </div>
 
       <CardHeader className="pb-2">
         <div className="flex items-start gap-3">
-          <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+          <div className={cn(
+            "p-2 rounded-lg transition-colors",
+            isLocked 
+              ? "bg-muted text-muted-foreground"
+              : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground"
+          )}>
             <Icon className="w-5 h-5" />
           </div>
-          <div className="flex-1 space-y-1">
+          <div className="flex-1 space-y-1 pr-16">
             <CardTitle className="text-lg leading-tight">{title}</CardTitle>
             <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
           </div>
@@ -78,18 +104,27 @@ export const MicroCourseCard = ({
           </Badge>
         </div>
 
-        <div className="flex flex-wrap gap-1">
-          {tags.tasks.slice(0, 2).map((task) => (
-            <Badge key={task} variant="secondary" className="text-xs">
-              {task}
-            </Badge>
-          ))}
-        </div>
-
-        {progress > 0 && !isPlaceholder && (
+        {progress > 0 && !isPlaceholder && !isLocked && (
           <StudioProgressBar progress={progress} />
         )}
       </CardContent>
     </Card>
   );
+
+  if (isLocked && lockReason) {
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            {cardContent}
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{lockReason}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  }
+
+  return cardContent;
 };
