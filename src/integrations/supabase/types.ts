@@ -266,7 +266,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_user_votes: {
+        Args: { p_voter_identifier: string }
+        Returns: {
+          target_id: string
+        }[]
+      }
     }
     Enums: {
       post_type: "question" | "concern" | "excitement"
