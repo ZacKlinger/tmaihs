@@ -6,7 +6,7 @@ import { ContentCard } from "@/components/shared/ContentCard";
 import { ResearchNote } from "@/components/shared/ResearchNote";
 import { Button } from "@/components/ui/button";
 import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
-import workExample from "@/assets/work-example.jpg";
+import workExample from "@/assets/work-example-new.png";
 
 const aiTools = [
   {
