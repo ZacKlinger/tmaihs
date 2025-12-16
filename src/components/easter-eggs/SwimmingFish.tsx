@@ -119,7 +119,7 @@ export function SwimmingFish() {
               className="h-auto"
               style={{
                 width: `${180 * fishScale}px`,
-                opacity: 0.38,
+                opacity: 0.65,
                 transform: direction === 'ltr' ? 'scaleX(-1)' : 'scaleX(1)',
               }}
             />
