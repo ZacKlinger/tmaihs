@@ -22,8 +22,12 @@ export function SwimmingFish() {
     lastDirectionRef.current = newDirection;
     setDirection(newDirection);
     
-    // Randomize vertical position (15-85% to avoid header/footer)
-    setVerticalPosition(Math.floor(Math.random() * 70) + 15);
+    // Calculate position relative to current scroll + random viewport position
+    const viewportHeight = window.innerHeight;
+    const scrollY = window.scrollY;
+    const randomViewportPercent = Math.random() * 0.7 + 0.15; // 15-85% of viewport
+    const documentY = scrollY + (viewportHeight * randomViewportPercent);
+    setVerticalPosition(documentY); // Now stores pixel value
     
     // Randomize swim duration (15-22 seconds)
     setSwimDuration(Math.floor(Math.random() * 7) + 15);
@@ -87,11 +91,11 @@ export function SwimmingFish() {
   }
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10" style={{ minHeight: '100%' }}>
       <div
         className="absolute"
         style={{
-          top: `${verticalPosition}%`,
+          top: `${verticalPosition}px`,
           left: direction === 'ltr' ? '-100px' : 'auto',
           right: direction === 'rtl' ? '-100px' : 'auto',
           animation: `fish-swim ${swimDuration}s linear forwards`,
