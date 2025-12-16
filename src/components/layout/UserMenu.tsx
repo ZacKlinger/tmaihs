@@ -1,4 +1,4 @@
-import { User, LogOut, Award } from 'lucide-react';
+import { User, LogOut, Award, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
   DropdownMenu,
@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { useAdminRole } from '@/hooks/useAdminRole';
 
 interface UserMenuProps {
   allCoursesCompleted?: boolean;
@@ -18,6 +19,7 @@ interface UserMenuProps {
 export const UserMenu = ({ allCoursesCompleted }: UserMenuProps) => {
   const { user, signOut } = useAuth();
   const { toast } = useToast();
+  const { isAdmin } = useAdminRole();
 
   const handleSignOut = async () => {
     const { error } = await signOut();
@@ -53,6 +55,17 @@ export const UserMenu = ({ allCoursesCompleted }: UserMenuProps) => {
           <p className="text-xs text-muted-foreground">Signed in</p>
         </div>
         <DropdownMenuSeparator />
+        {isAdmin && (
+          <>
+            <DropdownMenuItem asChild>
+              <Link to="/admin/certificates" className="flex items-center gap-2 cursor-pointer">
+                <Shield className="h-4 w-4" />
+                Admin Dashboard
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
         {allCoursesCompleted && (
           <>
             <DropdownMenuItem asChild>
