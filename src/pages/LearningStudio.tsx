@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { MicroCourseCard } from "@/components/studio/MicroCourseCard";
@@ -23,6 +23,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Target, Users, RefreshCw, Sparkles, Brain, GitBranch, Search, FileSearch, Layers, Compass, GraduationCap } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { isTierUnlocked as checkTierUnlocked } from "@/lib/studioTiers";
+import { useEasterEgg } from "@/contexts/EasterEggContext";
 interface MicroCourse {
   id: string;
   title: string;
@@ -157,6 +158,13 @@ const LearningStudio = () => {
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const [showBypassQuiz, setShowBypassQuiz] = useState(false);
   const [bypassTargetTier, setBypassTargetTier] = useState<number>(2);
+  const { setIsCourseActive } = useEasterEgg();
+
+  // Disable fish easter egg when viewing a micro-course
+  useEffect(() => {
+    setIsCourseActive(!!activeCourse);
+    return () => setIsCourseActive(false);
+  }, [activeCourse, setIsCourseActive]);
   const {
     progress,
     initCourse,
