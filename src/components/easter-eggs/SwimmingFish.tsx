@@ -99,32 +99,26 @@ export function SwimmingFish() {
         }}
         onAnimationEnd={handleAnimationEnd}
       >
-        {/* Bob wrapper */}
+        {/* Undulate wrapper - slow gentle wave */}
         <div 
-          className="animate-fish-bob"
-          style={{ animationDuration: '2s' }}
+          className="animate-fish-undulate"
+          style={{ animationDuration: '4s' }}
         >
-          {/* Undulate wrapper */}
+          {/* Tail wrapper - subtle tail movement */}
           <div 
-            className="animate-fish-undulate"
-            style={{ animationDuration: '0.8s' }}
+            className="animate-fish-tail"
+            style={{ animationDuration: '2s' }}
           >
-            {/* Tail wrapper */}
-            <div 
-              className="animate-fish-tail"
-              style={{ animationDuration: '0.4s' }}
-            >
-              <img
-                src={fishImage}
-                alt=""
-                className="h-auto"
-                style={{
-                  width: `${64 * fishScale}px`,
-                  opacity: 0.3,
-                  transform: direction === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)',
-                }}
-              />
-            </div>
+            <img
+              src={fishImage}
+              alt=""
+              className="h-auto"
+              style={{
+                width: `${180 * fishScale}px`,
+                opacity: 0.5,
+                transform: direction === 'ltr' ? 'scaleX(-1)' : 'scaleX(1)',
+              }}
+            />
           </div>
         </div>
       </div>
