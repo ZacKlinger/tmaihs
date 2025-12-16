@@ -25,9 +25,80 @@ export const usePersistentProgress = () => {
   });
   const [loading, setLoading] = useState(true);
   const saveTimeoutRef = useRef<NodeJS.Timeout>();
+  
+  // Track guest progress before authentication
+  const guestProgressRef = useRef<PersistentProgressState | null>(null);
+  const wasAuthenticatedRef = useRef<boolean>(false);
+
+  // Capture guest progress before auth state changes
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      // Store current progress as guest progress
+      guestProgressRef.current = progress;
+      wasAuthenticatedRef.current = false;
+    }
+  }, [progress, isAuthenticated, authLoading]);
+
+  // Save course progress to database (used during migration and normal saves)
+  const saveCourseProgressToDb = useCallback(async (userId: string, courseId: string, courseProgress: CourseProgress) => {
+    try {
+      const { error } = await supabase
+        .from('course_progress')
+        .upsert({
+          user_id: userId,
+          course_id: courseId,
+          completed_sections: courseProgress.completedSections,
+          cfu_answers: courseProgress.cfuAnswers,
+          is_completed: courseProgress.isCompleted,
+        }, {
+          onConflict: 'user_id,course_id',
+        });
+
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error saving course progress:', error);
+    }
+  }, []);
+
+  // Migrate guest progress to database
+  const migrateGuestProgress = useCallback(async (userId: string, guestProgress: PersistentProgressState) => {
+    console.log('Migrating guest progress to database:', guestProgress);
+    
+    // Save each course with progress
+    const coursesToSave = Object.values(guestProgress.courses).filter(
+      course => course.completedSections.length > 0 || 
+                Object.keys(course.cfuAnswers).length > 0 || 
+                course.isCompleted
+    );
+
+    for (const course of coursesToSave) {
+      await saveCourseProgressToDb(userId, course.courseId, course);
+    }
+
+    // Save bypass attempts
+    for (const [tierNum, attempted] of Object.entries(guestProgress.bypassAttempts)) {
+      if (attempted) {
+        try {
+          await supabase
+            .from('bypass_attempts')
+            .upsert({
+              user_id: userId,
+              tier_number: parseInt(tierNum),
+              attempted: true,
+            }, {
+              onConflict: 'user_id,tier_number',
+            });
+        } catch (error) {
+          console.error('Error saving bypass attempt:', error);
+        }
+      }
+    }
+
+    console.log('Guest progress migration complete');
+  }, [saveCourseProgressToDb]);
 
   // Load progress from database
-  const loadProgress = useCallback(async () => {
+  const loadProgress = useCallback(async (guestProgress: PersistentProgressState | null) => {
     if (!user) {
       setLoading(false);
       return;
@@ -59,39 +130,57 @@ export const usePersistentProgress = () => {
 
       if (overallError) throw overallError;
 
-      // Transform course data
-      const courses: Record<string, CourseProgress> = {};
-      let completedCount = 0;
-      
-      courseData?.forEach((cp) => {
-        courses[cp.course_id] = {
-          courseId: cp.course_id,
-          completedSections: cp.completed_sections || [],
-          cfuAnswers: (cp.cfu_answers as Record<string, { correct: boolean; selectedAnswer: string }>) || {},
-          isCompleted: cp.is_completed,
-        };
-        if (cp.is_completed) completedCount++;
-      });
+      // Check if database is empty (new user) and we have guest progress
+      const hasDbProgress = (courseData && courseData.length > 0);
+      const hasGuestProgress = guestProgress && (
+        Object.keys(guestProgress.courses).length > 0 ||
+        Object.keys(guestProgress.bypassAttempts).length > 0
+      );
 
-      // Transform bypass data
-      const bypassAttempts: Record<number, boolean> = {};
-      bypassData?.forEach((ba) => {
-        bypassAttempts[ba.tier_number] = ba.attempted;
-      });
+      if (!hasDbProgress && hasGuestProgress) {
+        // New user with guest progress - migrate it
+        await migrateGuestProgress(user.id, guestProgress);
+        
+        // Keep guest progress as current state
+        setProgress(guestProgress);
+        guestProgressRef.current = null;
+      } else {
+        // Transform course data from database
+        const courses: Record<string, CourseProgress> = {};
+        let completedCount = 0;
+        
+        courseData?.forEach((cp) => {
+          courses[cp.course_id] = {
+            courseId: cp.course_id,
+            completedSections: cp.completed_sections || [],
+            cfuAnswers: (cp.cfu_answers as Record<string, { correct: boolean; selectedAnswer: string }>) || {},
+            isCompleted: cp.is_completed,
+          };
+          if (cp.is_completed) completedCount++;
+        });
 
-      setProgress({
-        courses,
-        totalCoursesCompleted: completedCount,
-        bypassAttempts,
-        allCoursesCompleted: overallData?.all_courses_completed || false,
-        completedAt: overallData?.completed_at || null,
-      });
+        // Transform bypass data
+        const bypassAttempts: Record<number, boolean> = {};
+        bypassData?.forEach((ba) => {
+          bypassAttempts[ba.tier_number] = ba.attempted;
+        });
+
+        setProgress({
+          courses,
+          totalCoursesCompleted: completedCount,
+          bypassAttempts,
+          allCoursesCompleted: overallData?.all_courses_completed || false,
+          completedAt: overallData?.completed_at || null,
+        });
+        
+        guestProgressRef.current = null;
+      }
     } catch (error) {
       console.error('Error loading progress:', error);
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user, migrateGuestProgress]);
 
   // Save course progress to database (debounced)
   const saveCourseProgress = useCallback(async (courseId: string, courseProgress: CourseProgress) => {
@@ -344,11 +433,17 @@ export const usePersistentProgress = () => {
       .map(course => course.courseId);
   }, [progress]);
 
-  // Load progress when user changes
+  // Load progress when user becomes authenticated
   useEffect(() => {
     if (!authLoading) {
-      if (isAuthenticated) {
-        loadProgress();
+      if (isAuthenticated && !wasAuthenticatedRef.current) {
+        // User just became authenticated - pass guest progress for potential migration
+        const guestProgress = guestProgressRef.current;
+        loadProgress(guestProgress);
+        wasAuthenticatedRef.current = true;
+      } else if (isAuthenticated && wasAuthenticatedRef.current) {
+        // Already authenticated, just load
+        loadProgress(null);
       } else {
         setLoading(false);
       }
