@@ -91,7 +91,7 @@ export function SwimmingFish() {
   }
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10" style={{ minHeight: '100%' }}>
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" style={{ minHeight: '100%' }}>
       <div
         className="absolute"
         style={{
@@ -119,7 +119,7 @@ export function SwimmingFish() {
               className="h-auto"
               style={{
                 width: `${180 * fishScale}px`,
-                opacity: 0.5,
+                opacity: 0.38,
                 transform: direction === 'ltr' ? 'scaleX(-1)' : 'scaleX(1)',
               }}
             />
