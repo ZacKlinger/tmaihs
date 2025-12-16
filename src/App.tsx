@@ -14,6 +14,7 @@ import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Certificate from "./pages/Certificate";
+import AdminCertificates from "./pages/admin/Certificates";
 
 // Ethics pages
 import EnvironmentalConsiderations from "./pages/ethics/EnvironmentalConsiderations";
@@ -47,6 +48,9 @@ const App = () => (
             <Route path="/ethics/social-implications" element={<SocialImplications />} />
             <Route path="/ethics/plagiarism" element={<Plagiarism />} />
             <Route path="/ethics/data-privacy" element={<DataPrivacy />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/certificates" element={<AdminCertificates />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
