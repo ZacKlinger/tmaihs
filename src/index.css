@@ -258,6 +258,12 @@
   }
 }
 
+/* Fish swim animation - must be global for inline styles */
+@keyframes fish-swim {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 200px)); }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
