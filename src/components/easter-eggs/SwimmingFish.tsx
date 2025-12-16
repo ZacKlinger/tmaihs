@@ -11,6 +11,7 @@ export function SwimmingFish() {
   const [direction, setDirection] = useState<Direction>('ltr');
   const [verticalPosition, setVerticalPosition] = useState(50);
   const [swimDuration, setSwimDuration] = useState(18);
+  const [fishScale, setFishScale] = useState(1);
   const lastDirectionRef = useRef<Direction>('rtl'); // Start with rtl so first swim is ltr
   const hasTriggeredInitialRef = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -26,6 +27,9 @@ export function SwimmingFish() {
     
     // Randomize swim duration (15-22 seconds)
     setSwimDuration(Math.floor(Math.random() * 7) + 15);
+    
+    // Randomize size for depth effect (0.6 to 1.4 scale)
+    setFishScale(Math.random() * 0.8 + 0.6);
     
     setIsVisible(true);
   }, []);
@@ -113,9 +117,10 @@ export function SwimmingFish() {
               <img
                 src={fishImage}
                 alt=""
-                className="w-16 h-auto"
+                className="h-auto"
                 style={{
-                  opacity: 0.06,
+                  width: `${64 * fishScale}px`,
+                  opacity: 0.3,
                   transform: direction === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)',
                 }}
               />
