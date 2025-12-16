@@ -120,6 +120,27 @@ export default {
           "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "0.8" },
         },
+        // Fish swimming animations
+        "fish-swim": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(100vw + 200px))" },
+        },
+        "fish-bob": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "25%": { transform: "translateY(-8px)" },
+          "75%": { transform: "translateY(8px)" },
+        },
+        "fish-undulate": {
+          "0%, 100%": { transform: "scaleX(1) skewY(0deg)" },
+          "25%": { transform: "scaleX(0.97) skewY(1deg)" },
+          "50%": { transform: "scaleX(1.02) skewY(0deg)" },
+          "75%": { transform: "scaleX(0.97) skewY(-1deg)" },
+        },
+        "fish-tail": {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "33%": { transform: "rotate(2deg)" },
+          "66%": { transform: "rotate(-2deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -131,6 +152,10 @@ export default {
         "wing-spread": "wing-spread 0.8s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
+        // Fish animations
+        "fish-bob": "fish-bob 2s ease-in-out infinite",
+        "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
+        "fish-tail": "fish-tail 0.4s ease-in-out infinite",
       },
     },
   },
