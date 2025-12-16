@@ -35,20 +35,19 @@ export function useDiscussion() {
 
   const fetchPosts = async () => {
     try {
-      // Select only public fields, excluding moderation_notes and anonymous_identifier
+      // Use public views to ensure anonymous_identifier is never exposed at database level
+      // Views exclude sensitive columns and enforce is_hidden=false filter
       const { data: postsData, error: postsError } = await supabase
-        .from('discussion_posts')
+        .from('discussion_posts_public')
         .select('id, author_name, is_anonymous, post_type, content, upvotes, created_at, updated_at')
-        .eq('is_hidden', false)
         .order('created_at', { ascending: false });
 
       if (postsError) throw postsError;
 
-      // Select only public fields for replies
+      // Use public view for replies - excludes anonymous_identifier
       const { data: repliesData, error: repliesError } = await supabase
-        .from('discussion_replies')
+        .from('discussion_replies_public')
         .select('id, post_id, author_name, is_anonymous, content, upvotes, created_at')
-        .eq('is_hidden', false)
         .order('created_at', { ascending: true });
 
       if (repliesError) throw repliesError;
