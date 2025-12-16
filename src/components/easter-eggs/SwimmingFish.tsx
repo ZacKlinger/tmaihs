@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useFishVisibility } from '@/hooks/useFishVisibility';
 import { getRandomInterval, PageDensity } from '@/lib/fishConfig';
-import fishImage from '@/assets/swimming-fish.png';
+import fishImage from '@/assets/swimming-fish.svg';
 
 type Direction = 'ltr' | 'rtl';
 
