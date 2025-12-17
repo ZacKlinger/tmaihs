@@ -12,6 +12,15 @@ const HARMFUL_PATTERNS = [
   /\b(drug|cocaine|heroin|meth)\b/gi,
 ];
 
+// HTML/script injection patterns for XSS prevention
+const HTML_INJECTION_PATTERN = /<[^>]+>/;
+const SCRIPT_PATTERNS = [
+  /<script\b[^>]*>/gi,
+  /javascript:/gi,
+  /on\w+\s*=/gi, // onclick=, onerror=, etc.
+  /data:/gi,
+];
+
 export interface FilterResult {
   isClean: boolean;
   reason?: string;
@@ -24,6 +33,26 @@ export interface FilterResult {
 export function filterContent(text: string): FilterResult {
   const lowerText = text.toLowerCase();
   const flaggedWords: string[] = [];
+
+  // Check for HTML/script injection (XSS prevention)
+  if (HTML_INJECTION_PATTERN.test(text)) {
+    return {
+      isClean: false,
+      reason: 'HTML tags are not allowed in content',
+      flaggedWords: ['HTML tags']
+    };
+  }
+
+  // Check for script injection patterns
+  for (const pattern of SCRIPT_PATTERNS) {
+    if (pattern.test(text)) {
+      return {
+        isClean: false,
+        reason: 'Script content is not allowed',
+        flaggedWords: ['script injection']
+      };
+    }
+  }
 
   // Check for profanity
   for (const word of PROFANITY_LIST) {

@@ -14,6 +14,33 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per 10 minutes per IP (tightened for security)
 
+// HTML/XSS patterns for server-side sanitization
+const HTML_TAG_PATTERN = /<[^>]+>/;
+const SCRIPT_INJECTION_PATTERNS = [
+  /javascript:/gi,
+  /on\w+\s*=/gi,
+  /data:/gi,
+];
+
+/**
+ * Validate input for HTML tags and script injection (XSS prevention)
+ */
+function sanitizeAndValidate(text: string): { sanitized: string; isValid: boolean; reason?: string } {
+  // Check for script injection patterns first
+  for (const pattern of SCRIPT_INJECTION_PATTERNS) {
+    if (pattern.test(text)) {
+      return { sanitized: text, isValid: false, reason: 'Script content is not allowed' };
+    }
+  }
+  
+  // Check for HTML tags
+  if (HTML_TAG_PATTERN.test(text)) {
+    return { sanitized: text, isValid: false, reason: 'HTML tags are not allowed' };
+  }
+  
+  return { sanitized: text, isValid: true };
+}
+
 function getClientIP(req: Request): string {
   // Try various headers for client IP
   const forwarded = req.headers.get('x-forwarded-for');
@@ -118,6 +145,34 @@ serve(async (req) => {
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // XSS Prevention: Validate content for HTML/script injection
+    const contentValidation = sanitizeAndValidate(content);
+    if (!contentValidation.isValid) {
+      console.log(`Content rejected - XSS risk: ${contentValidation.reason}`);
+      return new Response(
+        JSON.stringify({ 
+          isAppropriate: false, 
+          reason: contentValidation.reason 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // XSS Prevention: Validate author name for HTML/script injection
+    if (authorName && typeof authorName === 'string') {
+      const nameValidation = sanitizeAndValidate(authorName);
+      if (!nameValidation.isValid) {
+        console.log(`Author name rejected - XSS risk: ${nameValidation.reason}`);
+        return new Response(
+          JSON.stringify({ 
+            isAppropriate: false, 
+            reason: `Author name: ${nameValidation.reason}` 
+          }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     console.log(`Moderating content (${content.length} chars) from client: ${clientId}`);
