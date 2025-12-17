@@ -15,6 +15,9 @@ export const useAdminRole = () => {
         return;
       }
 
+      // Reset loading state when user changes to prevent race condition
+      setIsLoading(true);
+
       try {
         const { data, error } = await supabase
           .from('user_roles')
