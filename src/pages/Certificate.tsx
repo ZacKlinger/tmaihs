@@ -1,14 +1,16 @@
 import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import { useProfile } from '@/hooks/useProfile';
 import { usePersistentProgress } from '@/hooks/usePersistentProgress';
-import { Award, Download, ArrowLeft, Loader2 } from 'lucide-react';
+import { Award, Download, ArrowLeft, Loader2, User } from 'lucide-react';
 import { TIERS, COURSE_NAMES } from '@/lib/studioTiers';
 
 const Certificate = () => {
   const { user, loading: authLoading } = useAuth();
+  const { displayName, loading: profileLoading } = useProfile();
   const { allCoursesCompleted, completedAt, loading: progressLoading } = usePersistentProgress();
   const navigate = useNavigate();
   const certificateRef = useRef<HTMLDivElement>(null);
@@ -16,19 +18,19 @@ const Certificate = () => {
   const allCourseIds = TIERS.flatMap(tier => tier.courseIds);
 
   useEffect(() => {
-    if (!authLoading && !progressLoading) {
+    if (!authLoading && !progressLoading && !profileLoading) {
       if (!user || !allCoursesCompleted) {
         navigate('/learning-studio');
       }
     }
-  }, [user, allCoursesCompleted, authLoading, progressLoading, navigate]);
+  }, [user, allCoursesCompleted, authLoading, progressLoading, profileLoading, navigate]);
 
   const handleDownload = () => {
     // Simple print-to-PDF approach
     window.print();
   };
 
-  if (authLoading || progressLoading) {
+  if (authLoading || progressLoading || profileLoading) {
     return (
       <Layout>
         <div className="min-h-[60vh] flex items-center justify-center">
@@ -93,8 +95,21 @@ const Certificate = () => {
           <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground mb-2">This certifies that</p>
             <p className="text-2xl font-display font-semibold text-foreground border-b-2 border-primary/30 pb-2 inline-block px-8">
-              {user.email}
+              {displayName || user.email}
             </p>
+            {!displayName && (
+              <p className="text-xs text-muted-foreground mt-3 print:hidden flex items-center justify-center gap-1">
+                <User className="h-3 w-3" />
+                Want your name here?{' '}
+                <button 
+                  onClick={() => navigate('/learning-studio')}
+                  className="text-primary hover:underline"
+                >
+                  Update your profile
+                </button>{' '}
+                from the user menu.
+              </p>
+            )}
           </div>
 
           {/* Achievement */}
