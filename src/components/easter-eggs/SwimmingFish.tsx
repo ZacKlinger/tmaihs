@@ -108,7 +108,7 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
       hasTriggeredInitialRef.current = true;
       setTimeout(() => {
         triggerSwim();
-      }, 2000 + initialDelay);
+      }, 1000 + initialDelay);
     } else if (!state.isVisible) {
       scheduleNextSwim(density);
     }
@@ -169,8 +169,8 @@ export function SwimmingFish() {
     return null;
   }
 
-  // Random initial delay for second fish (3-8 seconds offset)
-  const secondFishDelay = Math.random() * 5000 + 3000;
+  // Random initial delay for second fish (2-5 seconds offset)
+  const secondFishDelay = Math.random() * 3000 + 2000;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10" style={{ minHeight: '100%' }}>
