@@ -42,12 +42,12 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
     // Random direction (true 50/50, not alternating)
     const newDirection: Direction = Math.random() > 0.5 ? 'ltr' : 'rtl';
     
-    // Random scale (depth) - 0.6 to 1.4
-    const scale = Math.random() * 0.8 + 0.6;
+    // Random scale (depth) - 0.5 to 1.5 for dramatic size variation
+    const scale = Math.random() * 1.0 + 0.5;
     
     // Derive opacity from scale (closer = more visible)
-    // Scale 0.6 → opacity 0.55, Scale 1.4 → opacity 0.95
-    const opacity = 0.4 + (scale - 0.6) * 0.6875;
+    // Scale 0.5 → opacity 0.5, Scale 1.5 → opacity 0.95
+    const opacity = 0.5 + (scale - 0.5) * 0.45;
     
     // Derive speed from scale (closer = faster)
     // Scale 0.6 → 21s, Scale 1.4 → 11s
@@ -162,7 +162,7 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
 
 export function SwimmingFish() {
   const { density, isEnabled } = useFishVisibility();
-  const [secondFishDelay] = useState(() => Math.random() * 2000 + 1500);
+  const [secondFishDelay] = useState(() => Math.random() * 1200 + 800);
 
   if (!isEnabled || density === 'never') {
     return null;
