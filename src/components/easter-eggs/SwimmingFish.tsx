@@ -46,8 +46,8 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
     const scale = Math.random() * 0.8 + 0.6;
     
     // Derive opacity from scale (closer = more visible)
-    // Scale 0.6 → opacity 0.45, Scale 1.4 → opacity 0.95
-    const opacity = 0.3 + (scale - 0.6) * 0.8125;
+    // Scale 0.6 → opacity 0.55, Scale 1.4 → opacity 0.95
+    const opacity = 0.4 + (scale - 0.6) * 0.6875;
     
     // Derive speed from scale (closer = faster)
     // Scale 0.6 → 21s, Scale 1.4 → 11s
@@ -108,7 +108,7 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
       hasTriggeredInitialRef.current = true;
       setTimeout(() => {
         triggerSwim();
-      }, 1000 + initialDelay);
+      }, 500 + initialDelay);
     } else if (!state.isVisible) {
       scheduleNextSwim(density);
     }
@@ -164,13 +164,11 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
 
 export function SwimmingFish() {
   const { density, isEnabled } = useFishVisibility();
+  const [secondFishDelay] = useState(() => Math.random() * 2000 + 1500);
 
   if (!isEnabled || density === 'never') {
     return null;
   }
-
-  // Random initial delay for second fish (2-5 seconds offset)
-  const secondFishDelay = Math.random() * 3000 + 2000;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10" style={{ minHeight: '100%' }}>
