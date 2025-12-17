@@ -129,10 +129,8 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
       className="absolute"
       style={{
         top: `${state.verticalPosition}px`,
-        left: state.direction === 'ltr' ? '-100px' : 'auto',
-        right: state.direction === 'rtl' ? '-100px' : 'auto',
-        animation: `fish-swim ${state.swimDuration}s linear forwards`,
-        animationDirection: state.direction === 'rtl' ? 'reverse' : 'normal',
+        left: state.direction === 'ltr' ? '-100px' : 'calc(100vw + 100px)',
+        animation: `${state.direction === 'ltr' ? 'fish-swim' : 'fish-swim-rtl'} ${state.swimDuration}s linear forwards`,
       }}
       onAnimationEnd={handleAnimationEnd}
     >
