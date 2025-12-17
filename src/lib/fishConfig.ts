@@ -18,9 +18,9 @@ export const PAGE_DENSITY_MAP: Record<string, PageDensity> = {
 
 // Interval ranges in milliseconds [min, max]
 export const INTERVAL_RANGES: Record<Exclude<PageDensity, 'never'>, [number, number]> = {
-  low: [8000, 15000],       // 8-15 seconds (frequent on homepage, allows overlap)
-  medium: [20000, 45000],   // 20-45 seconds
-  high: [60000, 120000],    // 1-2 minutes
+  low: [3000, 7000],        // 3-7 seconds (frequent on homepage, guarantees overlap)
+  medium: [15000, 30000],   // 15-30 seconds
+  high: [45000, 90000],     // 45-90 seconds
 };
 
 export function getPageDensity(pathname: string): PageDensity {
