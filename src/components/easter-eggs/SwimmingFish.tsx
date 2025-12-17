@@ -46,8 +46,8 @@ function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProp
     const scale = Math.random() * 1.0 + 0.5;
     
     // Derive opacity from scale (closer = more visible)
-    // Scale 0.5 → opacity 0.5, Scale 1.5 → opacity 0.95
-    const opacity = 0.5 + (scale - 0.5) * 0.45;
+    // Scale 0.5 → opacity 0.7, Scale 1.5 → opacity 1.0
+    const opacity = 0.7 + (scale - 0.5) * 0.3;
     
     // Derive speed from scale (closer = faster)
     // Scale 0.6 → 21s, Scale 1.4 → 11s
