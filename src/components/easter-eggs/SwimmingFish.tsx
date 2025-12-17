@@ -5,37 +5,74 @@ import fishImage from '@/assets/swimming-fish.svg';
 
 type Direction = 'ltr' | 'rtl';
 
-export function SwimmingFish() {
-  const { density, isEnabled } = useFishVisibility();
-  const [isVisible, setIsVisible] = useState(false);
-  const [direction, setDirection] = useState<Direction>('ltr');
-  const [verticalPosition, setVerticalPosition] = useState(50);
-  const [swimDuration, setSwimDuration] = useState(18);
-  const [fishScale, setFishScale] = useState(1);
-  const lastDirectionRef = useRef<Direction>('rtl'); // Start with rtl so first swim is ltr
+interface FishState {
+  isVisible: boolean;
+  direction: Direction;
+  verticalPosition: number;
+  swimDuration: number;
+  fishScale: number;
+  opacity: number;
+  undulateDuration: number;
+  tailDuration: number;
+}
+
+interface SingleFishProps {
+  fishId: number;
+  initialDelay: number;
+  density: Exclude<PageDensity, 'never'>;
+  isEnabled: boolean;
+}
+
+function SingleFish({ fishId, initialDelay, density, isEnabled }: SingleFishProps) {
+  const [state, setState] = useState<FishState>({
+    isVisible: false,
+    direction: 'ltr',
+    verticalPosition: 50,
+    swimDuration: 18,
+    fishScale: 1,
+    opacity: 0.7,
+    undulateDuration: 4,
+    tailDuration: 2,
+  });
+  
   const hasTriggeredInitialRef = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const triggerSwim = useCallback(() => {
-    // Alternate direction
-    const newDirection: Direction = lastDirectionRef.current === 'ltr' ? 'rtl' : 'ltr';
-    lastDirectionRef.current = newDirection;
-    setDirection(newDirection);
+    // Random direction (true 50/50, not alternating)
+    const newDirection: Direction = Math.random() > 0.5 ? 'ltr' : 'rtl';
+    
+    // Random scale (depth) - 0.6 to 1.4
+    const scale = Math.random() * 0.8 + 0.6;
+    
+    // Derive opacity from scale (closer = more visible)
+    // Scale 0.6 → opacity 0.45, Scale 1.4 → opacity 0.95
+    const opacity = 0.3 + (scale - 0.6) * 0.8125;
+    
+    // Derive speed from scale (closer = faster)
+    // Scale 0.6 → 21s, Scale 1.4 → 11s
+    const duration = Math.round(28 - (scale * 12));
+    
+    // Randomize animation durations for organic feel
+    const undulateDuration = 3.7 + Math.random() * 0.6; // 3.7-4.3s
+    const tailDuration = 1.8 + Math.random() * 0.4; // 1.8-2.2s
     
     // Calculate position relative to current scroll + random viewport position
     const viewportHeight = window.innerHeight;
     const scrollY = window.scrollY;
     const randomViewportPercent = Math.random() * 0.7 + 0.15; // 15-85% of viewport
     const documentY = scrollY + (viewportHeight * randomViewportPercent);
-    setVerticalPosition(documentY); // Now stores pixel value
     
-    // Randomize swim duration (15-22 seconds)
-    setSwimDuration(Math.floor(Math.random() * 7) + 15);
-    
-    // Randomize size for depth effect (0.6 to 1.4 scale)
-    setFishScale(Math.random() * 0.8 + 0.6);
-    
-    setIsVisible(true);
+    setState({
+      isVisible: true,
+      direction: newDirection,
+      verticalPosition: documentY,
+      swimDuration: duration,
+      fishScale: scale,
+      opacity,
+      undulateDuration,
+      tailDuration,
+    });
   }, []);
 
   const scheduleNextSwim = useCallback((currentDensity: Exclude<PageDensity, 'never'>) => {
@@ -49,33 +86,30 @@ export function SwimmingFish() {
     }, interval);
   }, [triggerSwim]);
 
-  // Handle animation end
   const handleAnimationEnd = useCallback(() => {
-    setIsVisible(false);
+    setState(prev => ({ ...prev, isVisible: false }));
     
-    if (isEnabled && density !== 'never') {
+    if (isEnabled) {
       scheduleNextSwim(density);
     }
   }, [isEnabled, density, scheduleNextSwim]);
 
-  // Initial trigger on homepage and scheduling
+  // Initial trigger and scheduling
   useEffect(() => {
-    if (!isEnabled || density === 'never') {
+    if (!isEnabled) {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
       return;
     }
 
-    // Trigger immediately on first load of homepage
-    if (!hasTriggeredInitialRef.current && density === 'low') {
+    // Trigger with initial delay
+    if (!hasTriggeredInitialRef.current) {
       hasTriggeredInitialRef.current = true;
-      // Small delay to let the page render first
       setTimeout(() => {
         triggerSwim();
-      }, 2000);
-    } else if (!isVisible) {
-      // Schedule next swim if not currently swimming
+      }, 2000 + initialDelay);
+    } else if (!state.isVisible) {
       scheduleNextSwim(density);
     }
 
@@ -84,48 +118,74 @@ export function SwimmingFish() {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isEnabled, density, triggerSwim, scheduleNextSwim, isVisible]);
+  }, [isEnabled, density, triggerSwim, scheduleNextSwim, state.isVisible, initialDelay]);
 
-  if (!isEnabled || !isVisible) {
+  if (!isEnabled || !state.isVisible) {
     return null;
   }
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10" style={{ minHeight: '100%' }}>
-      <div
-        className="absolute"
-        style={{
-          top: `${verticalPosition}px`,
-          left: direction === 'ltr' ? '-100px' : 'auto',
-          right: direction === 'rtl' ? '-100px' : 'auto',
-          animation: `fish-swim ${swimDuration}s linear forwards`,
-          animationDirection: direction === 'rtl' ? 'reverse' : 'normal',
-        }}
-        onAnimationEnd={handleAnimationEnd}
+    <div
+      className="absolute"
+      style={{
+        top: `${state.verticalPosition}px`,
+        left: state.direction === 'ltr' ? '-100px' : 'auto',
+        right: state.direction === 'rtl' ? '-100px' : 'auto',
+        animation: `fish-swim ${state.swimDuration}s linear forwards`,
+        animationDirection: state.direction === 'rtl' ? 'reverse' : 'normal',
+      }}
+      onAnimationEnd={handleAnimationEnd}
+    >
+      {/* Undulate wrapper - slow gentle wave */}
+      <div 
+        className="animate-fish-undulate"
+        style={{ animationDuration: `${state.undulateDuration}s` }}
       >
-        {/* Undulate wrapper - slow gentle wave */}
+        {/* Tail wrapper - subtle tail movement */}
         <div 
-          className="animate-fish-undulate"
-          style={{ animationDuration: '4s' }}
+          className="animate-fish-tail"
+          style={{ animationDuration: `${state.tailDuration}s` }}
         >
-          {/* Tail wrapper - subtle tail movement */}
-          <div 
-            className="animate-fish-tail"
-            style={{ animationDuration: '2s' }}
-          >
-            <img
-              src={fishImage}
-              alt=""
-              className="h-auto"
-              style={{
-                width: `${180 * fishScale}px`,
-                opacity: 0.65,
-                transform: direction === 'ltr' ? 'scaleX(-1)' : 'scaleX(1)',
-              }}
-            />
-          </div>
+          <img
+            src={fishImage}
+            alt=""
+            className="h-auto"
+            style={{
+              width: `${180 * state.fishScale}px`,
+              opacity: state.opacity,
+              transform: state.direction === 'ltr' ? 'scaleX(-1)' : 'scaleX(1)',
+            }}
+          />
         </div>
       </div>
+    </div>
+  );
+}
+
+export function SwimmingFish() {
+  const { density, isEnabled } = useFishVisibility();
+
+  if (!isEnabled || density === 'never') {
+    return null;
+  }
+
+  // Random initial delay for second fish (3-8 seconds offset)
+  const secondFishDelay = Math.random() * 5000 + 3000;
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10" style={{ minHeight: '100%' }}>
+      <SingleFish 
+        fishId={1} 
+        initialDelay={0} 
+        density={density} 
+        isEnabled={isEnabled} 
+      />
+      <SingleFish 
+        fishId={2} 
+        initialDelay={secondFishDelay} 
+        density={density} 
+        isEnabled={isEnabled} 
+      />
     </div>
   );
 }
