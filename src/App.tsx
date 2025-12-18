@@ -15,7 +15,7 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Certificate from "./pages/Certificate";
 import Verify from "./pages/Verify";
-import AdminCertificates from "./pages/admin/Certificates";
+import AdminDashboard from "./pages/admin/Dashboard";
 
 // Ethics pages
 import EnvironmentalConsiderations from "./pages/ethics/EnvironmentalConsiderations";
@@ -52,7 +52,7 @@ const App = () => (
             <Route path="/ethics/data-privacy" element={<DataPrivacy />} />
             
             {/* Admin Routes */}
-            <Route path="/admin/certificates" element={<AdminCertificates />} />
+            <Route path="/admin" element={<AdminDashboard />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

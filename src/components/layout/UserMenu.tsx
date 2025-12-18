@@ -105,7 +105,7 @@ export const UserMenu = ({ allCoursesCompleted }: UserMenuProps) => {
           {isAdmin && (
             <>
               <DropdownMenuItem asChild>
-                <Link to="/admin/certificates" className="flex items-center gap-2 cursor-pointer">
+                <Link to="/admin" className="flex items-center gap-2 cursor-pointer">
                   <Shield className="h-4 w-4" />
                   Admin Dashboard
                 </Link>

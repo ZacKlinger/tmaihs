@@ -3,20 +3,23 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 
 export const useAdminRole = () => {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Wait for auth to finish loading first
+    if (authLoading) {
+      setIsLoading(true);
+      return;
+    }
+
     const checkAdminRole = async () => {
       if (!user) {
         setIsAdmin(false);
         setIsLoading(false);
         return;
       }
-
-      // Reset loading state when user changes to prevent race condition
-      setIsLoading(true);
 
       try {
         const { data, error } = await supabase
@@ -41,7 +44,7 @@ export const useAdminRole = () => {
     };
 
     checkAdminRole();
-  }, [user]);
+  }, [user, authLoading]);
 
   return { isAdmin, isLoading };
 };
