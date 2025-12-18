@@ -68,11 +68,48 @@ export type Database = {
         }
         Relationships: []
       }
+      check_attempts: {
+        Row: {
+          answers: Json
+          check_id: string
+          created_at: string
+          id: string
+          item_correctness: Json
+          module_id: string
+          passed: boolean
+          score: number
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          check_id: string
+          created_at?: string
+          id?: string
+          item_correctness?: Json
+          module_id: string
+          passed?: boolean
+          score?: number
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          check_id?: string
+          created_at?: string
+          id?: string
+          item_correctness?: Json
+          module_id?: string
+          passed?: boolean
+          score?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       course_progress: {
         Row: {
           cfu_answers: Json
           completed_sections: string[]
           course_id: string
+          course_status: string
           created_at: string
           id: string
           is_completed: boolean
@@ -83,6 +120,7 @@ export type Database = {
           cfu_answers?: Json
           completed_sections?: string[]
           course_id: string
+          course_status?: string
           created_at?: string
           id?: string
           is_completed?: boolean
@@ -93,6 +131,7 @@ export type Database = {
           cfu_answers?: Json
           completed_sections?: string[]
           course_id?: string
+          course_status?: string
           created_at?: string
           id?: string
           is_completed?: boolean
@@ -249,6 +288,63 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      module_definitions: {
+        Row: {
+          course_id: string
+          created_at: string
+          id: string
+          module_id: string
+          position: number
+          title: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          id?: string
+          module_id: string
+          position: number
+          title: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          id?: string
+          module_id?: string
+          position?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      module_progress: {
+        Row: {
+          created_at: string
+          id: string
+          mastered: boolean
+          mastered_at: string | null
+          module_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          mastered?: boolean
+          mastered_at?: string | null
+          module_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          mastered?: boolean
+          mastered_at?: string | null
+          module_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       post_moderation: {
         Row: {
