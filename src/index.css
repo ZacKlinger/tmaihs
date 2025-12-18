@@ -6,41 +6,41 @@
 
 @layer base {
   :root {
-    /* Phoenix-inspired palette - warm, uplifting, scholarly */
-    --background: 40 33% 98%;
+    /* Clean, scholarly palette with phoenix burgundy accent */
+    --background: 0 0% 99%;
     --foreground: 345 25% 15%;
 
-    --card: 40 40% 97%;
+    --card: 0 0% 98%;
     --card-foreground: 345 25% 15%;
 
-    --popover: 40 40% 97%;
+    --popover: 0 0% 98%;
     --popover-foreground: 345 25% 15%;
 
     /* Primary: Deep Phoenix Burgundy */
     --primary: 345 55% 28%;
-    --primary-foreground: 40 33% 98%;
+    --primary-foreground: 0 0% 99%;
 
-    /* Secondary: Warm Cream */
-    --secondary: 35 40% 92%;
+    /* Secondary: Neutral Warm Gray */
+    --secondary: 30 10% 94%;
     --secondary-foreground: 345 25% 20%;
 
-    /* Muted: Soft Sand */
-    --muted: 35 25% 90%;
+    /* Muted: Soft Gray */
+    --muted: 30 5% 92%;
     --muted-foreground: 345 15% 45%;
 
-    /* Accent: Ember Orange */
-    --accent: 18 75% 55%;
-    --accent-foreground: 40 33% 98%;
+    /* Accent: Phoenix Burgundy (same as primary for restraint) */
+    --accent: 345 45% 35%;
+    --accent-foreground: 0 0% 99%;
 
     /* Charcoal for text emphasis */
     --charcoal: 345 20% 20%;
-    --charcoal-foreground: 40 33% 98%;
+    --charcoal-foreground: 0 0% 99%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive-foreground: 0 0% 99%;
 
-    --border: 35 30% 88%;
-    --input: 35 30% 88%;
+    --border: 30 10% 90%;
+    --input: 30 10% 90%;
     --ring: 345 55% 28%;
 
     --radius: 0.75rem;
@@ -50,7 +50,7 @@
     --phoenix-gradient-end: 345 55% 28%;
     --phoenix-glow: 345 55% 35%;
     --phoenix-ember: 345 60% 32%;
-    --phoenix-cream: 40 45% 96%;
+    --phoenix-cream: 30 15% 97%;
 
     /* Typography */
     --font-serif: 'Crimson Pro', Georgia, serif;
@@ -59,16 +59,16 @@
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(345 30% 20% / 0.08);
     --shadow-card: 0 8px 30px -8px hsl(345 30% 20% / 0.12);
-    --shadow-glow: 0 0 40px hsl(18 85% 65% / 0.2);
+    --shadow-glow: 0 0 40px hsl(345 55% 35% / 0.15);
 
     /* Sidebar */
-    --sidebar-background: 40 40% 97%;
+    --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 345 25% 20%;
     --sidebar-primary: 345 55% 28%;
-    --sidebar-primary-foreground: 40 33% 98%;
-    --sidebar-accent: 35 40% 92%;
+    --sidebar-primary-foreground: 0 0% 99%;
+    --sidebar-accent: 30 10% 94%;
     --sidebar-accent-foreground: 345 25% 20%;
-    --sidebar-border: 35 30% 88%;
+    --sidebar-border: 30 10% 90%;
     --sidebar-ring: 345 55% 28%;
   }
 

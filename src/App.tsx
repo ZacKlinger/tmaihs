@@ -14,6 +14,7 @@ import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Certificate from "./pages/Certificate";
+import Verify from "./pages/Verify";
 import AdminCertificates from "./pages/admin/Certificates";
 
 // Ethics pages
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/certificate" element={<Certificate />} />
+            <Route path="/verify/:certificateId" element={<Verify />} />
             
             {/* Ethics & Safety Routes */}
             <Route path="/ethics-safety" element={<Navigate to="/ethics/environmental" replace />} />

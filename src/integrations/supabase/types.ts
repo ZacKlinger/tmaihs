@@ -38,6 +38,36 @@ export type Database = {
         }
         Relationships: []
       }
+      certificates: {
+        Row: {
+          certificate_id: string
+          created_at: string
+          id: string
+          issued_at: string
+          recipient_email: string
+          recipient_name: string
+          user_id: string
+        }
+        Insert: {
+          certificate_id: string
+          created_at?: string
+          id?: string
+          issued_at?: string
+          recipient_email: string
+          recipient_name: string
+          user_id: string
+        }
+        Update: {
+          certificate_id?: string
+          created_at?: string
+          id?: string
+          issued_at?: string
+          recipient_email?: string
+          recipient_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       course_progress: {
         Row: {
           cfu_answers: Json
