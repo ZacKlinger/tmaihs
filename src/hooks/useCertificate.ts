@@ -106,11 +106,20 @@ export function useCertificate(userId: string | undefined): UseCertificateResult
   return { certificate, loading, error, issueCertificate };
 }
 
+// Public verification data (excludes PII like email and user_id)
+interface VerificationData {
+  certificate_id: string;
+  recipient_name: string;
+  issued_at: string;
+  created_at: string;
+}
+
 /**
  * Hook to verify a certificate by its public ID
+ * Uses the certificate_verification view which excludes PII
  */
 export function useVerifyCertificate(certificateId: string | undefined) {
-  const [certificate, setCertificate] = useState<Certificate | null>(null);
+  const [certificate, setCertificate] = useState<VerificationData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [notFound, setNotFound] = useState(false);
@@ -124,9 +133,10 @@ export function useVerifyCertificate(certificateId: string | undefined) {
       }
 
       try {
+        // Query the public verification view (excludes email and user_id)
         const { data, error: fetchError } = await supabase
-          .from('certificates')
-          .select('*')
+          .from('certificate_verification')
+          .select('certificate_id, recipient_name, issued_at, created_at')
           .eq('certificate_id', certificateId)
           .maybeSingle();
 
