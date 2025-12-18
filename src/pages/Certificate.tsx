@@ -1,22 +1,32 @@
 import { useEffect, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { usePersistentProgress } from '@/hooks/usePersistentProgress';
-import { Award, Download, ArrowLeft, Loader2, User } from 'lucide-react';
-import { TIERS, COURSE_NAMES } from '@/lib/studioTiers';
+import { useCertificate } from '@/hooks/useCertificate';
+import { getVerificationUrl } from '@/lib/certificateUtils';
+import { 
+  CREDENTIAL_TITLE, 
+  ISSUER, 
+  PD_STATEMENT,
+  COMPETENCIES,
+} from '@/lib/credentialContent';
+import { Download, ArrowLeft, Loader2, User } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 const Certificate = () => {
   const { user, loading: authLoading } = useAuth();
   const { displayName, loading: profileLoading } = useProfile();
   const { allCoursesCompleted, completedAt, loading: progressLoading } = usePersistentProgress();
+  const { certificate, loading: certLoading, issueCertificate } = useCertificate(user?.id);
   const navigate = useNavigate();
   const certificateRef = useRef<HTMLDivElement>(null);
 
-  const allCourseIds = TIERS.flatMap(tier => tier.courseIds);
+  const isLoading = authLoading || progressLoading || profileLoading || certLoading;
 
+  // Redirect if not eligible
   useEffect(() => {
     if (!authLoading && !progressLoading && !profileLoading) {
       if (!user || !allCoursesCompleted) {
@@ -25,16 +35,30 @@ const Certificate = () => {
     }
   }, [user, allCoursesCompleted, authLoading, progressLoading, profileLoading, navigate]);
 
+  // Auto-issue certificate when eligible
+  useEffect(() => {
+    async function autoIssue() {
+      if (user && allCoursesCompleted && !certificate && !certLoading) {
+        const name = displayName || user.email || 'Educator';
+        const email = user.email || '';
+        await issueCertificate(name, email);
+      }
+    }
+    autoIssue();
+  }, [user, allCoursesCompleted, certificate, certLoading, displayName, issueCertificate]);
+
   const handleDownload = () => {
-    // Simple print-to-PDF approach
     window.print();
   };
 
-  if (authLoading || progressLoading || profileLoading) {
+  if (isLoading) {
     return (
       <Layout>
         <div className="min-h-[60vh] flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <div className="text-center">
+            <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto mb-4" />
+            <p className="text-muted-foreground">Preparing your credential...</p>
+          </div>
         </div>
       </Layout>
     );
@@ -44,6 +68,7 @@ const Certificate = () => {
     return null;
   }
 
+  const recipientName = displayName || user.email || 'Educator';
   const completionDate = completedAt 
     ? new Date(completedAt).toLocaleDateString('en-US', { 
         year: 'numeric', 
@@ -55,6 +80,8 @@ const Certificate = () => {
         month: 'long', 
         day: 'numeric' 
       });
+
+  const verificationUrl = certificate ? getVerificationUrl(certificate.certificate_id) : '';
 
   return (
     <Layout>
@@ -78,24 +105,32 @@ const Certificate = () => {
         {/* Certificate */}
         <div 
           ref={certificateRef}
-          className="bg-gradient-to-br from-background via-background to-primary/5 border-4 border-primary/20 rounded-xl p-8 md:p-12 shadow-xl print:shadow-none print:border-2"
+          className="bg-background border border-border rounded-none print:rounded-none p-10 md:p-16 shadow-sm print:shadow-none print:border print:border-border/50 aspect-[1.414] flex flex-col"
         >
+          {/* Decorative top line */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex-1 h-px bg-primary/20" />
+            <div className="w-3 h-3 rotate-45 border-2 border-primary/40" />
+            <div className="flex-1 h-px bg-primary/20" />
+          </div>
+
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-full mb-4">
-              <Award className="h-12 w-12 text-primary" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">
+            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3">
               Certificate of Completion
+            </p>
+            <h1 className="text-2xl md:text-3xl font-serif font-semibold text-foreground tracking-tight">
+              {CREDENTIAL_TITLE}
             </h1>
-            <p className="text-muted-foreground">AI Fluency for Educators</p>
           </div>
 
           {/* Recipient */}
-          <div className="text-center mb-8">
-            <p className="text-sm text-muted-foreground mb-2">This certifies that</p>
-            <p className="text-2xl font-display font-semibold text-foreground border-b-2 border-primary/30 pb-2 inline-block px-8">
-              {displayName || user.email}
+          <div className="text-center mb-10 flex-shrink-0">
+            <p className="text-xs text-muted-foreground mb-3 tracking-wide uppercase">
+              Awarded to
+            </p>
+            <p className="text-3xl md:text-4xl font-serif font-semibold text-primary tracking-tight">
+              {recipientName}
             </p>
             {!displayName && (
               <p className="text-xs text-muted-foreground mt-3 print:hidden flex items-center justify-center gap-1">
@@ -106,58 +141,108 @@ const Certificate = () => {
                   className="text-primary hover:underline"
                 >
                   Update your profile
-                </button>{' '}
-                from the user menu.
+                </button>
               </p>
             )}
           </div>
 
-          {/* Achievement */}
-          <div className="text-center mb-8">
-            <p className="text-muted-foreground mb-4">
-              has successfully completed all micro-courses in the
+          {/* Competencies */}
+          <div className="flex-1 flex flex-col justify-center mb-8">
+            <p className="text-xs text-muted-foreground text-center mb-4 tracking-wide uppercase">
+              Demonstrated Competencies
             </p>
-            <p className="text-xl font-semibold text-primary mb-4">
-              TMAHS Learning Studio
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Demonstrating proficiency in AI-assisted teaching methodologies
-            </p>
-          </div>
-
-          {/* Courses Grid */}
-          <div className="mb-8">
-            <h3 className="text-sm font-medium text-muted-foreground text-center mb-4">
-              Courses Completed
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
-              {allCourseIds.map((courseId) => (
-                <div 
-                  key={courseId}
-                  className="flex items-center gap-2 p-2 bg-muted/50 rounded"
+            <ul className="space-y-2 max-w-2xl mx-auto">
+              {COMPETENCIES.map((comp) => (
+                <li 
+                  key={comp.id}
+                  className="flex items-start gap-3 text-sm text-muted-foreground"
                 >
-                  <div className="h-2 w-2 bg-primary rounded-full flex-shrink-0" />
-                  <span className="truncate">{COURSE_NAMES[courseId] || courseId}</span>
-                </div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                  <span className="leading-relaxed">{comp.statement}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Date & Signature */}
-          <div className="flex justify-between items-end pt-8 border-t border-border/50">
-            <div>
-              <p className="text-xs text-muted-foreground">Date of Completion</p>
-              <p className="font-medium">{completionDate}</p>
-            </div>
-            <div className="text-right">
-              <p className="font-display text-lg text-primary">Phoenix AI Academy</p>
-              <p className="text-xs text-muted-foreground">
-                Thurgood Marshall Academic High School
-              </p>
+          {/* PD Statement */}
+          <div className="text-center mb-8">
+            <p className="text-sm text-muted-foreground italic">
+              {PD_STATEMENT}
+            </p>
+          </div>
+
+          {/* Footer */}
+          <div className="pt-8 border-t border-border/50">
+            <div className="flex justify-between items-end">
+              {/* Left: Date & Issuer */}
+              <div className="text-left">
+                <p className="text-xs text-muted-foreground mb-1">Date of Completion</p>
+                <p className="font-medium text-sm mb-4">{completionDate}</p>
+                <p className="font-serif text-primary font-medium">{ISSUER.name}</p>
+                <p className="text-xs text-muted-foreground max-w-[200px]">
+                  {ISSUER.descriptor}
+                </p>
+              </div>
+
+              {/* Right: Certificate ID & QR */}
+              {certificate && (
+                <div className="text-right flex items-end gap-4">
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">Certificate ID</p>
+                    <p className="font-mono text-sm font-medium">{certificate.certificate_id}</p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Verify at tmaihs.com/verify
+                    </p>
+                  </div>
+                  <div className="bg-background p-1 border border-border/50 rounded">
+                    <QRCodeSVG 
+                      value={verificationUrl}
+                      size={64}
+                      level="M"
+                      bgColor="transparent"
+                      fgColor="hsl(345, 55%, 28%)"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
+
+        {/* Additional info - hidden in print */}
+        <div className="mt-8 text-center print:hidden">
+          <p className="text-sm text-muted-foreground">
+            This credential can be verified at{' '}
+            {certificate && (
+              <a 
+                href={verificationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-mono"
+              >
+                {verificationUrl}
+              </a>
+            )}
+          </p>
+        </div>
       </div>
+
+      {/* Print styles */}
+      <style>{`
+        @media print {
+          @page {
+            size: A4 landscape;
+            margin: 0.5in;
+          }
+          body {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+          header, footer, nav {
+            display: none !important;
+          }
+        }
+      `}</style>
     </Layout>
   );
 };
