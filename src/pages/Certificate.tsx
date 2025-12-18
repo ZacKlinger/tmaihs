@@ -119,16 +119,27 @@ const Certificate = () => {
               }
               fileName={`TMAI-Certificate-${recipientName.replace(/\s+/g, '-')}.pdf`}
             >
-              {({ loading }) => (
-                <Button className="gap-2" disabled={loading}>
-                  {loading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <Download className="h-4 w-4" />
-                  )}
-                  {loading ? 'Preparing...' : 'Download Certificate'}
-                </Button>
-              )}
+              {({ loading, error }) => {
+                if (error) {
+                  console.error('PDF generation error:', error);
+                  return (
+                    <Button variant="destructive" className="gap-2">
+                      <Download className="h-4 w-4" />
+                      Error - Retry
+                    </Button>
+                  );
+                }
+                return (
+                  <Button className="gap-2" disabled={loading}>
+                    {loading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Download className="h-4 w-4" />
+                    )}
+                    {loading ? 'Preparing...' : 'Download Certificate'}
+                  </Button>
+                );
+              }}
             </PDFDownloadLink>
           )}
         </div>

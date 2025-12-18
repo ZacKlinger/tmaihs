@@ -62,12 +62,11 @@ const styles = StyleSheet.create({
     backgroundColor: `${primaryColor}33`,
   },
   diamond: {
-    width: 12,
-    height: 12,
+    width: 8,
+    height: 8,
     marginHorizontal: 16,
-    borderWidth: 2,
-    borderColor: `${primaryColor}66`,
-    transform: 'rotate(45deg)',
+    backgroundColor: `${primaryColor}40`,
+    borderRadius: 2,
   },
   header: {
     textAlign: 'center',
