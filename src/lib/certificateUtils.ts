@@ -40,3 +40,21 @@ export function getVerificationUrl(certificateId: string): string {
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   return `${baseUrl}/verify/${certificateId}`;
 }
+
+/**
+ * Generate a QR code as a data URL for PDF embedding
+ */
+export async function generateQRCodeDataUrl(url: string): Promise<string> {
+  // Create a canvas element to render the QR code
+  const QRCode = await import('qrcode');
+  const dataUrl = await QRCode.toDataURL(url, {
+    width: 128,
+    margin: 0,
+    color: {
+      dark: '#7D2E46', // Primary color
+      light: '#FFFFFF',
+    },
+    errorCorrectionLevel: 'M',
+  });
+  return dataUrl;
+}

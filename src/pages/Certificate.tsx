@@ -1,12 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { usePersistentProgress } from '@/hooks/usePersistentProgress';
 import { useCertificate } from '@/hooks/useCertificate';
-import { getVerificationUrl } from '@/lib/certificateUtils';
+import { getVerificationUrl, generateQRCodeDataUrl } from '@/lib/certificateUtils';
+import { CertificatePDF } from '@/components/certificate/CertificatePDF';
 import { 
   CREDENTIAL_TITLE, 
   ISSUER, 
@@ -23,6 +25,7 @@ const Certificate = () => {
   const { certificate, loading: certLoading, issueCertificate } = useCertificate(user?.id);
   const navigate = useNavigate();
   const certificateRef = useRef<HTMLDivElement>(null);
+  const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>('');
 
   const isLoading = authLoading || progressLoading || profileLoading || certLoading;
 
@@ -47,9 +50,17 @@ const Certificate = () => {
     autoIssue();
   }, [user, allCoursesCompleted, certificate, certLoading, displayName, issueCertificate]);
 
-  const handleDownload = () => {
-    window.print();
-  };
+  // Generate QR code data URL for PDF
+  useEffect(() => {
+    async function generateQR() {
+      if (certificate) {
+        const url = getVerificationUrl(certificate.certificate_id);
+        const dataUrl = await generateQRCodeDataUrl(url);
+        setQrCodeDataUrl(dataUrl);
+      }
+    }
+    generateQR();
+  }, [certificate]);
 
   if (isLoading) {
     return (
@@ -96,10 +107,30 @@ const Certificate = () => {
             <ArrowLeft className="h-4 w-4" />
             Back to Studio
           </Button>
-          <Button onClick={handleDownload} className="gap-2">
-            <Download className="h-4 w-4" />
-            Download Certificate
-          </Button>
+          {certificate && qrCodeDataUrl && (
+            <PDFDownloadLink
+              document={
+                <CertificatePDF
+                  recipientName={recipientName}
+                  completionDate={completionDate}
+                  certificateId={certificate.certificate_id}
+                  qrCodeDataUrl={qrCodeDataUrl}
+                />
+              }
+              fileName={`TMAI-Certificate-${recipientName.replace(/\s+/g, '-')}.pdf`}
+            >
+              {({ loading }) => (
+                <Button className="gap-2" disabled={loading}>
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Download className="h-4 w-4" />
+                  )}
+                  {loading ? 'Preparing...' : 'Download Certificate'}
+                </Button>
+              )}
+            </PDFDownloadLink>
+          )}
         </div>
 
         {/* Certificate */}
