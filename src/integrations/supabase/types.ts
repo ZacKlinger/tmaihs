@@ -360,27 +360,6 @@ export type Database = {
       }
     }
     Views: {
-      certificate_verification: {
-        Row: {
-          certificate_id: string | null
-          created_at: string | null
-          issued_at: string | null
-          recipient_name: string | null
-        }
-        Insert: {
-          certificate_id?: string | null
-          created_at?: string | null
-          issued_at?: string | null
-          recipient_name?: string | null
-        }
-        Update: {
-          certificate_id?: string | null
-          created_at?: string | null
-          issued_at?: string | null
-          recipient_name?: string | null
-        }
-        Relationships: []
-      }
       discussion_posts_public: {
         Row: {
           author_name: string | null
@@ -485,6 +464,15 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      verify_certificate: {
+        Args: { p_certificate_id: string }
+        Returns: {
+          certificate_id: string
+          created_at: string
+          issued_at: string
+          recipient_name: string
+        }[]
       }
     }
     Enums: {
