@@ -14,27 +14,8 @@ import {
   COMPETENCIES,
 } from '@/lib/credentialContent';
 
-// Register fonts
-Font.register({
-  family: 'Crimson Pro',
-  fonts: [
-    { src: 'https://fonts.gstatic.com/s/crimsonpro/v24/q5uUsoa5M_tv7IihmnkabC5XiXCAlXGks1WZzm1MP5s7dtC4yZNE.ttf', fontWeight: 400 },
-    { src: 'https://fonts.gstatic.com/s/crimsonpro/v24/q5uUsoa5M_tv7IihmnkabC5XiXCAlXGks1WZzm18NZs7dtC4yZNE.ttf', fontWeight: 600 },
-  ],
-});
-
-Font.register({
-  family: 'Inter',
-  fonts: [
-    { src: 'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.ttf', fontWeight: 400 },
-    { src: 'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZ9hjp-Ek-_EeA.ttf', fontWeight: 500 },
-  ],
-});
-
-Font.register({
-  family: 'JetBrains Mono',
-  src: 'https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf',
-});
+// Use built-in PDF fonts for reliable generation
+// Helvetica (sans-serif), Times-Roman (serif), Courier (monospace)
 
 // Prevent hyphenation errors
 Font.registerHyphenationCallback(word => [word]);
@@ -47,7 +28,7 @@ const styles = StyleSheet.create({
   page: {
     padding: 50,
     backgroundColor: '#FFFFFF',
-    fontFamily: 'Inter',
+    fontFamily: 'Helvetica',
   },
   container: {
     flex: 1,
@@ -84,8 +65,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontFamily: 'Crimson Pro',
-    fontWeight: 600,
+    fontFamily: 'Times-Roman',
+    fontWeight: 'bold',
     color: '#1F2937',
     letterSpacing: 0.5,
   },
@@ -102,8 +83,8 @@ const styles = StyleSheet.create({
   },
   recipientName: {
     fontSize: 32,
-    fontFamily: 'Crimson Pro',
-    fontWeight: 600,
+    fontFamily: 'Times-Roman',
+    fontWeight: 'bold',
     color: primaryColor,
     letterSpacing: 0.5,
   },
@@ -171,8 +152,8 @@ const styles = StyleSheet.create({
   },
   issuerName: {
     fontSize: 13,
-    fontFamily: 'Crimson Pro',
-    fontWeight: 600,
+    fontFamily: 'Times-Roman',
+    fontWeight: 'bold',
     color: primaryColor,
     marginBottom: 4,
   },
@@ -197,8 +178,8 @@ const styles = StyleSheet.create({
   },
   certIdValue: {
     fontSize: 11,
-    fontFamily: 'JetBrains Mono',
-    fontWeight: 500,
+    fontFamily: 'Courier',
+    fontWeight: 'normal',
     marginBottom: 8,
   },
   verifyText: {
