@@ -172,7 +172,9 @@ const LearningStudio = () => {
     answerCFU,
     completeCourse,
     getCourseProgress,
+    getProgramProgress,
     getCompletedCourseIds,
+    getCourseStatus,
     markModuleCompleteViaQuiz,
     recordBypassAttempt,
     hasAttemptedBypass,
@@ -184,11 +186,10 @@ const LearningStudio = () => {
   const filteredCourses = useMemo(() => {
     return microCourses.filter(course => course.tier === selectedTier);
   }, [selectedTier]);
+  // Use the new program progress computation
   const overallProgress = useMemo(() => {
-    const completedCourses = Object.values(progress.courses).filter(c => c.isCompleted).length;
-    const totalCourses = microCourses.filter(c => !c.isPlaceholder).length;
-    return totalCourses > 0 ? Math.round(completedCourses / totalCourses * 100) : 0;
-  }, [progress]);
+    return getProgramProgress();
+  }, [getProgramProgress]);
   const handleCourseClick = (courseId: string, isPlaceholder: boolean, tier: number) => {
     if (isPlaceholder) return;
     if (!isTierUnlocked(tier)) return;
@@ -312,10 +313,25 @@ const LearningStudio = () => {
           {filteredCourses.map(course => {
           const courseTier = getTierForCourse(course.id);
           const isLocked = !isTierUnlocked(courseTier);
-          return <MicroCourseCard key={course.id} id={course.id} title={course.title} description={course.description} duration={course.duration} mentalModel={course.mentalModel} tags={{
-            tasks: [],
-            subjects: []
-          }} icon={course.icon} tier={course.tier} progress={getCourseProgress(course.id, course.totalSections, course.totalCFUs)} isCompleted={progress.courses[course.id]?.isCompleted || false} isPlaceholder={course.isPlaceholder} isLocked={isLocked} lockReason={isLocked ? `Complete all Tier ${courseTier - 1} courses to unlock` : undefined} onClick={() => handleCourseClick(course.id, course.isPlaceholder, courseTier)} />;
+          const courseStatus = getCourseStatus(course.id);
+          return <MicroCourseCard 
+            key={course.id} 
+            id={course.id} 
+            title={course.title} 
+            description={course.description} 
+            duration={course.duration} 
+            mentalModel={course.mentalModel} 
+            tags={{ tasks: [], subjects: [] }} 
+            icon={course.icon} 
+            tier={course.tier} 
+            progress={getCourseProgress(course.id, course.totalSections, course.totalCFUs)} 
+            isCompleted={progress.courses[course.id]?.isCompleted || courseStatus === 'credited'} 
+            courseStatus={courseStatus}
+            isPlaceholder={course.isPlaceholder} 
+            isLocked={isLocked} 
+            lockReason={isLocked ? `Complete all Tier ${courseTier - 1} courses to unlock` : undefined} 
+            onClick={() => handleCourseClick(course.id, course.isPlaceholder, courseTier)} 
+          />;
         })}
         </div>
       </section>

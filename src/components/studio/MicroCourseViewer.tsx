@@ -197,6 +197,15 @@ export const MicroCourseViewer = ({
   const allSectionsCompleted = sections.every(
     (s) => courseProgress?.completedSections.includes(s.id)
   );
+  
+  // Mastery gating: CFU sections must be answered correctly to proceed
+  const isCFUSection = currentSection.type === "cfu";
+  const cfuData = currentSection.cfuData || currentSection.advancedCfuData;
+  const cfuAnswer = cfuData ? courseProgress?.cfuAnswers[cfuData.id] : undefined;
+  const cfuPassed = cfuAnswer?.correct === true;
+  
+  // Can proceed if: not a CFU, or CFU is passed (100% correct)
+  const canProceedFromCurrent = !isCFUSection || cfuPassed || isCurrentCompleted;
 
   // Scroll-based completion for content sections
   const handleScroll = useCallback(() => {
@@ -551,8 +560,9 @@ export const MicroCourseViewer = ({
         
         <Button
           onClick={handleNext}
-          disabled={isLastSection && !allSectionsCompleted}
+          disabled={(isLastSection && !allSectionsCompleted) || (!isLastSection && !canProceedFromCurrent)}
           className="gap-2"
+          title={!canProceedFromCurrent ? "Complete the check with 100% to continue" : undefined}
         >
           {isLastSection ? "Complete Course" : "Next"}
           {!isLastSection && <ArrowRight className="w-4 h-4" />}

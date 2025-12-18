@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, XCircle, HelpCircle } from "lucide-react";
+import { CheckCircle2, XCircle, HelpCircle, RotateCcw, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CFUOption {
@@ -18,6 +18,8 @@ interface CFUQuestionProps {
   type: "multiple-choice" | "spot-the-better-prompt" | "identify-mental-model";
   onAnswer: (cfuId: string, selectedAnswer: string, isCorrect: boolean) => void;
   previousAnswer?: { correct: boolean; selectedAnswer: string };
+  requireMastery?: boolean; // If true, user must get 100% to proceed
+  onMastered?: () => void; // Called when user gets 100%
 }
 
 export const CFUQuestion = ({
@@ -27,10 +29,13 @@ export const CFUQuestion = ({
   type,
   onAnswer,
   previousAnswer,
+  requireMastery = true,
+  onMastered,
 }: CFUQuestionProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(previousAnswer?.selectedAnswer || null);
   const [hasSubmitted, setHasSubmitted] = useState(!!previousAnswer);
   const [showExplanation, setShowExplanation] = useState(!!previousAnswer);
+  const [attemptCount, setAttemptCount] = useState(0);
 
   const handleSelect = (optionId: string) => {
     if (hasSubmitted) return;
@@ -43,7 +48,19 @@ export const CFUQuestion = ({
     if (!selected) return;
     setHasSubmitted(true);
     setShowExplanation(true);
-    onAnswer(id, selectedId, selected.isCorrect);
+    setAttemptCount(prev => prev + 1);
+    
+    // Only call onAnswer if correct (mastery requirement)
+    if (selected.isCorrect) {
+      onAnswer(id, selectedId, true);
+      onMastered?.();
+    }
+  };
+
+  const handleRetry = () => {
+    setSelectedId(null);
+    setHasSubmitted(false);
+    setShowExplanation(false);
   };
 
   const getTypeLabel = () => {
@@ -57,12 +74,22 @@ export const CFUQuestion = ({
     }
   };
 
+  const isCorrect = hasSubmitted && options.find(o => o.id === selectedId)?.isCorrect;
+  const showRetry = hasSubmitted && !isCorrect && requireMastery;
+
   return (
     <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
       <CardContent className="pt-6 space-y-4">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <HelpCircle className="w-4 h-4" />
-          <span>{getTypeLabel()}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <HelpCircle className="w-4 h-4" />
+            <span>{getTypeLabel()}</span>
+          </div>
+          {attemptCount > 0 && (
+            <span className="text-xs text-muted-foreground">
+              Attempt {attemptCount}
+            </span>
+          )}
         </div>
         
         <p className="font-medium text-foreground">{question}</p>
@@ -71,6 +98,7 @@ export const CFUQuestion = ({
           {options.map((option) => {
             const isSelected = selectedId === option.id;
             const showResult = hasSubmitted && isSelected;
+            const showCorrectHighlight = hasSubmitted && !isSelected && option.isCorrect;
             
             return (
               <button
@@ -83,13 +111,20 @@ export const CFUQuestion = ({
                   isSelected && !hasSubmitted && "border-primary bg-primary/5",
                   showResult && option.isCorrect && "border-green-500 bg-green-500/10",
                   showResult && !option.isCorrect && "border-destructive bg-destructive/10",
-                  hasSubmitted && !isSelected && option.isCorrect && "border-green-500/50 bg-green-500/5",
+                  showCorrectHighlight && "border-green-500/50 bg-green-500/5",
                   hasSubmitted && "cursor-default"
                 )}
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <p className="text-sm">{option.text}</p>
+                    {/* Item-level feedback when incorrect */}
+                    {showResult && !option.isCorrect && option.explanation && (
+                      <p className="text-xs text-destructive/80 mt-2 flex items-start gap-1">
+                        <AlertCircle className="w-3 h-3 mt-0.5 shrink-0" />
+                        {option.explanation}
+                      </p>
+                    )}
                   </div>
                   {showResult && (
                     option.isCorrect ? (
@@ -98,7 +133,7 @@ export const CFUQuestion = ({
                       <XCircle className="w-5 h-5 text-destructive shrink-0" />
                     )
                   )}
-                  {hasSubmitted && !isSelected && option.isCorrect && (
+                  {showCorrectHighlight && (
                     <CheckCircle2 className="w-5 h-5 text-green-500/70 shrink-0" />
                   )}
                 </div>
@@ -120,16 +155,33 @@ export const CFUQuestion = ({
         {showExplanation && selectedId && (
           <div className={cn(
             "p-4 rounded-lg text-sm",
-            options.find(o => o.id === selectedId)?.isCorrect 
+            isCorrect 
               ? "bg-green-500/10 text-green-700 dark:text-green-300"
               : "bg-amber-500/10 text-amber-700 dark:text-amber-300"
           )}>
-            {options.find(o => o.id === selectedId)?.isCorrect ? (
+            {isCorrect ? (
               <p><strong>Correct!</strong> {options.find(o => o.id === selectedId)?.explanation}</p>
             ) : (
-              <p><strong>Not quite.</strong> {options.find(o => o.isCorrect)?.explanation}</p>
+              <div className="space-y-2">
+                <p><strong>Not quite.</strong> Review the feedback above and try again.</p>
+                <p className="text-xs opacity-80">
+                  You must get 100% on this check to continue.
+                </p>
+              </div>
             )}
           </div>
+        )}
+
+        {/* Try Again button for mastery requirement */}
+        {showRetry && (
+          <Button 
+            onClick={handleRetry}
+            variant="outline"
+            className="w-full gap-2"
+          >
+            <RotateCcw className="w-4 h-4" />
+            Try Again
+          </Button>
         )}
       </CardContent>
     </Card>
