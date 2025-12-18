@@ -360,6 +360,27 @@ export type Database = {
       }
     }
     Views: {
+      certificate_verification: {
+        Row: {
+          certificate_id: string | null
+          created_at: string | null
+          issued_at: string | null
+          recipient_name: string | null
+        }
+        Insert: {
+          certificate_id?: string | null
+          created_at?: string | null
+          issued_at?: string | null
+          recipient_name?: string | null
+        }
+        Update: {
+          certificate_id?: string | null
+          created_at?: string | null
+          issued_at?: string | null
+          recipient_name?: string | null
+        }
+        Relationships: []
+      }
       discussion_posts_public: {
         Row: {
           author_name: string | null
