@@ -36,6 +36,9 @@ Font.register({
   src: 'https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf',
 });
 
+// Prevent hyphenation errors
+Font.registerHyphenationCallback(word => [word]);
+
 const primaryColor = '#7D2E46'; // hsl(345, 55%, 28%)
 const mutedColor = '#6B7280';
 const borderColor = '#E5E7EB';
@@ -142,7 +145,6 @@ const styles = StyleSheet.create({
   },
   pdText: {
     fontSize: 10,
-    fontStyle: 'italic',
     color: mutedColor,
     paddingHorizontal: 40,
   },
