@@ -133,20 +133,19 @@ export function useVerifyCertificate(certificateId: string | undefined) {
       }
 
       try {
-        // Query the public verification view (excludes email and user_id)
+        // Use RPC function to verify certificate (prevents enumeration attacks)
         const { data, error: fetchError } = await supabase
-          .from('certificate_verification')
-          .select('certificate_id, recipient_name, issued_at, created_at')
-          .eq('certificate_id', certificateId)
-          .maybeSingle();
+          .rpc('verify_certificate', { p_certificate_id: certificateId });
+        
+        const certificateData = data && data.length > 0 ? data[0] : null;
 
         if (fetchError) {
           console.error('Error verifying certificate:', fetchError);
           setError(fetchError.message);
-        } else if (!data) {
+        } else if (!certificateData) {
           setNotFound(true);
         } else {
-          setCertificate(data);
+          setCertificate(certificateData);
         }
       } catch (err) {
         console.error('Unexpected error verifying certificate:', err);
