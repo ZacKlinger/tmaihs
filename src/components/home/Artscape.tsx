@@ -26,10 +26,10 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 45% 75% / 0.4) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 65% 75% / 0.35) 0%, transparent 45%),
-            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 35% 80% / 0.3) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 40% 80% / 0.25) 0%, transparent 55%),
+            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 45% 75% / 0.55) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 65% 75% / 0.5) 0%, transparent 45%),
+            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 35% 80% / 0.45) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 40% 80% / 0.4) 0%, transparent 55%),
             linear-gradient(135deg, hsl(40 45% 97%) 0%, hsl(30 20% 96%) 50%, hsl(345 15% 95%) 100%)
           `,
           backgroundBlendMode: "soft-light, soft-light, soft-light, soft-light, normal"
@@ -44,8 +44,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 50% 70% / 0.2) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 60% 70% / 0.15) 0%, transparent 55%)
+            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 50% 70% / 0.35) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 60% 70% / 0.25) 0%, transparent 55%)
           `,
           animation: "mesh-morph 45s ease-in-out infinite"
         }}

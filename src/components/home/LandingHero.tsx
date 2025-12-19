@@ -32,12 +32,18 @@ function EntryPoint({
       onMouseLeave={() => setIsHovered(false)}
       disabled={isTransitioning}
       className={cn(
-        "group relative py-4 px-6 transition-all duration-500 ease-out rounded-2xl",
-        "hover:bg-primary/[0.04]",
-        isTransitioning && isSelected && "scale-105 bg-primary/[0.06]",
+        "group relative flex flex-col items-center justify-center overflow-hidden",
+        "py-5 px-8 rounded-2xl transition-all duration-400 ease-out",
+        "bg-background/60 backdrop-blur-sm",
+        "border border-border/30",
+        "shadow-[0_8px_40px_-12px_hsl(345_30%_20%/0.1)]",
+        "hover:shadow-[0_12px_50px_-12px_hsl(345_30%_20%/0.15)]",
+        "hover:bg-background/70",
+        isTransitioning && isSelected && "scale-105 bg-background/80",
         isTransitioning && !isSelected && "opacity-0 scale-95"
       )}
     >
+      {/* Main label - always centered */}
       <div className="flex items-center gap-3">
         <span 
           className={cn(
@@ -56,15 +62,17 @@ function EntryPoint({
         />
       </div>
       
-      {/* Microcopy - appears on hover */}
-      <span 
+      {/* Microcopy - expands into view */}
+      <div 
         className={cn(
-          "block text-sm text-muted-foreground mt-1.5 transition-all duration-300 font-sans",
-          isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+          "overflow-hidden transition-all duration-400 ease-out",
+          isHovered ? "max-h-8 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
         )}
       >
-        {microcopy}
-      </span>
+        <span className="block text-sm text-muted-foreground font-sans whitespace-nowrap">
+          {microcopy}
+        </span>
+      </div>
     </button>
   );
 }
@@ -128,50 +136,30 @@ export function LandingHero() {
       {/* Main content */}
       <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto text-center">
         
-        {/* Floating portal container for entry points */}
+        {/* Two separate entry point cards */}
         <div 
           className={cn(
-            "relative p-2 rounded-3xl transition-all duration-700",
-            "bg-background/60 backdrop-blur-sm",
-            "border border-border/30",
-            "shadow-[0_8px_40px_-12px_hsl(345_30%_20%/0.1)]",
+            "flex flex-col sm:flex-row items-center gap-4 sm:gap-6 transition-all duration-700",
             showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          {/* Decorative arc above */}
-          <div 
-            className="absolute -top-6 left-1/2 -translate-x-1/2 w-24 h-12 border-t-2 border-l-2 border-r-2 border-primary/10 rounded-t-full"
-            aria-hidden="true"
+          <EntryPoint
+            label="Explore the Studio"
+            microcopy="Browse ideas, tools, and examples"
+            href="/classroom-resources"
+            onNavigate={handleNavigate}
+            isTransitioning={isTransitioning}
+            isSelected={selectedPath === "/classroom-resources"}
           />
           
-          {/* Entry points inside the portal */}
-          <div className="flex flex-col sm:flex-row items-stretch">
-            <EntryPoint
-              label="Explore the Studio"
-              microcopy="Browse ideas, tools, and examples"
-              href="/classroom-resources"
-              onNavigate={handleNavigate}
-              isTransitioning={isTransitioning}
-              isSelected={selectedPath === "/classroom-resources"}
-            />
-
-            {/* Vertical divider */}
-            <div className="hidden sm:flex items-center px-1">
-              <div className="w-px h-16 bg-border/40" />
-            </div>
-            
-            {/* Horizontal divider for mobile */}
-            <div className="sm:hidden w-3/4 mx-auto h-px bg-border/40" />
-            
-            <EntryPoint
-              label="Get Certified"
-              microcopy="Earn a shareable certificate"
-              href="/learning-studio"
-              onNavigate={handleNavigate}
-              isTransitioning={isTransitioning}
-              isSelected={selectedPath === "/learning-studio"}
-            />
-          </div>
+          <EntryPoint
+            label="Get Certified"
+            microcopy="Earn a shareable certificate"
+            href="/learning-studio"
+            onNavigate={handleNavigate}
+            isTransitioning={isTransitioning}
+            isSelected={selectedPath === "/learning-studio"}
+          />
         </div>
 
         {/* Ghost input */}
