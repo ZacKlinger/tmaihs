@@ -21,66 +21,92 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         className
       )}
     >
-      {/* Base gradient - warm cream to soft secondary */}
+      {/* Mesh gradient base - watercolor-like layers */}
       <div 
         className="absolute inset-0"
         style={{
-          background: `linear-gradient(
-            135deg, 
-            hsl(var(--phoenix-cream)) 0%, 
-            hsl(var(--background)) 40%,
-            hsl(var(--secondary) / 0.5) 100%
-          )`
+          background: `
+            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 45% 75% / 0.4) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 65% 75% / 0.35) 0%, transparent 45%),
+            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 35% 80% / 0.3) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 40% 80% / 0.25) 0%, transparent 55%),
+            linear-gradient(135deg, hsl(40 45% 97%) 0%, hsl(30 20% 96%) 50%, hsl(345 15% 95%) 100%)
+          `,
+          backgroundBlendMode: "soft-light, soft-light, soft-light, soft-light, normal"
         }}
       />
 
-      {/* Drifting orb 1 - large, slow */}
+      {/* Morphing gradient layer - adds depth and movement */}
       <div 
         className={cn(
-          "absolute w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-1000",
-          mounted ? "opacity-20" : "opacity-0"
+          "absolute inset-0 transition-opacity duration-1000",
+          mounted ? "opacity-100" : "opacity-0"
         )}
         style={{
-          background: `radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%)`,
-          top: "10%",
-          left: "20%",
-          animation: "drift-1 25s ease-in-out infinite"
+          background: `
+            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 50% 70% / 0.2) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 60% 70% / 0.15) 0%, transparent 55%)
+          `,
+          animation: "mesh-morph 45s ease-in-out infinite"
         }}
       />
 
-      {/* Drifting orb 2 - medium, different rhythm */}
-      <div 
+      {/* Flowing SVG lines - organic movement */}
+      <svg 
         className={cn(
-          "absolute w-[400px] h-[400px] rounded-full blur-3xl transition-opacity duration-1000 delay-300",
-          mounted ? "opacity-15" : "opacity-0"
+          "absolute inset-0 w-full h-full transition-opacity duration-1000",
+          mounted ? "opacity-100" : "opacity-0"
         )}
-        style={{
-          background: `radial-gradient(circle, hsl(var(--accent) / 0.3) 0%, transparent 70%)`,
-          bottom: "20%",
-          right: "15%",
-          animation: "drift-2 30s ease-in-out infinite"
-        }}
-      />
+        preserveAspectRatio="none"
+        viewBox="0 0 1000 1000"
+      >
+        <defs>
+          <linearGradient id="line-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(345 50% 60%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(345 50% 60%)" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="hsl(345 50% 60%)" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="line-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="hsl(18 60% 65%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(18 60% 65%)" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="hsl(18 60% 65%)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        
+        {/* Flowing curve 1 */}
+        <path
+          d="M-100,600 Q200,400 400,500 T700,400 T1100,500"
+          fill="none"
+          stroke="url(#line-gradient-1)"
+          strokeWidth="2"
+          style={{ animation: "flow-line-1 30s ease-in-out infinite" }}
+        />
+        
+        {/* Flowing curve 2 */}
+        <path
+          d="M-100,300 Q300,500 500,350 T800,450 T1100,300"
+          fill="none"
+          stroke="url(#line-gradient-2)"
+          strokeWidth="1.5"
+          style={{ animation: "flow-line-2 35s ease-in-out infinite" }}
+        />
 
-      {/* Drifting orb 3 - small accent */}
-      <div 
-        className={cn(
-          "absolute w-[300px] h-[300px] rounded-full blur-3xl transition-opacity duration-1000 delay-500",
-          mounted ? "opacity-10" : "opacity-0"
-        )}
-        style={{
-          background: `radial-gradient(circle, hsl(var(--phoenix-ember) / 0.25) 0%, transparent 70%)`,
-          top: "50%",
-          left: "60%",
-          animation: "drift-3 20s ease-in-out infinite"
-        }}
-      />
+        {/* Subtle arc - architectural element */}
+        <path
+          d="M350,520 Q500,380 650,520"
+          fill="none"
+          stroke="hsl(345 40% 65%)"
+          strokeWidth="1"
+          strokeOpacity="0.1"
+          style={{ animation: "arc-breathe 20s ease-in-out infinite" }}
+        />
+      </svg>
 
       {/* Subtle grain texture overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-multiply"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           backgroundRepeat: "repeat"
         }}
       />

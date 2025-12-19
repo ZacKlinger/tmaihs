@@ -141,21 +141,25 @@ export default {
           "33%": { transform: "rotate(2deg)" },
           "66%": { transform: "rotate(-2deg)" },
         },
-        // Artscape drifting animations
-        "drift-1": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "25%": { transform: "translate(30px, -20px) scale(1.02)" },
-          "50%": { transform: "translate(-20px, 30px) scale(0.98)" },
-          "75%": { transform: "translate(-40px, -10px) scale(1.01)" },
+        // Artscape mesh morphing
+        "mesh-morph": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
+          "25%": { transform: "translate(5%, -3%) scale(1.02)", opacity: "0.9" },
+          "50%": { transform: "translate(-3%, 5%) scale(0.98)", opacity: "1" },
+          "75%": { transform: "translate(3%, 2%) scale(1.01)", opacity: "0.95" },
         },
-        "drift-2": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(-40px, 20px) scale(1.03)" },
-          "66%": { transform: "translate(30px, -30px) scale(0.97)" },
+        // Flowing line animations
+        "flow-line-1": {
+          "0%, 100%": { transform: "translateY(0) scaleX(1)", opacity: "1" },
+          "50%": { transform: "translateY(-30px) scaleX(1.02)", opacity: "0.8" },
         },
-        "drift-3": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(50px, 40px) scale(1.05)" },
+        "flow-line-2": {
+          "0%, 100%": { transform: "translateY(0) scaleX(1)", opacity: "1" },
+          "50%": { transform: "translateY(25px) scaleX(0.98)", opacity: "0.7" },
+        },
+        "arc-breathe": {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.1" },
+          "50%": { transform: "scale(1.03)", opacity: "0.15" },
         },
       },
       animation: {
@@ -173,9 +177,10 @@ export default {
         "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
         "fish-tail": "fish-tail 0.4s ease-in-out infinite",
         // Artscape animations
-        "drift-1": "drift-1 25s ease-in-out infinite",
-        "drift-2": "drift-2 30s ease-in-out infinite",
-        "drift-3": "drift-3 20s ease-in-out infinite",
+        "mesh-morph": "mesh-morph 45s ease-in-out infinite",
+        "flow-line-1": "flow-line-1 30s ease-in-out infinite",
+        "flow-line-2": "flow-line-2 35s ease-in-out infinite",
+        "arc-breathe": "arc-breathe 20s ease-in-out infinite",
       },
     },
   },
