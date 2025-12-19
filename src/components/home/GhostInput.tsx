@@ -8,11 +8,11 @@ const GHOST_PHRASES = [
   "help me level up my prompt engineering",
 ];
 
-const TYPING_SPEED = 80; // ms per character
-const TYPING_VARIANCE = 40; // adds human feel
-const DELETE_SPEED = 30; // faster deletion
-const PAUSE_AFTER_TYPING = 2000;
-const PAUSE_AFTER_DELETING = 500;
+const TYPING_SPEED = 50; // ms per character - faster
+const TYPING_VARIANCE = 20; // less variance for smoother feel
+const DELETE_SPEED = 20; // faster deletion
+const PAUSE_AFTER_TYPING = 1200; // shorter pause
+const PAUSE_AFTER_DELETING = 300; // shorter pause
 
 interface GhostInputProps {
   onSubmit: (query: string) => void;
