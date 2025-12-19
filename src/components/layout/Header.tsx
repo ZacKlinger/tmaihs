@@ -32,7 +32,11 @@ const navItems = [
   { label: "Community", href: "/community" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  hidden?: boolean;
+}
+
+export function Header({ hidden = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEthicsOpen, setIsEthicsOpen] = useState(false);
   const [isStudioOpen, setIsStudioOpen] = useState(false);
@@ -43,7 +47,13 @@ export function Header() {
   const isStudioActive = ["/what-is-ai", "/why-ai-matters", "/prompt-engineering", "/learning-studio"].includes(location.pathname);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header 
+      className={cn(
+        "fixed top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80",
+        "transition-all duration-500 ease-out",
+        hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"
+      )}
+    >
       <div className="section-container">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}

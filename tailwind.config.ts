@@ -141,6 +141,22 @@ export default {
           "33%": { transform: "rotate(2deg)" },
           "66%": { transform: "rotate(-2deg)" },
         },
+        // Artscape drifting animations
+        "drift-1": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "25%": { transform: "translate(30px, -20px) scale(1.02)" },
+          "50%": { transform: "translate(-20px, 30px) scale(0.98)" },
+          "75%": { transform: "translate(-40px, -10px) scale(1.01)" },
+        },
+        "drift-2": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(-40px, 20px) scale(1.03)" },
+          "66%": { transform: "translate(30px, -30px) scale(0.97)" },
+        },
+        "drift-3": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(50px, 40px) scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -156,6 +172,10 @@ export default {
         "fish-bob": "fish-bob 2s ease-in-out infinite",
         "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
         "fish-tail": "fish-tail 0.4s ease-in-out infinite",
+        // Artscape animations
+        "drift-1": "drift-1 25s ease-in-out infinite",
+        "drift-2": "drift-2 30s ease-in-out infinite",
+        "drift-3": "drift-3 20s ease-in-out infinite",
       },
     },
   },
