@@ -148,6 +148,19 @@ export default {
           "50%": { transform: "translate(-3%, 5%) scale(0.98)", opacity: "1" },
           "75%": { transform: "translate(3%, 2%) scale(1.01)", opacity: "0.95" },
         },
+        "mesh-morph-2": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
+          "33%": { transform: "translate(-4%, 3%) scale(1.01)", opacity: "0.85" },
+          "66%": { transform: "translate(3%, -4%) scale(0.99)", opacity: "0.95" },
+        },
+        "gradient-breathe": {
+          "0%, 100%": { filter: "brightness(1) hue-rotate(0deg)" },
+          "50%": { filter: "brightness(1.02) hue-rotate(3deg)" },
+        },
+        "cursor-blink": {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
         // Flowing line animations
         "flow-line-1": {
           "0%, 100%": { transform: "translateY(0) scaleX(1)", opacity: "1" },
@@ -177,7 +190,10 @@ export default {
         "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
         "fish-tail": "fish-tail 0.4s ease-in-out infinite",
         // Artscape animations
-        "mesh-morph": "mesh-morph 45s ease-in-out infinite",
+        "mesh-morph": "mesh-morph 25s ease-in-out infinite",
+        "mesh-morph-2": "mesh-morph-2 30s ease-in-out infinite",
+        "gradient-breathe": "gradient-breathe 12s ease-in-out infinite",
+        "cursor-blink": "cursor-blink 0.8s steps(1) infinite",
         "flow-line-1": "flow-line-1 30s ease-in-out infinite",
         "flow-line-2": "flow-line-2 35s ease-in-out infinite",
         "arc-breathe": "arc-breathe 20s ease-in-out infinite",

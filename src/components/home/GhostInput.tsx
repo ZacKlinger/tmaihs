@@ -8,11 +8,11 @@ const GHOST_PHRASES = [
   "help me level up my prompt engineering",
 ];
 
-const TYPING_SPEED = 50; // ms per character - faster
-const TYPING_VARIANCE = 20; // less variance for smoother feel
-const DELETE_SPEED = 20; // faster deletion
-const PAUSE_AFTER_TYPING = 1200; // shorter pause
-const PAUSE_AFTER_DELETING = 300; // shorter pause
+const TYPING_SPEED = 30; // ms per character - much faster
+const TYPING_VARIANCE = 10; // tight variance for smooth feel
+const DELETE_SPEED = 12; // very fast deletion
+const PAUSE_AFTER_TYPING = 400; // brief pause to read
+const PAUSE_AFTER_DELETING = 100; // near-instant restart
 
 interface GhostInputProps {
   onSubmit: (query: string) => void;
@@ -140,14 +140,17 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
           />
           
           {/* Ghost text overlay - only visible when unfocused and no user input */}
-          {!hasUserTyped && !isFocused && ghostText && (
+          {!hasUserTyped && !isFocused && (
             <div 
               className="absolute inset-0 flex items-center px-6 pointer-events-none"
               aria-hidden="true"
             >
               <span className="text-muted-foreground/60 font-sans text-base">
                 {ghostText}
-                <span className="animate-pulse ml-0.5 text-primary/50">|</span>
+                <span 
+                  className="ml-0.5 text-primary/70 inline-block w-[2px] h-[1.1em] align-middle bg-primary/70"
+                  style={{ animation: "cursor-blink 0.8s steps(1) infinite" }}
+                />
               </span>
             </div>
           )}

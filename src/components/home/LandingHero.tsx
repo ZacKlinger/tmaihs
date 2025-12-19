@@ -43,11 +43,20 @@ function EntryPoint({
         isTransitioning && !isSelected && "opacity-0 scale-95"
       )}
     >
-      {/* Main label - always centered */}
-      <div className="flex items-center gap-3">
+      {/* Main label - symmetric centering with spacers */}
+      <div className="flex items-center justify-center">
+        {/* Left spacer - matches arrow width for symmetry */}
         <span 
           className={cn(
-            "font-serif text-2xl sm:text-3xl text-charcoal transition-all duration-300"
+            "w-5 h-5 shrink-0 transition-all duration-300",
+            isHovered ? "opacity-0" : "opacity-0"
+          )} 
+          aria-hidden="true" 
+        />
+        
+        <span 
+          className={cn(
+            "font-serif text-2xl sm:text-3xl text-charcoal transition-all duration-300 mx-3"
           )}
         >
           {label}
@@ -56,7 +65,7 @@ function EntryPoint({
         {/* Animated arrow on hover */}
         <ArrowRight 
           className={cn(
-            "w-5 h-5 text-primary/60 transition-all duration-300",
+            "w-5 h-5 shrink-0 text-primary/60 transition-all duration-300",
             isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
           )}
         />
@@ -95,7 +104,7 @@ export function LandingHero() {
     
     setTimeout(() => {
       navigate(href);
-    }, 600);
+    }, 450);
   }, [navigate]);
 
   const handleSearch = useCallback(async (query: string) => {
@@ -126,13 +135,25 @@ export function LandingHero() {
   }, [handleNavigate]);
 
   return (
-    <section 
-      className={cn(
-        "relative min-h-screen flex flex-col items-center justify-center px-4",
-        "transition-all duration-600",
-        isTransitioning && "scale-[1.02] opacity-0"
+    <>
+      {/* Smooth transition overlay */}
+      {isTransitioning && (
+        <div 
+          className="fixed inset-0 z-50 pointer-events-none animate-fade-in"
+          style={{ 
+            background: "linear-gradient(135deg, hsl(40 45% 96% / 0.95), hsl(345 15% 95% / 0.95))",
+            animationDuration: "350ms"
+          }}
+        />
       )}
-    >
+      
+      <section 
+        className={cn(
+          "relative min-h-screen flex flex-col items-center justify-center px-4",
+          "transition-all duration-500 ease-out",
+          isTransitioning && "scale-[1.01] opacity-0"
+        )}
+      >
       {/* Main content */}
       <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto text-center">
         
@@ -187,5 +208,6 @@ export function LandingHero() {
         </div>
       </div>
     </section>
+    </>
   );
 }
