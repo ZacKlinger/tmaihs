@@ -44,7 +44,7 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         className
       )}
     >
-      {/* Base gradient - white top → pink middle → deep red bottom */}
+      {/* Base gradient - white top → pink middle → deep purple bottom */}
       <div 
         className="absolute inset-0"
         style={{
@@ -52,11 +52,11 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
             linear-gradient(180deg, 
               hsl(0 0% 100%) 0%, 
               hsl(0 0% 99%) 15%,
-              hsl(330 85% 92%) 30%,
-              hsl(335 90% 75%) 50%,
-              hsl(340 95% 65%) 65%,
-              hsl(350 90% 58%) 80%,
-              hsl(355 85% 50%) 100%
+              hsl(320 85% 92%) 30%,
+              hsl(315 90% 75%) 50%,
+              hsl(300 85% 65%) 65%,
+              hsl(280 80% 55%) 80%,
+              hsl(270 75% 45%) 100%
             )
           `
         }}
@@ -70,15 +70,15 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 120% 80% at 50% 45%, hsl(335 95% 70% / 0.8) 0%, transparent 55%),
-            radial-gradient(ellipse 100% 70% at 30% 55%, hsl(345 90% 65% / 0.6) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 60% at 70% 50%, hsl(330 92% 72% / 0.5) 0%, transparent 45%)
+            radial-gradient(ellipse 120% 80% at 50% 45%, hsl(315 95% 70% / 0.8) 0%, transparent 55%),
+            radial-gradient(ellipse 100% 70% at 30% 55%, hsl(305 90% 65% / 0.6) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 60% at 70% 50%, hsl(320 92% 72% / 0.5) 0%, transparent 45%)
           `,
           animation: "gradient-breathe 12s ease-in-out infinite"
         }}
       />
 
-      {/* Deep red glow from bottom */}
+      {/* Deep purple glow from bottom */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -86,9 +86,9 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 140% 60% at 50% 100%, hsl(355 88% 52% / 0.9) 0%, transparent 50%),
-            radial-gradient(ellipse 100% 50% at 20% 95%, hsl(360 85% 48% / 0.7) 0%, transparent 45%),
-            radial-gradient(ellipse 100% 50% at 80% 95%, hsl(350 90% 50% / 0.6) 0%, transparent 45%)
+            radial-gradient(ellipse 140% 60% at 50% 100%, hsl(275 85% 50% / 0.9) 0%, transparent 50%),
+            radial-gradient(ellipse 100% 50% at 20% 95%, hsl(285 80% 45% / 0.7) 0%, transparent 45%),
+            radial-gradient(ellipse 100% 50% at 80% 95%, hsl(265 85% 48% / 0.6) 0%, transparent 45%)
           `
         }}
       />
@@ -113,8 +113,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 70% 50% at 55% 40%, hsl(338 92% 68% / 0.5) 0%, transparent 55%),
-            radial-gradient(ellipse 60% 60% at 35% 60%, hsl(348 88% 60% / 0.4) 0%, transparent 50%)
+            radial-gradient(ellipse 70% 50% at 55% 40%, hsl(310 92% 68% / 0.5) 0%, transparent 55%),
+            radial-gradient(ellipse 60% 60% at 35% 60%, hsl(290 88% 58% / 0.4) 0%, transparent 50%)
           `,
           animation: "mesh-morph 20s ease-in-out infinite"
         }}
@@ -128,8 +128,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 55% 45% at 65% 55%, hsl(342 90% 62% / 0.4) 0%, transparent 50%),
-            radial-gradient(ellipse 50% 55% at 40% 45%, hsl(332 88% 70% / 0.35) 0%, transparent 45%)
+            radial-gradient(ellipse 55% 45% at 65% 55%, hsl(295 90% 60% / 0.4) 0%, transparent 50%),
+            radial-gradient(ellipse 50% 55% at 40% 45%, hsl(315 88% 68% / 0.35) 0%, transparent 45%)
           `,
           animation: "mesh-morph-2 25s ease-in-out infinite"
         }}
