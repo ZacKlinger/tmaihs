@@ -8,32 +8,9 @@ interface ArtscapeProps {
 
 export function Artscape({ className, receding = false }: ArtscapeProps) {
   const [mounted, setMounted] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePos({ x, y });
-    };
-
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-
-    window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-    };
   }, []);
 
   return (
@@ -44,25 +21,32 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         className
       )}
     >
-      {/* Base gradient - white top → pink middle → deep purple bottom */}
+      {/* Base: Warm Ivory */}
       <div 
         className="absolute inset-0"
         style={{
+          background: `hsl(35 33% 94%)`
+        }}
+      />
+
+      {/* Subtle atmospheric layer - extremely soft gradient */}
+      <div 
+        className={cn(
+          "absolute inset-0 transition-opacity duration-1000",
+          mounted ? "opacity-100" : "opacity-0"
+        )}
+        style={{
           background: `
             linear-gradient(180deg, 
-              hsl(0 0% 100%) 0%, 
-              hsl(0 0% 99%) 15%,
-              hsl(320 85% 92%) 30%,
-              hsl(315 90% 75%) 50%,
-              hsl(300 85% 65%) 65%,
-              hsl(280 80% 55%) 80%,
-              hsl(270 75% 45%) 100%
+              transparent 0%,
+              hsl(140 18% 88% / 0.3) 50%,
+              hsl(345 32% 85% / 0.2) 100%
             )
           `
         }}
       />
 
-      {/* Radiant pink glow from center - like Lovable's atmospheric bloom */}
+      {/* Soft blush accent - top right */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -70,42 +54,25 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 120% 80% at 50% 45%, hsl(315 95% 70% / 0.8) 0%, transparent 55%),
-            radial-gradient(ellipse 100% 70% at 30% 55%, hsl(305 90% 65% / 0.6) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 60% at 70% 50%, hsl(320 92% 72% / 0.5) 0%, transparent 45%)
-          `,
-          animation: "gradient-breathe 12s ease-in-out infinite"
-        }}
-      />
-
-      {/* Deep purple glow from bottom */}
-      <div 
-        className={cn(
-          "absolute inset-0 transition-opacity duration-1000",
-          mounted ? "opacity-100" : "opacity-0"
-        )}
-        style={{
-          background: `
-            radial-gradient(ellipse 140% 60% at 50% 100%, hsl(275 85% 50% / 0.9) 0%, transparent 50%),
-            radial-gradient(ellipse 100% 50% at 20% 95%, hsl(285 80% 45% / 0.7) 0%, transparent 45%),
-            radial-gradient(ellipse 100% 50% at 80% 95%, hsl(265 85% 48% / 0.6) 0%, transparent 45%)
+            radial-gradient(ellipse 60% 50% at 85% 15%, hsl(345 32% 85% / 0.4) 0%, transparent 60%)
           `
         }}
       />
 
-      {/* White bloom from top - light entering */}
+      {/* Pale sage accent - bottom left */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className={cn(
+          "absolute inset-0 transition-opacity duration-1000",
+          mounted ? "opacity-100" : "opacity-0"
+        )}
         style={{
           background: `
-            radial-gradient(ellipse 100% 50% at 50% 0%, hsl(0 0% 100% / 0.95) 0%, transparent 50%),
-            radial-gradient(ellipse 80% 40% at 30% 5%, hsl(0 0% 100% / 0.7) 0%, transparent 40%),
-            radial-gradient(ellipse 80% 40% at 70% 5%, hsl(0 0% 100% / 0.7) 0%, transparent 40%)
+            radial-gradient(ellipse 70% 60% at 10% 90%, hsl(140 18% 88% / 0.5) 0%, transparent 55%)
           `
         }}
       />
 
-      {/* Morphing color layer - adds movement */}
+      {/* Powder blue accent - subtle center-right */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -113,47 +80,14 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 70% 50% at 55% 40%, hsl(310 92% 68% / 0.5) 0%, transparent 55%),
-            radial-gradient(ellipse 60% 60% at 35% 60%, hsl(290 88% 58% / 0.4) 0%, transparent 50%)
-          `,
-          animation: "mesh-morph 20s ease-in-out infinite"
+            radial-gradient(ellipse 50% 40% at 75% 60%, hsl(208 38% 93% / 0.4) 0%, transparent 50%)
+          `
         }}
       />
 
-      {/* Secondary morphing layer */}
+      {/* Very subtle grain texture for matte finish */}
       <div 
-        className={cn(
-          "absolute inset-0 transition-opacity duration-1000",
-          mounted ? "opacity-100" : "opacity-0"
-        )}
-        style={{
-          background: `
-            radial-gradient(ellipse 55% 45% at 65% 55%, hsl(295 90% 60% / 0.4) 0%, transparent 50%),
-            radial-gradient(ellipse 50% 55% at 40% 45%, hsl(315 88% 68% / 0.35) 0%, transparent 45%)
-          `,
-          animation: "mesh-morph-2 25s ease-in-out infinite"
-        }}
-      />
-
-      {/* Cursor-following warm glow */}
-      <div 
-        className={cn(
-          "absolute inset-0 pointer-events-none transition-opacity duration-500",
-          isHovering ? "opacity-100" : "opacity-0"
-        )}
-        style={{
-          background: `radial-gradient(
-            circle 350px at ${mousePos.x}% ${mousePos.y}%, 
-            hsl(340 90% 75% / 0.4) 0%, 
-            hsl(345 85% 65% / 0.2) 50%,
-            transparent 70%
-          )`
-        }}
-      />
-
-      {/* Subtle grain texture */}
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           backgroundRepeat: "repeat"

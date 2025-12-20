@@ -45,27 +45,26 @@ function EntryPoint({
       disabled={isTransitioning}
       className={cn(
         "group relative flex flex-col items-center justify-center overflow-hidden",
-        "py-5 px-10 rounded-2xl transition-all duration-500 ease-out",
-        "bg-white/95 backdrop-blur-md",
-        "border border-white/60",
-        // Layered shadows for depth - soft ambient + crisp definition
-        "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_8px_rgba(0,0,0,0.04),0_16px_32px_rgba(0,0,0,0.08),0_32px_64px_rgba(0,0,0,0.08)]",
-        // Hover state - elevated with stronger shadows
-        isHovered && !isPressed && "shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.08),0_24px_48px_rgba(0,0,0,0.12),0_48px_96px_rgba(0,0,0,0.12)] bg-white scale-[1.01] -translate-y-1",
-        // Press/click state
-        isPressed && "scale-[1.02] shadow-[0_2px_4px_rgba(0,0,0,0.06),0_12px_24px_rgba(0,0,0,0.1),0_32px_64px_rgba(0,0,0,0.15)] bg-white -translate-y-2",
+        "py-5 px-10 rounded-xl transition-all duration-400 ease-out",
+        "bg-white border border-border",
+        // Subtle, grounded shadows
+        "shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06)]",
+        // Hover state - gentle lift
+        isHovered && !isPressed && "shadow-[0_2px_6px_rgba(0,0,0,0.06),0_8px_20px_rgba(0,0,0,0.08)] -translate-y-0.5",
+        // Press state
+        isPressed && "shadow-[0_1px_2px_rgba(0,0,0,0.08)] translate-y-0",
         // Transition out states
-        isTransitioning && isSelected && "scale-[1.1] opacity-0",
-        isTransitioning && !isSelected && "opacity-0 scale-90"
+        isTransitioning && isSelected && "scale-[1.02] opacity-0",
+        isTransitioning && !isSelected && "opacity-0 scale-95"
       )}
       style={{
-        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
+        transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)"
       }}
     >
-      {/* Main label - unbolded, elegant */}
+      {/* Main label */}
       <span 
         className={cn(
-          "font-serif text-2xl sm:text-3xl text-charcoal font-normal transition-all duration-300"
+          "font-serif text-xl sm:text-2xl text-charcoal font-normal transition-all duration-300"
         )}
       >
         {label}
@@ -78,7 +77,7 @@ function EntryPoint({
           isHovered ? "max-h-6 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
         )}
       >
-        <span className="block text-xs text-stone-600 font-sans whitespace-nowrap">
+        <span className="block text-xs text-muted-foreground font-sans whitespace-nowrap">
           {microcopy}
         </span>
       </div>
@@ -136,12 +135,11 @@ export function LandingHero() {
 
   return (
     <>
-      {/* Smooth transition overlay - soft fade to content */}
+      {/* Smooth transition overlay */}
       {isTransitioning && (
         <div 
-          className="fixed inset-0 z-50 pointer-events-none animate-fade-in"
+          className="fixed inset-0 z-50 pointer-events-none animate-fade-in bg-background"
           style={{ 
-            background: "linear-gradient(135deg, hsl(0 0% 98% / 0.98), hsl(345 8% 96% / 0.98))",
             animationDuration: "400ms"
           }}
         />
@@ -157,10 +155,10 @@ export function LandingHero() {
         {/* Main content */}
         <div className="flex flex-col items-center gap-8 max-w-2xl mx-auto text-center">
           
-          {/* CTA Statement - white text, anchors the page */}
+          {/* CTA Statement - charcoal text for editorial feel */}
           <h1 
             className={cn(
-              "font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-sm",
+              "font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal leading-tight",
               "transition-all duration-700",
               showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
@@ -168,7 +166,7 @@ export function LandingHero() {
             Let's add AI to your pedagogical toolbox
           </h1>
           
-          {/* Two equal entry point cards */}
+          {/* Two entry point cards */}
           <div 
             className={cn(
               "flex flex-col sm:flex-row items-center gap-4 transition-all duration-700 delay-100",
@@ -214,8 +212,8 @@ export function LandingHero() {
           )}
         >
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-stone-300 font-sans">scroll to explore</span>
-            <div className="w-px h-8 bg-gradient-to-b from-stone-400/40 to-transparent" />
+            <span className="text-xs text-muted-foreground font-sans">scroll to explore</span>
+            <div className="w-px h-8 bg-gradient-to-b from-border to-transparent" />
           </div>
         </div>
       </section>
