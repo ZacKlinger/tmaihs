@@ -45,23 +45,24 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         className
       )}
     >
-      {/* Mesh gradient base - maximum vibrant watercolor-like layers */}
+      {/* Mesh gradient base - deep captivating pinks and magentas */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 90% 52% / 0.80) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 95% 50% / 0.75) 0%, transparent 45%),
-            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 80% 48% / 0.65) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 85% 52% / 0.65) 0%, transparent 55%),
-            linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 99%) 50%, hsl(345 10% 98%) 100%)
+            radial-gradient(ellipse 100% 80% at 50% 0%, hsl(330 85% 55% / 0.85) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 60% at 20% 30%, hsl(345 90% 50% / 0.80) 0%, transparent 50%),
+            radial-gradient(ellipse 70% 70% at 80% 25%, hsl(320 88% 58% / 0.75) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 80% at 70% 80%, hsl(280 75% 60% / 0.55) 0%, transparent 55%),
+            radial-gradient(ellipse 100% 70% at 30% 75%, hsl(340 85% 52% / 0.65) 0%, transparent 55%),
+            linear-gradient(180deg, hsl(330 70% 92%) 0%, hsl(0 0% 100%) 40%, hsl(280 40% 95%) 100%)
           `,
-          backgroundBlendMode: "soft-light, soft-light, soft-light, soft-light, normal",
+          backgroundBlendMode: "normal",
           animation: "gradient-breathe 12s ease-in-out infinite"
         }}
       />
 
-      {/* Primary morphing gradient layer - maximum vibrant depth and movement */}
+      {/* Primary morphing gradient layer - deep rose and magenta */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -69,14 +70,14 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 92% 48% / 0.60) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 92% 48% / 0.50) 0%, transparent 55%)
+            radial-gradient(ellipse 60% 50% at 55% 35%, hsl(340 92% 52% / 0.65) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 60% at 25% 55%, hsl(325 88% 55% / 0.55) 0%, transparent 55%)
           `,
           animation: "mesh-morph 25s ease-in-out infinite"
         }}
       />
 
-      {/* Secondary morphing layer - offset timing for depth/parallax */}
+      {/* Secondary morphing layer - fuchsia and deep pink */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -84,8 +85,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 45% 35% at 75% 55%, hsl(18 90% 46% / 0.45) 0%, transparent 55%),
-            radial-gradient(ellipse 35% 45% at 35% 35%, hsl(345 88% 50% / 0.40) 0%, transparent 50%)
+            radial-gradient(ellipse 55% 45% at 75% 50%, hsl(315 85% 55% / 0.50) 0%, transparent 55%),
+            radial-gradient(ellipse 45% 55% at 35% 40%, hsl(350 90% 48% / 0.45) 0%, transparent 50%)
           `,
           animation: "mesh-morph-2 30s ease-in-out infinite"
         }}
@@ -107,7 +108,7 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         }}
       />
 
-      {/* Warm glow trailing cursor - boosted vibrancy */}
+      {/* Warm glow trailing cursor - pink radiance */}
       <div 
         className={cn(
           "absolute inset-0 pointer-events-none transition-opacity duration-700",
@@ -116,8 +117,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         style={{
           background: `radial-gradient(
             circle 200px at ${mousePos.x}% ${mousePos.y}%, 
-            hsl(18 90% 55% / 0.35) 0%, 
-            hsl(345 85% 55% / 0.22) 50%,
+            hsl(340 90% 60% / 0.40) 0%, 
+            hsl(320 85% 58% / 0.25) 50%,
             transparent 70%
           )`
         }}
@@ -134,14 +135,14 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
       >
         <defs>
           <linearGradient id="line-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(345 60% 55%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(345 60% 55%)" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="hsl(345 60% 55%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(340 80% 55%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(340 80% 55%)" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="hsl(340 80% 55%)" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="line-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="hsl(18 70% 58%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(18 70% 58%)" stopOpacity="0.10" />
-            <stop offset="100%" stopColor="hsl(18 70% 58%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(320 75% 58%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(320 75% 58%)" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="hsl(320 75% 58%)" stopOpacity="0" />
           </linearGradient>
         </defs>
         
@@ -167,9 +168,9 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         <path
           d="M350,520 Q500,380 650,520"
           fill="none"
-          stroke="hsl(345 50% 60%)"
+          stroke="hsl(330 70% 55%)"
           strokeWidth="1"
-          strokeOpacity="0.15"
+          strokeOpacity="0.18"
           style={{ animation: "arc-breathe 20s ease-in-out infinite" }}
         />
       </svg>
