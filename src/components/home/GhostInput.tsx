@@ -106,7 +106,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
     <div className="w-full max-w-md mx-auto">
       <label 
         htmlFor="ghost-input"
-        className="block text-sm text-white mb-3 text-center font-sans drop-shadow-sm"
+        className="block text-sm text-muted-foreground mb-3 text-center font-sans"
       >
         Curious about something else?
       </label>
@@ -114,11 +114,11 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
       <form onSubmit={handleSubmit} className="relative">
         <div 
           className={cn(
-            "relative rounded-2xl border bg-white/95 backdrop-blur-md transition-all duration-300",
-            "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_8px_rgba(0,0,0,0.04),0_16px_32px_rgba(0,0,0,0.08)]",
+            "relative rounded-xl border bg-white transition-all duration-300",
+            "shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06)]",
             isFocused 
-              ? "border-white/80 shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.08),0_24px_48px_rgba(0,0,0,0.12)]" 
-              : "border-white/60 hover:border-white/80"
+              ? "border-primary/20 shadow-[0_2px_6px_rgba(0,0,0,0.06),0_8px_20px_rgba(0,0,0,0.08)]" 
+              : "border-border hover:border-border/80"
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -142,16 +142,16 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
             autoComplete="off"
           />
           
-          {/* Ghost text overlay - black text, black cursor */}
+          {/* Ghost text overlay */}
           {!hasUserTyped && !isFocused && (
             <div 
               className="absolute inset-0 flex items-center px-5 pointer-events-none"
               aria-hidden="true"
             >
-              <span className="text-charcoal/70 font-sans text-base">
+              <span className="text-muted-foreground font-sans text-base">
                 {ghostText}
                 <span 
-                  className="ml-0.5 inline-block w-[2px] h-[1.1em] align-middle bg-charcoal/80 animate-cursor-blink"
+                  className="ml-0.5 inline-block w-[2px] h-[1.1em] align-middle bg-charcoal/60 animate-cursor-blink"
                 />
               </span>
             </div>
@@ -160,7 +160,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
           {/* Loading indicator */}
           {isLoading && (
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <Loader2 className="h-5 w-5 animate-spin text-stone-500" />
+              <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
             </div>
           )}
         </div>

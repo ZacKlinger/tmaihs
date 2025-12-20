@@ -6,118 +6,120 @@
 
 @layer base {
   :root {
-    /* Clean, scholarly palette with phoenix burgundy accent */
-    --background: 0 0% 100%;
-    --foreground: 345 25% 15%;
+    /* Refined Editorial Pastel Palette */
+    /* Warm Ivory #F6F1EB - primary background */
+    --background: 35 33% 94%;
+    --foreground: 0 0% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 345 25% 15%;
+    /* Card surfaces use warm ivory */
+    --card: 35 33% 94%;
+    --card-foreground: 0 0% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 345 25% 15%;
+    --popover: 35 33% 96%;
+    --popover-foreground: 0 0% 12%;
 
-    /* Primary: Deep Phoenix Burgundy - more saturated */
+    /* Primary: Burgundy from logo - for CTAs only */
     --primary: 345 70% 32%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 35 33% 96%;
 
-    /* Secondary: Neutral Gray (no warmth) */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 345 25% 20%;
+    /* Secondary: Pale Sage #DCE6DF */
+    --secondary: 140 18% 88%;
+    --secondary-foreground: 0 0% 12%;
 
-    /* Muted: Pure Gray */
-    --muted: 0 0% 94%;
-    --muted-foreground: 345 15% 45%;
+    /* Muted: Powder Blue #E6EEF5 */
+    --muted: 208 38% 93%;
+    --muted-foreground: 0 0% 35%;
 
-    /* Accent: Phoenix Burgundy - boosted */
-    --accent: 345 65% 38%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Dusty Blush #E7C9CF */
+    --accent: 345 32% 85%;
+    --accent-foreground: 0 0% 12%;
 
-    /* Charcoal for text emphasis */
-    --charcoal: 345 20% 20%;
-    --charcoal-foreground: 0 0% 100%;
+    /* Charcoal #1F1F1F for text */
+    --charcoal: 0 0% 12%;
+    --charcoal-foreground: 35 33% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 35 33% 96%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
     --ring: 345 70% 32%;
 
     --radius: 0.75rem;
 
-    /* Phoenix-specific design tokens - boosted vibrancy */
-    --phoenix-gradient-start: 345 70% 42%;
-    --phoenix-gradient-end: 345 70% 32%;
-    --phoenix-glow: 345 70% 40%;
-    --phoenix-ember: 345 75% 38%;
-    --phoenix-cream: 0 0% 100%;
+    /* Pastel design tokens */
+    --warm-ivory: 35 33% 94%;
+    --pale-sage: 140 18% 88%;
+    --dusty-blush: 345 32% 85%;
+    --powder-blue: 208 38% 93%;
+    --burgundy: 345 70% 32%;
 
     /* Typography */
     --font-serif: 'Crimson Pro', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(345 30% 20% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(345 30% 20% / 0.12);
-    --shadow-glow: 0 0 40px hsl(345 55% 35% / 0.15);
+    /* Shadows - matte, subtle */
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.06);
+    --shadow-card: 0 8px 30px -8px hsl(0 0% 0% / 0.08);
 
     /* Sidebar */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 345 25% 20%;
+    --sidebar-background: 35 33% 94%;
+    --sidebar-foreground: 0 0% 12%;
     --sidebar-primary: 345 70% 32%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 345 25% 20%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 345 55% 28%;
+    --sidebar-primary-foreground: 35 33% 96%;
+    --sidebar-accent: 140 18% 88%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 35 15% 88%;
+    --sidebar-ring: 345 70% 32%;
   }
 
   .dark {
-    --background: 345 25% 8%;
-    --foreground: 40 33% 95%;
+    /* Dark mode with pastel undertones */
+    --background: 0 0% 8%;
+    --foreground: 35 20% 92%;
 
-    --card: 345 20% 12%;
-    --card-foreground: 40 33% 95%;
+    --card: 0 0% 11%;
+    --card-foreground: 35 20% 92%;
 
-    --popover: 345 20% 12%;
-    --popover-foreground: 40 33% 95%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 35 20% 92%;
 
-    --primary: 345 50% 45%;
-    --primary-foreground: 40 33% 98%;
+    --primary: 345 55% 45%;
+    --primary-foreground: 35 20% 95%;
 
-    --secondary: 345 20% 18%;
-    --secondary-foreground: 40 33% 90%;
+    --secondary: 140 12% 18%;
+    --secondary-foreground: 35 20% 90%;
 
-    --muted: 345 15% 20%;
-    --muted-foreground: 40 20% 65%;
+    --muted: 208 15% 18%;
+    --muted-foreground: 35 10% 60%;
 
-    --accent: 18 70% 50%;
-    --accent-foreground: 40 33% 98%;
+    --accent: 345 20% 25%;
+    --accent-foreground: 35 20% 92%;
 
-    --charcoal: 40 33% 90%;
-    --charcoal-foreground: 345 25% 15%;
+    --charcoal: 35 20% 90%;
+    --charcoal-foreground: 0 0% 12%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 35 20% 95%;
 
-    --border: 345 15% 20%;
-    --input: 345 15% 20%;
-    --ring: 345 50% 45%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 345 55% 45%;
 
-    --phoenix-gradient-start: 345 50% 50%;
-    --phoenix-gradient-end: 345 50% 40%;
-    --phoenix-glow: 345 50% 45%;
-    --phoenix-ember: 345 55% 42%;
-    --phoenix-cream: 345 20% 15%;
+    --warm-ivory: 0 0% 12%;
+    --pale-sage: 140 12% 18%;
+    --dusty-blush: 345 20% 25%;
+    --powder-blue: 208 15% 18%;
+    --burgundy: 345 55% 45%;
 
-    --sidebar-background: 345 20% 10%;
-    --sidebar-foreground: 40 33% 90%;
-    --sidebar-primary: 345 50% 45%;
-    --sidebar-primary-foreground: 40 33% 98%;
-    --sidebar-accent: 345 15% 18%;
-    --sidebar-accent-foreground: 40 33% 90%;
-    --sidebar-border: 345 15% 18%;
-    --sidebar-ring: 345 50% 45%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 35 20% 90%;
+    --sidebar-primary: 345 55% 45%;
+    --sidebar-primary-foreground: 35 20% 95%;
+    --sidebar-accent: 140 12% 18%;
+    --sidebar-accent-foreground: 35 20% 90%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 345 55% 45%;
   }
 }
 
@@ -150,37 +152,30 @@
     font-family: var(--font-sans);
   }
 
-  /* Phoenix gradient utilities */
-  .phoenix-gradient {
+  /* Subtle gradient utilities - matte, atmospheric */
+  .pastel-gradient {
     background: linear-gradient(
-      135deg,
-      hsl(var(--phoenix-gradient-start)) 0%,
-      hsl(var(--phoenix-gradient-end)) 100%
+      180deg,
+      hsl(var(--warm-ivory)) 0%,
+      hsl(var(--pale-sage)) 100%
     );
   }
 
-  .phoenix-gradient-text {
+  .pastel-gradient-blush {
     background: linear-gradient(
-      135deg,
-      hsl(var(--phoenix-gradient-start)) 0%,
-      hsl(var(--phoenix-gradient-end)) 100%
+      180deg,
+      hsl(var(--warm-ivory)) 0%,
+      hsl(var(--dusty-blush)) 100%
     );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
-  .phoenix-glow {
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Card hover effects */
+  /* Card hover effects - subtle lift */
   .card-lift {
     @apply transition-all duration-300 ease-out;
   }
 
   .card-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-card);
   }
 
@@ -194,43 +189,12 @@
     position: absolute;
     width: 120px;
     height: 60px;
-    border: 3px solid hsl(var(--primary) / 0.15);
+    border: 2px solid hsl(var(--primary) / 0.12);
     border-bottom: none;
     border-radius: 60px 60px 0 0;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  /* Ember particle effect */
-  @keyframes ember-float {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-      opacity: 0.6;
-    }
-    50% {
-      transform: translateY(-20px) scale(1.1);
-      opacity: 1;
-    }
-  }
-
-  .ember-particle {
-    animation: ember-float 3s ease-in-out infinite;
-  }
-
-  /* Feather sweep animation */
-  @keyframes feather-sweep {
-    0% {
-      transform: rotate(-5deg) translateX(-10px);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(5deg) translateX(10px);
-      opacity: 0;
-    }
   }
 
   /* Page section styling */
@@ -240,7 +204,7 @@
 
   /* Research citation styling */
   .citation {
-    @apply text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 my-2;
+    @apply text-sm text-muted-foreground italic border-l-2 border-primary/20 pl-3 my-2;
   }
 
   /* Navigation link underline effect */
@@ -269,7 +233,7 @@
   100% { transform: translateX(calc(-100vw - 200px)); }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - subtle */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -281,10 +245,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.2);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.5);
+  background: hsl(var(--primary) / 0.35);
 }

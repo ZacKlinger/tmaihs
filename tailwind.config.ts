@@ -55,11 +55,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Pastel palette tokens
+        pastel: {
+          ivory: "hsl(var(--warm-ivory))",
+          sage: "hsl(var(--pale-sage))",
+          blush: "hsl(var(--dusty-blush))",
+          blue: "hsl(var(--powder-blue))",
+        },
         phoenix: {
-          burgundy: "hsl(345 70% 32%)",
-          ember: "hsl(18 92% 50%)",
-          glow: "hsl(18 90% 58%)",
-          cream: "hsl(0 0% 100%)",
+          burgundy: "hsl(var(--burgundy))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -80,7 +84,6 @@ export default {
       boxShadow: {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
-        glow: "var(--shadow-glow)",
       },
       keyframes: {
         "accordion-down": {
@@ -106,11 +109,6 @@ export default {
         "slide-up": {
           "0%": { transform: "translateY(20px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        "wing-spread": {
-          "0%": { transform: "scaleX(0.8) rotate(-5deg)", opacity: "0.5" },
-          "50%": { transform: "scaleX(1.05) rotate(0deg)", opacity: "1" },
-          "100%": { transform: "scaleX(1) rotate(0deg)", opacity: "1" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
@@ -141,38 +139,9 @@ export default {
           "33%": { transform: "rotate(2deg)" },
           "66%": { transform: "rotate(-2deg)" },
         },
-        // Artscape mesh morphing
-        "mesh-morph": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
-          "25%": { transform: "translate(5%, -3%) scale(1.02)", opacity: "0.9" },
-          "50%": { transform: "translate(-3%, 5%) scale(0.98)", opacity: "1" },
-          "75%": { transform: "translate(3%, 2%) scale(1.01)", opacity: "0.95" },
-        },
-        "mesh-morph-2": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
-          "33%": { transform: "translate(-4%, 3%) scale(1.01)", opacity: "0.85" },
-          "66%": { transform: "translate(3%, -4%) scale(0.99)", opacity: "0.95" },
-        },
-        "gradient-breathe": {
-          "0%, 100%": { filter: "brightness(1) hue-rotate(0deg)" },
-          "50%": { filter: "brightness(1.02) hue-rotate(3deg)" },
-        },
         "cursor-blink": {
           "0%, 49%": { opacity: "1" },
           "50%, 100%": { opacity: "0" },
-        },
-        // Flowing line animations
-        "flow-line-1": {
-          "0%, 100%": { transform: "translateY(0) scaleX(1)", opacity: "1" },
-          "50%": { transform: "translateY(-30px) scaleX(1.02)", opacity: "0.8" },
-        },
-        "flow-line-2": {
-          "0%, 100%": { transform: "translateY(0) scaleX(1)", opacity: "1" },
-          "50%": { transform: "translateY(25px) scaleX(0.98)", opacity: "0.7" },
-        },
-        "arc-breathe": {
-          "0%, 100%": { transform: "scale(1)", opacity: "0.1" },
-          "50%": { transform: "scale(1.03)", opacity: "0.15" },
         },
       },
       animation: {
@@ -182,21 +151,13 @@ export default {
         "fade-in-slow": "fade-in-slow 1s ease-out forwards",
         "scale-in": "scale-in 0.4s ease-out forwards",
         "slide-up": "slide-up 0.5s ease-out forwards",
-        "wing-spread": "wing-spread 0.8s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
         // Fish animations
         "fish-bob": "fish-bob 2s ease-in-out infinite",
         "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
         "fish-tail": "fish-tail 0.4s ease-in-out infinite",
-        // Artscape animations
-        "mesh-morph": "mesh-morph 25s ease-in-out infinite",
-        "mesh-morph-2": "mesh-morph-2 30s ease-in-out infinite",
-        "gradient-breathe": "gradient-breathe 12s ease-in-out infinite",
         "cursor-blink": "cursor-blink 0.8s steps(1) infinite",
-        "flow-line-1": "flow-line-1 30s ease-in-out infinite",
-        "flow-line-2": "flow-line-2 35s ease-in-out infinite",
-        "arc-breathe": "arc-breathe 20s ease-in-out infinite",
       },
     },
   },
