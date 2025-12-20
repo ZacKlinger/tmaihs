@@ -106,7 +106,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
     <div className="w-full max-w-md mx-auto">
       <label 
         htmlFor="ghost-input"
-        className="block text-sm text-stone-300 mb-3 text-center font-sans"
+        className="block text-sm text-white mb-3 text-center font-sans drop-shadow-sm"
       >
         Curious about something else?
       </label>
