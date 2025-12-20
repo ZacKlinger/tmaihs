@@ -39,12 +39,20 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
     const currentPhrase = GHOST_PHRASES[phraseIndex];
     
     if (isPaused) {
-      const pauseDuration = isDeleting ? PAUSE_AFTER_DELETING : PAUSE_AFTER_TYPING;
+      // Determine pause type based on current state:
+      // - charIndex === currentPhrase.length means we just finished typing
+      // - charIndex === 0 means we just finished deleting
+      const justFinishedTyping = charIndex === currentPhrase.length;
+      const pauseDuration = justFinishedTyping ? PAUSE_AFTER_TYPING : PAUSE_AFTER_DELETING;
+      
       const timer = setTimeout(() => {
         setIsPaused(false);
-        if (!isDeleting) {
+        if (justFinishedTyping) {
+          // After reading pause, start deleting
           setIsDeleting(true);
         }
+        // If we just finished deleting, isDeleting is already false
+        // and charIndex is 0, so typing will naturally begin
       }, pauseDuration);
       return () => clearTimeout(timer);
     }
@@ -148,8 +156,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
               <span className="text-muted-foreground/60 font-sans text-base">
                 {ghostText}
                 <span 
-                  className="ml-0.5 text-primary/70 inline-block w-[2px] h-[1.1em] align-middle bg-primary/70"
-                  style={{ animation: "cursor-blink 0.8s steps(1) infinite" }}
+                  className="ml-0.5 inline-block w-[2px] h-[1.1em] align-middle bg-primary/70 animate-cursor-blink"
                 />
               </span>
             </div>
