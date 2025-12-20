@@ -136,12 +136,12 @@ export function LandingHero() {
 
   return (
     <>
-      {/* Smooth transition overlay */}
+      {/* Smooth transition overlay - pure white */}
       {isTransitioning && (
         <div 
           className="fixed inset-0 z-50 pointer-events-none animate-fade-in"
           style={{ 
-            background: "linear-gradient(135deg, hsl(40 45% 96% / 0.95), hsl(345 15% 95% / 0.95))",
+            background: "linear-gradient(135deg, hsl(0 0% 100% / 0.97), hsl(345 10% 98% / 0.97))",
             animationDuration: "350ms"
           }}
         />

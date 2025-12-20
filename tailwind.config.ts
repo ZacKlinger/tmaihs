@@ -56,10 +56,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         phoenix: {
-          burgundy: "hsl(345 55% 28%)",
-          ember: "hsl(18 75% 55%)",
-          glow: "hsl(18 85% 65%)",
-          cream: "hsl(40 45% 96%)",
+          burgundy: "hsl(345 70% 32%)",
+          ember: "hsl(18 92% 50%)",
+          glow: "hsl(18 90% 58%)",
+          cream: "hsl(0 0% 100%)",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
