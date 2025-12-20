@@ -114,10 +114,11 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
       <form onSubmit={handleSubmit} className="relative">
         <div 
           className={cn(
-            "relative rounded-lg border bg-stone-50/95 backdrop-blur-sm transition-all duration-300",
+            "relative rounded-2xl border bg-white/95 backdrop-blur-md transition-all duration-300",
+            "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_8px_rgba(0,0,0,0.04),0_16px_32px_rgba(0,0,0,0.08)]",
             isFocused 
-              ? "border-stone-400/60 shadow-sm" 
-              : "border-stone-200/60 hover:border-stone-300/60"
+              ? "border-white/80 shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.08),0_24px_48px_rgba(0,0,0,0.12)]" 
+              : "border-white/60 hover:border-white/80"
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
