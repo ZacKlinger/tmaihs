@@ -7,50 +7,50 @@
 @layer base {
   :root {
     /* Clean, scholarly palette with phoenix burgundy accent */
-    --background: 0 0% 99%;
+    --background: 0 0% 100%;
     --foreground: 345 25% 15%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 345 25% 15%;
 
-    --popover: 0 0% 98%;
+    --popover: 0 0% 100%;
     --popover-foreground: 345 25% 15%;
 
-    /* Primary: Deep Phoenix Burgundy */
-    --primary: 345 55% 28%;
-    --primary-foreground: 0 0% 99%;
+    /* Primary: Deep Phoenix Burgundy - more saturated */
+    --primary: 345 70% 32%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Neutral Warm Gray */
-    --secondary: 30 10% 94%;
+    /* Secondary: Neutral Gray (no warmth) */
+    --secondary: 0 0% 96%;
     --secondary-foreground: 345 25% 20%;
 
-    /* Muted: Soft Gray */
-    --muted: 30 5% 92%;
+    /* Muted: Pure Gray */
+    --muted: 0 0% 94%;
     --muted-foreground: 345 15% 45%;
 
-    /* Accent: Phoenix Burgundy (same as primary for restraint) */
-    --accent: 345 45% 35%;
-    --accent-foreground: 0 0% 99%;
+    /* Accent: Phoenix Burgundy - boosted */
+    --accent: 345 65% 38%;
+    --accent-foreground: 0 0% 100%;
 
     /* Charcoal for text emphasis */
     --charcoal: 345 20% 20%;
-    --charcoal-foreground: 0 0% 99%;
+    --charcoal-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 99%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 10% 90%;
-    --input: 30 10% 90%;
-    --ring: 345 55% 28%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 345 70% 32%;
 
     --radius: 0.75rem;
 
-    /* Phoenix-specific design tokens */
-    --phoenix-gradient-start: 345 55% 38%;
-    --phoenix-gradient-end: 345 55% 28%;
-    --phoenix-glow: 345 55% 35%;
-    --phoenix-ember: 345 60% 32%;
-    --phoenix-cream: 30 15% 97%;
+    /* Phoenix-specific design tokens - boosted vibrancy */
+    --phoenix-gradient-start: 345 70% 42%;
+    --phoenix-gradient-end: 345 70% 32%;
+    --phoenix-glow: 345 70% 40%;
+    --phoenix-ember: 345 75% 38%;
+    --phoenix-cream: 0 0% 100%;
 
     /* Typography */
     --font-serif: 'Crimson Pro', Georgia, serif;
@@ -62,13 +62,13 @@
     --shadow-glow: 0 0 40px hsl(345 55% 35% / 0.15);
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 345 25% 20%;
-    --sidebar-primary: 345 55% 28%;
-    --sidebar-primary-foreground: 0 0% 99%;
-    --sidebar-accent: 30 10% 94%;
+    --sidebar-primary: 345 70% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 345 25% 20%;
-    --sidebar-border: 30 10% 90%;
+    --sidebar-border: 0 0% 90%;
     --sidebar-ring: 345 55% 28%;
   }
 
