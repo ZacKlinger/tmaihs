@@ -34,12 +34,12 @@ function EntryPoint({
       className={cn(
         "group relative flex flex-col items-center justify-center overflow-hidden",
         "py-5 px-8 rounded-2xl transition-all duration-400 ease-out",
-        "bg-background/60 backdrop-blur-sm",
+        "bg-white/90 backdrop-blur-md",
         "border border-border/30",
         "shadow-[0_8px_40px_-12px_hsl(345_30%_20%/0.1)]",
         "hover:shadow-[0_12px_50px_-12px_hsl(345_30%_20%/0.15)]",
-        "hover:bg-background/70",
-        isTransitioning && isSelected && "scale-105 bg-background/80",
+        "hover:bg-white/95",
+        isTransitioning && isSelected && "scale-105 bg-white",
         isTransitioning && !isSelected && "opacity-0 scale-95"
       )}
     >

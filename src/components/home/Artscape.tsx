@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface ArtscapeProps {
@@ -15,14 +15,27 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
     setMounted(true);
   }, []);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    setMousePos({ x, y });
-  }, []);
+  // Track mouse at window level so cursor effects work regardless of z-index
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePos({ x, y });
+    };
 
-  const handleMouseEnter = useCallback(() => setIsHovering(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovering(false), []);
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => setIsHovering(false);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   return (
     <div 
@@ -31,19 +44,16 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         receding ? "opacity-30" : "opacity-100",
         className
       )}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       {/* Mesh gradient base - vibrant watercolor-like layers */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 65% 65% / 0.70) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 80% 62% / 0.65) 0%, transparent 45%),
-            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 55% 65% / 0.55) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 60% 68% / 0.55) 0%, transparent 55%),
+            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 75% 58% / 0.75) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 88% 55% / 0.70) 0%, transparent 45%),
+            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 65% 55% / 0.60) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 70% 60% / 0.60) 0%, transparent 55%),
             linear-gradient(135deg, hsl(40 45% 97%) 0%, hsl(30 20% 96%) 50%, hsl(345 15% 95%) 100%)
           `,
           backgroundBlendMode: "soft-light, soft-light, soft-light, soft-light, normal",
@@ -59,8 +69,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 70% 58% / 0.50) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 75% 58% / 0.40) 0%, transparent 55%)
+            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 78% 52% / 0.55) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 85% 52% / 0.45) 0%, transparent 55%)
           `,
           animation: "mesh-morph 25s ease-in-out infinite"
         }}
@@ -74,8 +84,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 45% 35% at 75% 55%, hsl(18 70% 55% / 0.35) 0%, transparent 55%),
-            radial-gradient(ellipse 35% 45% at 35% 35%, hsl(345 60% 60% / 0.30) 0%, transparent 50%)
+            radial-gradient(ellipse 45% 35% at 75% 55%, hsl(18 82% 50% / 0.40) 0%, transparent 55%),
+            radial-gradient(ellipse 35% 45% at 35% 35%, hsl(345 72% 55% / 0.35) 0%, transparent 50%)
           `,
           animation: "mesh-morph-2 30s ease-in-out infinite"
         }}

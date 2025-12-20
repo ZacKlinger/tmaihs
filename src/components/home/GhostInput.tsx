@@ -120,7 +120,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
       <form onSubmit={handleSubmit} className="relative">
         <div 
           className={cn(
-            "relative rounded-xl border bg-background/80 backdrop-blur-sm transition-all duration-300",
+            "relative rounded-xl border bg-white/95 backdrop-blur-md transition-all duration-300",
             isFocused 
               ? "border-primary/40 shadow-soft" 
               : "border-border/50 hover:border-border"
