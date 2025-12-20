@@ -5,14 +5,14 @@ import { Loader2 } from "lucide-react";
 const GHOST_PHRASES = [
   "tell me about the ethics of AI",
   "help me plan a lesson",
-  "help me level up my prompt engineering",
+  "how do I level up my prompt engineering",
 ];
 
-const TYPING_SPEED = 70; // ms per character - human reading speed
-const TYPING_VARIANCE = 40; // natural human variance
-const DELETE_SPEED = 35; // deliberate deletion speed
-const PAUSE_AFTER_TYPING = 2500; // 2.5 seconds to read the message
-const PAUSE_AFTER_DELETING = 1800; // 1.8 seconds of blinking cursor before next phrase
+const TYPING_SPEED = 75; // ms per character - thoughtful pace
+const TYPING_VARIANCE = 35; // natural human variance
+const DELETE_SPEED = 40; // deliberate deletion speed
+const PAUSE_AFTER_TYPING = 2800; // 2.8 seconds to read the message
+const PAUSE_AFTER_DELETING = 2000; // 2 seconds of pause before next phrase
 
 interface GhostInputProps {
   onSubmit: (query: string) => void;
@@ -39,20 +39,14 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
     const currentPhrase = GHOST_PHRASES[phraseIndex];
     
     if (isPaused) {
-      // Determine pause type based on current state:
-      // - charIndex === currentPhrase.length means we just finished typing
-      // - charIndex === 0 means we just finished deleting
       const justFinishedTyping = charIndex === currentPhrase.length;
       const pauseDuration = justFinishedTyping ? PAUSE_AFTER_TYPING : PAUSE_AFTER_DELETING;
       
       const timer = setTimeout(() => {
         setIsPaused(false);
         if (justFinishedTyping) {
-          // After reading pause, start deleting
           setIsDeleting(true);
         }
-        // If we just finished deleting, isDeleting is already false
-        // and charIndex is 0, so typing will naturally begin
       }, pauseDuration);
       return () => clearTimeout(timer);
     }
@@ -112,7 +106,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
     <div className="w-full max-w-md mx-auto">
       <label 
         htmlFor="ghost-input"
-        className="block text-sm text-muted-foreground mb-3 text-center font-sans"
+        className="block text-sm text-stone-300 mb-3 text-center font-sans"
       >
         Curious about something else?
       </label>
@@ -120,10 +114,10 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
       <form onSubmit={handleSubmit} className="relative">
         <div 
           className={cn(
-            "relative rounded-xl border bg-white/95 backdrop-blur-md transition-all duration-300",
+            "relative rounded-lg border bg-stone-50/95 backdrop-blur-sm transition-all duration-300",
             isFocused 
-              ? "border-primary/40 shadow-soft" 
-              : "border-border/50 hover:border-border"
+              ? "border-stone-400/60 shadow-sm" 
+              : "border-stone-200/60 hover:border-stone-300/60"
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -139,7 +133,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
             onKeyDown={handleKeyDown}
             disabled={isLoading}
             className={cn(
-              "w-full bg-transparent py-4 px-6 text-charcoal placeholder:text-transparent",
+              "w-full bg-transparent py-3.5 px-5 text-charcoal placeholder:text-transparent",
               "focus:outline-none font-sans text-base",
               "disabled:opacity-50 disabled:cursor-not-allowed"
             )}
@@ -147,16 +141,16 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
             autoComplete="off"
           />
           
-          {/* Ghost text overlay - only visible when unfocused and no user input */}
+          {/* Ghost text overlay - black text, black cursor */}
           {!hasUserTyped && !isFocused && (
             <div 
-              className="absolute inset-0 flex items-center px-6 pointer-events-none"
+              className="absolute inset-0 flex items-center px-5 pointer-events-none"
               aria-hidden="true"
             >
-              <span className="text-muted-foreground/60 font-sans text-base">
+              <span className="text-charcoal/70 font-sans text-base">
                 {ghostText}
                 <span 
-                  className="ml-0.5 inline-block w-[2px] h-[1.1em] align-middle bg-primary/70 animate-cursor-blink"
+                  className="ml-0.5 inline-block w-[2px] h-[1.1em] align-middle bg-charcoal/80 animate-cursor-blink"
                 />
               </span>
             </div>
@@ -165,7 +159,7 @@ export function GhostInput({ onSubmit, isLoading = false }: GhostInputProps) {
           {/* Loading indicator */}
           {isLoading && (
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <Loader2 className="h-5 w-5 animate-spin text-primary/60" />
+              <Loader2 className="h-5 w-5 animate-spin text-stone-500" />
             </div>
           )}
         </div>

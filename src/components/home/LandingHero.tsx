@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { GhostInput } from "./GhostInput";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowRight } from "lucide-react";
 
 interface EntryPointProps {
   label: string;
@@ -24,61 +23,68 @@ function EntryPoint({
   isSelected 
 }: EntryPointProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handleClick = () => {
+    setIsPressed(true);
+    // Slight delay to show the press animation before navigating
+    setTimeout(() => {
+      onNavigate(href);
+    }, 150);
+  };
 
   return (
     <button
-      onClick={() => onNavigate(href)}
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsPressed(false);
+      }}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
       disabled={isTransitioning}
       className={cn(
         "group relative flex flex-col items-center justify-center overflow-hidden",
-        "py-5 px-8 rounded-2xl transition-all duration-400 ease-out",
-        "bg-white/90 backdrop-blur-md",
-        "border border-border/30",
-        "shadow-[0_8px_40px_-12px_hsl(345_30%_20%/0.1)]",
-        "hover:shadow-[0_12px_50px_-12px_hsl(345_30%_20%/0.15)]",
-        "hover:bg-white/95",
-        isTransitioning && isSelected && "scale-105 bg-white",
+        "py-3 px-6 rounded-lg transition-all duration-500 ease-out",
+        "bg-stone-50/95 backdrop-blur-sm",
+        "border border-stone-200/60",
+        "shadow-sm",
+        // Hover state - subtle lift
+        isHovered && !isPressed && "shadow-md bg-stone-50",
+        // Press/click state - depth transition, moving through the button
+        isPressed && "scale-[1.02] shadow-lg bg-white",
+        // Transition out states
+        isTransitioning && isSelected && "scale-[1.08] opacity-0 shadow-xl",
         isTransitioning && !isSelected && "opacity-0 scale-95"
       )}
+      style={{
+        // Smooth depth transition on click
+        transform: isPressed 
+          ? "scale(1.02) translateZ(10px)" 
+          : isTransitioning && isSelected 
+            ? "scale(1.08)" 
+            : undefined,
+        transition: "all 0.5s cubic-bezier(0.22, 1, 0.36, 1)"
+      }}
     >
-      {/* Main label - symmetric centering with spacers */}
-      <div className="flex items-center justify-center">
-        {/* Left spacer - matches arrow width for symmetry */}
-        <span 
-          className={cn(
-            "w-5 h-5 shrink-0 transition-all duration-300",
-            isHovered ? "opacity-0" : "opacity-0"
-          )} 
-          aria-hidden="true" 
-        />
-        
-        <span 
-          className={cn(
-            "font-serif text-2xl sm:text-3xl text-charcoal transition-all duration-300 mx-3"
-          )}
-        >
-          {label}
-        </span>
-        
-        {/* Animated arrow on hover */}
-        <ArrowRight 
-          className={cn(
-            "w-5 h-5 shrink-0 text-primary/60 transition-all duration-300",
-            isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
-          )}
-        />
-      </div>
+      {/* Main label */}
+      <span 
+        className={cn(
+          "font-serif text-xl sm:text-2xl text-charcoal font-bold transition-all duration-300"
+        )}
+      >
+        {label}
+      </span>
       
       {/* Microcopy - expands into view */}
       <div 
         className={cn(
           "overflow-hidden transition-all duration-400 ease-out",
-          isHovered ? "max-h-8 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
+          isHovered ? "max-h-6 opacity-100 mt-1.5" : "max-h-0 opacity-0 mt-0"
         )}
       >
-        <span className="block text-sm text-muted-foreground font-sans whitespace-nowrap">
+        <span className="block text-xs text-stone-600 font-sans whitespace-nowrap">
           {microcopy}
         </span>
       </div>
@@ -104,7 +110,7 @@ export function LandingHero() {
     
     setTimeout(() => {
       navigate(href);
-    }, 450);
+    }, 500);
   }, [navigate]);
 
   const handleSearch = useCallback(async (query: string) => {
@@ -136,13 +142,13 @@ export function LandingHero() {
 
   return (
     <>
-      {/* Smooth transition overlay - pure white */}
+      {/* Smooth transition overlay - soft fade to content */}
       {isTransitioning && (
         <div 
           className="fixed inset-0 z-50 pointer-events-none animate-fade-in"
           style={{ 
-            background: "linear-gradient(135deg, hsl(0 0% 100% / 0.97), hsl(345 10% 98% / 0.97))",
-            animationDuration: "350ms"
+            background: "linear-gradient(135deg, hsl(0 0% 98% / 0.98), hsl(345 8% 96% / 0.98))",
+            animationDuration: "400ms"
           }}
         />
       )}
@@ -150,64 +156,75 @@ export function LandingHero() {
       <section 
         className={cn(
           "relative min-h-screen flex flex-col items-center justify-center px-4",
-          "transition-all duration-500 ease-out",
+          "transition-all duration-600 ease-out",
           isTransitioning && "scale-[1.01] opacity-0"
         )}
       >
-      {/* Main content */}
-      <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto text-center">
-        
-        {/* Two separate entry point cards */}
-        <div 
-          className={cn(
-            "flex flex-col sm:flex-row items-center gap-4 sm:gap-6 transition-all duration-700",
-            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}
-        >
-          <EntryPoint
-            label="Explore the Studio"
-            microcopy="Browse ideas, tools, and examples"
-            href="/classroom-resources"
-            onNavigate={handleNavigate}
-            isTransitioning={isTransitioning}
-            isSelected={selectedPath === "/classroom-resources"}
-          />
+        {/* Main content */}
+        <div className="flex flex-col items-center gap-8 max-w-2xl mx-auto text-center">
           
-          <EntryPoint
-            label="Get Certified"
-            microcopy="Earn a shareable certificate"
-            href="/learning-studio"
-            onNavigate={handleNavigate}
-            isTransitioning={isTransitioning}
-            isSelected={selectedPath === "/learning-studio"}
-          />
+          {/* CTA Statement - anchors the page */}
+          <h1 
+            className={cn(
+              "font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-charcoal leading-tight",
+              "transition-all duration-700",
+              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
+            Let's add AI to your pedagogical toolbox
+          </h1>
+          
+          {/* Two equal entry point cards */}
+          <div 
+            className={cn(
+              "flex flex-col sm:flex-row items-center gap-4 transition-all duration-700 delay-100",
+              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            )}
+          >
+            <EntryPoint
+              label="Explore the Studio"
+              microcopy="Browse ideas, tools, and examples"
+              href="/classroom-resources"
+              onNavigate={handleNavigate}
+              isTransitioning={isTransitioning}
+              isSelected={selectedPath === "/classroom-resources"}
+            />
+            
+            <EntryPoint
+              label="Get Certified"
+              microcopy="Earn a shareable credential"
+              href="/learning-studio"
+              onNavigate={handleNavigate}
+              isTransitioning={isTransitioning}
+              isSelected={selectedPath === "/learning-studio"}
+            />
+          </div>
+
+          {/* Ghost input */}
+          <div 
+            className={cn(
+              "w-full pt-6 transition-all duration-700 delay-200",
+              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
+            <GhostInput onSubmit={handleSearch} isLoading={isSearching} />
+          </div>
         </div>
 
-        {/* Ghost input */}
+        {/* Scroll indicator */}
         <div 
           className={cn(
-            "w-full pt-4 transition-all duration-700 delay-200",
-            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            "absolute bottom-8 left-1/2 -translate-x-1/2",
+            "transition-opacity duration-1000 delay-700",
+            showContent ? "opacity-40" : "opacity-0"
           )}
         >
-          <GhostInput onSubmit={handleSearch} isLoading={isSearching} />
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-stone-300 font-sans">scroll to explore</span>
+            <div className="w-px h-8 bg-gradient-to-b from-stone-400/40 to-transparent" />
+          </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div 
-        className={cn(
-          "absolute bottom-8 left-1/2 -translate-x-1/2",
-          "transition-opacity duration-1000 delay-700",
-          showContent ? "opacity-30" : "opacity-0"
-        )}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground font-sans">scroll to explore</span>
-          <div className="w-px h-8 bg-gradient-to-b from-border to-transparent" />
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
