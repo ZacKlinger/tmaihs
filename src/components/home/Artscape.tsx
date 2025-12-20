@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 interface ArtscapeProps {
@@ -8,10 +8,21 @@ interface ArtscapeProps {
 
 export function Artscape({ className, receding = false }: ArtscapeProps) {
   const [mounted, setMounted] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    setMousePos({ x, y });
+  }, []);
+
+  const handleMouseEnter = useCallback(() => setIsHovering(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovering(false), []);
 
   return (
     <div 
@@ -20,16 +31,19 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         receding ? "opacity-30" : "opacity-100",
         className
       )}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Mesh gradient base - watercolor-like layers */}
+      {/* Mesh gradient base - vibrant watercolor-like layers */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 45% 75% / 0.65) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 65% 75% / 0.60) 0%, transparent 45%),
-            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 35% 80% / 0.55) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 40% 80% / 0.50) 0%, transparent 55%),
+            radial-gradient(ellipse 80% 50% at 20% 30%, hsl(345 65% 65% / 0.70) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 80% at 80% 20%, hsl(18 80% 62% / 0.65) 0%, transparent 45%),
+            radial-gradient(ellipse 70% 60% at 70% 80%, hsl(165 55% 65% / 0.55) 0%, transparent 50%),
+            radial-gradient(ellipse 90% 70% at 30% 70%, hsl(345 60% 68% / 0.55) 0%, transparent 55%),
             linear-gradient(135deg, hsl(40 45% 97%) 0%, hsl(30 20% 96%) 50%, hsl(345 15% 95%) 100%)
           `,
           backgroundBlendMode: "soft-light, soft-light, soft-light, soft-light, normal",
@@ -37,7 +51,7 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         }}
       />
 
-      {/* Primary morphing gradient layer - adds depth and movement */}
+      {/* Primary morphing gradient layer - vibrant depth and movement */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -45,8 +59,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 50% 70% / 0.45) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 60% 70% / 0.35) 0%, transparent 55%)
+            radial-gradient(ellipse 50% 40% at 60% 40%, hsl(345 70% 58% / 0.50) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 50% at 25% 60%, hsl(18 75% 58% / 0.40) 0%, transparent 55%)
           `,
           animation: "mesh-morph 25s ease-in-out infinite"
         }}
@@ -60,17 +74,49 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 45% 35% at 75% 55%, hsl(18 55% 72% / 0.30) 0%, transparent 55%),
-            radial-gradient(ellipse 35% 45% at 35% 35%, hsl(345 45% 75% / 0.25) 0%, transparent 50%)
+            radial-gradient(ellipse 45% 35% at 75% 55%, hsl(18 70% 55% / 0.35) 0%, transparent 55%),
+            radial-gradient(ellipse 35% 45% at 35% 35%, hsl(345 60% 60% / 0.30) 0%, transparent 50%)
           `,
           animation: "mesh-morph-2 30s ease-in-out infinite"
+        }}
+      />
+
+      {/* Cursor-following dispersion effect - creates "parting" of colors */}
+      <div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-500",
+          isHovering ? "opacity-100" : "opacity-0"
+        )}
+        style={{
+          background: `radial-gradient(
+            circle 280px at ${mousePos.x}% ${mousePos.y}%, 
+            hsl(40 50% 98% / 0.90) 0%, 
+            hsl(40 40% 97% / 0.50) 40%,
+            transparent 70%
+          )`
+        }}
+      />
+
+      {/* Warm glow trailing cursor */}
+      <div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-700",
+          isHovering ? "opacity-100" : "opacity-0"
+        )}
+        style={{
+          background: `radial-gradient(
+            circle 200px at ${mousePos.x}% ${mousePos.y}%, 
+            hsl(18 75% 60% / 0.30) 0%, 
+            hsl(345 60% 65% / 0.18) 50%,
+            transparent 70%
+          )`
         }}
       />
 
       {/* Flowing SVG lines - organic movement */}
       <svg 
         className={cn(
-          "absolute inset-0 w-full h-full transition-opacity duration-1000",
+          "absolute inset-0 w-full h-full transition-opacity duration-1000 pointer-events-none",
           mounted ? "opacity-100" : "opacity-0"
         )}
         preserveAspectRatio="none"
@@ -78,14 +124,14 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
       >
         <defs>
           <linearGradient id="line-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(345 50% 60%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(345 50% 60%)" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="hsl(345 50% 60%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(345 60% 55%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(345 60% 55%)" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="hsl(345 60% 55%)" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="line-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="hsl(18 60% 65%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(18 60% 65%)" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="hsl(18 60% 65%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(18 70% 58%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(18 70% 58%)" stopOpacity="0.10" />
+            <stop offset="100%" stopColor="hsl(18 70% 58%)" stopOpacity="0" />
           </linearGradient>
         </defs>
         
@@ -111,9 +157,9 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         <path
           d="M350,520 Q500,380 650,520"
           fill="none"
-          stroke="hsl(345 40% 65%)"
+          stroke="hsl(345 50% 60%)"
           strokeWidth="1"
-          strokeOpacity="0.1"
+          strokeOpacity="0.15"
           style={{ animation: "arc-breathe 20s ease-in-out infinite" }}
         />
       </svg>
