@@ -47,24 +47,25 @@ function EntryPoint({
         "group relative flex flex-col items-center justify-center overflow-hidden",
         "py-5 px-10 rounded-2xl transition-all duration-500 ease-out",
         "bg-white/95 backdrop-blur-md",
-        "border-2 border-white/80",
-        "shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.8)_inset]",
-        // Hover state - prominent lift and glow
-        isHovered && !isPressed && "shadow-[0_16px_48px_-12px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.9)_inset] bg-white scale-[1.02]",
+        "border border-white/60",
+        // Layered shadows for depth - soft ambient + crisp definition
+        "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_8px_rgba(0,0,0,0.04),0_16px_32px_rgba(0,0,0,0.08),0_32px_64px_rgba(0,0,0,0.08)]",
+        // Hover state - elevated with stronger shadows
+        isHovered && !isPressed && "shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.08),0_24px_48px_rgba(0,0,0,0.12),0_48px_96px_rgba(0,0,0,0.12)] bg-white scale-[1.01] -translate-y-1",
         // Press/click state
-        isPressed && "scale-[1.04] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] bg-white",
+        isPressed && "scale-[1.02] shadow-[0_2px_4px_rgba(0,0,0,0.06),0_12px_24px_rgba(0,0,0,0.1),0_32px_64px_rgba(0,0,0,0.15)] bg-white -translate-y-2",
         // Transition out states
-        isTransitioning && isSelected && "scale-[1.1] opacity-0 shadow-2xl",
+        isTransitioning && isSelected && "scale-[1.1] opacity-0",
         isTransitioning && !isSelected && "opacity-0 scale-90"
       )}
       style={{
         transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
       }}
     >
-      {/* Main label */}
+      {/* Main label - unbolded, elegant */}
       <span 
         className={cn(
-          "font-serif text-2xl sm:text-3xl text-charcoal font-bold transition-all duration-300"
+          "font-serif text-2xl sm:text-3xl text-charcoal font-normal transition-all duration-300"
         )}
       >
         {label}
@@ -156,10 +157,10 @@ export function LandingHero() {
         {/* Main content */}
         <div className="flex flex-col items-center gap-8 max-w-2xl mx-auto text-center">
           
-          {/* CTA Statement - anchors the page */}
+          {/* CTA Statement - white text, anchors the page */}
           <h1 
             className={cn(
-              "font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-charcoal leading-tight",
+              "font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-sm",
               "transition-all duration-700",
               showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
