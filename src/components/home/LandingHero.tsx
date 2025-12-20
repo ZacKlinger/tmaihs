@@ -27,7 +27,6 @@ function EntryPoint({
 
   const handleClick = () => {
     setIsPressed(true);
-    // Slight delay to show the press animation before navigating
     setTimeout(() => {
       onNavigate(href);
     }, 150);
@@ -46,32 +45,26 @@ function EntryPoint({
       disabled={isTransitioning}
       className={cn(
         "group relative flex flex-col items-center justify-center overflow-hidden",
-        "py-3 px-6 rounded-lg transition-all duration-500 ease-out",
-        "bg-stone-50/95 backdrop-blur-sm",
-        "border border-stone-200/60",
-        "shadow-sm",
-        // Hover state - subtle lift
-        isHovered && !isPressed && "shadow-md bg-stone-50",
-        // Press/click state - depth transition, moving through the button
-        isPressed && "scale-[1.02] shadow-lg bg-white",
+        "py-5 px-10 rounded-2xl transition-all duration-500 ease-out",
+        "bg-white/95 backdrop-blur-md",
+        "border-2 border-white/80",
+        "shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.8)_inset]",
+        // Hover state - prominent lift and glow
+        isHovered && !isPressed && "shadow-[0_16px_48px_-12px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.9)_inset] bg-white scale-[1.02]",
+        // Press/click state
+        isPressed && "scale-[1.04] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] bg-white",
         // Transition out states
-        isTransitioning && isSelected && "scale-[1.08] opacity-0 shadow-xl",
-        isTransitioning && !isSelected && "opacity-0 scale-95"
+        isTransitioning && isSelected && "scale-[1.1] opacity-0 shadow-2xl",
+        isTransitioning && !isSelected && "opacity-0 scale-90"
       )}
       style={{
-        // Smooth depth transition on click
-        transform: isPressed 
-          ? "scale(1.02) translateZ(10px)" 
-          : isTransitioning && isSelected 
-            ? "scale(1.08)" 
-            : undefined,
-        transition: "all 0.5s cubic-bezier(0.22, 1, 0.36, 1)"
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
       }}
     >
       {/* Main label */}
       <span 
         className={cn(
-          "font-serif text-xl sm:text-2xl text-charcoal font-bold transition-all duration-300"
+          "font-serif text-2xl sm:text-3xl text-charcoal font-bold transition-all duration-300"
         )}
       >
         {label}
@@ -81,7 +74,7 @@ function EntryPoint({
       <div 
         className={cn(
           "overflow-hidden transition-all duration-400 ease-out",
-          isHovered ? "max-h-6 opacity-100 mt-1.5" : "max-h-0 opacity-0 mt-0"
+          isHovered ? "max-h-6 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
         )}
       >
         <span className="block text-xs text-stone-600 font-sans whitespace-nowrap">
