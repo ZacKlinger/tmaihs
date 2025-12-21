@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SwimmingFish } from "@/components/easter-eggs/SwimmingFish";
 import { Artscape } from "@/components/home/Artscape";
 import { LandingHero } from "@/components/home/LandingHero";
 import { NavigationCards } from "@/components/home/NavigationCards";
@@ -53,7 +52,6 @@ const Index = () => {
       </div>
       
       <Footer />
-      <SwimmingFish />
     </div>
   );
 };
