@@ -29,7 +29,7 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         }}
       />
 
-      {/* Subtle atmospheric layer - extremely soft gradient */}
+      {/* Subtle atmospheric layer - warm ivory to blush gradient */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -39,8 +39,8 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
           background: `
             linear-gradient(180deg, 
               transparent 0%,
-              hsl(140 18% 88% / 0.3) 50%,
-              hsl(345 32% 85% / 0.2) 100%
+              hsl(345 32% 85% / 0.15) 60%,
+              hsl(345 32% 85% / 0.25) 100%
             )
           `
         }}
@@ -54,12 +54,12 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 60% 50% at 85% 15%, hsl(345 32% 85% / 0.4) 0%, transparent 60%)
+            radial-gradient(ellipse 60% 50% at 85% 15%, hsl(345 32% 85% / 0.5) 0%, transparent 60%)
           `
         }}
       />
 
-      {/* Pale sage accent - bottom left */}
+      {/* Warm blush accent - bottom left */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -67,12 +67,12 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 70% 60% at 10% 90%, hsl(140 18% 88% / 0.5) 0%, transparent 55%)
+            radial-gradient(ellipse 70% 60% at 10% 90%, hsl(345 28% 88% / 0.6) 0%, transparent 55%)
           `
         }}
       />
 
-      {/* Powder blue accent - subtle center-right */}
+      {/* Very subtle burgundy warmth - center */}
       <div 
         className={cn(
           "absolute inset-0 transition-opacity duration-1000",
@@ -80,7 +80,7 @@ export function Artscape({ className, receding = false }: ArtscapeProps) {
         )}
         style={{
           background: `
-            radial-gradient(ellipse 50% 40% at 75% 60%, hsl(208 38% 93% / 0.4) 0%, transparent 50%)
+            radial-gradient(ellipse 80% 60% at 50% 50%, hsl(345 70% 32% / 0.03) 0%, transparent 70%)
           `
         }}
       />

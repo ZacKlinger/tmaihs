@@ -55,15 +55,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Pastel palette tokens
-        pastel: {
-          ivory: "hsl(var(--warm-ivory))",
-          sage: "hsl(var(--pale-sage))",
-          blush: "hsl(var(--dusty-blush))",
-          blue: "hsl(var(--powder-blue))",
-        },
+        // Core palette tokens - no sage/green
         phoenix: {
+          ivory: "hsl(var(--ivory))",
+          blush: "hsl(var(--blush))",
+          "blush-light": "hsl(var(--blush-light))",
           burgundy: "hsl(var(--burgundy))",
+          "burgundy-light": "hsl(var(--burgundy-light))",
+          blue: "hsl(var(--powder-blue))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -118,27 +117,6 @@ export default {
           "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "0.8" },
         },
-        // Fish swimming animations
-        "fish-swim": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(calc(100vw + 200px))" },
-        },
-        "fish-bob": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "25%": { transform: "translateY(-8px)" },
-          "75%": { transform: "translateY(8px)" },
-        },
-        "fish-undulate": {
-          "0%, 100%": { transform: "scaleX(1) skewY(0deg)" },
-          "25%": { transform: "scaleX(0.97) skewY(1deg)" },
-          "50%": { transform: "scaleX(1.02) skewY(0deg)" },
-          "75%": { transform: "scaleX(0.97) skewY(-1deg)" },
-        },
-        "fish-tail": {
-          "0%, 100%": { transform: "rotate(0deg)" },
-          "33%": { transform: "rotate(2deg)" },
-          "66%": { transform: "rotate(-2deg)" },
-        },
         "cursor-blink": {
           "0%, 49%": { opacity: "1" },
           "50%, 100%": { opacity: "0" },
@@ -153,10 +131,6 @@ export default {
         "slide-up": "slide-up 0.5s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
-        // Fish animations
-        "fish-bob": "fish-bob 2s ease-in-out infinite",
-        "fish-undulate": "fish-undulate 0.8s ease-in-out infinite",
-        "fish-tail": "fish-tail 0.4s ease-in-out infinite",
         "cursor-blink": "cursor-blink 0.8s steps(1) infinite",
       },
     },
