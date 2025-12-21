@@ -15,8 +15,8 @@ const Index = () => {
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
       
-      // Show header after scrolling past 80% of viewport
-      setShowHeader(scrollY > viewportHeight * 0.8);
+      // Show header immediately on any scroll
+      setShowHeader(scrollY > 10);
       
       // Start fading artscape at 30% scroll
       setArtscapeReceding(scrollY > viewportHeight * 0.3);
