@@ -73,18 +73,8 @@ const sections = [
 
 export function NavigationCards() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="pt-8 pb-20 lg:pb-28">
       <div className="section-container">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 font-serif text-3xl font-semibold text-charcoal sm:text-4xl">
-            Explore the Library
-          </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
-            Navigate to any section that interests you. Each resource is designed to support 
-            teacher agency and provide research-backed guidance without prescription.
-          </p>
-        </div>
-
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sections.map((section, index) => (
             <Link
