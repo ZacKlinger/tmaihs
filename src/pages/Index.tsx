@@ -5,6 +5,7 @@ import { Artscape } from "@/components/home/Artscape";
 import { LandingHero } from "@/components/home/LandingHero";
 import { NavigationCards } from "@/components/home/NavigationCards";
 import { ResearchBanner } from "@/components/home/ResearchBanner";
+import { ScrollPeek } from "@/components/home/ScrollPeek";
 
 const Index = () => {
   const [showHeader, setShowHeader] = useState(false);
@@ -36,6 +37,9 @@ const Index = () => {
       
       {/* Hero - full viewport */}
       <LandingHero />
+      
+      {/* Scroll peek cue - peeking cards at bottom */}
+      <ScrollPeek />
       
       {/* Scrollable content with solid background */}
       <div className="relative bg-background">
