@@ -203,19 +203,7 @@ export function LandingHero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div 
-          className={cn(
-            "absolute bottom-8 left-1/2 -translate-x-1/2",
-            "transition-opacity duration-1000 delay-700",
-            showContent ? "opacity-40" : "opacity-0"
-          )}
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-muted-foreground font-sans">scroll to explore</span>
-            <div className="w-px h-8 bg-gradient-to-b from-border to-transparent" />
-          </div>
-        </div>
+        {/* Scroll indicator removed - using ScrollPeek component instead */}
       </section>
     </>
   );
