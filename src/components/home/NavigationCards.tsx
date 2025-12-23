@@ -71,7 +71,11 @@ const sections = [
   },
 ];
 
-export function NavigationCards() {
+interface NavigationCardsProps {
+  showIcons?: boolean;
+}
+
+export function NavigationCards({ showIcons = true }: NavigationCardsProps) {
   return (
     <section className="pt-8 pb-20 lg:pb-28">
       <div className="section-container">
@@ -90,10 +94,11 @@ export function NavigationCards() {
               )}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Icon */}
+              {/* Icon - hidden until scroll */}
               <div className={cn(
                 "mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-background shadow-soft",
-                "transition-transform duration-300 group-hover:scale-110"
+                "transition-all duration-500 group-hover:scale-110",
+                showIcons ? "opacity-100" : "opacity-0"
               )}>
                 <section.icon className={cn("h-6 w-6", section.iconColor)} />
               </div>

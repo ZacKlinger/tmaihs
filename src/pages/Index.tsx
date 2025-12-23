@@ -9,6 +9,7 @@ import { ResearchBanner } from "@/components/home/ResearchBanner";
 const Index = () => {
   const [showHeader, setShowHeader] = useState(false);
   const [artscapeReceding, setArtscapeReceding] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,9 @@ const Index = () => {
       
       // Show header immediately on any scroll
       setShowHeader(scrollY > 10);
+      
+      // Track if user has scrolled at all
+      setHasScrolled(scrollY > 10);
       
       // Start fading artscape at 30% scroll
       setArtscapeReceding(scrollY > viewportHeight * 0.3);
@@ -38,7 +42,7 @@ const Index = () => {
       <LandingHero />
       
       {/* Scrollable content - pulled up to peek into hero */}
-      <div className="relative bg-background -mt-[100px]">
+      <div className="relative bg-background -mt-[40px]">
         {/* Soft transition from artscape */}
         <div 
           className="absolute -top-32 left-0 right-0 h-32 pointer-events-none"
@@ -47,7 +51,7 @@ const Index = () => {
           }}
         />
         
-        <NavigationCards />
+        <NavigationCards showIcons={hasScrolled} />
         <ResearchBanner />
       </div>
       
