@@ -42,7 +42,7 @@ const Index = () => {
       <LandingHero />
       
       {/* Scrollable content - pulled up to peek into hero */}
-      <div className="relative bg-background -mt-[40px]">
+      <div className="relative bg-background -mt-[100px]">
         {/* Soft transition from artscape */}
         <div 
           className="absolute -top-32 left-0 right-0 h-32 pointer-events-none"
