@@ -51,8 +51,8 @@ const Index = () => {
           }}
         />
         
-        {/* Scroll prompt banner */}
-        <div className="flex justify-center py-3">
+        {/* Scroll prompt banner - positioned within the peek area */}
+        <div className="flex justify-center -mb-4">
           <span className="text-sm font-medium text-muted-foreground bg-muted/80 backdrop-blur-sm px-4 py-2 rounded-full">
             Scroll to Explore the Library
           </span>
