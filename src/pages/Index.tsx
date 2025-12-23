@@ -51,6 +51,13 @@ const Index = () => {
           }}
         />
         
+        {/* Scroll prompt banner */}
+        <div className="flex justify-center py-3">
+          <span className="text-sm font-medium text-muted-foreground bg-muted/80 backdrop-blur-sm px-4 py-2 rounded-full">
+            Scroll to Explore the Library
+          </span>
+        </div>
+        
         <NavigationCards showIcons={hasScrolled} />
         <ResearchBanner />
       </div>
