@@ -9,6 +9,7 @@ interface IterationCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const IterationCourse = (props: IterationCourseProps) => {

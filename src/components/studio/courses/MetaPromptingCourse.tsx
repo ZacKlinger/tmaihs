@@ -9,6 +9,7 @@ interface MetaPromptingCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const MetaPromptingCourse = (props: MetaPromptingCourseProps) => {

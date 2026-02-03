@@ -9,6 +9,7 @@ interface CurriculumAIDesignCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) => {

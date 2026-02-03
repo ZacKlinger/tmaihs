@@ -9,6 +9,7 @@ interface WorkflowDesignCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
