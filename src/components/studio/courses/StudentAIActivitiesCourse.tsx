@@ -9,6 +9,7 @@ interface StudentAIActivitiesCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const StudentAIActivitiesCourse = (props: StudentAIActivitiesCourseProps) => {

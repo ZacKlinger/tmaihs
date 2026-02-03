@@ -226,7 +226,8 @@ const LearningStudio = () => {
         setActiveCourse(null);
       },
       onBack: handleBack,
-      overallProgress: getCourseProgress(activeCourse!, course.totalSections, course.totalCFUs)
+      overallProgress: getCourseProgress(activeCourse!, course.totalSections, course.totalCFUs),
+      isAuthenticated,
     };
     switch (activeCourse) {
       case "constraints-101":

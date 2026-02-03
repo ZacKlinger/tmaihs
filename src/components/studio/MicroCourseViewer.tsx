@@ -166,6 +166,7 @@ interface MicroCourseViewerProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 const sectionIcons = {
@@ -186,6 +187,7 @@ export const MicroCourseViewer = ({
   onCompleteCourse,
   onBack,
   overallProgress,
+  isAuthenticated = false,
 }: MicroCourseViewerProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentSection = sections[currentIndex];
@@ -455,9 +457,20 @@ export const MicroCourseViewer = ({
       {/* Course Title */}
       <div>
         <h1 className="text-2xl font-bold text-foreground">{title}</h1>
-        <p className="text-muted-foreground">
-          Section {currentIndex + 1} of {sections.length}
-        </p>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <span>Section {currentIndex + 1} of {sections.length}</span>
+          {!isAuthenticated && (
+            <>
+              <span className="text-muted-foreground/50">•</span>
+              <Link 
+                to="/auth" 
+                className="text-xs hover:text-primary transition-colors"
+              >
+                Sign in to save progress
+              </Link>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Section Navigation Pills */}

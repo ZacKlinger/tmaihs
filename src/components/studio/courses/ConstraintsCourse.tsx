@@ -9,6 +9,7 @@ interface ConstraintsCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const ConstraintsCourse = (props: ConstraintsCourseProps) => {

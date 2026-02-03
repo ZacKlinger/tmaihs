@@ -9,6 +9,7 @@ interface CriticalEvaluationCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) => {

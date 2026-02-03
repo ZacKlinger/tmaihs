@@ -9,6 +9,7 @@ interface RoleAssignmentCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {

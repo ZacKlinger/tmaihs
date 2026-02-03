@@ -9,6 +9,7 @@ interface PersonaCallingCourseProps {
   onCompleteCourse: () => void;
   onBack: () => void;
   overallProgress: number;
+  isAuthenticated?: boolean;
 }
 
 export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
