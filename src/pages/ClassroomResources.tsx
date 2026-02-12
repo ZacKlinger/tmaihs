@@ -7,7 +7,7 @@ import { ResearchNote } from "@/components/shared/ResearchNote";
 import { Button } from "@/components/ui/button";
 import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
 import workExample from "@/assets/work-example-new.png";
-import claudeLogo from "@/assets/claude-logo.png";
+import claudeLogo from "@/assets/phoenix-logo.png";
 import playlabLogo from "@/assets/playlab-logo.png";
 import khanmigoLogo from "@/assets/khanmigo-logo.png";
 
