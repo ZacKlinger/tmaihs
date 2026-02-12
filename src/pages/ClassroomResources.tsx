@@ -84,19 +84,19 @@ D) C = 3.50 × 2.25m
     citation: "Khan Academy's Khanmigo leverages GPT-4 with guardrails designed for educational contexts, emphasizing Socratic questioning over direct answers (Khan, 2023)."
   },
   {
-    id: "chatgpt",
-    name: "ChatGPT",
-    provider: "OpenAI",
+    id: "claude",
+    name: "Claude",
+    provider: "Anthropic",
     icon: MessageSquare,
-    description: "ChatGPT serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its open-ended nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
+    description: "Claude serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its thoughtful and nuanced nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
     useCases: [
       {
         title: "Feedback on Ideas",
-        description: "Share lesson concepts, project ideas, or assessment drafts with ChatGPT to receive constructive feedback, identify gaps, and explore alternative approaches."
+        description: "Share lesson concepts, project ideas, or assessment drafts with Claude to receive constructive feedback, identify gaps, and explore alternative approaches."
       },
       {
         title: "Tailoring to Student Interests",
-        description: "Describe your students' interests and learning goals, then ask ChatGPT to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
+        description: "Describe your students' interests and learning goals, then ask Claude to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
       },
       {
         title: "Question Generation",
@@ -104,15 +104,15 @@ D) C = 3.50 × 2.25m
       }
     ],
     links: {
-      main: "https://chat.openai.com",
-      training: "https://help.openai.com/en/collections/3742473-chatgpt"
+      main: "https://claude.ai",
+      training: "https://docs.anthropic.com/en/docs/quickstart"
     },
     exampleOutput: {
       type: "mockup",
       title: "Student Interest-Tailored Problem",
       content: `**Teacher Prompt:** "I need a word problem about percentages for 7th graders who are really into basketball."
 
-**ChatGPT Response:**
+**Claude Response:**
 
 Marcus is analyzing his free throw stats. Last season, he made 42 out of 60 free throws. This season, he's made 38 out of 50 so far.
 

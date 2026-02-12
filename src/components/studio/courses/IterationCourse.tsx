@@ -124,7 +124,6 @@ export const IterationCourse = (props: IterationCourseProps) => {
         title: "Prompt Workshop: Iterative Refinement",
         description: "Practice the critique and revision cycle with your own project materials. The goal is to reach 'classroom-ready' in 2-3 iterations, not endless polishing.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

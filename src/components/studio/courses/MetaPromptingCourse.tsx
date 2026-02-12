@@ -156,7 +156,6 @@ export const MetaPromptingCourse = (props: MetaPromptingCourseProps) => {
         title: "Prompt Workshop: Meta-Prompting for Project Design",
         description: "Practice using AI to critique and improve your project prompts before generating materials.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

@@ -180,7 +180,6 @@ export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) =
         title: "Prompt Workshop: Building Your Evaluation Practice",
         description: "Create evaluation checklists for the types of project materials you most often generate.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

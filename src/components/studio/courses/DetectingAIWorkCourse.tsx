@@ -197,7 +197,6 @@ In conclusion, this experience enhanced my understanding of qualitative research
         title: "Prompt Workshop: Designing Authentic Checkpoints",
         description: "Redesign your project checkpoints to encourage authentic work.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

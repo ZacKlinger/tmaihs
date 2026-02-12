@@ -16,7 +16,7 @@ const WhatIsAI = () => {
                 The 30-Second Version
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
-                AI tools like ChatGPT are <strong>pattern-matching systems</strong>—they've analyzed billions of 
+                AI tools like Claude are <strong>pattern-matching systems</strong>—they've analyzed billions of 
                 texts to predict what words come next. They're incredibly useful for generating drafts and ideas, 
                 but they don't truly "understand" content and can confidently produce incorrect information.
               </p>
@@ -74,7 +74,7 @@ const WhatIsAI = () => {
                 <ContentCard title="Large Language Models (LLMs)" citation="Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS.">
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
-                      <p className="mb-3">ChatGPT, Claude, and similar tools are called "Large Language Models" because they are:</p>
+                      <p className="mb-3">Claude, Gemini, and similar tools are called "Large Language Models" because they are:</p>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
@@ -125,7 +125,7 @@ const WhatIsAI = () => {
                     <div className="rounded-lg bg-secondary/50 p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <MessageCircle className="h-5 w-5 text-primary" />
-                        <span className="font-medium text-charcoal">Text AI (ChatGPT, Claude)</span>
+                        <span className="font-medium text-charcoal">Text AI (Claude, Gemini)</span>
                       </div>
                       <p className="text-sm text-muted-foreground">
                         Generates and analyzes written content—lesson plans, feedback, explanations

@@ -163,7 +163,6 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
         title: "Prompt Workshop: Design Your Project Workflow",
         description: "Create a multi-step prompt workflow for a semester-long project you're planning.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
