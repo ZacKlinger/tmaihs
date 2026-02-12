@@ -196,7 +196,6 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
         title: "Prompt Workshop: Strategic Persona Selection",
         description: "Practice calling different personas for different project phases.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

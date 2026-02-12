@@ -105,7 +105,7 @@ const DataPrivacy = () => {
               {/* How AI Companies Use Data */}
               <ContentCard
                 title="How AI Companies Handle Your Data"
-                citation="OpenAI Privacy Policy (2024). Google AI Privacy Practices. Microsoft Copilot Data Handling."
+                citation="Anthropic Privacy Policy (2024). Google AI Privacy Practices. Microsoft Copilot Data Handling."
               >
                 <div className="flex items-start gap-4">
                   <div className="rounded-lg bg-blue-500/10 p-3">
@@ -181,7 +181,7 @@ const DataPrivacy = () => {
                     <div className="mt-4 border-l-2 border-primary/50 pl-4">
                       <p className="font-medium text-charcoal text-sm mb-1">Age Considerations:</p>
                       <p className="text-sm text-muted-foreground">
-                        Most consumer AI tools (ChatGPT, Claude, Gemini) have age 13+ terms of service. 
+                        Most consumer AI tools (Claude, Gemini, ChatGPT) have age 13+ terms of service. 
                         For younger students, only use tools specifically designed for educational use 
                         with appropriate compliance certifications.
                       </p>

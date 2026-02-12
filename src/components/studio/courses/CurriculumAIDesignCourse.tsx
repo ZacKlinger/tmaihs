@@ -210,7 +210,6 @@ export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) =
         title: "Prompt Workshop: Map Your Project's AI Choreography",
         description: "Create an AI integration map for your semester project.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

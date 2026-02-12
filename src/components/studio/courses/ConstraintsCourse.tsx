@@ -139,7 +139,6 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
         title: "Prompt Workshop: Constraints for PBL",
         description: "Apply constraints to your own project-based work. Use these templates, then iterate based on your actual classroom context.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

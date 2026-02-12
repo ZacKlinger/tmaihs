@@ -161,7 +161,6 @@ export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {
         title: "Prompt Workshop: Role Assignment for PBL",
         description: "Practice assigning roles that match your project's stakeholders and critique needs.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],

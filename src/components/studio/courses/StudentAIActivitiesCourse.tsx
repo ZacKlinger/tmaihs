@@ -159,7 +159,6 @@ export const StudentAIActivitiesCourse = (props: StudentAIActivitiesCourseProps)
         title: "Prompt Workshop: Design Student AI Activities",
         description: "Create AI activities for specific moments in your project where AI can strengthen student thinking.",
         toolLinks: [
-          { name: "ChatGPT", url: "https://chat.openai.com" },
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
