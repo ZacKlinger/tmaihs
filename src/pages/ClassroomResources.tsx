@@ -7,7 +7,7 @@ import { ResearchNote } from "@/components/shared/ResearchNote";
 import { Button } from "@/components/ui/button";
 import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
 import workExample from "@/assets/work-example-new.png";
-import claudeLogo from "@/assets/phoenix-logo.png";
+import claudeLogo from "@/assets/claude-logo.png";
 import playlabLogo from "@/assets/playlab-logo.png";
 import khanmigoLogo from "@/assets/khanmigo-logo.png";
 
@@ -183,8 +183,8 @@ const ClassroomResources = () => {
                     <div className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent p-6">
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         <div className="flex items-center gap-4">
-                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/50 overflow-hidden">
-                            <img src={tool.logo} alt={`${tool.name} logo`} className="h-8 w-8 object-contain" />
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl overflow-hidden">
+                            <img src={tool.logo} alt={`${tool.name} logo`} className="h-10 w-10 object-contain" />
                           </div>
                           <div>
                             <h3 className="font-serif text-xl font-semibold text-charcoal">
