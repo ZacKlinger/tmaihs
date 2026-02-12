@@ -1,4 +1,4 @@
-import { FolderOpen, BookOpen, ExternalLink, Sparkles, MessageSquare, Bot, ArrowRight } from "lucide-react";
+import { FolderOpen, BookOpen, ExternalLink, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -7,13 +7,57 @@ import { ResearchNote } from "@/components/shared/ResearchNote";
 import { Button } from "@/components/ui/button";
 import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
 import workExample from "@/assets/work-example-new.png";
+import claudeLogo from "@/assets/claude-logo.png";
+import playlabLogo from "@/assets/playlab-logo.png";
+import khanmigoLogo from "@/assets/khanmigo-logo.png";
 
 const aiTools = [
+  {
+    id: "claude",
+    name: "Claude",
+    provider: "Anthropic",
+    logo: claudeLogo,
+    description: "Claude serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its thoughtful and nuanced nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
+    useCases: [
+      {
+        title: "Feedback on Ideas",
+        description: "Share lesson concepts, project ideas, or assessment drafts with Claude to receive constructive feedback, identify gaps, and explore alternative approaches."
+      },
+      {
+        title: "Tailoring to Student Interests",
+        description: "Describe your students' interests and learning goals, then ask Claude to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
+      },
+      {
+        title: "Question Generation",
+        description: "Generate discussion questions, comprehension checks, or higher-order thinking prompts at various Bloom's taxonomy levels for any content area."
+      }
+    ],
+    links: {
+      main: "https://claude.ai",
+      training: "https://support.anthropic.com"
+    },
+    exampleOutput: {
+      type: "mockup",
+      title: "Student Interest-Tailored Problem",
+      content: `**Teacher Prompt:** "I need a word problem about percentages for 7th graders who are really into basketball."
+
+**Claude Response:**
+
+Marcus is analyzing his free throw stats. Last season, he made 42 out of 60 free throws. This season, he's made 38 out of 50 so far.
+
+a) What was his free throw percentage last season?
+b) What is his current percentage this season?
+c) How many of his next 10 free throws does he need to make to have an overall season percentage of 80%?
+
+**Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
+    },
+    citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023)."
+  },
   {
     id: "playlab",
     name: "Playlab",
     provider: "Playlab.ai",
-    icon: Bot,
+    logo: playlabLogo,
     description: "Playlab enables teachers to create custom AI assistants—either student-facing tutors or behind-the-scenes teacher tools. You can train bots on specific documents, rubrics, or instructional frameworks to create tailored learning experiences.",
     useCases: [
       {
@@ -44,7 +88,7 @@ const aiTools = [
     id: "khanmigo",
     name: "Khanmigo",
     provider: "Khan Academy",
-    icon: Sparkles,
+    logo: khanmigoLogo,
     description: "Khanmigo is Khan Academy's AI-powered teaching assistant designed specifically for educators. It provides structured tools that generate classroom-ready materials while maintaining pedagogical integrity.",
     useCases: [
       {
@@ -82,47 +126,6 @@ D) C = 3.50 × 2.25m
 [Image options A-D]`
     },
     citation: "Khan Academy's Khanmigo leverages GPT-4 with guardrails designed for educational contexts, emphasizing Socratic questioning over direct answers (Khan, 2023)."
-  },
-  {
-    id: "claude",
-    name: "Claude",
-    provider: "Anthropic",
-    icon: MessageSquare,
-    description: "Claude serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its thoughtful and nuanced nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
-    useCases: [
-      {
-        title: "Feedback on Ideas",
-        description: "Share lesson concepts, project ideas, or assessment drafts with Claude to receive constructive feedback, identify gaps, and explore alternative approaches."
-      },
-      {
-        title: "Tailoring to Student Interests",
-        description: "Describe your students' interests and learning goals, then ask Claude to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
-      },
-      {
-        title: "Question Generation",
-        description: "Generate discussion questions, comprehension checks, or higher-order thinking prompts at various Bloom's taxonomy levels for any content area."
-      }
-    ],
-    links: {
-      main: "https://claude.ai",
-      training: "https://docs.anthropic.com/en/docs/quickstart"
-    },
-    exampleOutput: {
-      type: "mockup",
-      title: "Student Interest-Tailored Problem",
-      content: `**Teacher Prompt:** "I need a word problem about percentages for 7th graders who are really into basketball."
-
-**Claude Response:**
-
-Marcus is analyzing his free throw stats. Last season, he made 42 out of 60 free throws. This season, he's made 38 out of 50 so far.
-
-a) What was his free throw percentage last season?
-b) What is his current percentage this season?
-c) How many of his next 10 free throws does he need to make to have an overall season percentage of 80%?
-
-**Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
-    },
-    citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023)."
   }
 ];
 
@@ -180,8 +183,8 @@ const ClassroomResources = () => {
                     <div className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent p-6">
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         <div className="flex items-center gap-4">
-                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                            <tool.icon className="h-6 w-6 text-primary" />
+                          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/50 overflow-hidden">
+                            <img src={tool.logo} alt={`${tool.name} logo`} className="h-8 w-8 object-contain" />
                           </div>
                           <div>
                             <h3 className="font-serif text-xl font-semibold text-charcoal">
