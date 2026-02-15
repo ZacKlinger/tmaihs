@@ -174,7 +174,7 @@ export function LandingHero() {
           )}>
 
             <EntryPoint
-              label="Explore the Studio"
+              label="Explore Use-Cases"
               microcopy="Browse ideas, tools, and examples"
               href="/classroom-resources"
               onNavigate={handleNavigate}
