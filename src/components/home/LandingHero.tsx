@@ -161,10 +161,10 @@ export function LandingHero() {
               "font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal leading-tight",
               "transition-all duration-700",
               showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}>AI is changing what's possible in your classroom. 
-
-This library helps you decide what's worth your time.
-
+            )}>
+              AI is changing what's possible in your classroom.
+              <br className="block mt-3" />
+              <span className="block mt-3">This library helps you decide what's worth your time.</span>
           </h1>
           
           {/* Two entry point cards */}
