@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const sections = [
   {
     title: "What Is AI?",
-    description: "Accurate, research-aligned explanations of machine learning, LLMs, and their limitations.",
+    description: "An honest look at what AI is, how it's built with principles, and why your expertise matters more than ever.",
     href: "/what-is-ai",
     icon: Brain,
     color: "from-primary/10 to-primary/5",
