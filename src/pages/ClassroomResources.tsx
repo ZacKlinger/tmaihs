@@ -36,7 +36,7 @@ const aiTools = [
     ],
     links: {
       main: "https://claude.ai",
-      training: "https://support.anthropic.com"
+      training: "https://www.anthropic.com/news/anthropic-teach-for-all"
     },
     citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023).",
     caseStudy: {
@@ -124,7 +124,7 @@ const aiTools = [
     ],
     links: {
       main: "https://www.playlab.ai",
-      training: "https://learn.playlab.ai/getstarted/Creating%20a%20Playlab%20App"
+      training: "https://learn.playlab.ai/introduction"
     },
     liveExample: {
       title: "Daily Project Sheet Coach",
@@ -155,7 +155,7 @@ const aiTools = [
     ],
     links: {
       main: "https://www.khanmigo.ai",
-      training: "https://support.khanacademy.org/hc/en-us/categories/24325692488333-Khanmigo"
+      training: "https://www.khanacademy.org/khan-for-educators/khanmigo-for-educators"
     },
     exampleOutput: {
       type: "mockup",
@@ -256,9 +256,9 @@ const ClassroomResources = () => {
                             href={tool.links.training}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent hover:bg-accent/20 transition-colors"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
                           >
-                            Training & Help
+                            Teacher Training
                             <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </div>
