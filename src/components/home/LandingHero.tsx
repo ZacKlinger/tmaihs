@@ -153,7 +153,7 @@ export function LandingHero() {
         )}>
 
         {/* Main content */}
-        <div className="flex flex-col items-center gap-8 max-w-2xl mx-auto text-center">
+        <div className="flex flex-col items-center gap-8 max-w-3xl mx-auto text-center">
           
           {/* CTA Statement - charcoal text for editorial feel */}
           <h1
