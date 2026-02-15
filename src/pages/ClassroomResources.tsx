@@ -9,7 +9,7 @@ import dailyProjectSheet from "@/assets/daily-project-sheet.jpg";
 import workExample from "@/assets/work-example-new.png";
 import claudeLogo from "@/assets/claude-logo.png";
 import playlabLogo from "@/assets/playlab-logo.png";
-import khanmigoLogo from "@/assets/khanmigo-logo.png";
+import khanmigoLogo from "@/assets/khanmigo-logo.svg";
 
 const aiTools = [
   {
