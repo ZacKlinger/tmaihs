@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
 const GHOST_PHRASES = [
-  "tell me about the ethics of AI",
-  "help me plan a lesson",
-  "how do I level up my prompt engineering",
+  "Tell me about the ethics of AI",
+  "Help me plan a lesson about...",
+  "How do I level up my prompt engineering?",
   "How do I know if my students used AI...",
 ];
 
