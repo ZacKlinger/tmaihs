@@ -161,8 +161,7 @@ export function LandingHero() {
 
 
             showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}>AI is changing what's possible in your classroom.  
-This library helps you decide what's worth your time.
+            )}>AI is changing what's possible in your classroom.
             <br className="block mt-3" />
               <span className="block mt-3 my-px">This library helps you decide what's worth your time.</span>
           </h1>
