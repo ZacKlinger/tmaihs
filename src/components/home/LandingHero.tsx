@@ -153,7 +153,7 @@ export function LandingHero() {
         )}>
 
         {/* Main content */}
-        <div className="flex flex-col items-center gap-8 max-w-3xl mx-auto text-center">
+        <div className="flex flex-col items-center gap-10 max-w-3xl mx-auto text-center">
           
           {/* CTA Statement - charcoal text for editorial feel */}
           <h1
@@ -164,7 +164,7 @@ export function LandingHero() {
             )}>
               AI is changing what's possible in your classroom
               <br className="block mt-3" />
-              <span className="block mt-3">This library helps you decide what's worth your time</span>
+              <span className="block mt-5">This library helps you decide what's worth your time</span>
           </h1>
           
           {/* Two entry point cards */}
