@@ -9,9 +9,11 @@ const ALPHANUMERIC = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Removed confusing ch
  * Generate a random alphanumeric string of specified length
  */
 function generateRandomSuffix(length: number): string {
+  const array = new Uint8Array(length);
+  crypto.getRandomValues(array);
   let result = '';
   for (let i = 0; i < length; i++) {
-    result += ALPHANUMERIC.charAt(Math.floor(Math.random() * ALPHANUMERIC.length));
+    result += ALPHANUMERIC.charAt(array[i] % ALPHANUMERIC.length);
   }
   return result;
 }
@@ -21,7 +23,7 @@ function generateRandomSuffix(length: number): string {
  */
 export function generateCertificateId(): string {
   const year = new Date().getFullYear();
-  const suffix = generateRandomSuffix(6);
+  const suffix = generateRandomSuffix(10);
   return `TMAI-${year}-${suffix}`;
 }
 
@@ -29,7 +31,7 @@ export function generateCertificateId(): string {
  * Validate certificate ID format
  */
 export function isValidCertificateId(id: string): boolean {
-  const pattern = /^TMAI-\d{4}-[A-Z0-9]{6}$/;
+  const pattern = /^TMAI-\d{4}-[A-HJ-NP-Z2-9]{10}$/;
   return pattern.test(id);
 }
 

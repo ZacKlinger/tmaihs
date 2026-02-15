@@ -88,7 +88,10 @@ export function generateAnonymousId(): string {
   const stored = localStorage.getItem('tmahs-anonymous-id');
   if (stored) return stored;
   
-  const newId = `anon_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  const randomHex = Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
+  const newId = `anon_${Date.now()}_${randomHex}`;
   localStorage.setItem('tmahs-anonymous-id', newId);
   return newId;
 }
@@ -100,7 +103,10 @@ export function getVoterId(): string {
   const stored = localStorage.getItem('tmahs-voter-id');
   if (stored) return stored;
   
-  const newId = `voter_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  const randomHex = Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
+  const newId = `voter_${Date.now()}_${randomHex}`;
   localStorage.setItem('tmahs-voter-id', newId);
   return newId;
 }
