@@ -161,6 +161,22 @@ export const researchLinks: Record<string, string> = {
   "Russell & Norvig": "https://aima.cs.berkeley.edu/",
   "NeurIPS": "https://neurips.cc/",
   "ACL": "https://aclanthology.org/",
+
+  // Anthropic & Constitutional AI
+  "Constitutional AI": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback",
+  "Claude's Constitution": "https://www.anthropic.com/constitution",
+  "Anthropic": "https://www.anthropic.com/",
+  "Anthropic Constitution": "https://www.anthropic.com/constitution",
+  "Bai, Y. et al.": "https://arxiv.org/abs/2212.08073",
+  "Machines of Loving Grace": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+  "Amodei, D.": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+  "Dario Amodei": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+  "AI 2027": "https://ai-2027.com/",
+
+  // SFUSD Data Sources
+  "SFUSD Facts at a Glance": "https://www.sfusd.edu/about-sfusd/facts-about-sfusd-glance",
+  "SFUSD": "https://www.sfusd.edu/",
+  "CDE Dashboard": "https://www.cde.ca.gov/nr/ne/yr24/yr24rel49.asp",
   
   // Future of Privacy Forum & Education Standards
   "Future of Privacy Forum": "https://fpf.org/",
