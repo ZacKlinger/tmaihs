@@ -164,8 +164,8 @@ const WhatIsAI = () => {
             {/* WHERE AI FALLS SHORT            */}
             {/* =============================== */}
             <div className="mb-16">
-              <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal">
-                Where AI Falls Short&mdash;and Why It Matters
+              <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal">Where AI Falls Short... and Why It Matters
+
               </h2>
 
               <div className="prose prose-slate max-w-none space-y-4 mb-8">
