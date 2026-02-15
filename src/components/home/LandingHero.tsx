@@ -157,14 +157,14 @@ export function LandingHero() {
           
           {/* CTA Statement - charcoal text for editorial feel */}
           <h1
-            className={cn(
-              "font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal leading-tight",
-              "transition-all duration-700",
-              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}>AI is changing what's possible in your classroom.
-This library helps you decide what's worth your time
+            className={cn("font-serif text-2xl sm:text-3xl font-semibold text-charcoal leading-tight transition-all duration-700 my-[12px] md:text-3xl",
+
+
+            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}>AI is changing what's possible in your classroom. 
+This library helps you decide what's worth your time.
             <br className="block mt-3" />
-              <span className="block mt-3">This library helps you decide what's worth your time.</span>
+              <span className="block mt-3 my-px">This library helps you decide what's worth your time.</span>
           </h1>
           
           {/* Two entry point cards */}
