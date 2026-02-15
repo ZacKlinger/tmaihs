@@ -73,9 +73,9 @@ const WhatIsAI = () => {
               <h2 className="mb-3 font-serif text-2xl font-semibold text-charcoal">
                 What AI Can Do for Educators
               </h2>
-              <p className="mb-8 text-muted-foreground leading-relaxed">
-                These aren't hypothetical&mdash;these are things teachers are doing right now.
-              </p>
+              
+
+
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-xl border border-border/50 bg-card p-5">
