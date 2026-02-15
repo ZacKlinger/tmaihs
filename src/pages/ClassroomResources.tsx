@@ -10,6 +10,8 @@ import workExample from "@/assets/work-example-new.png";
 import claudeLogo from "@/assets/claude-logo.png";
 import playlabLogo from "@/assets/playlab-logo.png";
 import khanmigoLogo from "@/assets/khanmigo-logo.svg";
+import hydroponicsBuild1 from "@/assets/hydroponics-build-1.jpg";
+import hydroponicsBuild2 from "@/assets/hydroponics-build-2.jpg";
 
 const aiTools = [
   {
@@ -51,7 +53,22 @@ c) How many of his next 10 free throws does he need to make to have an overall s
 
 **Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
     },
-    citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023)."
+    citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023).",
+    caseStudy: {
+      title: "Case Study: AI-Designed Hydroponics PBL",
+      subtitle: "SDC Science — Physics, Biology & Chemistry Integration",
+      summary: "Claude was used to design a 16-week interdisciplinary hydroponics project for a Special Day Class enrolling students in physics, biology, and chemistry. After being trained on TMAHS-provided PBL resources, Claude seamlessly aligned content areas to a singular project, created a backwards plan with weekly inquiry arcs, and sourced all parts for a combined build cost of only $1,100 — compared to $5,000 for an educational hydroponics kit.",
+      highlights: [
+        { label: "Duration", value: "16 weeks" },
+        { label: "Subjects integrated", value: "Physics, Biology, Chemistry" },
+        { label: "Build cost", value: "$1,100 vs. $5,000 kit" },
+        { label: "Class profile", value: "8 IEP students, mixed grade levels" },
+      ],
+      images: [
+        { src: hydroponicsBuild1, alt: "Teacher preparing lumber for hydroponics build at TMAHS" },
+        { src: hydroponicsBuild2, alt: "Student sawing wood for the hydroponics system build" },
+      ]
+    }
   },
   {
     id: "playlab",
@@ -247,6 +264,39 @@ const ClassroomResources = () => {
                             <div className="text-sm text-muted-foreground whitespace-pre-line font-mono leading-relaxed">
                               {tool.exampleOutput.content}
                             </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Case Study */}
+                      {tool.caseStudy && (
+                        <div className="mb-6">
+                          <h4 className="mb-2 font-medium text-charcoal">{tool.caseStudy.title}</h4>
+                          <p className="mb-3 text-xs font-medium text-primary uppercase tracking-wide">{tool.caseStudy.subtitle}</p>
+                          <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
+                            {tool.caseStudy.summary}
+                          </p>
+                          
+                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+                            {tool.caseStudy.highlights.map((h: { label: string; value: string }) => (
+                              <div key={h.label} className="rounded-xl bg-secondary/50 p-3 text-center">
+                                <p className="text-xs text-muted-foreground mb-1">{h.label}</p>
+                                <p className="text-sm font-semibold text-charcoal">{h.value}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="grid gap-4 sm:grid-cols-2">
+                            {tool.caseStudy.images.map((img: { src: string; alt: string }, i: number) => (
+                              <div key={i} className="rounded-xl border border-border overflow-hidden">
+                                <img
+                                  src={img.src}
+                                  alt={img.alt}
+                                  className="w-full h-64 object-cover"
+                                  loading="lazy"
+                                />
+                              </div>
+                            ))}
                           </div>
                         </div>
                       )}
