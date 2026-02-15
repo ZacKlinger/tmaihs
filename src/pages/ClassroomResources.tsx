@@ -1,4 +1,4 @@
-import { FolderOpen, BookOpen, ExternalLink, ArrowRight } from "lucide-react";
+import { FolderOpen, BookOpen, ExternalLink, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -19,15 +19,15 @@ const aiTools = [
     name: "Claude",
     provider: "Anthropic",
     logo: claudeLogo,
-    description: "Claude serves as a versatile thinking partner for teachers, supporting ideation, differentiation, and content creation. Its thoughtful and nuanced nature makes it ideal for tasks requiring creative flexibility and iterative refinement.",
+    description: "Claude serves as a powerful PBL design partner for teachers. Trained on your school's resources and frameworks, it can align multiple content areas to a single project, create backwards plans with weekly inquiry arcs, and even source materials — saving significant time and cost in project development.",
     useCases: [
+      {
+        title: "PBL Unit Design",
+        description: "Share your standards, class profile, and project vision. Claude creates a complete backwards plan with phased learning targets, inquiry structures, and scaffolds."
+      },
       {
         title: "Feedback on Ideas",
         description: "Share lesson concepts, project ideas, or assessment drafts with Claude to receive constructive feedback, identify gaps, and explore alternative approaches."
-      },
-      {
-        title: "Tailoring to Student Interests",
-        description: "Describe your students' interests and learning goals, then ask Claude to generate word problems, reading passages, or discussion questions that connect curriculum to what students care about."
       },
       {
         title: "Question Generation",
@@ -37,21 +37,6 @@ const aiTools = [
     links: {
       main: "https://claude.ai",
       training: "https://support.anthropic.com"
-    },
-    exampleOutput: {
-      type: "mockup",
-      title: "Student Interest-Tailored Problem",
-      content: `**Teacher Prompt:** "I need a word problem about percentages for 7th graders who are really into basketball."
-
-**Claude Response:**
-
-Marcus is analyzing his free throw stats. Last season, he made 42 out of 60 free throws. This season, he's made 38 out of 50 so far.
-
-a) What was his free throw percentage last season?
-b) What is his current percentage this season?
-c) How many of his next 10 free throws does he need to make to have an overall season percentage of 80%?
-
-**Extension:** Compare Marcus's improvement rate to Steph Curry's career free throw percentage (90.8%). What would Marcus need to do to reach that level?`
     },
     citation: "Research on AI-assisted lesson planning suggests that teachers find generative AI most valuable for differentiation and personalization tasks (Mollick & Mollick, 2023).",
     caseStudy: {
@@ -67,7 +52,54 @@ c) How many of his next 10 free throws does he need to make to have an overall s
       images: [
         { src: hydroponicsBuild1, alt: "Teacher preparing lumber for hydroponics build at TMAHS" },
         { src: hydroponicsBuild2, alt: "Student sawing wood for the hydroponics system build" },
-      ]
+      ],
+      unitPlan: {
+        title: "Designing, Building, and Optimizing a Classroom Hydroponics System",
+        phases: [
+          {
+            name: "Phase 1: Engineering Foundations",
+            weeks: "Weeks 1–3",
+            focus: "Defining the problem and building the system",
+            standards: "HS-ETS1-1, HS-ETS1-2, HS-ETS1-3",
+            targets: ["Explain the problem and constraints", "Compare hydroponic system designs", "Build and test a prototype"],
+          },
+          {
+            name: "Phase 2: Physics of Systems",
+            weeks: "Weeks 4–6",
+            focus: "Energy, flow, and stability",
+            standards: "HS-PS3-3, HS-PS2-1, HS-PS2-6",
+            targets: ["Explain how energy and forces affect the system", "Adjust flow and structure to improve performance", "Identify and fix system problems"],
+          },
+          {
+            name: "Phase 3: Biology of Growth",
+            weeks: "Weeks 7–8",
+            focus: "Photosynthesis and plant needs",
+            standards: "HS-LS1-5, HS-LS1-3",
+            targets: ["Explain what plants need to grow", "Connect plant health to system conditions", "Observe and describe changes using scientific language"],
+          },
+          {
+            name: "Phase 4: Chemistry of Solutions",
+            weeks: "Weeks 9–10",
+            focus: "Nutrients, pH, and chemical interactions",
+            standards: "HS-PS1-2, HS-PS1-5",
+            targets: ["Explain what a solution is", "Measure and adjust nutrient levels and pH", "Predict how chemical changes affect plants"],
+          },
+          {
+            name: "Phase 5: Matter, Systems & Resilience",
+            weeks: "Weeks 11–12",
+            focus: "Growth, cycling, and system stability",
+            standards: "HS-LS1-6, HS-LS2-7",
+            targets: ["Explain where plant mass comes from", "Identify system disturbances and respond", "Evaluate system health over time"],
+          },
+          {
+            name: "Phase 6: Optimization & Sustainability",
+            weeks: "Weeks 13–15",
+            focus: "Revision, impact, and communication",
+            standards: "HS-ETS1-4, HS-ESS3-4, HS-LS2-8",
+            targets: ["Improve a system based on evidence", "Explain sustainability tradeoffs", "Defend design decisions"],
+          },
+        ]
+      }
     }
   },
   {
@@ -255,19 +287,6 @@ const ClassroomResources = () => {
                         </div>
                       </div>
 
-                      {/* Example Output or Live Example */}
-                      {tool.exampleOutput && (
-                        <div className="mb-6">
-                          <h4 className="mb-4 font-medium text-charcoal">Example Output</h4>
-                          <div className="rounded-xl border border-border bg-secondary/30 p-5">
-                            <p className="mb-3 text-sm font-medium text-primary">{tool.exampleOutput.title}</p>
-                            <div className="text-sm text-muted-foreground whitespace-pre-line font-mono leading-relaxed">
-                              {tool.exampleOutput.content}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
                       {/* Case Study */}
                       {tool.caseStudy && (
                         <div className="mb-6">
@@ -286,7 +305,7 @@ const ClassroomResources = () => {
                             ))}
                           </div>
 
-                          <div className="grid gap-4 sm:grid-cols-2">
+                          <div className="grid gap-4 sm:grid-cols-2 mb-5">
                             {tool.caseStudy.images.map((img: { src: string; alt: string }, i: number) => (
                               <div key={i} className="rounded-xl border border-border overflow-hidden">
                                 <img
@@ -298,6 +317,42 @@ const ClassroomResources = () => {
                               </div>
                             ))}
                           </div>
+
+                          {/* Unit Plan Accordion */}
+                          {tool.caseStudy.unitPlan && (
+                            <details className="group rounded-xl border border-border overflow-hidden">
+                              <summary className="flex cursor-pointer items-center justify-between bg-gradient-to-r from-primary/5 to-transparent p-4 hover:from-primary/10 transition-colors">
+                                <div>
+                                  <p className="font-medium text-charcoal text-sm">View Full Unit Plan</p>
+                                  <p className="text-xs text-muted-foreground mt-0.5">{tool.caseStudy.unitPlan.title}</p>
+                                </div>
+                                <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180" />
+                              </summary>
+                              <div className="border-t border-border p-4 space-y-4">
+                                {tool.caseStudy.unitPlan.phases.map((phase: { name: string; weeks: string; focus: string; standards: string; targets: string[] }) => (
+                                  <div key={phase.name} className="rounded-lg bg-secondary/30 p-4">
+                                    <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                      <h5 className="font-medium text-charcoal text-sm">{phase.name}</h5>
+                                      <span className="text-xs text-muted-foreground">{phase.weeks}</span>
+                                    </div>
+                                    <p className="text-xs text-primary mb-1.5">Focus: {phase.focus}</p>
+                                    <p className="text-xs text-muted-foreground mb-2">NGSS: {phase.standards}</p>
+                                    <ul className="space-y-1">
+                                      {phase.targets.map((t: string) => (
+                                        <li key={t} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                          <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                                          {t}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                                <p className="text-xs text-muted-foreground italic pt-2 border-t border-border/50">
+                                  Week 16 culminates with a harvest event, student presentations, and self-assessment reflections.
+                                </p>
+                              </div>
+                            </details>
+                          )}
                         </div>
                       )}
 
