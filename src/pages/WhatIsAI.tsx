@@ -164,7 +164,7 @@ const WhatIsAI = () => {
                         3
                       </div>
                       <div>
-                        <span className="font-medium text-charcoal">Where AI Falls Short... and Why It Matters</span>{" "}
+                        <span className="font-medium text-charcoal">Where AI Falls Short,and Why It Matters</span>{" "}
                         <span className="text-sm">Follow Anthropic's specific guidance on sensitive topics like medical advice and safety.</span>
                       </div>
                     </div>
