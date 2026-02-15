@@ -135,7 +135,7 @@ const ClassroomResources = () => {
       <PageHeader
         title="Classroom Resources"
         description="Curated AI tools for educators, each with specific use cases, training resources, and real examples. These tools can support lesson planning, differentiation, and student engagement."
-        icon={<FolderOpen className="h-8 w-8 text-accent" />}
+        icon={<FolderOpen className="h-8 w-8 text-primary" />}
       />
 
       <section className="py-16 lg:py-20">
