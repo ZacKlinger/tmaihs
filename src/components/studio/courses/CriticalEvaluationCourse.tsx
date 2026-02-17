@@ -30,13 +30,15 @@ export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) =
             </p>
           </div>
           <p>
-            AI outputs can be confidently wrong, subtly biased, or contextually inappropriate. 
-            <strong> Critical evaluation</strong> is the skill of systematically reviewing AI outputs 
+            AI outputs can be confidently wrong, subtly biased, or contextually inappropriate.
+            <strong> Critical evaluation</strong> is the skill of systematically reviewing AI outputs
             before they reach students.
           </p>
           <p>
-            In this micro-course, you'll develop a personal evaluation framework using the 
-            <ResearchLink text="SIFT Method" />—a technique originally designed for evaluating online sources.
+            In Tier 3, you're building a <strong>Classroom AI Policy</strong> — a practical framework
+            you could share with students, parents, and your principal. This course builds the first
+            section: your <strong>Evaluation Standards</strong>. By the end, you'll have a personal
+            checklist for vetting AI outputs before they reach your students.
           </p>
         </div>
       ),
@@ -177,8 +179,8 @@ export const CriticalEvaluationCourse = (props: CriticalEvaluationCourseProps) =
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Building Your Evaluation Practice",
-        description: "Create evaluation checklists for the types of project materials you most often generate.",
+        title: "Write Your Evaluation Standards",
+        description: "This becomes the first section of your Classroom AI Policy. Draft your personal evaluation checklist — the three-lens protocol you'll use before any AI-generated material reaches your students. This is what you'd show a parent or administrator who asks how you vet AI content.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
@@ -229,28 +231,30 @@ For each issue found, suggest a specific revision.
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Policy Section 1: Evaluation Standards</p>
             <p className="text-muted-foreground">
-              Think about project materials you've generated recently. Which of the three lenses 
-              (accuracy, bias, appropriateness) do you tend to skip or rush through? What's one 
-              thing you could do differently to catch issues earlier?
+              You now have the first section of your Classroom AI Policy — your evaluation
+              standards. This is your answer to "How do you make sure AI content is safe and
+              appropriate for students?" Save your three-lens checklist. You'll add three more
+              sections as you complete the remaining courses.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Add to Your Constitution</p>
             <p className="text-muted-foreground">
-              Create a 3-question checklist for yourself. Before using any AI-generated project material, ask:
-              (1) Have I verified the factual claims? (2) Whose perspectives are centered and whose are missing? 
-              (3) Does this fit MY students and community?
+              Your evaluation checklist also belongs in your Constitution. Add it as a new section:
+              "Before AI-generated materials reach students, I verify: (1) factual claims against
+              trusted sources, (2) whose perspectives are centered and whose are missing, (3) fit
+              for my students, community, and project context."
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1 & 2:</strong> Better constraints produce outputs that need less evaluation—but 
-              never skip evaluation entirely. Even well-prompted AI can produce biased or inaccurate content, especially 
-              for community-specific contexts.
+              <strong>Notice:</strong> Your Constitution makes evaluation easier — AI that already
+              knows your community context is less likely to produce inappropriate content. But
+              less likely isn't never. The checklist still matters.
             </p>
           </div>
         </div>

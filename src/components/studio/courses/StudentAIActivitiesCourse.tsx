@@ -30,12 +30,14 @@ export const StudentAIActivitiesCourse = (props: StudentAIActivitiesCourseProps)
             </p>
           </div>
           <p>
-            Students will use AI whether you design for it or not. The question is: <strong>Will they use it 
+            Students will use AI whether you design for it or not. The question is: <strong>Will they use it
             as a thinking tool or an answer machine?</strong> The activity structure determines the outcome.
           </p>
           <p>
-            In this micro-course, you'll learn to design student-facing AI activities where AI amplifies 
-            thinking rather than replacing it.
+            This course builds the third section of your Classroom AI Policy: <strong>Student AI Use
+            Guidelines</strong>. You'll draft the section of your policy that students actually read —
+            when they can use AI, how they should use it, and what productive use looks like in your
+            classroom. You'll include at least one PACE-structured activity they can reference as a model.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This approach draws on the <ResearchLink text="ICAP Framework" /> (Chi & Wylie)—designing for 
@@ -156,8 +158,8 @@ export const StudentAIActivitiesCourse = (props: StudentAIActivitiesCourseProps)
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Design Student AI Activities",
-        description: "Create AI activities for specific moments in your project where AI can strengthen student thinking.",
+        title: "Write Your Student AI Use Guidelines",
+        description: "Draft the student-facing section of your Classroom AI Policy. This should include your expectations for when and how students use AI, at least one PACE-structured activity they can reference as a model, and clear language a student could actually follow. Write it like something you'd hand out on day one.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
@@ -212,26 +214,29 @@ TURN IN: Draft, AI feedback, your evaluation of feedback, revised version with a
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Policy Section 3: Student AI Use Guidelines</p>
             <p className="text-muted-foreground">
-              Think about a skill you want students to develop in your project. How could AI interaction 
-              actually strengthen that skill rather than bypass it? What would the activity structure look like?
+              Three sections of your Classroom AI Policy are now complete: Evaluation Standards,
+              Authenticity by Design, and Student AI Use Guidelines. The first two are for you
+              and your colleagues. This one is for your students — and it's the section that
+              makes or breaks whether AI use in your classroom is productive.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Integrate with Your PBL Unit</p>
             <p className="text-muted-foreground">
-              Design one student AI activity using the PACE framework. Test it with a small group first 
-              and observe: Are students doing the thinking, or outsourcing it? Revise based on what you see.
+              Look at your PBL unit from Tier 2. Where could students use AI as a thinking tool?
+              Add at least one PACE-structured AI activity to a specific milestone in your unit.
+              The activity you designed in this workshop is a good candidate.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to earlier tiers:</strong> You're now applying constraints and role assignment 
-              not to your own prompts, but to the prompts you give students. The same principles transfer—you're 
-              just designing for a different user.
+              <strong>Add to your Constitution:</strong> Include your student AI use principles:
+              "Students draft first, use AI as responder, evaluate AI critically, and document
+              their thinking."
             </p>
           </div>
         </div>

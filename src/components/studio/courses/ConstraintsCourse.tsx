@@ -42,6 +42,17 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
             this course is about. The fix is simpler than you think, and it starts with one idea:
             AI doesn't know what you know. You have to tell it.
           </p>
+          <p>
+            Across this tier, you're going to build something called your <strong>AI Classroom
+            Constitution</strong> — a living document that captures everything AI needs to know
+            about your classroom to be useful to you. Think of it as a system prompt for your room.
+            Load it into any AI tool, and the outputs get better without rethinking your approach
+            each time.
+          </p>
+          <p>
+            This course builds the first two sections of your Constitution: your <strong>Classroom
+            Context</strong> and your <strong>Project Architecture</strong>.
+          </p>
           <div className="text-xs text-muted-foreground mt-4">
             <ResearchLink text="Cognitive Load Theory" /> (Sweller) explains why this matters —
             the more you narrow the task, the less noise both you and the AI have to wade through.
@@ -156,47 +167,50 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Constraints in Practice",
-        description: "These templates are starting points — fill in the blanks with your actual project, then see what comes back. The first output is never the final one. That's fine. You're having a conversation.",
+        title: "Build Your Constitution: Classroom Context & Project Architecture",
+        description: "This is where your Constitution starts. Fill in the blanks with your actual classroom and project, then test it — paste what you write into an AI tool and see how the output changes. What you produce here becomes the first two sections of your Constitution.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Mid-Project Checkpoint Activity",
-            prompt: `I teach [GRADE/COURSE] and we're in Week [NUMBER] of a [TOTAL]-week project on [TOPIC].
+            label: "Constitution Section 1: Classroom Context",
+            prompt: `CLASSROOM CONTEXT — save this as the first section of your AI Classroom Constitution.
 
-What students have done so far:
+I teach [GRADE/COURSE] at [SCHOOL NAME].
+Class size: [NUMBER] students
+Reading levels: [RANGE — e.g., "6th-10th grade"]
+EL students: [NUMBER and LEVEL — e.g., "8 students, emerging/developing"]
+IEP/504 considerations: [BRIEF DESCRIPTION]
+Standard scaffolds I use: [e.g., "visual supports, vocabulary pre-teaching, sentence frames"]
+Period length: [MINUTES], we meet [FREQUENCY]
+District requirements: [e.g., "NGSS-aligned, quarterly benchmarks"]
+
+---
+TEST IT: Paste this section into an AI tool and ask it to create a warm-up activity for your class. Notice how much more specific the output is compared to prompting without it.`,
+          },
+          {
+            label: "Constitution Section 2: Project Architecture",
+            prompt: `PROJECT ARCHITECTURE — save this as the second section of your AI Classroom Constitution.
+
+Current project: [TOPIC]
+Driving question: [YOUR DRIVING QUESTION]
+Timeline: [TOTAL] weeks, currently Week [NUMBER]
+
+Milestones completed:
 - [KEY MILESTONE 1 — e.g., "completed pH baseline readings"]
 - [KEY MILESTONE 2 — e.g., "built their hydroponic frames"]
 - [KEY MILESTONE 3 — e.g., "selected plants and researched growing conditions"]
 
 What's coming next: [NEXT PHASE — e.g., "designing nutrient delivery systems"]
 
-Create a [TYPE OF ACTIVITY] that:
-- Takes about [TIME] minutes
-- Connects what they've already done to what's coming next
-- Includes [DIFFERENTIATION NEED — e.g., "a visual scaffold for EL students"]
+Final product: [WHAT STUDENTS CREATE — e.g., "community presentation with live plant data"]
+Audience: [WHO SEES IT — e.g., "community partners and school board members"]
+Disciplines involved: [LIST — e.g., "biology, chemistry, engineering design"]
 
-Their final product is [DESCRIBE — e.g., "a community presentation with live plant data"] in Week [NUMBER].`,
-          },
-          {
-            label: "Rubric for Interdisciplinary Project",
-            prompt: `Create a rubric for a [GRADE] [SUBJECT AREA] project where students [DESCRIBE WHAT THEY'RE DOING].
-
-Project specifics:
-- Driving question: [YOUR DRIVING QUESTION]
-- Disciplines involved: [LIST — e.g., "biology, chemistry, engineering design"]
-- Final product: [WHAT STUDENTS PRESENT/BUILD]
-- Audience: [WHO SEES IT — e.g., "community partners and school board members"]
-
-Key milestones students completed:
-- [MILESTONE 1]
-- [MILESTONE 2]
-- [MILESTONE 3]
-
-Use a [NUMBER]-point scale. The rubric should assess both the science content AND the [OTHER DISCIPLINE — e.g., "engineering design process"]. Students chose their own [VARIABLE — e.g., "plants and end-use: donate, cook, or take home"] so account for variation in final products.`,
+---
+TEST IT: Now paste BOTH sections into an AI tool and ask for a mid-project checkpoint activity. Compare this output to what you'd get from a prompt that just says "create an activity for my hydroponics project."`,
           },
         ],
         iterationTips: [
@@ -236,35 +250,34 @@ Use a [NUMBER]-point scale. The rubric should assess both the science content AN
           <h2 className="text-xl font-semibold text-foreground">Reflection</h2>
 
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">The Gap</p>
+            <p className="font-medium mb-2">Your Constitution So Far</p>
             <p className="text-muted-foreground">
-              You already carry an enormous amount of context about your students, your project,
-              and where things stand this week. AI carries none of it. Every constraint you add
-              is a bridge across that gap.
+              You now have the first two sections of your AI Classroom Constitution: your Classroom
+              Context and your Project Architecture. Together, they give AI the baseline it needs —
+              who your students are and what they're working on.
             </p>
             <p className="text-muted-foreground mt-3">
-              Think about what you're teaching right now. What do you know about your students'
-              work that AI would need to hear before it could help you?
+              If you haven't already, save what you wrote in the workshop somewhere you can access
+              it easily. You'll keep building on it in the next two courses, and you'll use the
+              finished Constitution throughout the rest of the certification.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Try This Before Your Next Class</p>
+            <p className="font-medium mb-2">Test It This Week</p>
             <p className="text-muted-foreground">
-              Before your next AI prompt, write down five things first: what week you're in,
-              what students just finished, how much time you have, what your students need
-              differently from each other, and what they're building toward.
-            </p>
-            <p className="text-muted-foreground mt-2">
-              Then prompt. Notice the difference.
+              Before your next AI prompt, paste your two Constitution sections first. Then ask
+              for whatever you need. Notice how different the output is compared to prompting
+              cold. That difference is what your Constitution is for.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
               <ResearchLink text="Backward Design" /> (Wiggins & McTighe) says start with the
-              end in mind. Same principle here — your constraints should carry your learning
-              goals. If AI doesn't know where you're headed, it can't help you get there.
+              end in mind. Your Constitution works the same way — the more it knows about where
+              your students are headed, the better AI can help you get them there. Next up:
+              you'll add who your students interact with and what perspectives matter most.
             </p>
           </div>
         </div>

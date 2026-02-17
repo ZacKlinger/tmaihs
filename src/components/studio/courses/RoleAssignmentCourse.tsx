@@ -29,15 +29,17 @@ export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {
             </p>
           </div>
           <p>
-            By default, AI produces neutral, middle-of-the-road responses. But when you assign it a 
+            By default, AI produces neutral, middle-of-the-road responses. But when you assign it a
             <strong> role or persona</strong>, you activate different patterns of expertise, priorities, and critique.
           </p>
           <p>
-            In this micro-course, you'll learn the <strong>Role Assignment mental model</strong>—how to shape 
-            AI output by defining whose perspective it should take.
+            Your Constitution already tells AI who your students are and what they're working on. This course
+            adds a new section: your <strong>Stakeholder & Perspective Map</strong>. By the end, AI won't
+            just know your classroom — it'll know the people your students interact with and the
+            perspectives that matter most to your project.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This technique draws on <ResearchLink text="Perspective-Taking" /> research (Galinsky et al.)—the same 
+            This technique draws on <ResearchLink text="Perspective-Taking" /> research (Galinsky et al.)—the same
             cognitive skill we want students to develop.
           </div>
         </div>
@@ -158,29 +160,39 @@ export const RoleAssignmentCourse = (props: RoleAssignmentCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Role Assignment for PBL",
-        description: "Practice assigning roles that match your project's stakeholders and critique needs.",
+        title: "Build Your Constitution: Stakeholder & Perspective Map",
+        description: "This adds the third section to your Constitution. Map the real people your students interact with — their concerns, their communication styles, their perspectives. When you load this into AI alongside your first two sections, you'll get outputs that reflect the actual relationships in your project.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Stakeholder Critique Simulator",
-            prompt: `You are a [STAKEHOLDER TYPE] who will be in the audience when students present their [PROJECT TYPE].
+            label: "Constitution Section 3: Stakeholder & Perspective Map",
+            prompt: `STAKEHOLDER & PERSPECTIVE MAP — save this as the third section of your AI Classroom Constitution.
 
-Your perspective:
-- Your main concern: [WHAT THIS STAKEHOLDER CARES ABOUT]
-- Your potential objection: [WHAT MIGHT MAKE THEM SKEPTICAL]
-- Your communication style: [DIRECT/FORMAL/SUPPORTIVE BUT QUESTIONING]
+Key stakeholders for this project:
 
-Review this student work and respond as you would in the real presentation:
-[PASTE STUDENT WORK OR PROPOSAL]
+STAKEHOLDER 1: [NAME OR TYPE — e.g., "Community fridge coordinator on Third Street"]
+- Main concern: [WHAT THEY CARE ABOUT — e.g., "reliability and volume of food donations"]
+- Potential objection: [WHAT MIGHT MAKE THEM SKEPTICAL]
+- Communication style: [DIRECT/FORMAL/SUPPORTIVE BUT QUESTIONING]
 
-Provide:
-1. Your initial reaction (2-3 sentences)
-2. Three questions you'd ask
-3. What would make you say "yes" to this proposal`,
+STAKEHOLDER 2: [NAME OR TYPE — e.g., "School board members at annual showcase"]
+- Main concern: [WHAT THEY CARE ABOUT]
+- Potential objection: [WHAT MIGHT MAKE THEM SKEPTICAL]
+- Communication style: [DIRECT/FORMAL/SUPPORTIVE BUT QUESTIONING]
+
+STAKEHOLDER 3: [NAME OR TYPE — e.g., "Parent volunteers who help in the garden"]
+- Main concern: [WHAT THEY CARE ABOUT]
+- Potential objection: [WHAT MIGHT MAKE THEM SKEPTICAL]
+- Communication style: [DIRECT/FORMAL/SUPPORTIVE BUT QUESTIONING]
+
+Perspectives to center: [WHOSE VOICES MATTER MOST — e.g., "longtime neighborhood residents, students with food insecurity experience"]
+Community context: [RELEVANT LOCAL DETAILS — e.g., "neighborhood has limited grocery access, community fridge serves 40+ families weekly"]
+
+---
+TEST IT: Paste all three Constitution sections into an AI tool and ask it to simulate one of your stakeholders reviewing student work. Compare the output to what you'd get without the stakeholder context.`,
           },
           {
             label: "Student Perspective Check",
@@ -230,26 +242,32 @@ Read these project guidelines and tell me:
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your Constitution So Far</p>
             <p className="text-muted-foreground">
-              Think about your current or upcoming project. Who are the real stakeholders students will interact with? 
-              What specific concerns, priorities, or communication styles do those stakeholders have? 
-              How could AI simulate those perspectives to help students prepare?
+              Three sections down. Your Constitution now tells AI who your students are, what they're
+              working on, and who the people around the project are — the stakeholders, their concerns,
+              and the community context that shapes everything.
+            </p>
+            <p className="text-muted-foreground mt-3">
+              Save what you wrote in the workshop alongside your first two sections. One more course
+              and you'll have a complete Constitution.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Test It This Week</p>
             <p className="text-muted-foreground">
-              Before students present or share work with external audiences, create 2-3 stakeholder role prompts. 
-              Use AI to generate the questions those stakeholders might ask. Share these with students as preparation.
+              Before students present or share work with external audiences, load your Constitution
+              into an AI tool and ask it to simulate one of your stakeholders reviewing student work.
+              Share the questions it generates with students as preparation.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Caution:</strong> Role assignment can inadvertently reinforce stereotypes. 
-              Be thoughtful about how you define roles—avoid reducing complex identities to single characteristics.
+              <strong>Caution:</strong> Role assignment can inadvertently reinforce stereotypes.
+              Be thoughtful about how you define roles in your Constitution — describe specific
+              perspectives and experiences, not demographic categories.
             </p>
           </div>
         </div>

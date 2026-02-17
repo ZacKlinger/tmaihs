@@ -29,12 +29,14 @@ export const DetectingAIWorkCourse = (props: DetectingAIWorkCourseProps) => {
             </p>
           </div>
           <p>
-            AI detection software is unreliable—it produces false positives and misses actual AI use. 
+            AI detection software is unreliable — it produces false positives and misses actual AI use.
             But the real question isn't "Did they use AI?" It's "Did they do the thinking?"
           </p>
           <p>
-            In this micro-course, you'll learn to <strong>design for authenticity</strong>—creating project 
-            structures where AI shortcuts are obvious and genuine student thinking is the path of least resistance.
+            This course builds the second section of your Classroom AI Policy: <strong>Authenticity
+            by Design</strong>. Instead of a detection protocol, you'll write a design philosophy —
+            how you structure assignments so genuine work is the easier path. This is what you'd
+            share with a parent who asks "How do you handle AI cheating?"
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This approach draws on <ResearchLink text="Productive Failure" /> research (Kapur)—struggle is 
@@ -194,8 +196,8 @@ In conclusion, this experience enhanced my understanding of qualitative research
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Designing Authentic Checkpoints",
-        description: "Redesign your project checkpoints to encourage authentic work.",
+        title: "Write Your Authenticity by Design Section",
+        description: "Draft the second section of your Classroom AI Policy. Audit your PBL unit's checkpoints for authenticity, redesign any that are vulnerable, and write your design principles. This is your answer to 'How do you handle AI in student work?' — not detection, but design.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
@@ -244,27 +246,29 @@ Keep the checkpoint realistic—students should be able to complete it in [TIME]
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Policy Section 2: Authenticity by Design</p>
             <p className="text-muted-foreground">
-              Think about your current project checkpoints. Which ones could a student complete without 
-              doing the actual work? What's one change you could make to require evidence of genuine process?
+              You now have two sections of your Classroom AI Policy: Evaluation Standards and
+              Authenticity by Design. Together they cover how you vet AI content (section 1) and
+              how you structure assignments so students do the thinking (section 2). Save your
+              design principles and any checkpoint redesigns you produced in the workshop.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Apply It to Your PBL Unit</p>
             <p className="text-muted-foreground">
-              Pick one upcoming checkpoint. Add one of these elements: oral explanation, process evidence 
-              (audio/visual), or specificity requirement (names, dates, quotes from actual research). 
-              Notice how submissions change.
+              Go back to the PBL unit you built in Tier 2. Audit each checkpoint using what
+              you learned here. Which ones are vulnerable? Redesign at least one before moving
+              on. Your unit should model the design philosophy you just wrote into your policy.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Remember:</strong> The goal isn't to catch AI use—it's to design learning experiences 
-              where the authentic path is the best path. When genuine engagement is easier than AI shortcuts, 
-              students choose genuine engagement.
+              <strong>Add to your Constitution:</strong> Your authenticity design principles belong
+              there too. Something like: "My checkpoints require process evidence, oral components,
+              and specificity that can only come from doing the work."
             </p>
           </div>
         </div>

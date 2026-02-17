@@ -30,13 +30,16 @@ export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) =
             </p>
           </div>
           <p>
-            <strong>Curriculum AI design</strong> is the meta-level practice of mapping where AI 
-            belongs across a project arc—and where it doesn't. Not every moment needs AI. The goal 
+            <strong>Curriculum AI design</strong> is the meta-level practice of mapping where AI
+            belongs across a project arc — and where it doesn't. Not every moment needs AI. The goal
             is strategic integration that serves learning.
           </p>
           <p>
-            In this micro-course, you'll develop judgment about when, where, and how to integrate 
-            AI across your curriculum.
+            This is the final course in the certification. It builds the fourth section of your
+            Classroom AI Policy: your <strong>Integration Map</strong>. You'll map your PBL unit
+            from Tier 2 using the AI Choreography framework — where AI is present, background, and
+            absent — and write the rationale. This is the section an administrator reads to
+            understand your approach.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This draws on <ResearchLink text="Stanford HAI" /> principles for human-centered AI: technology 
@@ -207,30 +210,37 @@ export const CurriculumAIDesignCourse = (props: CurriculumAIDesignCourseProps) =
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Map Your Project's AI Choreography",
-        description: "Create an AI integration map for your semester project.",
+        title: "Write Your Integration Map",
+        description: "Map your PBL unit from Tier 2 using the AI Choreography framework. For each milestone, decide: Present, Background, or Absent — and write the rationale. This becomes the final section of your Classroom AI Policy.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "AI Choreography Mapper",
-            prompt: `Here's my [LENGTH]-week project plan:
-[PASTE YOUR PROJECT OUTLINE OR MILESTONE LIST]
+            label: "Map Your PBL Unit's AI Choreography",
+            prompt: `[PASTE YOUR AI CLASSROOM CONSTITUTION]
 
-For each week/milestone, help me decide:
-- PRESENT: Should students interact with AI here? For what purpose?
-- BACKGROUND: Should I (teacher) use AI to prep materials without student interaction?
-- ABSENT: Should AI be deliberately excluded? Why?
+---
+
+Here's my PBL unit (built in Tier 2):
+[PASTE YOUR PBL UNIT — milestone map and key checkpoints]
+
+For each milestone, classify the AI role:
+- PRESENT: Students interact with AI here. For what purpose? Using what PACE structure?
+- BACKGROUND: I use AI to prep materials. Students don't interact with AI directly.
+- ABSENT: AI is deliberately excluded. Why is this moment better without it?
 
 Consider:
-1. Where is productive struggle essential?
-2. Where would AI feedback strengthen revision?
+1. Where is productive struggle essential to the learning objective?
+2. Where would AI feedback strengthen revision without replacing thinking?
 3. Where is peer collaboration more valuable than AI?
-4. Where do students need to develop unassisted skills?
+4. Where do my authenticity structures (from my policy) require AI to be absent?
 
-Output a week-by-week integration map with rationale.`,
+Output a milestone-by-milestone integration map with rationale for each decision.
+
+---
+SAVE THIS: This is the Integration Map section of your Classroom AI Policy. It shows anyone — students, parents, administrators — exactly where and why AI appears in your curriculum.`,
           },
           {
             label: "Integration Point Audit",
@@ -267,27 +277,36 @@ Recommend: INTEGRATE, MODIFY, or REMOVE—with specific rationale.`,
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your Classroom AI Policy Is Complete</p>
             <p className="text-muted-foreground">
-              Think about your next project. Where are students most likely to struggle productively? 
-              That's probably where AI should be ABSENT—struggle is where learning happens. 
-              Where is struggle unproductive or frustrating? That might be where AI can help.
+              Four sections: Evaluation Standards, Authenticity by Design, Student AI Use Guidelines,
+              and Integration Map. Together, they form a practical framework you could hand to anyone
+              who asks about AI in your classroom — a student, a parent, a principal, a colleague.
+            </p>
+            <p className="text-muted-foreground mt-3">
+              This isn't a document you wrote to satisfy a requirement. It's a document you built
+              by doing the work — testing it against your actual classroom, your actual students,
+              your actual projects.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">What You've Built</p>
             <p className="text-muted-foreground">
-              Create a simple AI choreography map for your next project: mark each week/milestone as 
-              PRESENT, BACKGROUND, or ABSENT. Share your reasoning with a colleague and get their perspective.
+              Across three tiers, you produced three deliverables: an AI Classroom Constitution
+              that makes every AI interaction specific to your room, a PBL unit you could actually
+              teach, and a Classroom AI Policy grounded in your own judgment and practice. The
+              Constitution is alive — update it each semester. The policy will evolve as AI does.
+              The process you learned to get here is what matters most.
             </p>
           </div>
 
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
             <p className="text-sm text-green-700 dark:text-green-300">
-              <strong>You've completed all three tiers.</strong> You now have the mental models to prompt 
-              AI effectively (Tier 1), combine strategies for complex tasks (Tier 2), and design AI-integrated 
-              learning with judgment (Tier 3). The real work—applying this in your projects—starts now.
+              <strong>Add the Integration Map to your Constitution.</strong> Your Constitution is now a
+              comprehensive professional framework: classroom context, design tools, evaluation standards,
+              student guidelines, and a map of where AI belongs. It's not just a system prompt anymore —
+              it's a statement of how you practice.
             </p>
           </div>
         </div>

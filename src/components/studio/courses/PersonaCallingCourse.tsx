@@ -30,11 +30,14 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
             </p>
           </div>
           <p>
-            <strong>Persona calling</strong> extends role assignment by strategically selecting expert perspectives 
+            <strong>Persona calling</strong> extends role assignment by strategically selecting expert perspectives
             that match specific task types. Different personas bring different expertise, priorities, and blind spots.
           </p>
           <p>
-            In this micro-course, you'll learn to match personas to tasks for maximum usefulness.
+            You stress-tested your PBL unit concept in the last course. Now you'll get outside
+            perspectives on it — from a PBL specialist, a relevant community stakeholder, and a
+            student who might struggle. Each perspective will surface something different about your
+            unit design before you build it out.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This technique draws on <ResearchLink text="Culturally Sustaining Pedagogy" /> (Paris & Alim)—ensuring 
@@ -193,28 +196,31 @@ export const PersonaCallingCourse = (props: PersonaCallingCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Strategic Persona Selection",
-        description: "Practice calling different personas for different project phases.",
+        title: "Get Perspectives on Your PBL Unit",
+        description: "Your unit concept has been stress-tested. Now get perspectives on it from the people who matter — a PBL specialist, a community stakeholder from your project, and a student. Load your Constitution, paste your unit concept, and ask each persona to review it.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Multi-Perspective Project Review",
-            prompt: `I'm planning a [LENGTH]-week project on [TOPIC] for [GRADE] students.
+            label: "Three-Perspective Unit Review",
+            prompt: `[PASTE YOUR AI CLASSROOM CONSTITUTION FIRST]
 
-Review this project from THREE different perspectives:
+---
 
-PERSPECTIVE 1: As a PBL curriculum specialist, evaluate the driving question and project structure.
+Here's my PBL unit concept (revised after pre-mortem):
+[PASTE YOUR UNIT CONCEPT + PRE-MORTEM REVISIONS]
 
-PERSPECTIVE 2: As a [RELEVANT COMMUNITY STAKEHOLDER], evaluate whether this project would produce work you'd actually find useful.
+Review this unit from THREE different perspectives:
 
-PERSPECTIVE 3: As a struggling student who has difficulty with [RELEVANT SKILL], identify where you'd get stuck.
+PERSPECTIVE 1: As a PBL curriculum specialist, evaluate the driving question and project structure. Is this Gold Standard? What's missing?
 
-For each perspective, give me specific, actionable feedback.
+PERSPECTIVE 2: As a [RELEVANT COMMUNITY STAKEHOLDER FROM YOUR CONSTITUTION], evaluate whether this project would produce work you'd actually find useful. Would you show up to the final presentation?
 
-[PASTE PROJECT OUTLINE]`,
+PERSPECTIVE 3: As a student in this class who struggles with [RELEVANT SKILL], identify where you'd get stuck and what would help.
+
+For each perspective, give me specific, actionable feedback I can use to revise the unit before I build it out.`,
           },
           {
             label: "Community Interview Preparation",
@@ -247,26 +253,30 @@ Respond as you authentically would. Then, as yourself, tell me: What should stud
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your PBL Unit: Perspectives Gathered</p>
             <p className="text-muted-foreground">
-              Think about your current project. What perspectives are missing from your planning? 
-              Whose voices should be centered that you haven't considered? How could persona calling 
-              help you design more equitable and relevant project experiences?
+              Your unit concept has now been stress-tested and reviewed from multiple perspectives.
+              Save the feedback — note what resonated, what you're changing, and what you're
+              keeping despite the critique. That reasoning is part of your design rationale.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Next: Build It</p>
             <p className="text-muted-foreground">
-              Create a "persona library" for your most common project types. For each project phase, 
-              identify 2-3 personas that would provide the most useful feedback. Save these as templates.
+              In the next course, you'll take your revised unit concept and build it into a complete
+              PBL unit — driving question, milestone map, assessment rubric, and scaffolds. The
+              concept work you've done here means you'll be building from a strong foundation
+              rather than discovering problems midway through.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1:</strong> Persona calling builds on Role Assignment—you're not just 
-              giving AI a role, you're strategically selecting which role matches which task.
+              <strong>Save your persona library:</strong> The perspectives you called on for this unit
+              are reusable. Add them to your Constitution under a "Perspective Library" section —
+              for community projects, you always consult a PBL specialist, a community stakeholder,
+              and a struggling student.
             </p>
           </div>
         </div>
