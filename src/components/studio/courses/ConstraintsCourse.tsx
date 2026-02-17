@@ -14,25 +14,25 @@ interface ConstraintsCourseProps {
 
 export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
   const sections = [
-    {
-      id: "context",
-      type: "context" as const,
-      title: "The Scenario",
-      content: (
-        <div className="prose prose-slate dark:prose-invert max-w-none">
+  {
+    id: "context",
+    type: "context" as const,
+    title: "The Scenario",
+    content:
+    <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">The Scenario</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="text-lg italic text-muted-foreground">
-              It's Week 5 of the hydroponics project. Your students just finished their pH baseline readings
-              and they're about to design their nutrient delivery systems. You need a worksheet that bridges
-              the chemistry they've done with the engineering they're starting — and you need it by fourth period.
-            </p>
-            <p className="text-lg italic text-muted-foreground mt-3">
-              So you ask AI for help. What comes back is a generic hydroponics worksheet you could've
-              found on Teachers Pay Teachers. Nothing about pH. Nothing about the basil and peppers
-              your students chose. Nothing about the fact that half the class is planning to donate their
-              harvest to the community fridge on Third Street.
-            </p>
+            <p className="text-lg italic text-muted-foreground">It's Week 5 a hydroponics project in your SDC science classroom. Your students just finished their pH baseline readings and they're about to design their nutrient delivery systems. You need a worksheet that bridges the chemistry they've done with the biology they're starting — and you need it by fourth period.
+
+
+
+        </p>
+            <p className="text-lg italic text-muted-foreground mt-3">So you ask AI for help. What comes back is a generic hydroponics worksheet you could've found on Teachers Pay Teachers. Nothing about pH. Nothing about the butterhead lettuce and collard greens your students chose. Nothing about the fact that half the class is planning to donate their harvest to the travel club on campus.
+
+
+
+
+        </p>
           </div>
           <p>
             The worksheet isn't wrong. It's just useless to you.
@@ -58,14 +58,14 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
             the more you narrow the task, the less noise both you and the AI have to wade through.
           </div>
         </div>
-      ),
-    },
-    {
-      id: "mental-model",
-      type: "mental-model" as const,
-      title: "Mental Model",
-      content: (
-        <div className="prose prose-slate dark:prose-invert max-w-none">
+
+  },
+  {
+    id: "mental-model",
+    type: "mental-model" as const,
+    title: "Mental Model",
+    content:
+    <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">The Constraints Mental Model</h2>
           <p className="text-lg">
             Left to its own devices, AI writes for the average classroom. Average grade level,
@@ -120,46 +120,28 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
             </p>
           </div>
         </div>
-      ),
-    },
-    {
-      id: "cfu-1",
-      type: "cfu" as const,
-      title: "Check 1",
-      advancedCfuData: {
-        id: "constraints-cfu-1",
-        type: "prompt-compare" as const,
-        question: "You're prepping for tomorrow. Which prompt gets you something you'd actually hand out?",
-        context: "It's Week 7 of a 12-week hydroponics project. Students have built their systems and collected two weeks of growth data. Now they need to analyze what's working and what isn't before adjusting their nutrient mixes.",
-        options: [
-          {
-            id: "A",
-            prompt: "Create a data analysis worksheet for students doing a hydroponics project. They need to look at their plant growth data and figure out what's working.",
-            isCorrect: false,
-            annotations: [
-              { text: "a hydroponics project", label: "Which week? What phase?", color: "bg-amber-500/20" },
-              { text: "their plant growth data", label: "What data specifically?", color: "bg-amber-500/20" },
-              { text: "figure out what's working", label: "No structure for analysis", color: "bg-amber-500/20" },
-            ],
-            explanation: "This sounds reasonable, but notice — AI doesn't know what data students have, what plants they're growing, or that they're about to adjust nutrient mixes. The output will be a generic data analysis template that could apply to any science class.",
-          },
-          {
-            id: "B",
-            prompt: "Create a data analysis worksheet for 10th grade SDC science students in Week 7 of a 12-week hydroponics project. Students have been tracking pH levels, nutrient concentration, and stem height for basil, peppers, and lettuce over 2 weeks. They need to identify which variables correlate with growth and prepare recommendations for adjusting their nutrient mixes next week. Include: a data summary table, a guided analysis section connecting pH to nutrient absorption, and a recommendation section where they propose one change with evidence. 30 minutes. Their final presentations to community partners are in Week 12.",
-            isCorrect: true,
-            annotations: [
-              { text: "Week 7 of a 12-week", label: "Project phase", color: "bg-green-500/20" },
-              { text: "tracking pH levels, nutrient concentration, and stem height", label: "Prior work", color: "bg-green-500/20" },
-              { text: "adjusting their nutrient mixes next week", label: "What comes next", color: "bg-green-500/20" },
-              { text: "presentations to community partners are in Week 12", label: "Final product", color: "bg-green-500/20" },
-              { text: "30 minutes", label: "Time box", color: "bg-green-500/20" },
-            ],
-            explanation: "This prompt gives AI everything it needs: where students are, what they've done, what they're doing next, and what they're building toward. The output will be specific enough to use tomorrow with minimal editing.",
-          },
-        ] as [
-          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
-          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string }
-        ],
+
+  },
+  {
+    id: "cfu-1",
+    type: "cfu" as const,
+    title: "Check 1",
+    advancedCfuData: {
+      id: "constraints-cfu-1",
+      type: "prompt-compare" as const,
+      question: "You're prepping for tomorrow. Which prompt gets you something you'd actually hand out?",
+      context: "It's Week 7 of a 12-week hydroponics project. Students have built their systems and collected two weeks of growth data. Now they need to analyze what's working and what isn't before adjusting their nutrient mixes.",
+      options: [
+      {
+        id: "A",
+        prompt: "Create a data analysis worksheet for students doing a hydroponics project. They need to look at their plant growth data and figure out what's working.",
+        isCorrect: false,
+        annotations: [
+        { text: "a hydroponics project", label: "Which week? What phase?", color: "bg-amber-500/20" },
+        { text: "their plant growth data", label: "What data specifically?", color: "bg-amber-500/20" },
+        { text: "figure out what's working", label: "No structure for analysis", color: "bg-amber-500/20" }],
+
+        explanation: "This sounds reasonable, but notice — AI doesn't know what data students have, what plants they're growing, or that they're about to adjust nutrient mixes. The output will be a generic data analysis template that could apply to any science class."
       },
     },
     {
@@ -281,16 +263,16 @@ TEST IT: Now paste BOTH sections into an AI tool and ask for a mid-project check
             </p>
           </div>
         </div>
-      ),
-    },
-  ];
+
+  }];
+
 
   return (
     <MicroCourseViewer
       courseId="constraints-101"
       title="Constraints: The Foundation of Useful Prompts"
       sections={sections}
-      {...props}
-    />
-  );
+      {...props} />);
+
+
 };

@@ -3,14 +3,15 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
 const GHOST_PHRASES = [
-  "tell me about the ethics of AI",
-  "help me plan a lesson",
-  "how do I level up my prompt engineering",
+  "Tell me about the ethics of AI",
+  "Help me plan a lesson about...",
+  "How do I level up my prompt engineering?",
+  "How do I know if my students used AI...",
 ];
 
-const TYPING_SPEED = 75; // ms per character - thoughtful pace
-const TYPING_VARIANCE = 35; // natural human variance
-const DELETE_SPEED = 40; // deliberate deletion speed
+const TYPING_SPEED = 68; // ms per character - thoughtful pace
+const TYPING_VARIANCE = 32; // natural human variance
+const DELETE_SPEED = 36; // deliberate deletion speed
 const PAUSE_AFTER_TYPING = 2800; // 2.8 seconds to read the message
 const PAUSE_AFTER_DELETING = 2000; // 2 seconds of pause before next phrase
 

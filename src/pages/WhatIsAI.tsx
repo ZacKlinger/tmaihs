@@ -10,8 +10,8 @@ const WhatIsAI = () => {
       <PageHeader
         title="What Is AI?"
         description="An honest, grounded look at what AI is, how it works, and what it means for you as a teacher."
-        icon={<Brain className="h-8 w-8 text-primary" />}
-      />
+        icon={<Brain className="h-8 w-8 text-primary" />} />
+
 
       <section className="py-16 lg:py-20">
         <div className="section-container">
@@ -28,11 +28,11 @@ const WhatIsAI = () => {
                 need: a clear-eyed understanding of what this technology is, what it isn't, and what
                 it means for their practice.
               </p>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                This page is an attempt at that. No brand endorsements, no hype, no doom. Just an
-                honest look at where things stand&mdash;written for people who care deeply about
-                learning and want to understand the tools showing up in their students' lives.
-              </p>
+              
+
+
+
+
             </div>
 
             {/* =============================== */}
@@ -73,9 +73,9 @@ const WhatIsAI = () => {
               <h2 className="mb-3 font-serif text-2xl font-semibold text-charcoal">
                 What AI Can Do for Educators
               </h2>
-              <p className="mb-8 text-muted-foreground leading-relaxed">
-                These aren't hypothetical&mdash;these are things teachers are doing right now.
-              </p>
+              
+
+
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-xl border border-border/50 bg-card p-5">
@@ -164,8 +164,8 @@ const WhatIsAI = () => {
             {/* WHERE AI FALLS SHORT            */}
             {/* =============================== */}
             <div className="mb-16">
-              <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal">
-                Where AI Falls Short&mdash;and Why It Matters
+              <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal">Where AI Falls Short... and Why It Matters
+
               </h2>
 
               <div className="prose prose-slate max-w-none space-y-4 mb-8">
@@ -238,8 +238,8 @@ const WhatIsAI = () => {
             <div className="mb-16">
               <ContentCard
                 title="Types of AI You'll Encounter"
-                citation="NASEM (2023). Artificial Intelligence in Science. National Academies Press."
-              >
+                citation="NASEM (2023). Artificial Intelligence in Science. National Academies Press.">
+
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                   "AI" covers a range of different tools built in different ways for different purposes.
                   Here are the four categories most relevant to educators right now.
@@ -346,8 +346,8 @@ const WhatIsAI = () => {
                 href="https://www.sfusd.edu/about-sfusd/facts-about-sfusd-glance"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground hover:underline underline-offset-2 inline-flex items-center gap-0.5"
-              >
+                className="text-muted-foreground hover:text-foreground hover:underline underline-offset-2 inline-flex items-center gap-0.5">
+
                 Facts at a Glance
                 <ExternalLink className="h-3 w-3 opacity-60" />
               </a>{" "}
@@ -358,8 +358,8 @@ const WhatIsAI = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>);
+
 };
 
 export default WhatIsAI;

@@ -1,9 +1,24 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+const ALLOWED_ORIGINS = [
+  'https://tmaihs.lovable.app',
+  'https://id-preview--7b83ffee-5309-495b-a168-c1601951c8b7.lovable.app',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(req: Request): Record<string, string> {
+  const origin = req.headers.get('origin') || '';
+  if (ALLOWED_ORIGINS.some(allowed => origin.startsWith(allowed) || origin === allowed)) {
+    return {
+      'Access-Control-Allow-Origin': origin,
+      'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    };
+  }
+  return {
+    'Access-Control-Allow-Origin': '',
+    'Access-Control-Allow-Headers': '',
+  };
+}
 
 // Content length limits
 const MAX_CONTENT_LENGTH = 5000;
@@ -87,7 +102,7 @@ function checkRateLimit(clientId: string): { allowed: boolean; retryAfter?: numb
 serve(async (req) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: getCorsHeaders(req) });
   }
 
   try {
@@ -105,7 +120,7 @@ serve(async (req) => {
         { 
           status: 429, 
           headers: { 
-            ...corsHeaders, 
+            ...getCorsHeaders(req), 
             'Content-Type': 'application/json',
             'Retry-After': String(rateCheck.retryAfter)
           } 
@@ -119,7 +134,7 @@ serve(async (req) => {
     if (!content || typeof content !== 'string') {
       return new Response(
         JSON.stringify({ error: 'Content is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -131,7 +146,7 @@ serve(async (req) => {
           isAppropriate: false, 
           reason: `Content exceeds maximum length of ${MAX_CONTENT_LENGTH} characters.` 
         }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -143,7 +158,7 @@ serve(async (req) => {
           isAppropriate: false, 
           reason: `Author name exceeds maximum length of ${MAX_AUTHOR_NAME_LENGTH} characters.` 
         }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -156,7 +171,7 @@ serve(async (req) => {
           isAppropriate: false, 
           reason: contentValidation.reason 
         }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -170,7 +185,7 @@ serve(async (req) => {
             isAppropriate: false, 
             reason: `Author name: ${nameValidation.reason}` 
           }),
-          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
     }
@@ -183,7 +198,7 @@ serve(async (req) => {
       // Fallback to allowing content if AI moderation unavailable
       return new Response(
         JSON.stringify({ isAppropriate: true, reason: null }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -236,7 +251,7 @@ Respond with a JSON object:
       // Fallback to allowing content if AI moderation fails
       return new Response(
         JSON.stringify({ isAppropriate: true, reason: null }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -256,7 +271,7 @@ Respond with a JSON object:
             isAppropriate: result.isAppropriate !== false,
             reason: result.reason || null
           }),
-          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
     } catch (parseError) {
@@ -266,14 +281,14 @@ Respond with a JSON object:
     // Default to allowing if parsing fails
     return new Response(
       JSON.stringify({ isAppropriate: true, reason: null }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
     console.error('Moderation error:', error);
     return new Response(
       JSON.stringify({ error: 'Moderation failed' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
     );
   }
 });

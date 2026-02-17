@@ -14,13 +14,13 @@ interface EntryPointProps {
   isSelected: boolean;
 }
 
-function EntryPoint({ 
-  label, 
-  microcopy, 
-  href, 
-  onNavigate, 
+function EntryPoint({
+  label,
+  microcopy,
+  href,
+  onNavigate,
   isTransitioning,
-  isSelected 
+  isSelected
 }: EntryPointProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
@@ -59,30 +59,30 @@ function EntryPoint({
       )}
       style={{
         transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)"
-      }}
-    >
+      }}>
+
       {/* Main label */}
-      <span 
+      <span
         className={cn(
           "font-serif text-xl sm:text-2xl text-charcoal font-normal transition-all duration-300"
-        )}
-      >
+        )}>
+
         {label}
       </span>
       
       {/* Microcopy - expands into view */}
-      <div 
+      <div
         className={cn(
           "overflow-hidden transition-all duration-400 ease-out",
           isHovered ? "max-h-6 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
-        )}
-      >
+        )}>
+
         <span className="block text-xs text-muted-foreground font-sans whitespace-nowrap">
           {microcopy}
         </span>
       </div>
-    </button>
-  );
+    </button>);
+
 }
 
 export function LandingHero() {
@@ -100,7 +100,7 @@ export function LandingHero() {
   const handleNavigate = useCallback((href: string) => {
     setSelectedPath(href);
     setIsTransitioning(true);
-    
+
     setTimeout(() => {
       navigate(href);
     }, 500);
@@ -108,7 +108,7 @@ export function LandingHero() {
 
   const handleSearch = useCallback(async (query: string) => {
     setIsSearching(true);
-    
+
     try {
       const { data, error } = await supabase.functions.invoke("search-assistant", {
         body: { query }
@@ -136,51 +136,50 @@ export function LandingHero() {
   return (
     <>
       {/* Smooth transition overlay */}
-      {isTransitioning && (
-        <div 
-          className="fixed inset-0 z-50 pointer-events-none animate-fade-in bg-background"
-          style={{ 
-            animationDuration: "400ms"
-          }}
-        />
-      )}
+      {isTransitioning &&
+      <div
+        className="fixed inset-0 z-50 pointer-events-none animate-fade-in bg-background"
+        style={{
+          animationDuration: "400ms"
+        }} />
+
+      }
       
-      <section 
+      <section
         className={cn(
           "relative min-h-screen flex flex-col items-center justify-center px-4",
           "transition-all duration-600 ease-out",
           isTransitioning && "scale-[1.01] opacity-0"
-        )}
-      >
+        )}>
+
         {/* Main content */}
         <div className="flex flex-col items-center gap-8 max-w-2xl mx-auto text-center">
           
           {/* CTA Statement - charcoal text for editorial feel */}
-          <h1 
-            className={cn(
-              "font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal leading-tight",
-              "transition-all duration-700",
-              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}
-          >
-            Let's add AI to your pedagogical toolbox
+          <h1
+            className={cn("font-serif text-2xl sm:text-3xl font-semibold text-charcoal leading-tight transition-all duration-700 my-[12px] md:text-3xl",
+
+
+            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}>AI is changing what's possible in your classroom.
+            <br className="block mt-3" />
+              <span className="block mt-3 my-px">This library helps you decide what's worth your time.</span>
           </h1>
           
           {/* Two entry point cards */}
-          <div 
-            className={cn(
-              "flex flex-col sm:flex-row items-center gap-4 transition-all duration-700 delay-100",
-              showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            )}
-          >
+          <div className={cn(
+            "flex flex-col sm:flex-row items-center gap-4 transition-all duration-700 delay-100",
+            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          )}>
+
             <EntryPoint
-              label="Explore the Studio"
+              label="Explore Use-Cases"
               microcopy="Browse ideas, tools, and examples"
               href="/classroom-resources"
               onNavigate={handleNavigate}
               isTransitioning={isTransitioning}
-              isSelected={selectedPath === "/classroom-resources"}
-            />
+              isSelected={selectedPath === "/classroom-resources"} />
+
             
             <EntryPoint
               label="Get Certified"
@@ -188,23 +187,23 @@ export function LandingHero() {
               href="/learning-studio"
               onNavigate={handleNavigate}
               isTransitioning={isTransitioning}
-              isSelected={selectedPath === "/learning-studio"}
-            />
+              isSelected={selectedPath === "/learning-studio"} />
+
           </div>
 
           {/* Ghost input */}
-          <div 
+          <div
             className={cn(
               "w-full pt-6 transition-all duration-700 delay-200",
               showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}
-          >
+            )}>
+
             <GhostInput onSubmit={handleSearch} isLoading={isSearching} />
           </div>
         </div>
 
         {/* Scroll indicator removed - using ScrollPeek component instead */}
       </section>
-    </>
-  );
+    </>);
+
 }
