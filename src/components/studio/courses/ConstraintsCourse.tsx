@@ -27,12 +27,12 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
 
 
         </p>
-            <p className="text-lg italic text-muted-foreground mt-3">
-              So you ask AI for help. What comes back is a generic hydroponics worksheet you could've
-              found on Teachers Pay Teachers. Nothing about pH. Nothing about the basil and peppers
-              your students chose. Nothing about the fact that half the class is planning to donate their
-              harvest to the community fridge on Third Street.
-            </p>
+            <p className="text-lg italic text-muted-foreground mt-3">So you ask AI for help. What comes back is a generic hydroponics worksheet you could've found on Teachers Pay Teachers. Nothing about pH. Nothing about the butterhead lettuce and collard greens your students chose. Nothing about the fact that half the class is planning to donate their harvest to the travel club on campus.
+
+
+
+
+        </p>
           </div>
           <p>
             The worksheet isn't wrong. It's just useless to you.
