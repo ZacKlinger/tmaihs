@@ -4,15 +4,15 @@
 
 Write like you're sitting across from a colleague who teaches down the hall. You respect them. You know their day is hard. You're not performing expertise — you're sharing something useful because you've been thinking about it and you think they'll find it interesting.
 
-Every sentence earns its place. If it doesn't teach, surprise, or move — cut it.
+The writing should feel smooth. Not flat — smooth. The kind of writing where one idea leads naturally into the next, where the reader doesn't notice the craft because they're too busy following the thought. Every sentence earns its place, but it earns it by carrying the reader forward, not by stopping them in their tracks.
 
 ---
 
 ## Sentence-Level Craft: 5 Before/After Rewrites
 
-**1. Kill the throat-clearing.**
+**1. Skip the throat-clearing.**
 - Before: *"In this micro-course, you'll learn the Constraints mental model — the foundation of getting useful, classroom-ready outputs from any AI tool."*
-- After: *"There's a reason AI keeps giving you generic worksheets. You're not giving it enough to work with."*
+- After: *"When AI gives you something generic, it's usually because the prompt didn't have enough to work with. That's where constraints come in."*
 
 **2. Replace abstractions with the thing itself.**
 - Before: *"Vague requests produce generic outputs. Specific constraints produce materials you can actually use."*
@@ -24,25 +24,23 @@ Every sentence earns its place. If it doesn't teach, surprise, or move — cut i
 
 **4. Trade instruction for recognition.**
 - Before: *"Think about a project you're currently planning or running. What phase are students in right now?"*
-- After: *"You already know where your students are in the project arc. The AI doesn't. That's the gap."*
+- After: *"You already know where your students are in the project arc — the AI doesn't, and that's the kind of detail that makes the difference."*
 
-**5. Make the insight land in one line.**
+**5. Let the insight arrive naturally.**
 - Before: *"Key insight: In Gold Standard PBL, every activity connects to a driving question and public product. Your constraints should make those connections explicit."*
-- After: *"If your students are building toward something real, your prompts should know about it."*
+- After: *"If your students are building toward something real — a driving question, a public product — your prompts should reflect that. The AI can't connect the dots you haven't drawn."*
 
 ---
 
 ## Rhythm Rules
 
-**Short sentences do the heavy lifting.** They land a point. They shift attention. They create emphasis through contrast with the longer, more explanatory sentences around them.
+**Vary the length, but keep it moving.** Short sentences still matter — they clarify, they reset, they give the reader a foothold. But they work best when they're woven into longer, more natural stretches of thought. The goal isn't punch. It's flow.
 
-**Let a paragraph breathe when the idea is important.** After you've set something up, sometimes a single line does more than three.
+**Let a paragraph breathe when the idea is important.** After you've set something up, a single line can do more than three — not because it's dramatic, but because it gives the reader space to connect what they just read to something they already know.
 
-That's where the learning happens.
+**Smooth writing doesn't call attention to its structure.** If the reader notices you used a short sentence for effect, you overdid it. The best rhythm feels like someone thinking out loud — unhurried, clear, and easy to follow.
 
-**Use a one-line paragraph** when you want the reader to pause. Not for drama — for absorption. The reader needs a beat to connect what they just read to their own experience.
-
-**The pattern:** Long enough to explain. Short enough to stick. Then silence.
+**The pattern:** Long enough to explain. Short enough to clarify. Then keep going.
 
 ---
 
@@ -74,7 +72,7 @@ The test: Could the reader answer the question from their own experience? If yes
 ## What to NEVER Do: 10 Tells of AI-Generated Writing
 
 1. **"In this micro-course, you'll learn..."** — Don't narrate the learning. Just teach.
-2. **"Let's dive in" / "Let's explore"** — No one is diving anywhere.
+2. **"Let's dive in" / "Let's explore"** — Skip the false momentum.
 3. **Starting 3+ consecutive paragraphs with "This"** — Vary your sentence openings.
 4. **Colon-list-of-three pattern** — *"three key principles: clarity, specificity, and alignment."* Real writers don't inventory their points like a warehouse.
 5. **"Whether you're a new teacher or a veteran..."** — Don't hedge for every audience. Pick one and write to them.
@@ -82,15 +80,15 @@ The test: Could the reader answer the question from their own experience? If yes
 7. **"By [doing X], you can [achieve Y]"** — This construction is a tell. Rewrite it every time.
 8. **Exclamation points for false energy** — Enthusiasm comes from content, not punctuation.
 9. **Transitional phrases as crutches** — "Furthermore," "Additionally," "Moreover" — if your paragraphs need these to connect, they're in the wrong order.
-10. **The wrap-up paragraph that restates everything** — End with a door, not a summary. Give them something to do or think about — don't recap what they just read.
+10. **The wrap-up paragraph that restates everything** — End by giving them something to do or think about. Don't recap what they just read.
 
 ---
 
 ## The CFU Voice
 
-A CFU question should sound like a sharp colleague leaning over and saying, *"Okay, but which one would you actually use?"*
+A CFU question should sound like a colleague turning to you and saying, *"Okay, but which one would you actually use?"*
 
-Not precious. Not gamified. Not "Great job, now let's test your knowledge!" Just direct.
+Not precious. Not gamified. Not "Great job, now let's test your knowledge!" Just natural and direct.
 
 - Frame it as a real decision: *"You're prepping for tomorrow. Which of these prompts gets you something usable?"*
 - Explanations after answering should teach, not scold: *"The first one sounds reasonable, but notice it doesn't tell the AI what students already know. That's why the output would start from scratch."*
