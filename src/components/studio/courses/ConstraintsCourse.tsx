@@ -34,14 +34,14 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
 
         </p>
           </div>
-          <p>
-            The worksheet isn't wrong. It's just useless to you.
-          </p>
-          <p>
-            That gap — between what AI gives you by default and what you actually need — is what
-            this course is about. The fix is simpler than you think, and it starts with one idea:
-            AI doesn't know what you know. You have to tell it.
-          </p>
+          <p>The worksheet isn't wrong, It's just useless to you.
+
+      </p>
+          <p>The gap between what AI gives you by default and what you actually need is what this course is about. The fix is simpler than you think, and it starts with one idea: AI doesn't know what you know. You have to tell it.
+
+
+
+      </p>
           <div className="text-xs text-muted-foreground mt-4">
             <ResearchLink text="Cognitive Load Theory" /> (Sweller) explains why this matters —
             the more you narrow the task, the less noise both you and the AI have to wade through.
