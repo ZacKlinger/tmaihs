@@ -20,24 +20,24 @@ export const PD_EXPLANATION =
  */
 export const COMPETENCIES = [
   {
-    id: 'foundations',
+    id: 'constitution',
     tier: 1,
-    statement: 'Applies foundational prompt engineering techniques including constraints, role assignment, and iterative refinement to enhance instructional planning',
+    statement: 'Builds a context-rich AI Classroom Constitution — a reusable document that captures classroom context, project architecture, stakeholder perspectives, and quality standards so AI produces relevant, classroom-ready output every time',
   },
   {
-    id: 'integrated',
+    id: 'unit-design',
     tier: 2,
-    statement: 'Designs multi-step AI workflows using meta-prompting, persona-based interactions, and workflow orchestration for complex instructional tasks',
+    statement: 'Designs a complete PBL unit in collaboration with AI — stress-testing the concept, gathering multiple perspectives, and building the full arc from driving question through assessment using structured prompt workflows',
   },
   {
-    id: 'studio',
+    id: 'policy',
     tier: 3,
-    statement: 'Evaluates AI outputs critically and designs appropriate student-facing AI activities with attention to authenticity, learning goals, and ethical considerations',
+    statement: 'Develops a classroom AI policy grounded in evaluation judgment, authenticity design, productive student AI use, and strategic integration — a practical framework that communicates clear expectations to students, families, and administrators',
   },
   {
     id: 'overall',
     tier: 0,
-    statement: 'Integrates AI tools into curriculum design with research-informed judgment about pedagogical fit and responsible implementation',
+    statement: 'Integrates AI into instructional practice with a professional framework: a Constitution that gives AI context, a design process that produces real units, and a policy that guides responsible use',
   },
 ] as const;
 
@@ -119,18 +119,18 @@ export const UDL_GUIDELINES = [
 export const TIER_DESCRIPTIONS = [
   {
     tier: 1,
-    name: 'Foundations',
-    description: 'Establishing AI as a thinking partner through core prompting techniques',
+    name: 'The Constitution',
+    description: 'Building a living document that tells AI who your students are, what they\'re working on, and what "good" looks like in your room',
   },
   {
     tier: 2,
-    name: 'Integrated Application',
-    description: 'Combining multiple prompting strategies for complex instructional tasks',
+    name: 'The Unit',
+    description: 'Designing a complete PBL unit with AI — from driving question to final assessment — using your Constitution as the foundation',
   },
   {
     tier: 3,
-    name: 'Studio Practice',
-    description: 'Developing judgment, critique, and transfer skills for authentic implementation',
+    name: 'The Policy',
+    description: 'Developing practical judgment about AI in your classroom and a policy framework you could share with anyone who asks',
   },
 ] as const;
 
@@ -138,11 +138,11 @@ export const TIER_DESCRIPTIONS = [
  * Completion criteria explanation
  */
 export const COMPLETION_CRITERIA = {
-  summary: 'This credential was auto-issued upon verified completion of all 10 micro-courses across 3 progressive learning tiers.',
+  summary: 'This credential was issued upon completion of all 10 micro-courses across 3 tiers, each producing a concrete deliverable: an AI Classroom Constitution, a PBL unit, and a classroom AI policy.',
   details: [
-    'Each course includes reading content, interactive assessments, and reflection activities',
-    'Progress is tracked automatically and persisted across sessions',
-    'Completion requires engaging with all course sections and assessments',
-    'No minimum score requirements—focus is on engagement and reflection',
+    'Tier 1: Built an AI Classroom Constitution — a reusable context document for any AI tool',
+    'Tier 2: Designed a complete PBL unit using AI-assisted backward design',
+    'Tier 3: Developed a classroom AI policy covering evaluation, authenticity, student use, and integration',
+    'Each course includes interactive assessments, applied workshops, and reflection activities',
   ],
 };

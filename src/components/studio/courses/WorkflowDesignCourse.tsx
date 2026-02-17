@@ -29,12 +29,15 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
             </p>
           </div>
           <p>
-            Complex project design can't be solved with one prompt. <strong>Workflow design</strong> is the 
+            Complex project design can't be solved with one prompt. <strong>Workflow design</strong> is the
             practice of chaining prompts in purposeful sequences, where each step builds on the previous.
           </p>
           <p>
-            In this micro-course, you'll learn to design prompt chains that produce coherent, 
-            interconnected project materials.
+            This is where your PBL unit gets built. You've stress-tested the concept and gathered
+            perspectives on it. Now you'll use a backward design workflow — with your Constitution
+            loaded — to produce the full unit: driving question, milestone map, assessment rubric,
+            and scaffolds. Each step feeds the next. The deliverable is something you could
+            actually teach next semester.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This mirrors <ResearchLink text="Backward Design" /> (Wiggins & McTighe)—start with the end in mind, 
@@ -160,29 +163,43 @@ export const WorkflowDesignCourse = (props: WorkflowDesignCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Design Your Project Workflow",
-        description: "Create a multi-step prompt workflow for a semester-long project you're planning.",
+        title: "Build Your PBL Unit",
+        description: "This is the build. Load your Constitution, paste your revised unit concept, and run the backward design workflow step by step. Each output feeds the next. By the end, you'll have a complete PBL unit you could actually teach.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Complete Project Workflow Template",
-            prompt: `STEP 1 - Public Product:
-"Define a public product for a [LENGTH]-week [SUBJECT] project for [GRADE] students on [TOPIC]. The product should have a real audience and demonstrate [LEARNING GOALS]. Output: Product description, target audience, success criteria."
+            label: "Build Your PBL Unit (Backward Design Workflow)",
+            prompt: `[PASTE YOUR AI CLASSROOM CONSTITUTION FIRST]
+
+---
+
+UNIT CONCEPT (revised from pre-mortem and perspective review):
+[PASTE YOUR REVISED UNIT CONCEPT]
+
+---
+
+Run this workflow step by step. Paste each output into the next step.
+
+STEP 1 - Public Product:
+"Based on my Constitution and unit concept, define the public product. Who is the real audience? What will students create? What does success look like? Output: Product description, target audience, success criteria."
 
 STEP 2 - Driving Question (use Step 1 output):
-"Given this public product: [PASTE FROM STEP 1], craft a driving question that is open-ended, connects to students' lives, and requires sustained inquiry. Output: 3 candidate driving questions with rationale."
+"Given this public product: [PASTE FROM STEP 1], craft a driving question that is open-ended, connects to my students' lives, and requires sustained inquiry. Output: 3 candidate driving questions with rationale."
 
 STEP 3 - Assessment (use Steps 1-2 output):
-"Given this product and driving question: [PASTE FROM STEPS 1-2], design a rubric with 4 criteria. Each criterion should connect to the driving question. Output: Full rubric in table format."
+"Given this product and driving question: [PASTE FROM STEPS 1-2], design an assessment rubric that matches my Quality Standards from the Constitution. Each criterion should connect to the driving question. Output: Full rubric in table format."
 
 STEP 4 - Milestone Map (use Steps 1-3 output):
-"Given the above, map [NUMBER] milestone checkpoints across the [LENGTH] weeks. Each milestone should build toward the final product. Output: Timeline with milestone descriptions and success criteria."
+"Given the above, map milestone checkpoints across the full timeline. Each milestone should build toward the final product. Include formative assessment at each checkpoint. Output: Timeline with milestone descriptions and success criteria."
 
 STEP 5 - Scaffold One Milestone (use Step 4 output):
-"For milestone [X]: [PASTE DESCRIPTION], create differentiated activities at three levels. All should meet the same learning objective. Output: Three activity versions with teacher notes."`,
+"For milestone [X]: [PASTE DESCRIPTION], create differentiated activities based on the differentiation needs in my Constitution. All levels should meet the same learning objective. Output: Three activity versions with teacher notes."
+
+---
+SAVE THIS: Your complete PBL unit — product, driving question, rubric, milestone map, and at least one scaffolded activity. This is your Tier 2 deliverable.`,
           },
           {
             label: "Context Carryover Template",
@@ -216,26 +233,34 @@ Ensure all outputs:
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your PBL Unit Is Complete</p>
             <p className="text-muted-foreground">
-              Think about a complex planning task you repeat each semester—designing a unit, creating assessments, 
-              building project materials. What steps do you currently do manually that could become a reusable workflow? 
-              Which decisions early in the process constrain everything that follows?
+              You now have a complete PBL unit: public product, driving question, assessment rubric,
+              milestone map, and at least one scaffolded activity. This was built on your Constitution,
+              stress-tested with a pre-mortem, and reviewed from multiple perspectives. It's something
+              you could actually teach.
+            </p>
+            <p className="text-muted-foreground mt-3">
+              Add your workflow template to your Constitution as a reusable tool. Next semester, you
+              can swap in a new topic and run the same workflow to produce a new unit.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">What's Next</p>
             <p className="text-muted-foreground">
-              Design and save one reusable workflow template for a task you do regularly. A good workflow is 
-              content-agnostic—you can swap in different topics while keeping the structure.
+              In Tier 3, the question shifts. You've built something real — now the work is about
+              judgment. How do you evaluate AI outputs before they reach students? How do you design
+              assignments where genuine work is the easier path? How do students use AI productively?
+              The deliverable is a Classroom AI Policy you could hand to anyone who asks.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1:</strong> Every step in a workflow should use strong constraints. 
-              Weak prompts at any step break the chain's coherence.
+              <strong>Before Tier 3:</strong> Review your PBL unit one more time. Would you actually
+              teach this? If something doesn't sit right, iterate on it now. The unit should be
+              something you're genuinely proud of before you move on.
             </p>
           </div>
         </div>

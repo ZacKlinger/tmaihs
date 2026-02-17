@@ -30,22 +30,22 @@ export const COURSE_NAMES: Record<string, string> = {
 export const TIERS: TierConfig[] = [
   {
     id: 1,
-    name: "Foundations",
-    description: "Establish AI as a thinking partner when approaching new instructional problems.",
+    name: "The Constitution",
+    description: "Build a living document that gives AI everything it needs to know about your classroom.",
     unlockCriteria: "Available immediately",
     courseIds: ["constraints-101", "role-assignment-101", "iteration-101"],
   },
   {
     id: 2,
-    name: "Integrated Application",
-    description: "Combine multiple prompting strategies simultaneously.",
+    name: "The Unit",
+    description: "Design a complete PBL unit with AI, using your Constitution as the foundation.",
     unlockCriteria: "Complete all Tier 1 courses",
     courseIds: ["meta-prompting-201", "persona-calling-201", "workflow-design-201"],
   },
   {
     id: 3,
-    name: "Studio Practice",
-    description: "Develop judgment, critique, and transfer.",
+    name: "The Policy",
+    description: "Develop a practical AI policy you could hand to students, parents, and your principal.",
     unlockCriteria: "Complete all Tier 2 courses",
     courseIds: ["critical-evaluation-301", "detecting-ai-work-301", "student-ai-activities-301", "curriculum-ai-design-301"],
   },

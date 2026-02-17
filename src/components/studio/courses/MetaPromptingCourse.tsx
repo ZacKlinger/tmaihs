@@ -30,12 +30,14 @@ export const MetaPromptingCourse = (props: MetaPromptingCourseProps) => {
             </p>
           </div>
           <p>
-            This is where <strong>meta-prompting</strong> becomes powerful. Instead of guessing what's wrong, 
-            you ask AI to analyze your prompt before—or after—you use it.
+            This is where <strong>meta-prompting</strong> becomes powerful. Instead of guessing what's wrong,
+            you ask AI to analyze your prompt before — or after — you use it.
           </p>
           <p>
-            In this micro-course, you'll learn to use AI as a prompt critic, identifying gaps and improvements 
-            that lead to better project materials.
+            In Tier 2, you're building a <strong>complete PBL unit</strong> — driving question, project arc,
+            assessment, and scaffolds. This course is the first step: stress-testing your unit concept before
+            you invest time building it out. Load your Constitution, share your unit idea, and let AI find
+            the gaps before your students do.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This approach mirrors <ResearchLink text="Self-Regulated Learning" /> (Zimmerman)—monitoring and adjusting 
@@ -153,31 +155,44 @@ export const MetaPromptingCourse = (props: MetaPromptingCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Meta-Prompting for Project Design",
-        description: "Practice using AI to critique and improve your project prompts before generating materials.",
+        title: "Stress-Test Your PBL Unit Concept",
+        description: "Before you build your unit, break it. Load your Constitution, paste your unit idea, and run a pre-mortem. The gaps you find now are the problems you won't have in Week 6.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Project Pre-Mortem",
-            prompt: `Here's my project plan: [PASTE YOUR PROJECT OUTLINE]
+            label: "PBL Unit Pre-Mortem",
+            prompt: `[PASTE YOUR AI CLASSROOM CONSTITUTION FIRST]
 
-Before I build out the details, conduct a pre-mortem:
+---
 
-1. SKILL GAPS: What skills does this assume students already have? Which might they lack?
-2. PACING RISKS: Where is the timeline most likely to fall apart?
+Here's my PBL unit concept:
+Topic: [YOUR TOPIC]
+Driving question (draft): [YOUR DRIVING QUESTION]
+Final product: [WHAT STUDENTS CREATE]
+Timeline: [NUMBER] weeks
+Audience: [WHO SEES THE FINAL PRODUCT]
+
+Before I build this out, conduct a pre-mortem:
+
+1. SKILL GAPS: What skills does this assume my students already have? Given my Constitution, which might they lack?
+2. PACING RISKS: Where is the timeline most likely to fall apart for students like mine?
 3. ENGAGEMENT DROPS: At what point might students lose motivation? Why?
-4. SCAFFOLDING HOLES: What support structures am I forgetting?
+4. SCAFFOLDING HOLES: Given my differentiation needs, what support structures am I forgetting?
 5. ASSESSMENT BLIND SPOTS: How might students "complete" this without actually learning?
 
-For each issue, suggest a specific fix.`,
+For each issue, suggest a specific fix that fits my classroom context.`,
           },
           {
             label: "Cross-Curricular Connection Check",
-            prompt: `I'm designing a project that combines [SUBJECT 1] and [SUBJECT 2]:
-[PASTE YOUR PROJECT OUTLINE]
+            prompt: `[PASTE YOUR AI CLASSROOM CONSTITUTION FIRST]
+
+---
+
+I'm designing a project that combines [SUBJECT 1] and [SUBJECT 2]:
+[PASTE YOUR UNIT CONCEPT]
 
 Analyze the integration:
 1. Are the disciplines genuinely connected, or just adjacent?
@@ -203,27 +218,29 @@ Analyze the integration:
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your PBL Unit: Concept Tested</p>
             <p className="text-muted-foreground">
-              Think about a project you've designed recently. What assumptions did you make about student skills 
-              or prior knowledge that might not have been accurate? How could meta-prompting have surfaced those 
-              assumptions before students encountered problems?
+              You now have a stress-tested unit concept — you know where the gaps are, what skills
+              your students might lack, and where the pacing could fall apart. Save the pre-mortem
+              results alongside your unit concept. You'll use both in the next two courses as you
+              get outside perspectives and then build the full unit.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">Before Moving On</p>
             <p className="text-muted-foreground">
-              Before your next project planning session, add a meta-prompting step: paste your draft plan and 
-              ask for a "pre-mortem"—what could go wrong? Use the critique to strengthen your design before 
-              building out materials.
+              Revise your unit concept based on what the pre-mortem surfaced. You don't have to
+              fix everything yet — just note the issues and adjust the concept where the fix is
+              obvious. The next course will bring in outside perspectives to catch what you missed.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Connection to Tier 1:</strong> Meta-prompting works because you're applying the 
-              Constraints mental model to the critique itself—constraining what kind of feedback you want.
+              <strong>Notice:</strong> Your Constitution made this pre-mortem specific to your classroom.
+              Without it, the critique would have been generic. That's the difference between useful
+              feedback and advice that could apply to anyone.
             </p>
           </div>
         </div>

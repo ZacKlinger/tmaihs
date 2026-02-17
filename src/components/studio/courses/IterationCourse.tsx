@@ -29,12 +29,15 @@ export const IterationCourse = (props: IterationCourseProps) => {
             </p>
           </div>
           <p>
-            Most people treat AI like a vending machine: input prompt, receive output, done. But AI becomes 
+            Most people treat AI like a vending machine: input prompt, receive output, done. But AI becomes
             dramatically more useful when you treat it as a <strong>thinking partner</strong> you can iterate with.
           </p>
           <p>
-            In this micro-course, you'll learn the <strong>Iteration mental model</strong>—how to refine AI 
-            outputs through targeted follow-ups rather than starting over.
+            This is the final course in Tier 1, and it builds the last section of your AI Classroom
+            Constitution: your <strong>Quality Standards</strong> — what "classroom-ready" means in
+            your room, how you evaluate, and what bar you hold AI outputs to. You'll also use
+            iteration to refine the Constitution itself, testing it against real outputs and
+            tightening it based on what comes back.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
             This mirrors the <ResearchLink text="Design Thinking" /> prototyping cycle: build, test, refine. 
@@ -121,40 +124,50 @@ export const IterationCourse = (props: IterationCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Prompt Workshop: Iterative Refinement",
-        description: "Practice the critique and revision cycle with your own project materials. The goal is to reach 'classroom-ready' in 2-3 iterations, not endless polishing.",
+        title: "Build Your Constitution: Quality Standards & Refinement",
+        description: "This workshop does two things. First, you'll write the final section of your Constitution — your Quality Standards. Then you'll use iteration to test and refine the full Constitution, feeding it into an AI tool and tightening it based on what comes back.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Project Arc Generator + Iteration",
-            prompt: `Create a [NUMBER]-week project arc for [GRADE] students on [TOPIC].
+            label: "Constitution Section 4: Quality Standards",
+            prompt: `QUALITY STANDARDS — save this as the fourth and final section of your AI Classroom Constitution.
 
-Driving question: [YOUR DRIVING QUESTION]
-Final product: [WHAT STUDENTS WILL CREATE]
-Key constraints: [TIME PER WEEK, RESOURCES AVAILABLE, etc.]
+What "classroom-ready" means to me:
+- Activities should take [TIME RANGE — e.g., "30-50 minutes"] and build on prior work
+- Materials must [KEY REQUIREMENT — e.g., "reference specific student data and project milestones"]
+- Rubric style: [e.g., "4-point scale, assesses both content and process"]
+- Scaffolds: [e.g., "visual supports and vocabulary pre-teaching for EL students in every assignment"]
+- Everything should connect to [e.g., "the driving question and final product"]
 
-Include weekly milestones and checkpoints.
+My revision expectations:
+- [e.g., "First output is a draft — I expect to iterate 2-3 times"]
+- [e.g., "I'd rather have something specific and wrong than generic and safe"]
+
+What I don't want:
+- [e.g., "Generic worksheets that could apply to any classroom"]
+- [e.g., "Activities that don't reference where students are in the project"]
+- [e.g., "Overly formal language — my students respond to direct, clear instructions"]
 
 ---
-ITERATION FOLLOW-UPS TO TRY:
-"The transition from Week [X] to Week [Y] assumes skills students won't have yet. Add a bridge activity."
-"The formative checkpoints are too infrequent. Add a quick check-in at Week [X]."
-"Show me how each milestone explicitly connects to the driving question."`,
+YOUR CONSTITUTION IS NOW COMPLETE. Paste all four sections together into a single document and save it somewhere accessible. This is what you'll load into any AI tool from now on.`,
           },
           {
-            label: "Differentiated Materials + Iteration",
-            prompt: `Create a [ACTIVITY TYPE] for [TOPIC] at three levels: approaching, on-level, and advanced.
+            label: "Test & Refine Your Full Constitution",
+            prompt: `[PASTE YOUR COMPLETE CONSTITUTION — all four sections]
 
-Context: Week [X] of a [TOTAL]-week project. Students are [DESCRIBE CURRENT PHASE].
+---
+
+Now create a mid-project checkpoint activity for my students based on the context above.
 
 ---
 ITERATION FOLLOW-UPS TO TRY:
-"The 'approaching' level is still too difficult for students reading 2 grades below level. Simplify vocabulary."
-"The 'advanced' level is just longer, not deeper. Add synthesis or evaluation tasks instead."
-"Keep the structure, but rewrite the instructions assuming students have never seen this format before."`,
+"This doesn't reference [SPECIFIC MILESTONE] that students already completed. Revise to build on that work."
+"The reading level is too high for my EL students. Simplify the instructions but keep the rigor."
+"This is too generic — add specific references to [STUDENT DATA/PROJECT DETAIL] from my Constitution."
+"Keep what's working, but the time estimate is off. This needs to fit in [X] minutes."`,
           },
         ],
         iterationTips: [
@@ -226,26 +239,34 @@ ITERATION FOLLOW-UPS TO TRY:
           <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
           
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Metacognitive Check:</p>
+            <p className="font-medium mb-2">Your Constitution Is Complete</p>
             <p className="text-muted-foreground">
-              Think about the last time AI output wasn't quite right. Did you start over, or did you iterate? 
-              What's one follow-up prompt you could have used to fix the specific problem rather than regenerating everything?
+              You now have a four-section AI Classroom Constitution: Classroom Context, Project Architecture,
+              Stakeholder & Perspective Map, and Quality Standards. Together, they give AI everything it
+              needs to produce work that's actually useful to you.
+            </p>
+            <p className="text-muted-foreground mt-3">
+              This document is alive. Update the Project Architecture section when you start a new unit.
+              Revise Quality Standards when you notice AI consistently missing something. The Constitution
+              gets better the more you use it.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">Transfer Challenge:</p>
+            <p className="font-medium mb-2">What's Next</p>
             <p className="text-muted-foreground">
-              This week, when AI output isn't right, resist the urge to rewrite from scratch. 
-              Instead, identify the ONE thing that's most wrong and ask for a targeted fix. 
-              Track how many iterations it takes to reach "classroom-ready."
+              In Tier 2, you'll use your Constitution as the foundation for designing a complete PBL unit
+              with AI. The Constitution tells AI who your classroom is. Tier 2 teaches you to build
+              something with it.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Mindset shift:</strong> Your first prompt is a prototype, not a final draft. 
-              Plan to iterate—just like you teach students to revise their project work.
+              <strong>Between now and Tier 2:</strong> Use your Constitution for every AI interaction
+              this week. Paste it first, then ask for what you need. Notice what works and what
+              needs refining — iterate on the Constitution itself the same way you'd iterate on
+              any output.
             </p>
           </div>
         </div>
