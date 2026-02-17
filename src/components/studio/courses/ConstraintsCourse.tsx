@@ -132,18 +132,32 @@ export const ConstraintsCourse = (props: ConstraintsCourseProps) => {
       question: "You're prepping for tomorrow. Which prompt gets you something you'd actually hand out?",
       context: "It's Week 7 of a 12-week hydroponics project. Students have built their systems and collected two weeks of growth data. Now they need to analyze what's working and what isn't before adjusting their nutrient mixes.",
       options: [
-      {
-        id: "A",
-        prompt: "Create a data analysis worksheet for students doing a hydroponics project. They need to look at their plant growth data and figure out what's working.",
-        isCorrect: false,
-        annotations: [
-        { text: "a hydroponics project", label: "Which week? What phase?", color: "bg-amber-500/20" },
-        { text: "their plant growth data", label: "What data specifically?", color: "bg-amber-500/20" },
-        { text: "figure out what's working", label: "No structure for analysis", color: "bg-amber-500/20" }],
-
-        explanation: "This sounds reasonable, but notice — AI doesn't know what data students have, what plants they're growing, or that they're about to adjust nutrient mixes. The output will be a generic data analysis template that could apply to any science class."
-      },
+        {
+          id: "A",
+          prompt: "Create a data analysis worksheet for students doing a hydroponics project. They need to look at their plant growth data and figure out what's working.",
+          isCorrect: false,
+          annotations: [
+            { text: "a hydroponics project", label: "Which week? What phase?", color: "bg-amber-500/20" },
+            { text: "their plant growth data", label: "What data specifically?", color: "bg-amber-500/20" },
+            { text: "figure out what's working", label: "No structure for analysis", color: "bg-amber-500/20" }
+          ],
+          explanation: "This sounds reasonable, but notice — AI doesn't know what data students have, what plants they're growing, or that they're about to adjust nutrient mixes. The output will be a generic data analysis template that could apply to any science class."
+        },
+        {
+          id: "B",
+          prompt: "It's Week 7 of our 12-week hydroponics project. Students have collected two weeks of growth data on their plants (basil, peppers, lettuce) and are now analyzing what's working. Create a structured worksheet that helps them compare their data week-to-week, identify patterns, and make evidence-based decisions about nutrient adjustments. They've already completed pH baseline readings and system builds. The worksheet should take 30 minutes.",
+          isCorrect: true,
+          annotations: [
+            { text: "Week 7 of 12-week", label: "Specific project phase", color: "bg-green-500/20" },
+            { text: "two weeks of growth data", label: "Concrete student work", color: "bg-green-500/20" },
+            { text: "basil, peppers, lettuce", label: "Their actual plants", color: "bg-green-500/20" },
+            { text: "Already completed pH baseline readings", label: "What they've done", color: "bg-green-500/20" }
+          ],
+          explanation: "This prompt does the work of constraints for you. AI now knows what phase students are in, what data they actually have, which plants they're growing, and what prior work exists. The output will be a worksheet built on their progress, not generic."
+        }
+      ]
     },
+  },
     {
       id: "workshop",
       type: "workshop" as const,
@@ -263,8 +277,10 @@ TEST IT: Now paste BOTH sections into an AI tool and ask for a mid-project check
             </p>
           </div>
         </div>
+      ),
+    },
+  ];
 
-  }];
 
 
   return (
