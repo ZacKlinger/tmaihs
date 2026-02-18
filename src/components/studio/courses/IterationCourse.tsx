@@ -20,28 +20,26 @@ export const IterationCourse = (props: IterationCourseProps) => {
       title: "The Scenario",
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
-          <h2 className="text-xl font-semibold text-foreground">The Work Context</h2>
+          <h2 className="text-xl font-semibold text-foreground">The First Draft Problem</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
-              "You asked AI to generate a 14-week project arc for your documentary unit. The milestones look reasonable, 
-              but the transition from Week 4 (research) to Week 5 (storyboarding) feels abrupt. Students won't be ready. 
-              You could rewrite the whole prompt from scratch... or you could have a conversation."
+              You paste your three-section Constitution into Claude and ask for a formative assessment for Week 8 of the hydroponics project. What comes back is... fine. It references the right phase and mentions pH data. But the reading level is too high for your SDC students. The format assumes a lab report structure your students haven't practiced. And the rubric criteria don't match how you actually grade.
+            </p>
+            <p className="text-lg italic text-muted-foreground mt-3">
+              The instinct is to scrap it and start over with a better prompt. But starting over means losing everything the AI already got right — the structure, the content connection, the phase awareness. There's a better move.
             </p>
           </div>
           <p>
-            Most people treat AI like a vending machine: input prompt, receive output, done. But AI becomes
-            dramatically more useful when you treat it as a <strong>thinking partner</strong> you can iterate with.
+            In Courses 1 and 2, you built a Constitution with three sections: Classroom Context, Project Architecture, and Stakeholder Map. You tested it with AI and saw the output improve. But "improve" doesn't mean "done."
           </p>
           <p>
-            This is the final course in Tier 1, and it builds the last section of your AI Classroom
-            Constitution: your <strong>Quality Standards</strong> — what "classroom-ready" means in
-            your room, how you evaluate, and what bar you hold AI outputs to. You'll also use
-            iteration to refine the Constitution itself, testing it against real outputs and
-            tightening it based on what comes back.
+            Your first prompt is a prototype. Not a failure — a prototype. Like a first draft in any design process, it gets some things right and some things wrong. The skill isn't writing a perfect prompt on the first try. It's knowing how to look at what came back and say: <em>here's what's working, here's what isn't, here's what to change.</em>
+          </p>
+          <p>
+            This course teaches the iteration protocol and adds <strong>Section 4</strong> to your Constitution: your <strong>Quality Standards</strong> — the definition of "good enough to use" for your specific classroom.
           </p>
           <div className="text-xs text-muted-foreground mt-4">
-            This mirrors the <ResearchLink text="Design Thinking" /> prototyping cycle: build, test, refine. 
-            Your first prompt is a prototype, not a final product.
+            This is the same cycle that <ResearchLink text="design thinking" /> (Stanford d.school) uses: prototype, test, refine, repeat. The difference is you're prototyping prompts, not products.
           </div>
         </div>
       ),
@@ -52,53 +50,47 @@ export const IterationCourse = (props: IterationCourseProps) => {
       title: "Mental Model",
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
-          <h2 className="text-xl font-semibold text-foreground">The Iteration Mental Model</h2>
+          <h2 className="text-xl font-semibold text-foreground">Critique, Don't Restart</h2>
           <p className="text-lg">
-            AI conversations have memory within a session. Each follow-up builds on what came before. 
-            This means you can <strong>steer</strong> outputs rather than hoping to get it perfect on try one.
+            There are three responses to a mediocre AI output. Two of them waste your time.
           </p>
-          
-          <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-6">
-            <h3 className="text-lg font-semibold mb-4">The Critique Protocol</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              In PBL, students learn through critique and revision cycles. Apply the same approach to AI output:
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">1</span>
-                <span><strong>Generate:</strong> Get a first draft with your key constraints</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">2</span>
-                <span><strong>Critique:</strong> What's working? What's not? Be specific.</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">3</span>
-                <span><strong>Refine:</strong> Ask for targeted changes, not a complete redo</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">4</span>
-                <span><strong>Repeat:</strong> Until the output is classroom-ready</span>
-              </div>
+
+          <div className="space-y-3 my-6">
+            <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/20">
+              <p className="font-medium text-destructive mb-1">Accept it as-is</p>
+              <p className="text-sm text-muted-foreground">You settle for generic because fixing it feels like more work. The output sits in your classroom and doesn't quite fit.</p>
+            </div>
+            <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/20">
+              <p className="font-medium text-destructive mb-1">Scrap it and start over</p>
+              <p className="text-sm text-muted-foreground">You write a brand-new prompt from scratch, losing everything the first attempt got right. This takes longer and often produces similar issues.</p>
+            </div>
+            <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+              <p className="font-medium text-green-700 dark:text-green-300 mb-1">Give targeted feedback</p>
+              <p className="text-sm text-muted-foreground">You tell AI exactly what's working and what isn't. "The structure is good. But the reading level is too high — simplify the vocabulary and add sentence frames. Also, replace the lab report format with a data table my students are familiar with."</p>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold">Powerful Iteration Prompts for Projects</h3>
-          <ul>
-            <li><strong>Adjust pacing:</strong> "The transition from Week 4 to Week 5 is too abrupt. Add a bridge activity."</li>
-            <li><strong>Add scaffolding:</strong> "Students won't have the skills for Week 7 yet. What prerequisite activities are missing?"</li>
-            <li><strong>Increase rigor:</strong> "The reflection prompts are surface-level. Rewrite them to require evidence from student work."</li>
-            <li><strong>Improve coherence:</strong> "The milestones don't clearly build toward the final product. Show me how each connects."</li>
-            <li><strong>Differentiate:</strong> "Keep everything else, but add scaffolds for students who struggled with the research phase."</li>
-          </ul>
+          <p>
+            That third response is the iteration protocol. It's what good editors do — they don't throw out a draft because the middle section is weak. They say: "Keep the opening. Rewrite paragraphs 3-5. The ending works."
+          </p>
 
-          <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 mt-6">
-            <p className="text-sm">
-              <strong>Key insight:</strong> It's almost always faster to iterate than to craft a "perfect" initial prompt. 
-              Start with 70% right, then refine to 95%. This reflects <ResearchLink text="Hattie" />'s finding that 
-              feedback loops are among the highest-impact teaching practices.
-            </p>
+          <p>Here's what targeted feedback sounds like for the hydroponics project:</p>
+
+          <div className="bg-muted/50 p-4 rounded-lg border border-border/50 my-4">
+            <p className="font-medium text-foreground mb-2">First output: Week 8 formative assessment</p>
+            <p className="text-sm text-muted-foreground mb-3">AI produced a solid structure with the right content focus, but the reading level is too high, the format doesn't match what students know, and the rubric uses criteria students haven't practiced.</p>
+            <div className="space-y-2 text-sm">
+              <p><strong>Iteration prompt:</strong> "This is close. Keep the overall structure and the connection to pH data. But make three changes: (1) Lower the reading level to 6th-7th grade and add vocabulary supports for key science terms. (2) Replace the lab report format with a data comparison table — my students use tables, not formal reports. (3) Align the rubric criteria to my 4-point scale where 'proficient' means students can explain their reasoning, not just report results."</p>
+            </div>
           </div>
+
+          <p>
+            Notice: the critique is specific. It names what's working ("keep the structure"). It names what's wrong and how to fix it ("lower the reading level," "replace the format," "align the rubric"). This is faster than starting over, and the output is better because AI doesn't have to re-derive the things it already got right.
+          </p>
+
+          <p className="text-sm text-muted-foreground mt-4">
+            <ResearchLink text="Cognitive load theory" /> (Sweller) applies here too — targeted feedback reduces the processing load for both you and the AI. You're narrowing the revision, not reopening the entire task.
+          </p>
         </div>
       ),
     },
@@ -108,14 +100,36 @@ export const IterationCourse = (props: IterationCourseProps) => {
       title: "Check 1",
       advancedCfuData: {
         id: "iteration-cfu-1",
-        type: "sequence-order" as const,
-        question: "Put these iteration steps in the most effective order",
-        description: "A teacher's AI-generated project timeline has milestones that don't build coherently toward the final documentary. What's the best sequence for fixing this?",
-        steps: [
-          { id: "a", text: "Review the timeline to identify which specific transitions feel disconnected", correctPosition: 1 },
-          { id: "b", text: "Ask AI to explain how each milestone builds toward the final product", correctPosition: 2 },
-          { id: "c", text: "Request targeted adjustments to the weakest transition points", correctPosition: 3 },
-          { id: "d", text: "Check if the revised timeline maintains realistic pacing for your students", correctPosition: 4 },
+        type: "prompt-compare" as const,
+        question: "AI produced a Week 10 checkpoint that's structurally good but too complex for your SDC students. What do you do?",
+        context: "The checkpoint asks students to write a paragraph analyzing their growth data trends. The content is right — it references their actual plants and data. But the writing task is beyond most of your students' current level, and there's no scaffolding.",
+        options: [
+          {
+            id: "A",
+            prompt: "That didn't work. Create a simpler checkpoint for SDC students doing a hydroponics project in Week 10. Make it more accessible and include scaffolding.",
+            isCorrect: false,
+            annotations: [
+              { text: "That didn't work", label: "Throws out what was right", color: "bg-amber-500/20" },
+              { text: "simpler checkpoint", label: "Vague — simpler how?", color: "bg-amber-500/20" },
+              { text: "more accessible", label: "Undefined standard", color: "bg-amber-500/20" },
+            ],
+            explanation: "This starts from scratch and loses the things the first output got right — the structure, the data references, the content alignment. 'Simpler' and 'more accessible' aren't specific enough for AI to know what you mean.",
+          },
+          {
+            id: "B",
+            prompt: "The structure and content are good — keep those. Make three changes: (1) Replace the paragraph analysis with a scaffolded data table where students circle trends and write one-sentence observations. (2) Add sentence frames for the observation: 'I notice that ___ because ___.' (3) Include a vocabulary box with 4-5 key terms (pH, nutrient, absorption, trend) with simple definitions.",
+            isCorrect: true,
+            annotations: [
+              { text: "structure and content are good — keep those", label: "Names what works", color: "bg-green-500/20" },
+              { text: "Replace the paragraph analysis with a scaffolded data table", label: "Specific swap", color: "bg-green-500/20" },
+              { text: "sentence frames", label: "Concrete scaffold", color: "bg-green-500/20" },
+              { text: "vocabulary box with 4-5 key terms", label: "Targeted support", color: "bg-green-500/20" },
+            ],
+            explanation: "This keeps what works, names exactly what to change, and describes the replacement with enough detail that AI can execute. The output will be a revision, not a restart.",
+          },
+        ] as [
+          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
+          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string }
         ],
       },
     },
@@ -124,57 +138,66 @@ export const IterationCourse = (props: IterationCourseProps) => {
       type: "workshop" as const,
       title: "Practice",
       workshopData: {
-        title: "Build Your Constitution: Quality Standards & Refinement",
-        description: "This workshop does two things. First, you'll write the final section of your Constitution — your Quality Standards. Then you'll use iteration to test and refine the full Constitution, feeding it into an AI tool and tightening it based on what comes back.",
+        title: "Test, Iterate, Define Quality",
+        description: "This is where your Constitution gets real. Paste all three sections into an AI tool, ask for something you actually need, then iterate on the output until it's something you'd use tomorrow. Along the way, you'll discover what your quality standards are — what 'good enough' means in your classroom. That becomes Section 4.",
         toolLinks: [
           { name: "Claude", url: "https://claude.ai" },
           { name: "Gemini", url: "https://gemini.google.com" },
         ],
         starterPrompts: [
           {
-            label: "Constitution Section 4: Quality Standards",
-            prompt: `QUALITY STANDARDS — save this as the fourth and final section of your AI Classroom Constitution.
-
-What "classroom-ready" means to me:
-- Activities should take [TIME RANGE — e.g., "30-50 minutes"] and build on prior work
-- Materials must [KEY REQUIREMENT — e.g., "reference specific student data and project milestones"]
-- Rubric style: [e.g., "4-point scale, assesses both content and process"]
-- Scaffolds: [e.g., "visual supports and vocabulary pre-teaching for EL students in every assignment"]
-- Everything should connect to [e.g., "the driving question and final product"]
-
-My revision expectations:
-- [e.g., "First output is a draft — I expect to iterate 2-3 times"]
-- [e.g., "I'd rather have something specific and wrong than generic and safe"]
-
-What I don't want:
-- [e.g., "Generic worksheets that could apply to any classroom"]
-- [e.g., "Activities that don't reference where students are in the project"]
-- [e.g., "Overly formal language — my students respond to direct, clear instructions"]
+            label: "Constitution Test + Iteration Cycle",
+            prompt: `[PASTE YOUR FULL CONSTITUTION — ALL THREE SECTIONS]
 
 ---
-YOUR CONSTITUTION IS NOW COMPLETE. Paste all four sections together into a single document and save it somewhere accessible. This is what you'll load into any AI tool from now on.`,
+
+Based on my Constitution, create a [CHOOSE ONE]:
+- Formative assessment for Week [X]
+- Scaffolded activity for the current project phase
+- Discussion protocol connecting student data to the driving question
+
+---
+
+AFTER YOU GET THE OUTPUT, iterate:
+
+Round 1: "Keep [what's working]. Change [what isn't]. Specifically: [1], [2], [3]."
+
+Round 2: "Almost there. Adjust [remaining issue]. And make sure [quality standard]."
+
+Round 3 (if needed): "This is usable. One final tweak: [detail]."
+
+GOAL: Get to an output you would actually hand to students tomorrow.`,
           },
           {
-            label: "Test & Refine Your Full Constitution",
-            prompt: `[PASTE YOUR COMPLETE CONSTITUTION — all four sections]
+            label: "Constitution Section 4: Quality Standards",
+            prompt: `QUALITY STANDARDS — save this as the fourth section of your AI Classroom Constitution.
+
+For my classroom, "ready to use" means:
+- Reading level: [TARGET — e.g., "6th-7th grade with vocabulary support"]
+- Activity length: [RANGE — e.g., "30-50 minutes"]
+- Scaffolding: [ALWAYS INCLUDE — e.g., "sentence frames, visual supports, vocabulary boxes"]
+- Assessment alignment: [YOUR SYSTEM — e.g., "4-point rubric, proficient = explains reasoning"]
+- Connection requirement: [e.g., "every activity references the driving question and prior student work"]
+
+I'll know an output is good when:
+- [CRITERION 1 — e.g., "I wouldn't need to rewrite any section before using it"]
+- [CRITERION 2 — e.g., "my lowest-performing student could start the activity without 1:1 help"]
+- [CRITERION 3 — e.g., "it builds on what we did last week, not what a generic class did"]
+
+When an output isn't working, here's how I critique it:
+- Name what's right first
+- Identify 1-3 specific problems
+- Describe what I want instead, with enough detail to act on
 
 ---
-
-Now create a mid-project checkpoint activity for my students based on the context above.
-
----
-ITERATION FOLLOW-UPS TO TRY:
-"This doesn't reference [SPECIFIC MILESTONE] that students already completed. Revise to build on that work."
-"The reading level is too high for my EL students. Simplify the instructions but keep the rigor."
-"This is too generic — add specific references to [STUDENT DATA/PROJECT DETAIL] from my Constitution."
-"Keep what's working, but the time estimate is off. This needs to fit in [X] minutes."`,
+TEST IT: Paste all four Constitution sections and ask for something. Is the first output closer to "ready" than before? Your quality standards are now part of the brief.`,
           },
         ],
         iterationTips: [
-          "Be specific about WHAT to change and WHERE. 'Make it better' forces AI to guess.",
-          "Use 'Keep X, change Y' framing to preserve what's working.",
-          "If you're iterating more than 4-5 times on the same element, your initial constraints might need rethinking.",
-          "Set a 'good enough' threshold—classroom materials don't need to be perfect, just usable.",
+          "Always name what's working before you name what isn't. This preserves the good parts.",
+          "Be specific about what 'too complex' or 'too simple' means. 'Lower the reading level to 6th grade' is actionable. 'Make it simpler' is not.",
+          "If the third iteration still isn't right, the problem is usually in your Constitution, not your critique. Go back and add the missing constraint.",
+          "Your quality standards aren't fixed. After a few iteration cycles, you'll notice patterns in what you always ask for. Add those to Section 4.",
         ],
       },
     },
@@ -184,50 +207,17 @@ ITERATION FOLLOW-UPS TO TRY:
       title: "Check 2",
       advancedCfuData: {
         id: "iteration-cfu-2",
-        type: "output-match" as const,
-        question: "Match each iteration prompt to the change it would produce",
-        description: "Given an AI-generated project timeline, predict what each follow-up prompt would fix.",
-        pairs: [
-          {
-            promptId: "1",
-            prompt: "The milestones don't clearly connect to the driving question. Revise each milestone to explicitly reference it.",
-            outputId: "A",
-            output: "Revised timeline where each weekly milestone begins with 'Students will explore [aspect of driving question] by...'",
-            explanation: "This targets coherence—ensuring every activity connects to the central question students are investigating.",
-          },
-          {
-            promptId: "2", 
-            prompt: "Week 6 assumes students can storyboard, but we haven't taught that skill. Add a mini-lesson on storyboarding in Week 5.",
-            outputId: "B",
-            output: "Week 5 now includes a 30-minute storyboarding introduction with examples before students apply the skill in Week 6",
-            explanation: "This addresses a skill gap by adding scaffolding before the point where students need to apply the skill.",
-          },
-          {
-            promptId: "3",
-            prompt: "The reflection prompts are too generic. Rewrite them to require students to cite specific evidence from their project work.",
-            outputId: "C",
-            output: "Revised prompts like 'Quote one piece of feedback you received and explain how you addressed it' instead of 'What did you learn?'",
-            explanation: "This increases rigor by requiring concrete evidence rather than vague self-assessment.",
-          },
+        type: "identify-missing" as const,
+        prompt: "Keep the structure but make it simpler and more engaging. Add some scaffolding too.",
+        context: "A teacher got a decent AI output for a Week 6 data collection protocol in the hydroponics project. The structure is solid but the language is too academic and there's no support for struggling readers. They write the iteration prompt above. What's missing from this critique?",
+        elements: [
+          { id: "what-works", label: "Naming what specifically to keep ('the structure' is vague)", isMissing: true, explanation: "'The structure' could mean anything. Which structure? The sequence of steps? The table format? The section headers? AI needs to know which parts to preserve." },
+          { id: "reading-level", label: "Target reading level for the revision", isMissing: true, explanation: "'Simpler' is relative. 6th grade? 8th grade? With or without vocabulary support? AI doesn't know your students' levels unless you say." },
+          { id: "scaffold-type", label: "What kind of scaffolding (sentence frames, visual cues, vocabulary boxes)", isMissing: true, explanation: "'Add some scaffolding' is like saying 'add some spice.' Sentence frames? Word banks? Graphic organizers? Visual step-by-step guides? The type of scaffold matters." },
+          { id: "engaging-means", label: "What 'more engaging' means for these specific students", isMissing: true, explanation: "'Engaging' for SDC science students in Week 6 of a hydroponics project means something specific — maybe connecting to their actual plants, maybe adding a competitive element to data collection. AI can't guess." },
+          { id: "iteration-style", label: "Whether this is a critique or a restart", isMissing: false, explanation: "The teacher says 'keep the structure' — that signals iteration, not restart. This part is right, even if vague." },
         ],
-      },
-    },
-    {
-      id: "cfu-3",
-      type: "cfu" as const,
-      title: "Check 3",
-      advancedCfuData: {
-        id: "iteration-cfu-3",
-        type: "prompt-remix" as const,
-        originalPrompt: "The examples are too hard for my students. Make them easier.",
-        originalContext: "Teacher has lesson materials where examples are too advanced.",
-        newContext: "Teacher now has a project timeline where the pacing is too rushed—students won't have time to complete Week 8 tasks.",
-        constraints: [
-          { id: "c1", text: "The examples are too hard", shouldChange: true, reason: "The issue isn't difficulty, it's pacing and time allocation." },
-          { id: "c2", text: "for my students", shouldChange: false, reason: "Student context is still relevant—changes should work for your specific class." },
-          { id: "c3", text: "Make them easier", shouldChange: true, reason: "Need to address time, not difficulty: 'Redistribute Week 8 tasks across Weeks 7-9.'" },
-          { id: "c4", text: "Keep the learning goals the same", shouldChange: false, reason: "Good practice—preserve objectives while adjusting pacing." },
-        ],
+        minCorrect: 3,
       },
     },
     {
@@ -236,37 +226,27 @@ ITERATION FOLLOW-UPS TO TRY:
       title: "Reflection",
       content: (
         <div className="prose prose-slate dark:prose-invert max-w-none">
-          <h2 className="text-xl font-semibold text-foreground">Reflection & Transfer</h2>
-          
+          <h2 className="text-xl font-semibold text-foreground">Your Constitution Is Complete</h2>
+
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="font-medium mb-2">Your Constitution Is Complete</p>
             <p className="text-muted-foreground">
-              You now have a four-section AI Classroom Constitution: Classroom Context, Project Architecture,
-              Stakeholder & Perspective Map, and Quality Standards. Together, they give AI everything it
-              needs to produce work that's actually useful to you.
+              Four sections. Classroom Context. Project Architecture. Stakeholder Map. Quality Standards. This is a living document — it changes as your project changes, as your students grow, as you learn what works and what doesn't. But the foundation is solid.
             </p>
             <p className="text-muted-foreground mt-3">
-              This document is alive. Update the Project Architecture section when you start a new unit.
-              Revise Quality Standards when you notice AI consistently missing something. The Constitution
-              gets better the more you use it.
+              From now on, every AI interaction starts with your Constitution. It's not optional context — it's the operating document.
             </p>
           </div>
 
           <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 my-4">
-            <p className="font-medium mb-2">What's Next</p>
+            <p className="font-medium mb-2">What Changes in Tier 2</p>
             <p className="text-muted-foreground">
-              In Tier 2, you'll use your Constitution as the foundation for designing a complete PBL unit
-              with AI. The Constitution tells AI who your classroom is. Tier 2 teaches you to build
-              something with it.
+              You've been building a document that teaches AI about your classroom. In the next three courses, you'll use that document to build something real — a complete PBL unit you can actually teach. Your Constitution is the input. The unit is the output. Everything you learned about constraints, roles, and iteration applies directly.
             </p>
           </div>
 
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              <strong>Between now and Tier 2:</strong> Use your Constitution for every AI interaction
-              this week. Paste it first, then ask for what you need. Notice what works and what
-              needs refining — iterate on the Constitution itself the same way you'd iterate on
-              any output.
+              Before you start Tier 2, revisit your Constitution one more time. Read it as if you were the AI receiving it. Is anything ambiguous? Missing? Would a new AI session understand your classroom from this document alone? If not, refine it now. The better your Constitution, the better everything that follows.
             </p>
           </div>
         </div>
@@ -277,7 +257,7 @@ ITERATION FOLLOW-UPS TO TRY:
   return (
     <MicroCourseViewer
       courseId="iteration-101"
-      title="Iteration: Refining Through Dialogue"
+      title="Iteration: Prototyping Prompts, Defining Quality"
       sections={sections}
       {...props}
     />
