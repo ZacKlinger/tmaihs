@@ -149,7 +149,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       id: "your-classroom-cfu-1",
       type: "identify-missing" as const,
       prompt: "Create a vocabulary review activity for my 10th grade science class. We're studying plant biology and I want something interactive that takes about 20 minutes.",
-      context: "A teacher at TMAHS wrote this prompt for their SDC science classroom. The class has 22 students, 14 with IEPs, 6 emerging English learners, reading levels from 4th to 8th grade, and shared Chromebook access only on Tuesdays and Thursdays. They're in Week 8 of a hydroponics project. Which specific classroom details are missing from this prompt — details that would actually change the output?",
+      context: "A teacher at TMAHS wrote this prompt for their SDC science classroom. The class has 14 students with IEPs, 6 emerging English learners, and reading levels from 4th to 8th grade. They're in Week 8 of a hydroponics project. Which specific classroom details are missing from this prompt — details that would actually change the output?",
       elements: [
       {
         id: "iep-context",
