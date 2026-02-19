@@ -83,7 +83,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <li><strong>Language backgrounds:</strong> How many English learners? At what proficiency levels? What home languages are in the room?</li>
             <li><strong>Reading levels:</strong> What's the actual range? Not the grade level on paper — the functional range you plan for.</li>
             <li><strong>Device access:</strong> One-to-one Chromebooks, a shared cart, phones only, or paper-first? How often do students actually have a screen in front of them?</li>
-            <li className="mb-3"><strong>Time and pacing:</strong> How long is your period? How often do you meet? Is this a block schedule, a traditional period, or something else?</li>
+            <li><strong>Time and pacing:</strong> How long is your period? How often do you meet? Is this a block schedule, a traditional period, or something else?</li>
             <li><strong>Chronic absenteeism:</strong> What's the attendance pattern? If a third of your class misses any given Monday, your materials need to account for re-entry.</li>
           </ul>
 
@@ -103,9 +103,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <p className="text-muted-foreground mt-3">
               That said, "the model doesn't retain it" is not the same as "it's completely private." Your text passes through a server. The company's data policies govern what happens to it in transit and in logs. And the line between aggregate demographics ("14 students have IEPs") and identifiable information ("Marcus has an IEP for dysgraphia and extended time") matters. The first is a planning variable. The second is a student record.
             </p>
-            <p className="text-muted-foreground mt-3">
-              The rule of thumb: describe your classroom the way you'd describe it to a colleague you trust but who doesn't know your students by name. Aggregate numbers, general accommodation types, overall reading ranges. Never student names, never specific diagnosis details, never anything that could identify an individual child to someone reading over your shoulder.
-            </p>
+            <p className="text-muted-foreground mt-3">The rule of thumb: describe your classroom the way you'd describe it to a colleague you trust but who doesn't know your students by name. Aggregate numbers, general accommodation types, overall reading ranges. Never student names, never specific diagnosis details, never anything that could identify an individual child to someone reading over your shoulder.
+
+        </p>
           </div>
 
           <p>
@@ -138,7 +138,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
           <div className="text-xs text-muted-foreground mt-4">
             <ResearchLink text="Universal Design for Learning (UDL) framework" /> argues that designing for the margins benefits everyone in the room. The same logic applies here — a Constitution built around your most complex learners produces materials that work for all of them.
           </div>
-        </div> },
+        </div>
+
+  },
   {
     id: "cfu-1",
     type: "cfu" as const,
