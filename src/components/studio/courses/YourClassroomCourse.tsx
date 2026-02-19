@@ -65,9 +65,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
               <p className="font-medium text-green-700 dark:text-green-300 mb-2">Specific Prompt:</p>
-              <p className="text-sm">
-                "Create a data recording sheet for 10th grade SDC science. 14 of 22 students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. Students share a Chromebook cart and only have devices on Tuesdays and Thursdays — this sheet needs to work on paper. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
-              </p>
+              <p className="text-sm">"Create a data recording sheet for SDC science. 14  students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
+
+          </p>
               <p className="text-xs text-muted-foreground mt-2">
                 AI now knows who's in the room, what they can access, and how the sheet needs to function. The output is something you'd actually hand out.
               </p>
@@ -122,7 +122,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <p className="font-medium text-foreground mb-2">The pattern looks like this:</p>
             <div className="text-sm text-muted-foreground space-y-2">
               <p>1. Open a new AI session</p>
-              <p>2. Paste / attach your full Constitution (all sections you've built so far)</p>
+              <p>2. Paste your full Constitution (all sections you've built so far)</p>
               <p>3. Add a line break and your actual request</p>
               <p>4. The model uses your Constitution as the lens for everything it produces</p>
             </div>
