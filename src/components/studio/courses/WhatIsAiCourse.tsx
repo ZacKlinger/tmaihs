@@ -231,11 +231,11 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
             </p>
           </div>
 
-          <p>
-            Here's a question worth carrying into the rest of this curriculum: when you read
-            AI output that sounds confident and fluent, what's your first instinct? To trust
-            the authority of the tone — or to check the claims underneath it?
-          </p>
+          <p>Here's a question worth carrying into the rest of this curriculum: when you read AI output that sounds confident and fluent, what's your first instinct? To trust the authority of the tone — or to check the claims underneath it?
+
+
+
+      </p>
           <p>
             That instinct matters more than any technical knowledge about how transformers
             work. Because your students will develop the same instinct you model. If you
