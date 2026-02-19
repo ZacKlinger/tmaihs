@@ -22,19 +22,19 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
     <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">A Prompt That Knows Nothing About You</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="text-lg italic text-muted-foreground">
-              You teach SDC science at TMAHS. Fourteen of your twenty-two students have IEPs. Six are emerging English learners. Three read below fifth-grade level. The school issued Chromebooks last year, but yours share a cart with two other classrooms, so you get devices maybe twice a week. Your students are eight weeks into a hydroponics build — they chose butterhead lettuce and collard greens, and the harvest is going to the community fridge on Third Street.
-            </p>
+            
+
+
             <p className="text-lg italic text-muted-foreground mt-3">
               You need a data-recording sheet for tomorrow's pH readings. So you open Claude and type: "Create a data recording sheet for a high school science class doing hydroponics." What comes back assumes students have laptops, can read at grade level, and are working through a standard lab curriculum. It's clean. It's professional. It has nothing to do with your room.
             </p>
           </div>
-          <p>
-            That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
-          </p>
-          <p>
-            Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI instead of a substitute, is what makes the difference between a generic worksheet and a useful one.
-          </p>
+          <p>That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
+
+      </p>
+          <p>Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI instead of a substitute, is what makes the difference between a generic worksheet and a useful one.
+
+      </p>
           <p>
             In Module 1, you learned what AI actually is — a pattern-completion engine that works within what you give it. This module is about giving it the right material. You're going to build the first two sections of your <strong>AI Classroom Constitution</strong>: who is actually in the room, and what constraints shape every lesson you plan.
           </p>
@@ -65,9 +65,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
               <p className="font-medium text-green-700 dark:text-green-300 mb-2">Specific Prompt:</p>
-              <p className="text-sm">"Create a data recording sheet for SDC science. 14  students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
-
-          </p>
+              <p className="text-sm">
+                "Create a data recording sheet for 10th grade SDC science. 14 of 22 students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. Students share a Chromebook cart and only have devices on Tuesdays and Thursdays — this sheet needs to work on paper. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
+              </p>
               <p className="text-xs text-muted-foreground mt-2">
                 AI now knows who's in the room, what they can access, and how the sheet needs to function. The output is something you'd actually hand out.
               </p>
@@ -149,17 +149,17 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       id: "your-classroom-cfu-1",
       type: "identify-missing" as const,
       prompt: "Create a vocabulary review activity for my 10th grade science class. We're studying plant biology and I want something interactive that takes about 20 minutes.",
-      context: "A teacher at TMAHS wrote this prompt for their SDC science classroom. The class has 14 students with IEPs, 6 emerging English learners, and reading levels from 4th to 8th grade. They're in Week 8 of a hydroponics project. Which specific classroom details are missing from this prompt — details that would actually change the output?",
+      context: "A teacher at TMAHS wrote this prompt for their SDC science classroom. The class has 22 students, 14 with IEPs, 6 emerging English learners, reading levels from 4th to 8th grade, and shared Chromebook access only on Tuesdays and Thursdays. They're in Week 8 of a hydroponics project. Which specific classroom details are missing from this prompt — details that would actually change the output?",
       elements: [
       {
         id: "iep-context",
-        label: "IEP and accommodation needs",
+        label: "IEP and accommodation needs (14 of 22 students have IEPs)",
         isMissing: true,
         explanation: "With 14 IEP students in 22, accommodations aren't an add-on — they're the baseline. AI needs to know that visual supports, modified text, and extended processing time are standard features, not modifications. Without this, the activity will assume neurotypical grade-level processing."
       },
       {
         id: "reading-levels",
-        label: "Actual reading level range",
+        label: "Actual reading level range (4th–8th grade, not 10th)",
         isMissing: true,
         explanation: "The prompt says '10th grade' but the functional reading range is 4th to 8th. AI will pitch vocabulary and instructions at a 10th-grade level — which means half the class can't access the activity independently. The reading range is the single detail that changes the output the most."
       },
@@ -171,13 +171,13 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       },
       {
         id: "device-access",
-        label: "Device availability",
+        label: "Device availability (shared cart, not daily access)",
         isMissing: true,
         explanation: "If this lesson falls on a non-device day, an 'interactive digital activity' is useless. AI defaults to assuming students have screens. Saying 'shared Chromebook cart, Tuesdays and Thursdays only' changes whether the activity is paper-based or digital."
       },
       {
         id: "project-connection",
-        label: "Connection to current hydroponics project phase",
+        label: "Connection to current hydroponics project phase (Week 8, pH readings)",
         isMissing: true,
         explanation: "'Plant biology vocabulary' is generic. These students are in Week 8 of a hydroponics build, actively measuring pH and planning nutrient mixes. The vocabulary review should use their actual data and their actual plants — not a textbook word list."
       },
@@ -189,7 +189,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       },
       {
         id: "ai-tool-choice",
-        label: "Which AI tool to use",
+        label: "Which AI tool to use (Claude vs. Gemini vs. ChatGPT)",
         isMissing: false,
         explanation: "Tool choice doesn't affect the quality of the output for this kind of task. A well-specified prompt produces useful vocabulary activities in any of them. The missing details are about your students, not your software."
       },
