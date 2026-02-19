@@ -35,6 +35,7 @@ export const IdentifyMissing = ({
     previousAnswer?.selected ? previousAnswer.selected.split(",").filter(Boolean) : []
   );
   const [isSubmitted, setIsSubmitted] = useState(!!previousAnswer);
+  const [lastResult, setLastResult] = useState<boolean | null>(previousAnswer?.isCorrect ?? null);
 
   const handleToggle = (elementId: string) => {
     if (isSubmitted) return;
@@ -54,7 +55,14 @@ export const IdentifyMissing = ({
     const isCorrect = correctSelections.length >= minCorrect && incorrectSelections.length === 0;
     
     setIsSubmitted(true);
+    setLastResult(isCorrect);
     onAnswer(id, selectedIds.join(","), isCorrect);
+  };
+
+  const handleRetry = () => {
+    setSelectedIds([]);
+    setIsSubmitted(false);
+    setLastResult(null);
   };
 
   const missingCount = elements.filter(e => e.isMissing).length;
@@ -151,15 +159,20 @@ export const IdentifyMissing = ({
       {isSubmitted && (
         <Card className={cn(
           "border-l-4",
-          correctSelections >= minCorrect ? "border-l-green-500 bg-green-500/5" : "border-l-amber-500 bg-amber-500/5"
+          lastResult ? "border-l-green-500 bg-green-500/5" : "border-l-amber-500 bg-amber-500/5"
         )}>
           <CardContent className="pt-4">
             <p className="text-sm">
-              {correctSelections >= minCorrect
-                ? `Excellent analysis! You identified ${correctSelections} of ${missingCount} missing elements.`
-                : `You identified ${correctSelections} of ${missingCount} missing elements. Review the feedback to strengthen your prompt analysis skills.`
+              {lastResult
+                ? `Excellent analysis! You identified ${correctSelections} of ${missingCount} missing elements with no incorrect selections.`
+                : `You identified ${correctSelections} of ${missingCount} missing elements, but some selections were incorrect or missing. Review the feedback and try again.`
               }
             </p>
+            {!lastResult && (
+              <Button variant="outline" size="sm" className="mt-3" onClick={handleRetry}>
+                Try Again
+              </Button>
+            )}
           </CardContent>
         </Card>
       )}
