@@ -22,19 +22,19 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
     <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">A Prompt That Knows Nothing About You</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="text-lg italic text-muted-foreground">You teach SDC science at TMAHS. Fourteen of your twenty-two students have IEPs. Six are emerging English learners. Three read below fifth-grade level. The school issued Chromebooks last year, but yours share a cart with two other classrooms, so you get devices maybe twice a week. Yur students are eight weeks into a hydroponics build — they chose butterhead lettuce and collard greens, and the harvest is going to the community fridge on Third Street.
-
-        </p>
+            <p className="text-lg italic text-muted-foreground">
+              You teach SDC science at TMAHS. Fourteen of your twenty-two students have IEPs. Six are emerging English learners. Three read below fifth-grade level. The school issued Chromebooks last year, but yours share a cart with two other classrooms, so you get devices maybe twice a week. Your students are eight weeks into a hydroponics build — they chose butterhead lettuce and collard greens, and the harvest is going to the community fridge on Third Street.
+            </p>
             <p className="text-lg italic text-muted-foreground mt-3">
               You need a data-recording sheet for tomorrow's pH readings. So you open Claude and type: "Create a data recording sheet for a high school science class doing hydroponics." What comes back assumes students have laptops, can read at grade level, and are working through a standard lab curriculum. It's clean. It's professional. It has nothing to do with your room.
             </p>
           </div>
-          <p>
-            That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
-          </p>
-          <p>
-            Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI instead of a substitute, is what makes the difference between a generic worksheet and a useful one.
-          </p>
+          <p>That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
+
+      </p>
+          <p>Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI, is what makes the difference between a generic worksheet and a useful one.
+
+      </p>
           <p>
             In Module 1, you learned what AI actually is — a pattern-completion engine that works within what you give it. This module is about giving it the right material. You're going to build the first two sections of your <strong>AI Classroom Constitution</strong>: who is actually in the room, and what constraints shape every lesson you plan.
           </p>
