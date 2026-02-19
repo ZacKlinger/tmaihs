@@ -65,26 +65,26 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
               <p className="font-medium text-green-700 dark:text-green-300 mb-2">Specific Prompt:</p>
-              <p className="text-sm">"Create a data recording sheet for SDC science. 12 students with IEP's, 6 are emerging ELs. Reading levels range from 4th to 8th grade. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
-
-          </p>
+              <p className="text-sm">
+                "Create a data recording sheet for 10th grade SDC science. 14 of 22 students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. Students share a Chromebook cart and only have devices on Tuesdays and Thursdays — this sheet needs to work on paper. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
+              </p>
               <p className="text-xs text-muted-foreground mt-2">
                 AI now knows who's in the room, what they can access, and how the sheet needs to function. The output is something you'd actually hand out.
               </p>
             </div>
           </div>
 
-          <p>Six categories of information change everything about what AI produces for you. Think of them as the soil composition of your particular garden — without knowing the soil, no one can tell you what to plant.
-
-      </p>
+          <p>
+            Six categories of information change everything about what AI produces for you. Think of them as the soil composition of your particular garden — without knowing the soil, no one can tell you what to plant.
+          </p>
 
           <ul>
-            <li><strong>IEP and accommodation context:</strong>IEP and accommodation context: How many students have IEPs? What kinds of accommodations shape your planning — extended time, modified assignments, visual supports, read-aloud needs?
-
-        </li>
+            <li><strong>IEP and accommodation context:</strong> How many students have IEPs? What kinds of accommodations shape your planning — extended time, modified assignments, visual supports, read-aloud needs?</li>
             <li><strong>Language backgrounds:</strong> How many English learners? At what proficiency levels? What home languages are in the room?</li>
             <li><strong>Reading levels:</strong> What's the actual range? Not the grade level on paper — the functional range you plan for.</li>
-            <li><strong>Device access:</strong> One-to-one Chromebooks, a shared cart, phones only, or paper-first? How often do students actually have a screen in front of them?</li>
+            <li><strong>Device access:</strong>Language backgrounds: How many English learners? At what proficiency levels? What home languages are in the room?
+
+        </li>
             <li><strong>Time and pacing:</strong> How long is your period? How often do you meet? Is this a block schedule, a traditional period, or something else?</li>
             <li><strong>Chronic absenteeism:</strong> What's the attendance pattern? If a third of your class misses any given Monday, your materials need to account for re-entry.</li>
           </ul>
