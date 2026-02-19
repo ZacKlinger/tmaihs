@@ -6,21 +6,21 @@ import { TierNavigation } from "@/components/studio/TierNavigation";
 import { TierBypassQuiz } from "@/components/studio/TierBypassQuiz";
 import { SaveProgressBanner } from "@/components/studio/SaveProgressBanner";
 import { CompletionBadge } from "@/components/studio/CompletionBadge";
-import { ConstraintsCourse } from "@/components/studio/courses/ConstraintsCourse";
-import { RoleAssignmentCourse } from "@/components/studio/courses/RoleAssignmentCourse";
-import { IterationCourse } from "@/components/studio/courses/IterationCourse";
-import { MetaPromptingCourse } from "@/components/studio/courses/MetaPromptingCourse";
-import { PersonaCallingCourse } from "@/components/studio/courses/PersonaCallingCourse";
-import { WorkflowDesignCourse } from "@/components/studio/courses/WorkflowDesignCourse";
-import { CriticalEvaluationCourse } from "@/components/studio/courses/CriticalEvaluationCourse";
-import { DetectingAIWorkCourse } from "@/components/studio/courses/DetectingAIWorkCourse";
-import { StudentAIActivitiesCourse } from "@/components/studio/courses/StudentAIActivitiesCourse";
-import { CurriculumAIDesignCourse } from "@/components/studio/courses/CurriculumAIDesignCourse";
+import { WhatIsAiCourse } from "@/components/studio/courses/WhatIsAiCourse";
+import { YourClassroomCourse } from "@/components/studio/courses/YourClassroomCourse";
+import { DescriptionCourse } from "@/components/studio/courses/DescriptionCourse";
+import { WhenToUseCourse } from "@/components/studio/courses/WhenToUseCourse";
+import { BackwardsPlanningCourse } from "@/components/studio/courses/BackwardsPlanningCourse";
+import { PersonaIterationCourse } from "@/components/studio/courses/PersonaIterationCourse";
+import { DraftToImplementationCourse } from "@/components/studio/courses/DraftToImplementationCourse";
+import { EvaluatingOutputCourse } from "@/components/studio/courses/EvaluatingOutputCourse";
+import { AiStudentWorkCourse } from "@/components/studio/courses/AiStudentWorkCourse";
+import { ClosingTheLoopCourse } from "@/components/studio/courses/ClosingTheLoopCourse";
 import { StudioProgressBar } from "@/components/studio/StudioProgressBar";
 import { usePersistentProgress } from "@/hooks/usePersistentProgress";
 import { TIERS, getTierForCourse } from "@/lib/studioTiers";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Users, RefreshCw, Sparkles, Brain, GitBranch, Search, FileSearch, Layers, Compass, GraduationCap } from "lucide-react";
+import { Brain, School, PenTool, Scale, Map, RefreshCw, Hammer, Search, FileSearch, RotateCcw, Compass } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { isTierUnlocked as checkTierUnlocked } from "@/lib/studioTiers";
 import { useEasterEgg } from "@/contexts/EasterEggContext";
@@ -37,121 +37,121 @@ interface MicroCourse {
   totalCFUs: number;
 }
 const microCourses: MicroCourse[] = [
-// Tier 1: Foundations
+// Tier 1: The Constitution
 {
-  id: "constraints-101",
-  title: "Constraints: The Foundation of Useful Prompts",
-  description: "Learn how specific constraints transform vague AI outputs into immediately usable classroom materials.",
+  id: "what-is-ai-101",
+  title: "What Is AI, Really?",
+  description: "How language models work, why hallucination is structural, and what Constitutional AI implies for your own relationship to the tool.",
   duration: "15-20 min",
-  mentalModel: "Constraints",
-  icon: Target,
-  tier: 1,
-  isPlaceholder: false,
-  totalSections: 6,
-  totalCFUs: 2
-}, {
-  id: "role-assignment-101",
-  title: "Role Assignment: Shaping AI Perspective",
-  description: "Discover how assigning roles and personas to AI can dramatically improve response quality and relevance.",
-  duration: "15-20 min",
-  mentalModel: "Role Assignment",
-  icon: Users,
-  tier: 1,
-  isPlaceholder: false,
-  totalSections: 6,
-  totalCFUs: 2
-}, {
-  id: "iteration-101",
-  title: "Iteration: Refining Through Dialogue",
-  description: "Master the art of iterative prompting—using follow-up prompts to refine and improve AI outputs.",
-  duration: "20-25 min",
-  mentalModel: "Iteration",
-  icon: RefreshCw,
-  tier: 1,
-  isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 3
-},
-// Tier 2: Integrated Application
-{
-  id: "meta-prompting-201",
-  title: "Meta-Prompting: Using AI to Improve Your Prompts",
-  description: "Learn to use AI as a prompt engineer—having it critique, improve, and expand your initial prompts.",
-  duration: "20-25 min",
-  mentalModel: "Meta-Prompting",
+  mentalModel: "Calibrated Expectations",
   icon: Brain,
-  tier: 2,
+  tier: 1,
   isPlaceholder: false,
-  totalSections: 6,
-  totalCFUs: 2
+  totalSections: 4,
+  totalCFUs: 1
 }, {
-  id: "persona-calling-201",
-  title: "Persona Calling: Expert Perspectives on Demand",
-  description: "Summon specific expert perspectives—curriculum designers, veteran teachers, researchers—to solve complex problems.",
-  duration: "15-20 min",
-  mentalModel: "Persona Calling",
-  icon: Sparkles,
-  tier: 2,
-  isPlaceholder: false,
-  totalSections: 6,
-  totalCFUs: 2
-}, {
-  id: "workflow-design-201",
-  title: "Workflow Design: Chaining Prompts for Complex Tasks",
-  description: "Design multi-step prompt workflows where each output feeds the next for coherent, interconnected results.",
-  duration: "25-30 min",
-  mentalModel: "Workflow Design",
-  icon: GitBranch,
-  tier: 2,
-  isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 3
-},
-// Tier 3: Studio Practice
-{
-  id: "critical-evaluation-301",
-  title: "Critical Evaluation: Accuracy, Bias, and Appropriateness",
-  description: "Develop systematic approaches to evaluating AI-generated content across three critical lenses.",
+  id: "your-classroom-101",
+  title: "Your Classroom, Not a Generic One",
+  description: "Why generic AI outputs fail specific classrooms, and how to begin building a Classroom Constitution grounded in who is actually in the room.",
   duration: "20-25 min",
-  mentalModel: "Critical Evaluation",
+  mentalModel: "Demographic Specificity",
+  icon: School,
+  tier: 1,
+  isPlaceholder: false,
+  totalSections: 5,
+  totalCFUs: 1
+}, {
+  id: "description-101",
+  title: "Description: The Art of Being Specific",
+  description: "The difference between asking AI to do work and asking it to think with you. Constraints, personas, context — demonstrated before named.",
+  duration: "20-25 min",
+  mentalModel: "Description as Infrastructure",
+  icon: PenTool,
+  tier: 1,
+  isPlaceholder: false,
+  totalSections: 6,
+  totalCFUs: 2
+}, {
+  id: "when-to-use-it-101",
+  title: "When to Use It. When Not To.",
+  description: "A taxonomy of appropriate and inappropriate AI use — and the constitution's most important section: what you actually believe your students can achieve.",
+  duration: "20-25 min",
+  mentalModel: "Professional Judgment",
+  icon: Scale,
+  tier: 1,
+  isPlaceholder: false,
+  totalSections: 6,
+  totalCFUs: 2
+},
+// Tier 2: The Unit
+{
+  id: "backwards-planning-201",
+  title: "Backwards Planning with AI",
+  description: "Design a semester from the outcome back. Upload your Constitution, break a semester into phases, and stress-test the sequence.",
+  duration: "20-25 min",
+  mentalModel: "Outcome-First Design",
+  icon: Map,
+  tier: 2,
+  isPlaceholder: false,
+  totalSections: 5,
+  totalCFUs: 1
+}, {
+  id: "persona-iteration-201",
+  title: "Persona, Meta-Prompting & Iteration",
+  description: "Steering, not just asking. Advanced personas, meta-prompting, and the iteration mindset that turns first drafts into usable work.",
+  duration: "25-30 min",
+  mentalModel: "Iterative Refinement",
+  icon: RefreshCw,
+  tier: 2,
+  isPlaceholder: false,
+  totalSections: 6,
+  totalCFUs: 2
+}, {
+  id: "draft-to-implementation-201",
+  title: "From Draft to Implementation",
+  description: "What separates a theoretically sound unit from one a real teacher can pick up and use on Monday morning.",
+  duration: "20-25 min",
+  mentalModel: "Implementation Readiness",
+  icon: Hammer,
+  tier: 2,
+  isPlaceholder: false,
+  totalSections: 5,
+  totalCFUs: 1
+},
+// Tier 3: The Practice
+{
+  id: "evaluating-output-301",
+  title: "Evaluating AI Output & Your Own Work",
+  description: "Use AI to evaluate your PBL unit against research-backed criteria — then own the final judgment as the professional in the room.",
+  duration: "20-25 min",
+  mentalModel: "Professional Evaluation",
   icon: Search,
   tier: 3,
   isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 3
+  totalSections: 5,
+  totalCFUs: 1
 }, {
-  id: "detecting-ai-work-301",
-  title: "Detecting AI Work: Patterns and Pedagogical Design",
-  description: "Recognize AI-generated student work through patterns and design assignments that encourage authenticity.",
+  id: "ai-student-work-301",
+  title: "AI in Student Work: Detection, Policy & Honest Conversation",
+  description: "What detection tools can and cannot tell you, and how to write a classroom AI policy that's honest about tradeoffs.",
   duration: "25-30 min",
-  mentalModel: "Detection & Design",
+  mentalModel: "Policy Before Accusation",
   icon: FileSearch,
   tier: 3,
   isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 4
+  totalSections: 6,
+  totalCFUs: 2
 }, {
-  id: "student-ai-activities-301",
-  title: "Student AI Activities: Designing for Productive Use",
-  description: "Design student-facing AI activities where AI becomes a thinking tool rather than an answer machine.",
+  id: "closing-the-loop-301",
+  title: "Closing the Loop: Revising Your Constitution",
+  description: "What has changed since Module 2? The quarterly revision ritual that makes everything a practice rather than a project.",
   duration: "20-25 min",
-  mentalModel: "Student AI Design",
-  icon: GraduationCap,
+  mentalModel: "Living Practice",
+  icon: RotateCcw,
   tier: 3,
   isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 3
-}, {
-  id: "curriculum-ai-design-301",
-  title: "Curriculum AI Design: Strategic Integration",
-  description: "Develop judgment about when, where, and how to integrate AI across your curriculum.",
-  duration: "25-30 min",
-  mentalModel: "Curriculum Integration",
-  icon: Layers,
-  tier: 3,
-  isPlaceholder: false,
-  totalSections: 7,
-  totalCFUs: 3
+  totalSections: 5,
+  totalCFUs: 1
 }];
 const LearningStudio = () => {
   const [selectedTier, setSelectedTier] = useState(1);
@@ -230,26 +230,26 @@ const LearningStudio = () => {
       isAuthenticated,
     };
     switch (activeCourse) {
-      case "constraints-101":
-        return <ConstraintsCourse {...courseProps} />;
-      case "role-assignment-101":
-        return <RoleAssignmentCourse {...courseProps} />;
-      case "iteration-101":
-        return <IterationCourse {...courseProps} />;
-      case "meta-prompting-201":
-        return <MetaPromptingCourse {...courseProps} />;
-      case "persona-calling-201":
-        return <PersonaCallingCourse {...courseProps} />;
-      case "workflow-design-201":
-        return <WorkflowDesignCourse {...courseProps} />;
-      case "critical-evaluation-301":
-        return <CriticalEvaluationCourse {...courseProps} />;
-      case "detecting-ai-work-301":
-        return <DetectingAIWorkCourse {...courseProps} />;
-      case "student-ai-activities-301":
-        return <StudentAIActivitiesCourse {...courseProps} />;
-      case "curriculum-ai-design-301":
-        return <CurriculumAIDesignCourse {...courseProps} />;
+      case "what-is-ai-101":
+        return <WhatIsAiCourse {...courseProps} />;
+      case "your-classroom-101":
+        return <YourClassroomCourse {...courseProps} />;
+      case "description-101":
+        return <DescriptionCourse {...courseProps} />;
+      case "when-to-use-it-101":
+        return <WhenToUseCourse {...courseProps} />;
+      case "backwards-planning-201":
+        return <BackwardsPlanningCourse {...courseProps} />;
+      case "persona-iteration-201":
+        return <PersonaIterationCourse {...courseProps} />;
+      case "draft-to-implementation-201":
+        return <DraftToImplementationCourse {...courseProps} />;
+      case "evaluating-output-301":
+        return <EvaluatingOutputCourse {...courseProps} />;
+      case "ai-student-work-301":
+        return <AiStudentWorkCourse {...courseProps} />;
+      case "closing-the-loop-301":
+        return <ClosingTheLoopCourse {...courseProps} />;
       default:
         return null;
     }
@@ -262,7 +262,7 @@ const LearningStudio = () => {
       </Layout>;
   }
   return <Layout>
-      <PageHeader title="Learning Studio" description="A focused workspace for developing AI fluency through real prep-period work" icon={<Compass className="w-12 h-12 text-primary" />} />
+      <PageHeader title="Learning Studio" description="Build a Classroom Constitution. Design a PBL unit. Develop the judgment to govern both." icon={<Compass className="w-12 h-12 text-primary" />} />
 
       <section className="container mx-auto px-4 pb-16">
         {/* Save Progress Banner for guests */}
@@ -279,13 +279,14 @@ const LearningStudio = () => {
         <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
           <CardContent className="pt-6">
             <div className="max-w-3xl">
-              <h2 className="text-xl font-semibold text-foreground mb-3">Add one more tool to your pedagogical toolbox.</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-3">Ten modules. Three tiers. One living document.</h2>
               <p className="text-muted-foreground mb-4">
-                Each micro-course (15-25 minutes) teaches one powerful mental model for working with AI, 
-                then has you immediately apply it. Progress through three tiers as your design capacity grows.
+                Tier 1 builds a Classroom Constitution — a working document you upload at the start of every AI session.
+                Tier 2 uses that constitution to design a semester-long PBL unit.
+                Tier 3 develops the discernment to evaluate, refine, and govern both.
               </p>
               <p className="text-sm text-muted-foreground">
-                You'll leave each session with usable work product—not just new knowledge.
+                Every module produces something you'll actually use. No tier is optional. No module is decorative.
               </p>
             </div>
           </CardContent>
@@ -300,7 +301,7 @@ const LearningStudio = () => {
         <div className="mb-8">
           <label className="text-sm text-muted-foreground mb-2 block">Select Tier</label>
           <TierNavigation selectedTier={selectedTier} onSelectTier={setSelectedTier} completedCourseIds={completedCourseIds} onSkipTier={handleSkipTier} hasAttemptedBypass={hasAttemptedBypass} />
-          
+
           {/* Tier Description */}
           <div className="mt-4 p-4 bg-muted/50 rounded-lg">
             <p className="text-sm text-muted-foreground">
@@ -315,23 +316,23 @@ const LearningStudio = () => {
           const courseTier = getTierForCourse(course.id);
           const isLocked = !isTierUnlocked(courseTier);
           const courseStatus = getCourseStatus(course.id);
-          return <MicroCourseCard 
-            key={course.id} 
-            id={course.id} 
-            title={course.title} 
-            description={course.description} 
-            duration={course.duration} 
-            mentalModel={course.mentalModel} 
-            tags={{ tasks: [], subjects: [] }} 
-            icon={course.icon} 
-            tier={course.tier} 
-            progress={getCourseProgress(course.id, course.totalSections, course.totalCFUs)} 
-            isCompleted={progress.courses[course.id]?.isCompleted || courseStatus === 'credited'} 
+          return <MicroCourseCard
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            description={course.description}
+            duration={course.duration}
+            mentalModel={course.mentalModel}
+            tags={{ tasks: [], subjects: [] }}
+            icon={course.icon}
+            tier={course.tier}
+            progress={getCourseProgress(course.id, course.totalSections, course.totalCFUs)}
+            isCompleted={progress.courses[course.id]?.isCompleted || courseStatus === 'credited'}
             courseStatus={courseStatus}
-            isPlaceholder={course.isPlaceholder} 
-            isLocked={isLocked} 
-            lockReason={isLocked ? `Complete all Tier ${courseTier - 1} courses to unlock` : undefined} 
-            onClick={() => handleCourseClick(course.id, course.isPlaceholder, courseTier)} 
+            isPlaceholder={course.isPlaceholder}
+            isLocked={isLocked}
+            lockReason={isLocked ? `Complete all Tier ${courseTier - 1} courses to unlock` : undefined}
+            onClick={() => handleCourseClick(course.id, course.isPlaceholder, courseTier)}
           />;
         })}
         </div>

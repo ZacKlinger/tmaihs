@@ -9,95 +9,84 @@ export interface ModuleDefinition {
   type: 'content' | 'cfu' | 'workshop';
 }
 
-// Define modules for each course based on the course structure
-// Module IDs are stable and don't change when courses are reordered
+// Define modules for each course based on the new 10-module architecture
+// Tier 1: Foundation (4 courses) — builds the Classroom Constitution
+// Tier 2: Application (3 courses) — builds a PBL unit using the Constitution
+// Tier 3: Discernment (3 courses) — evaluates, refines, and governs both
 
 export const MODULE_DEFINITIONS: ModuleDefinition[] = [
-  // Constraints 101 (6 sections, 2 CFUs)
-  { moduleId: 'constraints-101-context', courseId: 'constraints-101', position: 1, title: 'The Problem with Vague Prompts', type: 'content' },
-  { moduleId: 'constraints-101-mental-model', courseId: 'constraints-101', position: 2, title: 'Mental Model: Constraints', type: 'content' },
-  { moduleId: 'constraints-101-cfu-1', courseId: 'constraints-101', position: 3, title: 'CFU: Identify Missing Elements', type: 'cfu' },
-  { moduleId: 'constraints-101-workshop', courseId: 'constraints-101', position: 4, title: 'Workshop: Apply Constraints', type: 'workshop' },
-  { moduleId: 'constraints-101-cfu-2', courseId: 'constraints-101', position: 5, title: 'CFU: Prompt Compare', type: 'cfu' },
-  { moduleId: 'constraints-101-reflection', courseId: 'constraints-101', position: 6, title: 'Reflection', type: 'content' },
-  
-  // Role Assignment 101 (6 sections, 2 CFUs)
-  { moduleId: 'role-assignment-101-context', courseId: 'role-assignment-101', position: 1, title: 'Why Role Matters', type: 'content' },
-  { moduleId: 'role-assignment-101-mental-model', courseId: 'role-assignment-101', position: 2, title: 'Mental Model: Role Assignment', type: 'content' },
-  { moduleId: 'role-assignment-101-cfu-1', courseId: 'role-assignment-101', position: 3, title: 'CFU: Sequence Order', type: 'cfu' },
-  { moduleId: 'role-assignment-101-workshop', courseId: 'role-assignment-101', position: 4, title: 'Workshop: Assign Roles', type: 'workshop' },
-  { moduleId: 'role-assignment-101-cfu-2', courseId: 'role-assignment-101', position: 5, title: 'CFU: Prompt Compare', type: 'cfu' },
-  { moduleId: 'role-assignment-101-reflection', courseId: 'role-assignment-101', position: 6, title: 'Reflection', type: 'content' },
-  
-  // Iteration 101 (7 sections, 3 CFUs)
-  { moduleId: 'iteration-101-context', courseId: 'iteration-101', position: 1, title: 'First Drafts Aren\'t Final', type: 'content' },
-  { moduleId: 'iteration-101-mental-model', courseId: 'iteration-101', position: 2, title: 'Mental Model: Iteration', type: 'content' },
-  { moduleId: 'iteration-101-cfu-1', courseId: 'iteration-101', position: 3, title: 'CFU: Annotate Prompt', type: 'cfu' },
-  { moduleId: 'iteration-101-workshop', courseId: 'iteration-101', position: 4, title: 'Workshop: Iterate', type: 'workshop' },
-  { moduleId: 'iteration-101-cfu-2', courseId: 'iteration-101', position: 5, title: 'CFU: Spot the Difference', type: 'cfu' },
-  { moduleId: 'iteration-101-cfu-3', courseId: 'iteration-101', position: 6, title: 'CFU: Sequence Order', type: 'cfu' },
-  { moduleId: 'iteration-101-reflection', courseId: 'iteration-101', position: 7, title: 'Reflection', type: 'content' },
-  
-  // Meta-Prompting 201 (6 sections, 2 CFUs)
-  { moduleId: 'meta-prompting-201-context', courseId: 'meta-prompting-201', position: 1, title: 'AI as Prompt Engineer', type: 'content' },
-  { moduleId: 'meta-prompting-201-mental-model', courseId: 'meta-prompting-201', position: 2, title: 'Mental Model: Meta-Prompting', type: 'content' },
-  { moduleId: 'meta-prompting-201-cfu-1', courseId: 'meta-prompting-201', position: 3, title: 'CFU: Output Match', type: 'cfu' },
-  { moduleId: 'meta-prompting-201-workshop', courseId: 'meta-prompting-201', position: 4, title: 'Workshop: Meta-Prompt', type: 'workshop' },
-  { moduleId: 'meta-prompting-201-cfu-2', courseId: 'meta-prompting-201', position: 5, title: 'CFU: Prompt Remix', type: 'cfu' },
-  { moduleId: 'meta-prompting-201-reflection', courseId: 'meta-prompting-201', position: 6, title: 'Reflection', type: 'content' },
-  
-  // Persona Calling 201 (6 sections, 2 CFUs)
-  { moduleId: 'persona-calling-201-context', courseId: 'persona-calling-201', position: 1, title: 'Expert Perspectives', type: 'content' },
-  { moduleId: 'persona-calling-201-mental-model', courseId: 'persona-calling-201', position: 2, title: 'Mental Model: Persona Calling', type: 'content' },
-  { moduleId: 'persona-calling-201-cfu-1', courseId: 'persona-calling-201', position: 3, title: 'CFU: Persona Task Match', type: 'cfu' },
-  { moduleId: 'persona-calling-201-workshop', courseId: 'persona-calling-201', position: 4, title: 'Workshop: Call Personas', type: 'workshop' },
-  { moduleId: 'persona-calling-201-cfu-2', courseId: 'persona-calling-201', position: 5, title: 'CFU: Prompt Compare', type: 'cfu' },
-  { moduleId: 'persona-calling-201-reflection', courseId: 'persona-calling-201', position: 6, title: 'Reflection', type: 'content' },
-  
-  // Workflow Design 201 (7 sections, 3 CFUs)
-  { moduleId: 'workflow-design-201-context', courseId: 'workflow-design-201', position: 1, title: 'Chaining Prompts', type: 'content' },
-  { moduleId: 'workflow-design-201-mental-model', courseId: 'workflow-design-201', position: 2, title: 'Mental Model: Workflow Design', type: 'content' },
-  { moduleId: 'workflow-design-201-cfu-1', courseId: 'workflow-design-201', position: 3, title: 'CFU: Workflow Builder', type: 'cfu' },
-  { moduleId: 'workflow-design-201-workshop', courseId: 'workflow-design-201', position: 4, title: 'Workshop: Build Workflow', type: 'workshop' },
-  { moduleId: 'workflow-design-201-cfu-2', courseId: 'workflow-design-201', position: 5, title: 'CFU: Sequence Order', type: 'cfu' },
-  { moduleId: 'workflow-design-201-cfu-3', courseId: 'workflow-design-201', position: 6, title: 'CFU: Output Match', type: 'cfu' },
-  { moduleId: 'workflow-design-201-reflection', courseId: 'workflow-design-201', position: 7, title: 'Reflection', type: 'content' },
-  
-  // Critical Evaluation 301 (7 sections, 3 CFUs)
-  { moduleId: 'critical-evaluation-301-context', courseId: 'critical-evaluation-301', position: 1, title: 'Three Lenses', type: 'content' },
-  { moduleId: 'critical-evaluation-301-mental-model', courseId: 'critical-evaluation-301', position: 2, title: 'Mental Model: Critical Evaluation', type: 'content' },
-  { moduleId: 'critical-evaluation-301-cfu-1', courseId: 'critical-evaluation-301', position: 3, title: 'CFU: Bias Spotter', type: 'cfu' },
-  { moduleId: 'critical-evaluation-301-workshop', courseId: 'critical-evaluation-301', position: 4, title: 'Workshop: Evaluate', type: 'workshop' },
-  { moduleId: 'critical-evaluation-301-cfu-2', courseId: 'critical-evaluation-301', position: 5, title: 'CFU: Identify Missing', type: 'cfu' },
-  { moduleId: 'critical-evaluation-301-cfu-3', courseId: 'critical-evaluation-301', position: 6, title: 'CFU: Prompt Compare', type: 'cfu' },
-  { moduleId: 'critical-evaluation-301-reflection', courseId: 'critical-evaluation-301', position: 7, title: 'Reflection', type: 'content' },
-  
-  // Detecting AI Work 301 (7 sections, 4 CFUs)
-  { moduleId: 'detecting-ai-work-301-context', courseId: 'detecting-ai-work-301', position: 1, title: 'Patterns of AI Writing', type: 'content' },
-  { moduleId: 'detecting-ai-work-301-mental-model', courseId: 'detecting-ai-work-301', position: 2, title: 'Mental Model: Detection & Design', type: 'content' },
-  { moduleId: 'detecting-ai-work-301-cfu-1', courseId: 'detecting-ai-work-301', position: 3, title: 'CFU: Pattern Identifier', type: 'cfu' },
-  { moduleId: 'detecting-ai-work-301-cfu-2', courseId: 'detecting-ai-work-301', position: 4, title: 'CFU: Authenticity Rubric', type: 'cfu' },
-  { moduleId: 'detecting-ai-work-301-workshop', courseId: 'detecting-ai-work-301', position: 5, title: 'Workshop: Design Detection', type: 'workshop' },
-  { moduleId: 'detecting-ai-work-301-cfu-3', courseId: 'detecting-ai-work-301', position: 6, title: 'CFU: Spot the Difference', type: 'cfu' },
-  { moduleId: 'detecting-ai-work-301-cfu-4', courseId: 'detecting-ai-work-301', position: 7, title: 'CFU: Prompt Remix', type: 'cfu' },
-  
-  // Student AI Activities 301 (7 sections, 3 CFUs)
-  { moduleId: 'student-ai-activities-301-context', courseId: 'student-ai-activities-301', position: 1, title: 'Productive AI Use', type: 'content' },
-  { moduleId: 'student-ai-activities-301-mental-model', courseId: 'student-ai-activities-301', position: 2, title: 'Mental Model: Student AI Design', type: 'content' },
-  { moduleId: 'student-ai-activities-301-cfu-1', courseId: 'student-ai-activities-301', position: 3, title: 'CFU: Guardrail Designer', type: 'cfu' },
-  { moduleId: 'student-ai-activities-301-workshop', courseId: 'student-ai-activities-301', position: 4, title: 'Workshop: Design Activities', type: 'workshop' },
-  { moduleId: 'student-ai-activities-301-cfu-2', courseId: 'student-ai-activities-301', position: 5, title: 'CFU: Workflow Builder', type: 'cfu' },
-  { moduleId: 'student-ai-activities-301-cfu-3', courseId: 'student-ai-activities-301', position: 6, title: 'CFU: Prompt Compare', type: 'cfu' },
-  { moduleId: 'student-ai-activities-301-reflection', courseId: 'student-ai-activities-301', position: 7, title: 'Reflection', type: 'content' },
-  
-  // Curriculum AI Design 301 (7 sections, 3 CFUs)
-  { moduleId: 'curriculum-ai-design-301-context', courseId: 'curriculum-ai-design-301', position: 1, title: 'Strategic Integration', type: 'content' },
-  { moduleId: 'curriculum-ai-design-301-mental-model', courseId: 'curriculum-ai-design-301', position: 2, title: 'Mental Model: Curriculum Integration', type: 'content' },
-  { moduleId: 'curriculum-ai-design-301-cfu-1', courseId: 'curriculum-ai-design-301', position: 3, title: 'CFU: Integration Mapper', type: 'cfu' },
-  { moduleId: 'curriculum-ai-design-301-workshop', courseId: 'curriculum-ai-design-301', position: 4, title: 'Workshop: Map Integration', type: 'workshop' },
-  { moduleId: 'curriculum-ai-design-301-cfu-2', courseId: 'curriculum-ai-design-301', position: 5, title: 'CFU: Sequence Order', type: 'cfu' },
-  { moduleId: 'curriculum-ai-design-301-cfu-3', courseId: 'curriculum-ai-design-301', position: 6, title: 'CFU: Prompt Remix', type: 'cfu' },
-  { moduleId: 'curriculum-ai-design-301-reflection', courseId: 'curriculum-ai-design-301', position: 7, title: 'Reflection', type: 'content' },
+  // Module 1: What Is AI, Really? (4 sections, 1 CFU)
+  { moduleId: 'what-is-ai-101-context', courseId: 'what-is-ai-101', position: 1, title: 'How Language Models Actually Work', type: 'content' },
+  { moduleId: 'what-is-ai-101-mental-model', courseId: 'what-is-ai-101', position: 2, title: 'Pattern, Not Understanding', type: 'content' },
+  { moduleId: 'what-is-ai-101-cfu-1', courseId: 'what-is-ai-101', position: 3, title: 'CFU: Comparative Reading', type: 'cfu' },
+  { moduleId: 'what-is-ai-101-reflection', courseId: 'what-is-ai-101', position: 4, title: 'Calibrated Expectations', type: 'content' },
+
+  // Module 2: Your Classroom, Not a Generic One (5 sections, 1 CFU)
+  { moduleId: 'your-classroom-101-context', courseId: 'your-classroom-101', position: 1, title: 'Why Generic Fails', type: 'content' },
+  { moduleId: 'your-classroom-101-mental-model', courseId: 'your-classroom-101', position: 2, title: 'Specificity and Privacy', type: 'content' },
+  { moduleId: 'your-classroom-101-cfu-1', courseId: 'your-classroom-101', position: 3, title: 'CFU: What Makes It Yours', type: 'cfu' },
+  { moduleId: 'your-classroom-101-workshop', courseId: 'your-classroom-101', position: 4, title: 'Constitution: Demographics & Constraints', type: 'workshop' },
+  { moduleId: 'your-classroom-101-reflection', courseId: 'your-classroom-101', position: 5, title: 'The Document Begins', type: 'content' },
+
+  // Module 3: Description — The Art of Being Specific (6 sections, 2 CFUs)
+  { moduleId: 'description-101-context', courseId: 'description-101', position: 1, title: 'A Weak Prompt and a Strong One', type: 'content' },
+  { moduleId: 'description-101-mental-model', courseId: 'description-101', position: 2, title: 'Constraints, Personas, Context', type: 'content' },
+  { moduleId: 'description-101-cfu-1', courseId: 'description-101', position: 3, title: 'CFU: Prompt Diagnosis', type: 'cfu' },
+  { moduleId: 'description-101-workshop', courseId: 'description-101', position: 4, title: 'Constitution: Values & Content', type: 'workshop' },
+  { moduleId: 'description-101-cfu-2', courseId: 'description-101', position: 5, title: 'CFU: Rewrite the Prompt', type: 'cfu' },
+  { moduleId: 'description-101-reflection', courseId: 'description-101', position: 6, title: 'Description as Infrastructure', type: 'content' },
+
+  // Module 4: When to Use It. When Not To. (6 sections, 2 CFUs)
+  { moduleId: 'when-to-use-it-101-context', courseId: 'when-to-use-it-101', position: 1, title: 'A Taxonomy of Use', type: 'content' },
+  { moduleId: 'when-to-use-it-101-mental-model', courseId: 'when-to-use-it-101', position: 2, title: 'What Gets Lost', type: 'content' },
+  { moduleId: 'when-to-use-it-101-cfu-1', courseId: 'when-to-use-it-101', position: 3, title: 'CFU: Scenario Sorting', type: 'cfu' },
+  { moduleId: 'when-to-use-it-101-workshop', courseId: 'when-to-use-it-101', position: 4, title: 'Constitution: Your Vision', type: 'workshop' },
+  { moduleId: 'when-to-use-it-101-cfu-2', courseId: 'when-to-use-it-101', position: 5, title: 'CFU: Vision Check', type: 'cfu' },
+  { moduleId: 'when-to-use-it-101-reflection', courseId: 'when-to-use-it-101', position: 6, title: 'Constitution Complete', type: 'content' },
+
+  // Module 5: Backwards Planning with AI (5 sections, 1 CFU)
+  { moduleId: 'backwards-planning-201-context', courseId: 'backwards-planning-201', position: 1, title: 'Designing from the Outcome Back', type: 'content' },
+  { moduleId: 'backwards-planning-201-mental-model', courseId: 'backwards-planning-201', position: 2, title: 'PBL Demands Something Different', type: 'content' },
+  { moduleId: 'backwards-planning-201-cfu-1', courseId: 'backwards-planning-201', position: 3, title: 'CFU: Planning Prompt Comparison', type: 'cfu' },
+  { moduleId: 'backwards-planning-201-workshop', courseId: 'backwards-planning-201', position: 4, title: 'Your Semester Timeline', type: 'workshop' },
+  { moduleId: 'backwards-planning-201-reflection', courseId: 'backwards-planning-201', position: 5, title: 'The Architecture Is Set', type: 'content' },
+
+  // Module 6: Persona, Meta-Prompting & Iteration (6 sections, 2 CFUs)
+  { moduleId: 'persona-iteration-201-context', courseId: 'persona-iteration-201', position: 1, title: 'Steering, Not Just Asking', type: 'content' },
+  { moduleId: 'persona-iteration-201-mental-model', courseId: 'persona-iteration-201', position: 2, title: 'Three Tools for Better Output', type: 'content' },
+  { moduleId: 'persona-iteration-201-cfu-1', courseId: 'persona-iteration-201', position: 3, title: 'CFU: Before and After', type: 'cfu' },
+  { moduleId: 'persona-iteration-201-workshop', courseId: 'persona-iteration-201', position: 4, title: 'Live Iteration Exercise', type: 'workshop' },
+  { moduleId: 'persona-iteration-201-cfu-2', courseId: 'persona-iteration-201', position: 5, title: 'CFU: Spot the Refinement', type: 'cfu' },
+  { moduleId: 'persona-iteration-201-reflection', courseId: 'persona-iteration-201', position: 6, title: 'Core Framing Complete', type: 'content' },
+
+  // Module 7: From Draft to Implementation (5 sections, 1 CFU)
+  { moduleId: 'draft-to-implementation-201-context', courseId: 'draft-to-implementation-201', position: 1, title: 'Theory vs. Monday Morning', type: 'content' },
+  { moduleId: 'draft-to-implementation-201-mental-model', courseId: 'draft-to-implementation-201', position: 2, title: 'What Makes a Unit Teachable', type: 'content' },
+  { moduleId: 'draft-to-implementation-201-cfu-1', courseId: 'draft-to-implementation-201', position: 3, title: 'CFU: Implementation Readiness', type: 'cfu' },
+  { moduleId: 'draft-to-implementation-201-workshop', courseId: 'draft-to-implementation-201', position: 4, title: 'Your Final PBL Unit', type: 'workshop' },
+  { moduleId: 'draft-to-implementation-201-reflection', courseId: 'draft-to-implementation-201', position: 5, title: 'Ready to Teach', type: 'content' },
+
+  // Module 8: Evaluating AI Output & Your Own Work (5 sections, 1 CFU)
+  { moduleId: 'evaluating-output-301-context', courseId: 'evaluating-output-301', position: 1, title: 'Professional Judgment', type: 'content' },
+  { moduleId: 'evaluating-output-301-mental-model', courseId: 'evaluating-output-301', position: 2, title: 'Evaluation Frameworks', type: 'content' },
+  { moduleId: 'evaluating-output-301-cfu-1', courseId: 'evaluating-output-301', position: 3, title: 'CFU: Critique the Critique', type: 'cfu' },
+  { moduleId: 'evaluating-output-301-workshop', courseId: 'evaluating-output-301', position: 4, title: 'Rubric Stress-Test', type: 'workshop' },
+  { moduleId: 'evaluating-output-301-reflection', courseId: 'evaluating-output-301', position: 5, title: 'Owning the Judgment', type: 'content' },
+
+  // Module 9: AI in Student Work (6 sections, 2 CFUs)
+  { moduleId: 'ai-student-work-301-context', courseId: 'ai-student-work-301', position: 1, title: 'What Detection Can and Cannot Tell You', type: 'content' },
+  { moduleId: 'ai-student-work-301-mental-model', courseId: 'ai-student-work-301', position: 2, title: 'A Framework, Not a Rulebook', type: 'content' },
+  { moduleId: 'ai-student-work-301-cfu-1', courseId: 'ai-student-work-301', position: 3, title: 'CFU: Use Case Sorting', type: 'cfu' },
+  { moduleId: 'ai-student-work-301-workshop', courseId: 'ai-student-work-301', position: 4, title: 'Draft Your Classroom AI Policy', type: 'workshop' },
+  { moduleId: 'ai-student-work-301-cfu-2', courseId: 'ai-student-work-301', position: 5, title: 'CFU: Policy Stress-Test', type: 'cfu' },
+  { moduleId: 'ai-student-work-301-reflection', courseId: 'ai-student-work-301', position: 6, title: 'Honest Conversation', type: 'content' },
+
+  // Module 10: Closing the Loop — Revising Your Constitution (5 sections, 1 CFU)
+  { moduleId: 'closing-the-loop-301-context', courseId: 'closing-the-loop-301', position: 1, title: 'What Has Changed', type: 'content' },
+  { moduleId: 'closing-the-loop-301-mental-model', courseId: 'closing-the-loop-301', position: 2, title: 'The Quarterly Revision', type: 'content' },
+  { moduleId: 'closing-the-loop-301-cfu-1', courseId: 'closing-the-loop-301', position: 3, title: 'CFU: Constitution Audit', type: 'cfu' },
+  { moduleId: 'closing-the-loop-301-workshop', courseId: 'closing-the-loop-301', position: 4, title: 'Guided Revision', type: 'workshop' },
+  { moduleId: 'closing-the-loop-301-reflection', courseId: 'closing-the-loop-301', position: 5, title: 'Practice, Not Project', type: 'content' },
 ];
 
 // Helper functions
@@ -122,17 +111,14 @@ export const getModuleById = (moduleId: string): ModuleDefinition | undefined =>
 };
 
 // Map section IDs to module IDs for migration
-// This maps the existing section.id format to the stable moduleId
 export const getSectionToModuleMap = (courseId: string): Record<string, string> => {
   const modules = getModulesForCourse(courseId);
   const map: Record<string, string> = {};
-  
-  // Map section indices to module IDs
+
   modules.forEach((module, index) => {
-    // Existing section IDs use format like "section-1", "section-2"
     map[`section-${index + 1}`] = module.moduleId;
   });
-  
+
   return map;
 };
 
@@ -141,14 +127,14 @@ export const TOTAL_COURSES = 10;
 
 // All course IDs
 export const ALL_COURSE_IDS = [
-  'constraints-101',
-  'role-assignment-101', 
-  'iteration-101',
-  'meta-prompting-201',
-  'persona-calling-201',
-  'workflow-design-201',
-  'critical-evaluation-301',
-  'detecting-ai-work-301',
-  'student-ai-activities-301',
-  'curriculum-ai-design-301',
+  'what-is-ai-101',
+  'your-classroom-101',
+  'description-101',
+  'when-to-use-it-101',
+  'backwards-planning-201',
+  'persona-iteration-201',
+  'draft-to-implementation-201',
+  'evaluating-output-301',
+  'ai-student-work-301',
+  'closing-the-loop-301',
 ];
