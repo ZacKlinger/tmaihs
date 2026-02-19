@@ -272,7 +272,9 @@ export const MicroCourseViewer = ({
     const previousAnswer = rawAnswer ? { selected: rawAnswer.selectedAnswer, isCorrect: rawAnswer.correct } : undefined;
     const handleAnswer = (cfuId: string, selected: string, correct: boolean) => {
       onAnswerCFU(cfuId, selected, correct);
-      onCompleteSection(currentSection.id);
+      if (correct) {
+        onCompleteSection(currentSection.id);
+      }
     };
 
     switch (data.type) {
