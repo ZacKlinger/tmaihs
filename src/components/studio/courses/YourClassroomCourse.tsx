@@ -22,9 +22,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
     <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">A Prompt That Knows Nothing About You</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
-            <p className="text-lg italic text-muted-foreground">You teach SDC science at TMAHS. Fourteen of your twenty-two students have IEPs. Six are emerging English learners. Three read below fifth-grade level. The school issued Chromebooks last year, but yours share a cart with two other classrooms, so you get devices maybe twice a week. Yur students are eight weeks into a hydroponics build — they chose butterhead lettuce and collard greens, and the harvest is going to the community fridge on Third Street.
+            
 
-        </p>
+
             <p className="text-lg italic text-muted-foreground mt-3">
               You need a data-recording sheet for tomorrow's pH readings. So you open Claude and type: "Create a data recording sheet for a high school science class doing hydroponics." What comes back assumes students have laptops, can read at grade level, and are working through a standard lab curriculum. It's clean. It's professional. It has nothing to do with your room.
             </p>
