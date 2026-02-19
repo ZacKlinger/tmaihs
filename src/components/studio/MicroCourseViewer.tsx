@@ -248,7 +248,11 @@ export const MicroCourseViewer = ({
   const handleNext = () => {
     if (!isLastSection) {
       setCurrentIndex((prev) => prev + 1);
-    } else if (allSectionsCompleted) {
+    } else {
+      // Complete the current section if not already done, then complete the course
+      if (!isCurrentCompleted) {
+        onCompleteSection(currentSection.id);
+      }
       onCompleteCourse();
     }
   };
@@ -573,7 +577,7 @@ export const MicroCourseViewer = ({
         
         <Button
           onClick={handleNext}
-          disabled={(isLastSection && !allSectionsCompleted) || (!isLastSection && !canProceedFromCurrent)}
+          disabled={!canProceedFromCurrent}
           className="gap-2"
           title={!canProceedFromCurrent ? "Complete the check with 100% to continue" : undefined}
         >
