@@ -32,9 +32,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
           <p>
             That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
           </p>
-          <p>Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI, is what makes the difference between a generic worksheet and a useful one.
-
-      </p>
+          <p>
+            Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI instead of a substitute, is what makes the difference between a generic worksheet and a useful one.
+          </p>
           <p>
             In Module 1, you learned what AI actually is — a pattern-completion engine that works within what you give it. This module is about giving it the right material. You're going to build the first two sections of your <strong>AI Classroom Constitution</strong>: who is actually in the room, and what constraints shape every lesson you plan.
           </p>
@@ -65,21 +65,23 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
               <p className="font-medium text-green-700 dark:text-green-300 mb-2">Specific Prompt:</p>
-              <p className="text-sm">
-                "Create a data recording sheet for 10th grade SDC science. 14 of 22 students have IEPs; 6 are emerging ELs. Reading levels range from 4th to 8th grade. Students share a Chromebook cart and only have devices on Tuesdays and Thursdays — this sheet needs to work on paper. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
-              </p>
+              <p className="text-sm">"Create a data recording sheet for SDC science. 12 students with IEP's, 6 are emerging ELs. Reading levels range from 4th to 8th grade. They're recording pH readings for butterhead lettuce and collard greens in Week 8 of a 16-week hydroponics build. Keep the sheet to one page with large print, visual supports, and a sentence frame for observations."
+
+          </p>
               <p className="text-xs text-muted-foreground mt-2">
                 AI now knows who's in the room, what they can access, and how the sheet needs to function. The output is something you'd actually hand out.
               </p>
             </div>
           </div>
 
-          <p>
-            Six categories of information change everything about what AI produces for you. Think of them as the soil composition of your particular garden — without knowing the soil, no one can tell you what to plant.
-          </p>
+          <p>Six categories of information change everything about what AI produces for you. Think of them as the soil composition of your particular garden — without knowing the soil, no one can tell you what to plant.
+
+      </p>
 
           <ul>
-            <li><strong>IEP and accommodation context:</strong> How many students have IEPs? What kinds of accommodations shape your planning — extended time, modified assignments, visual supports, read-aloud needs?</li>
+            <li><strong>IEP and accommodation context:</strong>IEP and accommodation context: How many students have IEPs? What kinds of accommodations shape your planning — extended time, modified assignments, visual supports, read-aloud needs?
+
+        </li>
             <li><strong>Language backgrounds:</strong> How many English learners? At what proficiency levels? What home languages are in the room?</li>
             <li><strong>Reading levels:</strong> What's the actual range? Not the grade level on paper — the functional range you plan for.</li>
             <li><strong>Device access:</strong> One-to-one Chromebooks, a shared cart, phones only, or paper-first? How often do students actually have a screen in front of them?</li>
@@ -138,9 +140,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
           <div className="text-xs text-muted-foreground mt-4">
             <ResearchLink text="Universal Design for Learning (UDL) framework" /> argues that designing for the margins benefits everyone in the room. The same logic applies here — a Constitution built around your most complex learners produces materials that work for all of them.
           </div>
-        </div>
-
-  },
+        </div> },
   {
     id: "cfu-1",
     type: "cfu" as const,
