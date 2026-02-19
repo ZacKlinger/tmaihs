@@ -153,13 +153,13 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       elements: [
       {
         id: "iep-context",
-        label: "IEP and accommodation needs (14 of 22 students have IEPs)",
+        label: "IEP and accommodation needs",
         isMissing: true,
         explanation: "With 14 IEP students in 22, accommodations aren't an add-on — they're the baseline. AI needs to know that visual supports, modified text, and extended processing time are standard features, not modifications. Without this, the activity will assume neurotypical grade-level processing."
       },
       {
         id: "reading-levels",
-        label: "Actual reading level range (4th–8th grade, not 10th)",
+        label: "Actual reading level range",
         isMissing: true,
         explanation: "The prompt says '10th grade' but the functional reading range is 4th to 8th. AI will pitch vocabulary and instructions at a 10th-grade level — which means half the class can't access the activity independently. The reading range is the single detail that changes the output the most."
       },
@@ -171,13 +171,13 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       },
       {
         id: "device-access",
-        label: "Device availability (shared cart, not daily access)",
+        label: "Device availability",
         isMissing: true,
         explanation: "If this lesson falls on a non-device day, an 'interactive digital activity' is useless. AI defaults to assuming students have screens. Saying 'shared Chromebook cart, Tuesdays and Thursdays only' changes whether the activity is paper-based or digital."
       },
       {
         id: "project-connection",
-        label: "Connection to current hydroponics project phase (Week 8, pH readings)",
+        label: "Connection to current hydroponics project phase",
         isMissing: true,
         explanation: "'Plant biology vocabulary' is generic. These students are in Week 8 of a hydroponics build, actively measuring pH and planning nutrient mixes. The vocabulary review should use their actual data and their actual plants — not a textbook word list."
       },
@@ -189,7 +189,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
       },
       {
         id: "ai-tool-choice",
-        label: "Which AI tool to use (Claude vs. Gemini vs. ChatGPT)",
+        label: "Which AI tool to use",
         isMissing: false,
         explanation: "Tool choice doesn't affect the quality of the output for this kind of task. A well-specified prompt produces useful vocabulary activities in any of them. The missing details are about your students, not your software."
       },
