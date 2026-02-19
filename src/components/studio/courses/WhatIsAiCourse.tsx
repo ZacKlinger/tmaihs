@@ -61,12 +61,12 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
     content:
     <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">Pattern, Not Understanding</h2>
-          <p className="text-lg">
-            A language model is a prediction engine. Given a sequence of words, it predicts
-            what word comes next. That's it. Everything else — the conversational tone, the
-            apparent reasoning, the confident citations — emerges from that single mechanism
-            running at enormous scale.
-          </p>
+          <p className="text-lg">A language model is a prediction engine. Given a sequence of words, it predicts what word comes next. That's it. Everything else — the conversational tone, the apparent reasoning, the confident citations — emerges from that single mechanism running at enormous scale.
+
+
+
+
+      </p>
           <p>
             Think of it like a musician who has listened to every recording ever made. They
             can improvise in any style, blend genres you didn't know could blend, produce
@@ -89,18 +89,18 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
           </div>
 
           <h3 className="text-lg font-semibold text-foreground mt-6">Hallucination Is Structural</h3>
-          <p>
-            When AI invents a citation that doesn't exist, or states a fact that's subtly wrong,
-            the field calls this "hallucination." The word implies a malfunction — like the system
-            is seeing things. But it's not a bug. It's the inevitable consequence of how the
-            system works.
-          </p>
-          <p>
-            A prediction engine doesn't distinguish between "the next word that's true" and "the
-            next word that sounds right." Those are the same operation from its perspective.
-            When the pattern leads toward a fabricated vendor name or an invented statistic, the
-            model follows the pattern with the same confidence it uses for everything else. There's
-            no internal alarm that says <em>wait, I'm making this up.</em> There's no concept of
+          <p>When AI invents a citation that doesn't exist, or states a fact that's subtly wrong, the field calls this "hallucination." The word implies a malfunction — like the system is seeing things. But it's not a bug. It's the inevitable consequence of how the system works.
+
+
+
+
+      </p>
+          <p>A prediction engine doesn't distinguish between "the next word that's true" and "the next word that sounds right." Those are the same operation from its perspective. When the pattern leads toward a fabricated vendor name or an invented statistic, the model follows the pattern with the same confidence it uses for everything else. There's no internal alarm that says wait, I'm making this up. There's no concept of "making things up" in the architecture at all.
+
+
+
+
+        <em>wait, I'm making this up.</em> There's no concept of
             "making things up" in the architecture at all.
           </p>
           <p>
@@ -116,11 +116,11 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
           </div>
 
           <h3 className="text-lg font-semibold text-foreground mt-6">Constitutional AI: Values Trained In</h3>
-          <p>
-            So if the model is just predicting patterns, how does it know to be helpful instead of
-            harmful? How does it know to refuse certain requests, to hedge when it's uncertain, to
-            try to be honest?
-          </p>
+          <p>So if the model is just predicting patterns, how does it know to be helpful instead of harmful? How does it know to refuse certain requests, to hedge when it's uncertain, to try to be honest?
+
+
+
+      </p>
           <p>
             The answer, at least for Claude, is a process called Constitutional AI. Anthropic wrote
             a set of principles — a constitution — and trained the model to follow them. Not through
@@ -138,15 +138,15 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
             </p>
           </div>
 
-          <p>
-            What does this mean for you as a teacher using the tool? Two things worth sitting with.
-          </p>
-          <p>
-            First: the model's "values" are someone else's choices. Anthropic decided what
-            helpful, harmless, and honest mean in practice. Those are reasonable choices — but
-            they're choices, made by a company, trained into a system you're using in your
-            classroom. You don't have to agree with every one. You do need to know they're there.
-          </p>
+          <p>What does this mean for you as a teacher using the tool? Two things worth sitting with.
+
+      </p>
+          <p>First: the model's "values" are someone else's choices. Anthropic decided what helpful, harmless, and honest mean in practice. Those are reasonable choices — but they're choices, made by a company, trained into a system you're using in your classroom. You don't have to agree with every one. You do need to know they're there.
+
+
+
+
+      </p>
           <p>
             Second: your own constraints work the same way. When you paste context about your
             classroom — your students' reading levels, the community your project serves, the
