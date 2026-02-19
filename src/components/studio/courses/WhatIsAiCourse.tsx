@@ -14,12 +14,12 @@ interface WhatIsAiCourseProps {
 
 export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
   const sections = [
-    {
-      id: "context",
-      type: "context" as const,
-      title: "The Scenario",
-      content: (
-        <div className="prose prose-slate dark:prose-invert max-w-none">
+  {
+    id: "context",
+    type: "context" as const,
+    title: "The Scenario",
+    content:
+    <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">A Tuesday Afternoon</h2>
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
             <p className="text-lg italic text-muted-foreground">
@@ -29,37 +29,37 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
               confident breakdown: specific part numbers, vendor names, prices down to the cent.
               Total cost: $1,847.
             </p>
-            <p className="text-lg italic text-muted-foreground mt-3">
-              The tone is authoritative. The formatting is clean. The numbers add up. And about a
-              third of it is fabricated. Two of the vendor links lead nowhere. One "part number" doesn't
-              exist. The pricing for grow lights is from a product that was discontinued in 2021.
-            </p>
+            <p className="text-lg italic text-muted-foreground mt-3">The tone is authoritative. The formatting is clean. The numbers add up. And about a third of it is fabricated. Two of the vendor links lead nowhere. One "part number" doesn't exist. The pricing for grow lights is from a product that was discontinued in 2021.
+
+
+
+        </p>
           </div>
-          <p>
-            This isn't a story about AI failing. The tool did exactly what it's built to do: it
-            assembled plausible-sounding text based on patterns in its training data. The problem is
-            that "plausible-sounding" and "accurate" are different things, and the tool doesn't know
-            the difference. It can't know the difference.
-          </p>
-          <p>
-            The actual hydroponics build came in around $1,100 — sourced through real vendors, with
-            real part numbers, by a teacher who knew what to verify and what to question. AI helped
-            with the design thinking. The facts still required a human.
-          </p>
+          <p>This isn't a story about AI failing. The tool did exactly what it's built to do: it assembled plausible-sounding text based on patterns in its training data. The problem is that "plausible-sounding" and "accurate" are different things, and the tool doesn't know the difference. It can't know the difference.
+
+
+
+
+      </p>
+          <p>The actual hydroponics build came in around $1,100 — sourced through real vendors, with real part numbers, by a teacher who knew what to verify and what to question. AI helped with the design thinking. The facts often still required a human.
+
+
+
+      </p>
           <p>
             This module is about understanding what that tool actually is — not what it feels like
             to use, but what it's doing under the surface. Because the better you understand the
             machinery, the more precisely you can work with it.
           </p>
         </div>
-      ),
-    },
-    {
-      id: "mental-model",
-      type: "mental-model" as const,
-      title: "Mental Model",
-      content: (
-        <div className="prose prose-slate dark:prose-invert max-w-none">
+
+  },
+  {
+    id: "mental-model",
+    type: "mental-model" as const,
+    title: "Mental Model",
+    content:
+    <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">Pattern, Not Understanding</h2>
           <p className="text-lg">
             A language model is a prediction engine. Given a sequence of words, it predicts
@@ -162,57 +162,57 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
             public — you can read the actual principles the model was trained on.
           </div>
         </div>
-      ),
-    },
-    {
-      id: "cfu-1",
-      type: "cfu" as const,
-      title: "Check 1",
-      advancedCfuData: {
-        id: "what-is-ai-cfu-1",
-        type: "prompt-compare" as const,
-        question: "A teacher asked AI: \"What materials do I need for a classroom hydroponics system for an SDC science class, and roughly what will it cost?\" Read both responses. Which one would you trust enough to use as a starting point for your own sourcing?",
-        context: "You're evaluating two AI-generated responses to the same prompt about building a classroom hydroponics system. One is accurate and useful. The other is confidently wrong. Your job: figure out which is which, and notice what gives it away.",
-        options: [
-          {
-            id: "A",
-            prompt: "For a classroom-scale hydroponics system suitable for an SDC science class, you'll need a few core categories of materials.\n\nStructure: PVC pipes (1.5\" and 2\" diameter) for the growing channels, plus connectors, end caps, and a basic frame. You can source food-grade PVC from a local hardware store. Budget roughly $150–$250 depending on how many growing channels you want.\n\nLighting: If your classroom doesn't get consistent direct sunlight, you'll need supplemental grow lights. Full-spectrum LED shop lights work well and are much cheaper than dedicated horticultural fixtures — around $25–$40 each, and two to four should cover a classroom-scale setup.\n\nWater and nutrients: A small submersible pump ($15–$25), a reservoir (a 10–20 gallon storage tote works), airline tubing, and a hydroponic nutrient solution. General Hydroponics Flora series is widely available and runs about $30–$40 for the three-part kit.\n\nMonitoring: pH test strips or a basic digital pH meter ($10–$30), and an EC/TDS meter if you want students measuring nutrient concentration ($15–$25).\n\nGrowing supplies: Net pots, growing medium like clay pebbles or rockwool cubes, and seeds. Butterhead lettuce and leafy greens are good starter crops — they germinate fast and are forgiving.\n\nAll in, a functional classroom system typically runs $400–$1,200 depending on scale and whether you already have some materials. The wide range is real — a basic single-channel demonstration setup is very different from a multi-channel system that lets every student group run independent experiments. You'll want to price out your specific design before committing to a number.",
-            isCorrect: true,
-            annotations: [
-              { text: "PVC pipes (1.5\" and 2\" diameter)", label: "Generic but accurate materials", color: "bg-green-500/20" },
-              { text: "Full-spectrum LED shop lights work well and are much cheaper than dedicated horticultural fixtures", label: "Practical, honest comparison", color: "bg-green-500/20" },
-              { text: "General Hydroponics Flora series", label: "Real, verifiable product", color: "bg-green-500/20" },
-              { text: "$400–$1,200 depending on scale", label: "Honest range, not false precision", color: "bg-green-500/20" },
-              { text: "You'll want to price out your specific design before committing to a number", label: "Acknowledges its own limits", color: "bg-green-500/20" }
-            ],
-            explanation: "This response uses ranges instead of false precision, names real products you can verify, and explicitly says you should confirm pricing yourself. It gives you a framework to start sourcing — not a final answer pretending to be one."
-          },
-          {
-            id: "B",
-            prompt: "Here's a complete materials list with current pricing for a classroom hydroponics system:\n\nStructure:\n- AeroGarden Farm XL vertical growing frame (model #AG-FRM-24X): $189.99\n- HydroTech Pro 2.0 modular channel kit with integrated drip system (SKU: HTP-2024-EDU): $247.50\n- BioGrow classroom mounting brackets (set of 6): $84.99\n\nLighting:\n- SunSpec Advanced 4000K full-spectrum LED panels, rated at 98.7% PAR efficiency: $129.99 each (you'll need 3)\n\nWater and nutrients:\n- FloraMax Precision Dosing System with auto-pH balancing: $165.00\n- NutriScience Classroom Edition nutrient pack (covers 16 weeks): $58.99\n- AquaPure recirculating pump with built-in filtration (model AP-340R): $73.50\n\nMonitoring:\n- EduSense Digital Lab Monitor (pH, EC, temperature, dissolved oxygen — Bluetooth-enabled with student app): $124.99\n\nTotal estimated cost: $1,334.94\n\nThis setup was recently used by Jefferson STEM Academy in their award-winning 2023 hydroponics program. I'd recommend ordering through EduSupply Direct (edusupplydirect.com) — they offer a 15% educator discount and free shipping on orders over $500.",
-            isCorrect: false,
-            annotations: [
-              { text: "model #AG-FRM-24X", label: "Fabricated model number", color: "bg-amber-500/20" },
-              { text: "SKU: HTP-2024-EDU", label: "Invented SKU", color: "bg-amber-500/20" },
-              { text: "98.7% PAR efficiency", label: "Suspiciously precise specification", color: "bg-amber-500/20" },
-              { text: "$1,334.94", label: "False precision — pennies on fabricated prices", color: "bg-amber-500/20" },
-              { text: "Jefferson STEM Academy in their award-winning 2023 hydroponics program", label: "Hallucinated school and program", color: "bg-amber-500/20" },
-              { text: "edusupplydirect.com", label: "Fabricated vendor URL", color: "bg-amber-500/20" }
-            ],
-            explanation: "This response feels more authoritative — specific model numbers, exact prices, a named school, a recommended vendor. But that authority is manufactured. The model numbers, SKUs, the school reference, and the vendor URL are all hallucinated. The false precision (\"$1,334.94\") is a tell: real estimates don't land on the penny. This is what confident hallucination looks like."
-          }
-        ] as [
-          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string },
-          { id: string; prompt: string; isCorrect: boolean; annotations: { text: string; label: string; color: string }[]; explanation: string }
-        ],
+
+  },
+  {
+    id: "cfu-1",
+    type: "cfu" as const,
+    title: "Check 1",
+    advancedCfuData: {
+      id: "what-is-ai-cfu-1",
+      type: "prompt-compare" as const,
+      question: "A teacher asked AI: \"What materials do I need for a classroom hydroponics system for an SDC science class, and roughly what will it cost?\" Read both responses. Which one would you trust enough to use as a starting point for your own sourcing?",
+      context: "You're evaluating two AI-generated responses to the same prompt about building a classroom hydroponics system. One is accurate and useful. The other is confidently wrong. Your job: figure out which is which, and notice what gives it away.",
+      options: [
+      {
+        id: "A",
+        prompt: "For a classroom-scale hydroponics system suitable for an SDC science class, you'll need a few core categories of materials.\n\nStructure: PVC pipes (1.5\" and 2\" diameter) for the growing channels, plus connectors, end caps, and a basic frame. You can source food-grade PVC from a local hardware store. Budget roughly $150–$250 depending on how many growing channels you want.\n\nLighting: If your classroom doesn't get consistent direct sunlight, you'll need supplemental grow lights. Full-spectrum LED shop lights work well and are much cheaper than dedicated horticultural fixtures — around $25–$40 each, and two to four should cover a classroom-scale setup.\n\nWater and nutrients: A small submersible pump ($15–$25), a reservoir (a 10–20 gallon storage tote works), airline tubing, and a hydroponic nutrient solution. General Hydroponics Flora series is widely available and runs about $30–$40 for the three-part kit.\n\nMonitoring: pH test strips or a basic digital pH meter ($10–$30), and an EC/TDS meter if you want students measuring nutrient concentration ($15–$25).\n\nGrowing supplies: Net pots, growing medium like clay pebbles or rockwool cubes, and seeds. Butterhead lettuce and leafy greens are good starter crops — they germinate fast and are forgiving.\n\nAll in, a functional classroom system typically runs $400–$1,200 depending on scale and whether you already have some materials. The wide range is real — a basic single-channel demonstration setup is very different from a multi-channel system that lets every student group run independent experiments. You'll want to price out your specific design before committing to a number.",
+        isCorrect: true,
+        annotations: [
+        { text: "PVC pipes (1.5\" and 2\" diameter)", label: "Generic but accurate materials", color: "bg-green-500/20" },
+        { text: "Full-spectrum LED shop lights work well and are much cheaper than dedicated horticultural fixtures", label: "Practical, honest comparison", color: "bg-green-500/20" },
+        { text: "General Hydroponics Flora series", label: "Real, verifiable product", color: "bg-green-500/20" },
+        { text: "$400–$1,200 depending on scale", label: "Honest range, not false precision", color: "bg-green-500/20" },
+        { text: "You'll want to price out your specific design before committing to a number", label: "Acknowledges its own limits", color: "bg-green-500/20" }],
+
+        explanation: "This response uses ranges instead of false precision, names real products you can verify, and explicitly says you should confirm pricing yourself. It gives you a framework to start sourcing — not a final answer pretending to be one."
       },
-    },
-    {
-      id: "reflection",
-      type: "reflection" as const,
-      title: "Reflection",
-      content: (
-        <div className="prose prose-slate dark:prose-invert max-w-none">
+      {
+        id: "B",
+        prompt: "Here's a complete materials list with current pricing for a classroom hydroponics system:\n\nStructure:\n- AeroGarden Farm XL vertical growing frame (model #AG-FRM-24X): $189.99\n- HydroTech Pro 2.0 modular channel kit with integrated drip system (SKU: HTP-2024-EDU): $247.50\n- BioGrow classroom mounting brackets (set of 6): $84.99\n\nLighting:\n- SunSpec Advanced 4000K full-spectrum LED panels, rated at 98.7% PAR efficiency: $129.99 each (you'll need 3)\n\nWater and nutrients:\n- FloraMax Precision Dosing System with auto-pH balancing: $165.00\n- NutriScience Classroom Edition nutrient pack (covers 16 weeks): $58.99\n- AquaPure recirculating pump with built-in filtration (model AP-340R): $73.50\n\nMonitoring:\n- EduSense Digital Lab Monitor (pH, EC, temperature, dissolved oxygen — Bluetooth-enabled with student app): $124.99\n\nTotal estimated cost: $1,334.94\n\nThis setup was recently used by Jefferson STEM Academy in their award-winning 2023 hydroponics program. I'd recommend ordering through EduSupply Direct (edusupplydirect.com) — they offer a 15% educator discount and free shipping on orders over $500.",
+        isCorrect: false,
+        annotations: [
+        { text: "model #AG-FRM-24X", label: "Fabricated model number", color: "bg-amber-500/20" },
+        { text: "SKU: HTP-2024-EDU", label: "Invented SKU", color: "bg-amber-500/20" },
+        { text: "98.7% PAR efficiency", label: "Suspiciously precise specification", color: "bg-amber-500/20" },
+        { text: "$1,334.94", label: "False precision — pennies on fabricated prices", color: "bg-amber-500/20" },
+        { text: "Jefferson STEM Academy in their award-winning 2023 hydroponics program", label: "Hallucinated school and program", color: "bg-amber-500/20" },
+        { text: "edusupplydirect.com", label: "Fabricated vendor URL", color: "bg-amber-500/20" }],
+
+        explanation: "This response feels more authoritative — specific model numbers, exact prices, a named school, a recommended vendor. But that authority is manufactured. The model numbers, SKUs, the school reference, and the vendor URL are all hallucinated. The false precision (\"$1,334.94\") is a tell: real estimates don't land on the penny. This is what confident hallucination looks like."
+      }] as
+      [
+        {id: string;prompt: string;isCorrect: boolean;annotations: {text: string;label: string;color: string;}[];explanation: string;},
+        {id: string;prompt: string;isCorrect: boolean;annotations: {text: string;label: string;color: string;}[];explanation: string;}]
+
+    }
+  },
+  {
+    id: "reflection",
+    type: "reflection" as const,
+    title: "Reflection",
+    content:
+    <div className="prose prose-slate dark:prose-invert max-w-none">
           <h2 className="text-xl font-semibold text-foreground">What You're Carrying Forward</h2>
 
           <div className="bg-muted/50 p-6 rounded-lg border border-border/50 my-4">
@@ -264,16 +264,16 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
             </p>
           </div>
         </div>
-      ),
-    },
-  ];
+
+  }];
+
 
   return (
     <MicroCourseViewer
       courseId="what-is-ai-101"
       title="What Is AI, Really?"
       sections={sections}
-      {...props}
-    />
-  );
+      {...props} />);
+
+
 };
