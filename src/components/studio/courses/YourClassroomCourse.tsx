@@ -29,9 +29,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
               You need a data-recording sheet for tomorrow's pH readings. So you open Claude and type: "Create a data recording sheet for a high school science class doing hydroponics." What comes back assumes students have laptops, can read at grade level, and are working through a standard lab curriculum. It's clean. It's professional. It has nothing to do with your room.
             </p>
           </div>
-          <p>That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
-
-      </p>
+          <p>
+            That gap is not a flaw in the tool. It's a gap in what the tool was given to work with. AI pattern-matches to the most common version of whatever you describe. "High school science class doing hydroponics" retrieves the average case — and your classroom is not the average case.
+          </p>
           <p>Think about what a substitute teacher needs on their first day in your room. Not a curriculum guide — a document that says: here's who these students are, here's what they're working on, here's what they can and can't access, here's what to watch for. That document, handed to AI, is what makes the difference between a generic worksheet and a useful one.
 
       </p>
