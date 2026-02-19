@@ -41,11 +41,11 @@ export const WhatIsAiCourse = (props: WhatIsAiCourseProps) => {
 
 
       </p>
-          
+          <p>The actual hydroponics build came in around $1,100 — sourced through real vendors, with real part numbers, by a teacher who knew what to verify and what to question. AI helped with the design thinking. The facts often still required a human.
 
 
 
-
+      </p>
           <p>
             This module is about understanding what that tool actually is — not what it feels like
             to use, but what it's doing under the surface. Because the better you understand the
