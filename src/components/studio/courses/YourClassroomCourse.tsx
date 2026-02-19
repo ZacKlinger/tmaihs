@@ -103,9 +103,9 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <p className="text-muted-foreground mt-3">
               That said, "the model doesn't retain it" is not the same as "it's completely private." Your text passes through a server. The company's data policies govern what happens to it in transit and in logs. And the line between aggregate demographics ("14 students have IEPs") and identifiable information ("Marcus has an IEP for dysgraphia and extended time") matters. The first is a planning variable. The second is a student record.
             </p>
-            <p className="text-muted-foreground mt-3">The rule of thumb: describe your classroom the way you'd describe it to a colleague you trust but who doesn't know your students by name. Aggregate numbers, general accommodation types, overall reading ranges. Never student names, never specific diagnosis details, never anything that could identify an individual child to someone reading over your shoulder.
-
-        </p>
+            <p className="text-muted-foreground mt-3">
+              The rule of thumb: describe your classroom the way you'd describe it to a colleague you trust but who doesn't know your students by name. Aggregate numbers, general accommodation types, overall reading ranges. Never student names, never specific diagnosis details, never anything that could identify an individual child to someone reading over your shoulder.
+            </p>
           </div>
 
           <p>
@@ -122,7 +122,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <p className="font-medium text-foreground mb-2">The pattern looks like this:</p>
             <div className="text-sm text-muted-foreground space-y-2">
               <p>1. Open a new AI session</p>
-              <p>2. Paste your full Constitution (all sections you've built so far)</p>
+              <p>2. Paste / attach your full Constitution (all sections you've built so far)</p>
               <p>3. Add a line break and your actual request</p>
               <p>4. The model uses your Constitution as the lens for everything it produces</p>
             </div>
