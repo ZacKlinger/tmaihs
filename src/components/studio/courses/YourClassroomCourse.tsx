@@ -83,9 +83,7 @@ export const YourClassroomCourse = (props: YourClassroomCourseProps) => {
             <li><strong>Language backgrounds:</strong> How many English learners? At what proficiency levels? What home languages are in the room?</li>
             <li><strong>Reading levels:</strong> What's the actual range? Not the grade level on paper — the functional range you plan for.</li>
             <li><strong>Device access:</strong> One-to-one Chromebooks, a shared cart, phones only, or paper-first? How often do students actually have a screen in front of them?</li>
-            <li><strong>Time and pacing:</strong>Time and pacing: How long is your period? How often do you meet? Is this a block schedule, a traditional period, or something else?
-
-        </li>
+            <li className="mb-3"><strong>Time and pacing:</strong> How long is your period? How often do you meet? Is this a block schedule, a traditional period, or something else?</li>
             <li><strong>Chronic absenteeism:</strong> What's the attendance pattern? If a third of your class misses any given Monday, your materials need to account for re-entry.</li>
           </ul>
 
