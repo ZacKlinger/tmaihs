@@ -48,427 +48,423 @@ export interface TierQuizData {
   questions: QuizQuestion[];
 }
 
-// Tier 1: Foundations (10 questions)
-// Tests: constraints, role assignment, iteration
+// Tier 1: The Constitution (10 questions)
+// Tests: AI understanding, classroom specificity, description, judgment
 const tier1Questions: QuizQuestion[] = [
-  // Constraints (3-4 questions)
+  // What Is AI, Really? (3 questions)
   {
     type: 'multiple-choice',
-    id: 't1-constraints-1',
-    moduleId: 'constraints-101',
-    question: 'A teacher prompts: "Write a lesson plan about photosynthesis." Which constraint would MOST improve this prompt?',
+    id: 't1-ai-1',
+    moduleId: 'what-is-ai-101',
+    question: 'When a language model generates a confident, detailed answer about a topic, what is actually happening?',
     options: [
-      'Add a word count limit',
-      'Specify the grade level, prior knowledge, and learning objectives',
-      'Ask for bullet points instead of paragraphs',
-      'Request the response be written in formal language'
+      'The model is retrieving facts from a verified database',
+      'The model is predicting the most statistically likely next tokens based on patterns in its training data',
+      'The model understands the topic and reasons about it like a human expert',
+      'The model searches the internet for the most recent information'
     ],
     correctIndex: 1,
-    explanation: 'Specifying grade level, prior knowledge, and learning objectives provides essential context that shapes the entire lesson plan. Word count and formatting are secondary constraints.'
-  },
-  {
-    type: 'select-all',
-    id: 't1-constraints-2',
-    moduleId: 'constraints-101',
-    question: 'Select ALL constraints that would help generate a useful vocabulary quiz for 9th grade biology:',
-    options: [
-      'Number of questions (e.g., 10 questions)',
-      'Question format (multiple choice, matching, fill-in-blank)',
-      'Specific vocabulary terms to include',
-      'Font size for printing',
-      'Difficulty progression within the quiz'
-    ],
-    correctIndices: [0, 1, 2, 4],
-    explanation: 'Question count, format, specific terms, and difficulty progression all shape the quiz content. Font size is a formatting detail the AI cannot control in your final document.'
+    explanation: 'Language models predict text sequences based on statistical patterns. They don\'t understand, retrieve verified facts, or search the internet. This is why hallucination is structural — the model completes patterns whether or not the content is accurate.'
   },
   {
     type: 'true-false',
-    id: 't1-constraints-3',
-    moduleId: 'constraints-101',
-    question: 'Adding more constraints always produces better AI outputs.',
+    id: 't1-ai-2',
+    moduleId: 'what-is-ai-101',
+    question: 'AI hallucination is a bug that will be fixed in future model versions.',
     correctAnswer: false,
-    explanation: 'Over-constraining can make prompts rigid and produce stilted outputs. The goal is strategic constraints that address your specific needs, not maximum constraints.'
+    explanation: 'Hallucination is structural to how language models work — they predict likely text, not verified truth. It can be reduced but not eliminated, which is why teacher judgment remains essential.'
   },
   {
     type: 'multiple-choice',
-    id: 't1-constraints-4',
-    moduleId: 'constraints-101',
-    question: 'Which prompt demonstrates the BEST use of constraints for differentiated instruction?',
+    id: 't1-ai-3',
+    moduleId: 'what-is-ai-101',
+    question: 'What does "Constitutional AI" mean for teachers building their own classroom constitutions?',
     options: [
-      '"Create a worksheet about fractions."',
-      '"Create a worksheet about fractions with 20 problems."',
-      '"Create a worksheet about adding fractions for students who struggle with finding common denominators. Include 8 problems that progress from visual models to abstract, with worked examples."',
-      '"Create the best possible worksheet about fractions that any student could use."'
-    ],
-    correctIndex: 2,
-    explanation: 'This prompt specifies the target learner, their specific challenge, problem count, progression strategy, and scaffolding approach—all constraints that shape a genuinely differentiated resource.'
-  },
-
-  // Role Assignment (3 questions)
-  {
-    type: 'matching',
-    id: 't1-role-1',
-    moduleId: 'role-assignment-101',
-    question: 'Match each teaching task to the MOST effective role assignment:',
-    pairs: [
-      { left: 'Simplifying complex scientific concepts', right: 'Science educator who specializes in analogies' },
-      { left: 'Writing culturally responsive curriculum', right: 'Curriculum designer with equity expertise' },
-      { left: 'Creating rubrics for creative writing', right: 'English teacher with 20 years grading experience' },
-      { left: 'Designing hands-on math activities', right: 'Elementary math specialist focused on manipulatives' }
-    ],
-    explanation: 'Effective role assignment matches the specific expertise needed for each task. A science educator with analogy expertise will simplify concepts differently than a generic "teacher" role.'
-  },
-  {
-    type: 'multiple-choice',
-    id: 't1-role-2',
-    moduleId: 'role-assignment-101',
-    question: 'What is the PRIMARY purpose of assigning a role to an AI?',
-    options: [
-      'To make the AI more polite in its responses',
-      'To access specialized knowledge and perspective that shapes the response',
-      'To make the output longer and more detailed',
-      'To avoid the AI asking clarifying questions'
+      'AI follows the U.S. Constitution when generating content',
+      'Values and guidelines are trained into the model, suggesting that explicit values improve AI behavior — the same principle applies to teacher-written constitutions',
+      'AI cannot be used in ways that violate school policy',
+      'Constitutional AI means the model always produces accurate content'
     ],
     correctIndex: 1,
-    explanation: 'Role assignment frames the AI\'s perspective and expertise, influencing what knowledge it draws upon and how it approaches the task—not just tone or length.'
-  },
-  {
-    type: 'select-all',
-    id: 't1-role-3',
-    moduleId: 'role-assignment-101',
-    question: 'Select ALL elements of an effective role assignment:',
-    options: [
-      'Defining the expertise area or specialty',
-      'Specifying the task context clearly',
-      'Always using formal titles like "Dr." or "Professor"',
-      'Identifying the intended audience',
-      'Making the role description as long as possible'
-    ],
-    correctIndices: [0, 1, 3],
-    explanation: 'Effective roles define expertise, context, and audience. Formal titles and length don\'t improve effectiveness—specificity and relevance do.'
+    explanation: 'Constitutional AI trains values into models to shape their behavior. The parallel for teachers: when you upload a document that explicitly states your values, constraints, and context, the model\'s output becomes more aligned with your classroom reality.'
   },
 
-  // Iteration (3 questions)
+  // Your Classroom (3 questions)
   {
-    type: 'true-false',
-    id: 't1-iteration-1',
-    moduleId: 'iteration-101',
-    question: 'The most effective approach to prompting is to write one comprehensive prompt that anticipates all needs, rather than iterating.',
-    correctAnswer: false,
-    explanation: 'Iteration is more effective than trying to create a "perfect" first prompt. Each AI response reveals new directions and refinements you couldn\'t anticipate.'
+    type: 'select-all',
+    id: 't1-classroom-1',
+    moduleId: 'your-classroom-101',
+    question: 'Which classroom details should be included in a Classroom Constitution to make AI outputs specific and usable? Select ALL that apply:',
+    options: [
+      'Student IEP rates and accommodation needs',
+      'The AI tool you prefer to use',
+      'Language backgrounds and reading levels in the room',
+      'Device access and technology constraints',
+      'Your favorite teaching quotes'
+    ],
+    correctIndices: [0, 2, 3],
+    explanation: 'IEP context, language backgrounds, and device constraints directly shape what AI can produce that\'s usable in your specific classroom. Tool preference and inspirational quotes don\'t affect output quality.'
   },
   {
     type: 'multiple-choice',
-    id: 't1-iteration-2',
-    moduleId: 'iteration-101',
-    question: 'An AI generates a lesson plan that\'s good but uses vocabulary too advanced for your students. What\'s the BEST iterative follow-up?',
+    id: 't1-classroom-2',
+    moduleId: 'your-classroom-101',
+    question: 'A teacher pastes their constitution into AI and asks for a formative assessment. The output assumes all students read at grade level, includes technology their students don\'t have access to, and uses vocabulary above their students\' level. What\'s most likely missing from the constitution?',
     options: [
-      'Start over with a completely new prompt',
-      '"Make it simpler."',
-      '"Revise this for 6th graders reading at a 4th grade level. Replace academic terms with everyday language and add brief definitions for any remaining technical words."',
-      '"This is too hard. Fix it."'
+      'The teacher\'s name and school',
+      'Student demographics, reading levels, and classroom constraints',
+      'A longer, more detailed prompt',
+      'The specific AI tool instructions'
     ],
-    correctIndex: 2,
-    explanation: 'Effective iteration is specific about what to change and how. "Make it simpler" is too vague; the third option specifies the target level, the strategy (replace terms), and adds scaffolding (definitions).'
+    correctIndex: 1,
+    explanation: 'When AI produces generic output despite a constitution, the missing pieces are usually the specific details about who is in the room and what they have access to. These are Sections 1 and 4 of the constitution.'
   },
   {
+    type: 'true-false',
+    id: 't1-classroom-3',
+    moduleId: 'your-classroom-101',
+    question: 'When you paste your Classroom Constitution into an AI chat session, the model permanently stores that information and remembers it in future sessions.',
+    correctAnswer: false,
+    explanation: 'Most AI models don\'t retain information between sessions. Your constitution must be uploaded at the start of every new session — it\'s working context, not stored memory. This is why the constitution is a document you paste daily.'
+  },
+
+  // Description (2 questions)
+  {
     type: 'matching',
-    id: 't1-iteration-3',
-    moduleId: 'iteration-101',
-    question: 'Match each AI output issue to the best iterative fix strategy:',
+    id: 't1-description-1',
+    moduleId: 'description-101',
+    question: 'Match each prompt element to its function in producing specific AI output:',
     pairs: [
-      { left: 'Too generic, not specific enough', right: 'Add concrete examples or constraints' },
-      { left: 'Wrong tone or voice', right: 'Specify the target audience and desired tone' },
-      { left: 'Missing key content', right: 'Request specific additions explicitly' },
-      { left: 'Good content, wrong format', right: 'Request restructuring while keeping content' }
+      { left: 'Constraints (grade level, time, format)', right: 'Narrows the output to what\'s actually usable in your room' },
+      { left: 'Persona ("You are a co-teacher for an SDC science class")', right: 'Shapes the perspective and expertise the AI draws from' },
+      { left: 'Context (constitution sections)', right: 'Pre-loads the specific reality of your classroom' },
+      { left: 'Task ("Create a Week 8 formative assessment")', right: 'Defines exactly what you need the AI to produce' }
     ],
-    explanation: 'Effective iteration diagnoses the specific problem and applies a targeted fix rather than starting over or making vague requests.'
+    explanation: 'Each element of description serves a specific function. Constraints narrow, personas shape perspective, context grounds in reality, and the task defines the output. Together they replace the need for long, complex prompts.'
+  },
+  {
+    type: 'multiple-choice',
+    id: 't1-description-2',
+    moduleId: 'description-101',
+    question: 'What is the relationship between description and the Classroom Constitution?',
+    options: [
+      'They are unrelated — description is about prompting, the constitution is about values',
+      'The constitution IS pre-loaded description — infrastructure that makes every subsequent prompt shorter and more powerful',
+      'The constitution replaces the need for description in prompts',
+      'Description is only needed when you don\'t have a constitution'
+    ],
+    correctIndex: 1,
+    explanation: 'The constitution is description you\'ve already written. When you upload it, every prompt starts with your classroom reality already established — so you can focus on the specific task instead of re-describing your context every time.'
+  },
+
+  // When to Use It (2 questions)
+  {
+    type: 'select-all',
+    id: 't1-judgment-1',
+    moduleId: 'when-to-use-it-101',
+    question: 'Which classroom tasks are APPROPRIATE to delegate to AI? Select ALL that apply:',
+    options: [
+      'Generating differentiated versions of an assessment you\'ve already designed',
+      'Deciding which students need intervention',
+      'Drafting a parent communication about project progress',
+      'Building relationships with students who are struggling',
+      'Sourcing materials and estimating costs for a hands-on project'
+    ],
+    correctIndices: [0, 2, 4],
+    explanation: 'AI can help with differentiation, communication drafts, and logistics — tasks where your judgment shapes the input and you review the output. Relationship-building and intervention decisions require the human knowledge that only you have.'
+  },
+  {
+    type: 'multiple-choice',
+    id: 't1-judgment-2',
+    moduleId: 'when-to-use-it-101',
+    question: 'Section 5 of the Classroom Constitution — Teacher\'s Vision for Student Outcomes — is described as the most important section. Why?',
+    options: [
+      'It\'s the longest section and contains the most detail',
+      'It defines what you actually believe your students can achieve, which becomes the mandate AI works from when building your PBL unit',
+      'It\'s required for certification',
+      'It replaces the need for state standards'
+    ],
+    correctIndex: 1,
+    explanation: 'Section 5 is the north star. When AI helps you build a PBL unit in Tier 2, your vision for student outcomes is what it works toward — not a generic standard, but what you believe is possible for these specific students.'
   }
 ];
 
-// Tier 2: Integrated Application (10 questions)
-// Tests: meta-prompting, persona calling, workflow design
+// Tier 2: The Unit (10 questions)
+// Tests: backwards planning, persona/iteration, implementation
 const tier2Questions: QuizQuestion[] = [
-  // Meta-Prompting (3-4 questions)
+  // Backwards Planning (3-4 questions)
   {
     type: 'multiple-choice',
-    id: 't2-meta-1',
-    moduleId: 'meta-prompting-201',
-    question: 'What is the CORE idea behind meta-prompting?',
+    id: 't2-planning-1',
+    moduleId: 'backwards-planning-201',
+    question: 'What does backwards planning require that traditional unit planning doesn\'t?',
     options: [
-      'Using longer prompts to get better results',
-      'Having AI critique and improve your prompts before executing them',
-      'Copying prompts from online databases',
-      'Using the same prompt template for all tasks'
+      'More detailed lesson plans',
+      'Starting from the final student outcome and designing backward through phases, so every activity serves the endpoint',
+      'Using AI for every planning step',
+      'Longer planning timelines'
     ],
     correctIndex: 1,
-    explanation: 'Meta-prompting uses AI as a prompt engineer—asking it to analyze, critique, and improve your prompts before or after generating content.'
-  },
-  {
-    type: 'select-all',
-    id: 't2-meta-2',
-    moduleId: 'meta-prompting-201',
-    question: 'Select ALL effective meta-prompting techniques:',
-    options: [
-      'Asking AI to identify what\'s missing from your prompt',
-      'Having AI suggest alternative approaches to your task',
-      'Requesting AI to explain why it made certain choices in its output',
-      'Copying the AI\'s suggested improvements without review',
-      'Asking AI what clarifying questions it would ask about your prompt'
-    ],
-    correctIndices: [0, 1, 2, 4],
-    explanation: 'All except blindly copying are effective. Meta-prompting is about using AI to think critically about prompts, not outsourcing your judgment entirely.'
+    explanation: 'Backwards planning starts from what students will demonstrate at the end and works backward. Every phase — launch, inquiry, build, present, reflect — exists to move students toward that outcome.'
   },
   {
     type: 'true-false',
-    id: 't2-meta-3',
-    moduleId: 'meta-prompting-201',
-    question: 'Meta-prompting is only useful for beginners who don\'t know how to write good prompts yet.',
-    correctAnswer: false,
-    explanation: 'Meta-prompting remains valuable at all skill levels. Even expert prompt engineers use AI to identify blind spots, explore alternatives, and refine approaches they might not have considered.'
+    id: 't2-planning-2',
+    moduleId: 'backwards-planning-201',
+    question: 'Before backwards planning with AI, teachers should re-read and sharpen Section 5 of their constitution (Vision for Student Outcomes).',
+    correctAnswer: true,
+    explanation: 'The vision has to be clear before the map can be drawn. If Section 5 is vague, the backwards plan will be vague. AI can only work toward what you\'ve articulated.'
+  },
+  {
+    type: 'select-all',
+    id: 't2-planning-3',
+    moduleId: 'backwards-planning-201',
+    question: 'Which elements should a backwards-planned PBL semester timeline include? Select ALL that apply:',
+    options: [
+      'Clear phases (launch, inquiry, build, present, reflect)',
+      'Daily lesson plans for every session',
+      'Checkpoints where student progress is assessed',
+      'Moments where the timeline might need to flex based on student needs',
+      'A driving question that connects every phase'
+    ],
+    correctIndices: [0, 2, 3, 4],
+    explanation: 'A semester timeline needs phases, checkpoints, flex points, and a driving question. Daily lesson plans are too granular for a semester-level plan — those come later during implementation.'
   },
   {
     type: 'multiple-choice',
-    id: 't2-meta-4',
-    moduleId: 'meta-prompting-201',
-    question: 'You want to create a project rubric but aren\'t sure what criteria to include. Which meta-prompting approach is MOST effective?',
+    id: 't2-planning-4',
+    moduleId: 'backwards-planning-201',
+    question: 'You upload your constitution and ask AI to create a semester timeline. The output looks polished but doesn\'t connect to your Section 5 vision. What\'s the best response?',
     options: [
-      '"Write a rubric for my project."',
-      '"What questions would you ask me before creating a rubric for a student project?"',
-      '"Give me the best rubric template."',
-      '"Make a perfect rubric."'
+      'Accept it — AI knows best about PBL structure',
+      'Start over with a completely different prompt',
+      'Tell AI specifically where the timeline diverges from your vision and ask it to revise those sections',
+      'Abandon AI planning and do it by hand'
     ],
-    correctIndex: 1,
-    explanation: 'Asking the AI what questions it would ask surfaces important criteria you may not have considered, improving both the prompt and your thinking about the task.'
+    correctIndex: 2,
+    explanation: 'This is iteration — name what\'s working, identify where it misses the mark (specifically, the disconnect from your vision), and ask for targeted revision. The AI got the structure right; it just needs to be steered toward your actual goals.'
   },
 
-  // Persona Calling (3 questions)
+  // Persona & Iteration (3 questions)
   {
     type: 'matching',
     id: 't2-persona-1',
-    moduleId: 'persona-calling-201',
-    question: 'Match each educational challenge to the MOST strategically valuable persona:',
+    moduleId: 'persona-iteration-201',
+    question: 'Match each technique to its purpose in the PBL design process:',
     pairs: [
-      { left: 'Designing assessment for deeper learning', right: 'Assessment researcher focused on authentic evaluation' },
-      { left: 'Making content accessible for ELL students', right: 'ESL specialist with sheltered instruction expertise' },
-      { left: 'Integrating social-emotional learning', right: 'School counselor with classroom SEL experience' },
-      { left: 'Creating inquiry-based science lessons', right: 'Science educator trained in NGSS practices' }
+      { left: 'Persona assignment', right: 'Gives AI a specific expertise and perspective to draw from' },
+      { left: 'Meta-prompting', right: 'Asks AI to improve your prompt before executing it' },
+      { left: 'Iteration', right: 'Refines output through targeted feedback across multiple rounds' },
+      { left: 'Differentiation through iteration', right: 'Adapts a single project structure for different learner needs' }
     ],
-    explanation: 'Strategic persona selection matches specific expertise to specific challenges. The persona\'s specialized knowledge shapes the response in ways a generic "teacher" role cannot.'
+    explanation: 'Persona shapes perspective, meta-prompting improves the ask, iteration refines the output, and differentiation through iteration ensures the unit works for all students in the room.'
   },
   {
     type: 'multiple-choice',
     id: 't2-persona-2',
-    moduleId: 'persona-calling-201',
-    question: 'What distinguishes "persona calling" from basic role assignment?',
+    moduleId: 'persona-iteration-201',
+    question: 'What is meta-prompting?',
     options: [
-      'Persona calling uses more formal language',
-      'Persona calling strategically selects specific expertise for specific task types, rather than generic roles',
-      'Persona calling requires longer prompts',
-      'Persona calling only works for creative tasks'
+      'Writing very long, detailed prompts',
+      'Asking AI to critique and improve your prompt before it executes it',
+      'Using multiple AI tools at once',
+      'Prompting about the concept of prompting in general'
     ],
     correctIndex: 1,
-    explanation: 'Persona calling is strategic selection—matching particular expertise to particular challenges. It\'s about choosing the right perspective for the specific task, not just assigning any role.'
+    explanation: 'Meta-prompting asks AI to be your prompt engineer — "Before you do this task, what questions would you ask me? What\'s missing from my prompt?" This consistently produces better results than even well-crafted first attempts.'
   },
   {
     type: 'select-all',
     id: 't2-persona-3',
-    moduleId: 'persona-calling-201',
-    question: 'When designing a unit on the Civil Rights Movement for diverse learners, which personas would provide COMPLEMENTARY perspectives? Select ALL that apply:',
+    moduleId: 'persona-iteration-201',
+    question: 'Which are effective iteration practices? Select ALL that apply:',
     options: [
-      'Historian specializing in primary source analysis',
-      'Culturally responsive pedagogy expert',
-      'Special education teacher with UDL expertise',
-      'Random celebrity for engagement',
-      'Curriculum designer focused on backward design'
+      'Name what\'s working before naming what isn\'t',
+      'Give 1-3 specific changes per iteration round',
+      'Rewrite the entire prompt from scratch each time',
+      'Describe what you want instead of what\'s wrong',
+      'Keep iterating until the output is perfect'
     ],
-    correctIndices: [0, 1, 2, 4],
-    explanation: 'Each selected persona brings distinct, complementary expertise: content accuracy, cultural responsiveness, accessibility, and structural design. A celebrity adds entertainment, not educational value.'
+    correctIndices: [0, 1, 3],
+    explanation: 'Effective iteration preserves what works, makes specific targeted changes, and describes the desired replacement. Starting over loses progress, and perfection is the enemy of usable — know when to stop.'
   },
 
-  // Workflow Design (3 questions)
+  // Draft to Implementation (3 questions)
   {
     type: 'multiple-choice',
-    id: 't2-workflow-1',
-    moduleId: 'workflow-design-201',
-    question: 'What is the PRIMARY advantage of chaining prompts in a workflow rather than using one comprehensive prompt?',
+    id: 't2-implement-1',
+    moduleId: 'draft-to-implementation-201',
+    question: 'What primarily separates a theoretically sound PBL unit from an implementable one?',
     options: [
-      'It uses fewer AI credits',
-      'Each step can build on and refine the previous output, allowing for more complex and coherent results',
-      'It\'s faster than single prompts',
-      'It requires less thinking from the teacher'
+      'Length and detail',
+      'Teacher clarity, student-facing language, and logistical specificity',
+      'How many standards it covers',
+      'Whether it was designed with AI'
     ],
     correctIndex: 1,
-    explanation: 'Workflow chaining allows each step to build on previous outputs, enabling complex multi-stage tasks that would be impossible or inconsistent in a single prompt.'
-  },
-  {
-    type: 'matching',
-    id: 't2-workflow-2',
-    moduleId: 'workflow-design-201',
-    question: 'Match each step in a unit planning workflow to its logical position:',
-    pairs: [
-      { left: 'Step 1', right: 'Identify learning goals and standards' },
-      { left: 'Step 2', right: 'Design summative assessment aligned to goals' },
-      { left: 'Step 3', right: 'Plan learning activities that build toward assessment' },
-      { left: 'Step 4', right: 'Create formative checks throughout the unit' }
-    ],
-    explanation: 'This follows backward design principles: goals first, then assessment, then activities, then formative checks. Each step\'s output informs the next.'
+    explanation: 'An implementable unit has clear teacher instructions, language students can actually understand, and specific logistics (materials, timing, room setup). A unit can be pedagogically brilliant and still fail Monday morning if these are missing.'
   },
   {
     type: 'true-false',
-    id: 't2-workflow-3',
-    moduleId: 'workflow-design-201',
-    question: 'In a well-designed prompt workflow, you should always include the full output from all previous steps in each new prompt.',
-    correctAnswer: false,
-    explanation: 'Including everything creates bloated prompts. Effective workflows pass forward only the relevant portions of previous outputs—the specific content the next step needs to build upon.'
+    id: 't2-implement-2',
+    moduleId: 'draft-to-implementation-201',
+    question: 'If students will use AI during a PBL project, the teacher should prepare them in advance with clear guidance about when and how to use it.',
+    correctAnswer: true,
+    explanation: 'Transparency about AI use is part of implementation. Students need to know what the teacher\'s role becomes, what AI interactions look like, and what productive use means in the context of their specific project.'
+  },
+  {
+    type: 'select-all',
+    id: 't2-implement-3',
+    moduleId: 'draft-to-implementation-201',
+    question: 'Using AI to anticipate where students will struggle means: Select ALL that apply:',
+    options: [
+      'Asking AI to identify potential misconceptions based on your constitution\'s student demographics',
+      'Designing scaffolds before problems arise rather than improvising in the moment',
+      'Eliminating all difficulty from the project',
+      'Building in checkpoints where you can assess and adjust',
+      'Creating a backup plan that removes the project\'s challenge'
+    ],
+    correctIndices: [0, 1, 3],
+    explanation: 'Anticipating struggle means identifying likely friction points and designing for them — not eliminating productive difficulty. The goal is preparation, not prevention of all challenge.'
   }
 ];
 
-// Tier 3: Studio Practice (10 questions)
-// Tests: critical evaluation, detecting AI work, student activities, curriculum design
+// Tier 3: The Practice (10 questions)
+// Tests: evaluation, student AI work, constitution revision
 const tier3Questions: QuizQuestion[] = [
-  // Critical Evaluation (2-3 questions)
-  {
-    type: 'select-all',
-    id: 't3-eval-1',
-    moduleId: 'critical-evaluation-301',
-    question: 'When evaluating AI-generated content for classroom use, which criteria should you ALWAYS check? Select ALL that apply:',
-    options: [
-      'Factual accuracy against reliable sources',
-      'Age-appropriateness for your students',
-      'Whether the AI used formal language',
-      'Potential bias or stereotypes in examples',
-      'Alignment with your learning objectives',
-      'Whether it sounds like AI wrote it'
-    ],
-    correctIndices: [0, 1, 3, 4],
-    explanation: 'Accuracy, appropriateness, bias, and alignment are critical educational criteria. Formality and "sounding like AI" are stylistic concerns, not quality indicators.'
-  },
+  // Evaluating Output (3 questions)
   {
     type: 'multiple-choice',
-    id: 't3-eval-2',
-    moduleId: 'critical-evaluation-301',
-    question: 'An AI generates a reading passage that seems factually accurate but includes a subtle cultural stereotype. What\'s the BEST response?',
+    id: 't3-eval-1',
+    moduleId: 'evaluating-output-301',
+    question: 'What is the difference between AI-assisted evaluation and AI-delegated evaluation?',
     options: [
-      'Use it anyway since the facts are correct',
-      'Reject the entire output and start over',
-      'Edit the passage to remove the stereotype while preserving the accurate content',
-      'Ask students to identify the stereotype as a critical thinking exercise'
+      'AI-assisted uses better AI tools',
+      'AI-assisted means AI provides analysis that YOU judge and decide on; AI-delegated means you accept AI\'s verdict as final',
+      'AI-delegated is faster and therefore better for busy teachers',
+      'There is no meaningful difference'
     ],
-    correctIndex: 2,
-    explanation: 'Editing preserves useful content while addressing the problem. Option D could be appropriate in some contexts, but introduces stereotype exposure without clear educational framing.'
+    correctIndex: 1,
+    explanation: 'The distinction is the whole ballgame. AI-assisted evaluation keeps you in the professional judgment seat — AI surfaces things, you decide what matters. AI-delegated evaluation outsources the judgment itself, which is the one thing AI cannot do for your specific classroom.'
+  },
+  {
+    type: 'select-all',
+    id: 't3-eval-2',
+    moduleId: 'evaluating-output-301',
+    question: 'When using AI to evaluate your own PBL unit, which research-backed frameworks should you evaluate against? Select ALL that apply:',
+    options: [
+      'ICAP (Interactive, Constructive, Active, Passive engagement levels)',
+      'Bloom\'s Taxonomy word count requirements',
+      'Culturally sustaining pedagogy principles',
+      'Universal Design for Learning (UDL)',
+      'AI-generated readability scores only'
+    ],
+    correctIndices: [0, 2, 3],
+    explanation: 'ICAP, culturally sustaining pedagogy, and UDL are research-backed frameworks that address engagement quality, cultural responsiveness, and accessibility. Word counts and readability scores alone don\'t evaluate pedagogical quality.'
   },
   {
     type: 'true-false',
     id: 't3-eval-3',
-    moduleId: 'critical-evaluation-301',
-    question: 'If AI-generated content sounds confident and well-written, you can generally trust its accuracy.',
+    moduleId: 'evaluating-output-301',
+    question: 'If AI gives your PBL unit a positive evaluation, you can be confident it\'s ready to teach.',
     correctAnswer: false,
-    explanation: 'AI often generates confident, fluent text that is factually wrong (hallucinations). Writing quality does not indicate accuracy—always verify facts independently.'
+    explanation: 'AI evaluations are useful but limited — the model doesn\'t know your students, your relationships, or the specific dynamics of your classroom. AI can surface patterns and frameworks; you own the final judgment about whether something is ready for your room.'
   },
 
-  // Detecting AI Work (2-3 questions)
-  {
-    type: 'select-all',
-    id: 't3-detect-1',
-    moduleId: 'detecting-ai-work-301',
-    question: 'Which patterns might indicate AI-generated student writing? Select ALL that apply:',
-    options: [
-      'Unusually consistent paragraph structure throughout',
-      'Vocabulary significantly above the student\'s typical level',
-      'Creative spelling errors',
-      'Generic examples that don\'t reference personal experience',
-      'Hedging phrases like "It\'s important to note that..."'
-    ],
-    correctIndices: [0, 1, 3, 4],
-    explanation: 'Consistent structure, elevated vocabulary, generic examples, and AI-typical hedging phrases are red flags. Creative spelling errors are actually MORE human—AI rarely misspells creatively.'
-  },
-  {
-    type: 'multiple-choice',
-    id: 't3-detect-2',
-    moduleId: 'detecting-ai-work-301',
-    question: 'Which assignment design MOST effectively discourages unhelpful AI use while still allowing productive AI assistance?',
-    options: [
-      'Ban all AI use and use plagiarism detection software',
-      'Require handwritten assignments only',
-      'Design assignments that require personal reflection, local context, or process documentation that AI cannot provide',
-      'Make assignments so easy that AI isn\'t needed'
-    ],
-    correctIndex: 2,
-    explanation: 'Assignments requiring personal experience, local context, or documented process make AI shortcuts less useful while still allowing AI as a thinking tool for brainstorming or editing.'
-  },
-  {
-    type: 'matching',
-    id: 't3-detect-3',
-    moduleId: 'detecting-ai-work-301',
-    question: 'Match each assignment type to its vulnerability to unhelpful AI use:',
-    pairs: [
-      { left: 'Generic five-paragraph essay', right: 'High vulnerability - AI excels at this format' },
-      { left: 'Reflection connecting to personal experience', right: 'Low vulnerability - requires authentic detail' },
-      { left: 'Analysis of class-specific discussion', right: 'Low vulnerability - requires local context' },
-      { left: 'Summary of a common text', right: 'High vulnerability - AI has likely seen the text' }
-    ],
-    explanation: 'Assignments requiring personal experience or class-specific context resist unhelpful AI use because AI lacks access to that information.'
-  },
-
-  // Student AI Activities (2 questions)
+  // AI in Student Work (4 questions)
   {
     type: 'multiple-choice',
     id: 't3-student-1',
-    moduleId: 'student-ai-activities-301',
-    question: 'When designing student-facing AI activities, what should be the PRIMARY goal?',
+    moduleId: 'ai-student-work-301',
+    question: 'Why must policy precede accusation when it comes to student AI use?',
     options: [
-      'Teaching students to get AI to do their work efficiently',
-      'Positioning AI as a thinking partner that enhances—not replaces—student cognition',
-      'Showing students how powerful AI technology is',
-      'Preparing students for AI jobs'
+      'Because AI detection tools are 100% unreliable',
+      'Because students deserve clear expectations before consequences — you can\'t hold students accountable to rules they didn\'t know existed',
+      'Because schools require it legally',
+      'Because AI detection is too expensive'
     ],
     correctIndex: 1,
-    explanation: 'Student AI activities should develop thinking skills with AI as a tool, not outsource thinking to AI. The goal is enhanced cognition, not efficient shortcutting.'
+    explanation: 'The principle is fairness: students need to know what\'s expected before they can be held accountable. A classroom AI policy establishes those expectations. Without one, any accusation of misuse is standing on nothing.'
   },
   {
     type: 'select-all',
     id: 't3-student-2',
-    moduleId: 'student-ai-activities-301',
-    question: 'Select ALL characteristics of well-designed student AI activities:',
+    moduleId: 'ai-student-work-301',
+    question: 'Which elements belong in a classroom AI policy? Select ALL that apply:',
     options: [
-      'Students must evaluate and improve AI outputs, not just accept them',
-      'The activity requires student thinking that AI cannot replace',
-      'Students can complete the activity entirely with AI',
-      'Clear guidelines about appropriate vs. inappropriate AI use',
-      'Students document their process and AI interactions'
+      'When students may and may not use AI during the project',
+      'What productive AI use looks like with specific examples',
+      'A list of approved AI tools ranked by quality',
+      'What students should do if they\'re unsure whether AI use is appropriate',
+      'How the policy will be revised as technology and practice evolve'
     ],
     correctIndices: [0, 1, 3, 4],
-    explanation: 'Good activities require evaluation, irreplaceable student thinking, clear guidelines, and process documentation. If AI can complete it entirely, student learning is bypassed.'
-  },
-
-  // Curriculum AI Design (2 questions)
-  {
-    type: 'multiple-choice',
-    id: 't3-curriculum-1',
-    moduleId: 'curriculum-ai-design-301',
-    question: 'When integrating AI into curriculum, which question should you ask FIRST?',
-    options: [
-      'Which AI tool has the best features?',
-      'What learning goal does AI integration serve, and is AI the best way to achieve it?',
-      'How can I use AI in every lesson?',
-      'What will impress administrators about my AI use?'
-    ],
-    correctIndex: 1,
-    explanation: 'Curriculum integration should be learning-goal driven, not technology-driven. AI should serve clear educational purposes, not be added for its own sake.'
+    explanation: 'A strong policy addresses when, how, uncertainty protocols, and revision plans. Ranking AI tools is a logistics detail, not a policy element — the principles should hold regardless of which tool students use.'
   },
   {
     type: 'matching',
-    id: 't3-curriculum-2',
-    moduleId: 'curriculum-ai-design-301',
-    question: 'Match each curriculum context to the appropriate level of AI integration:',
+    id: 't3-student-3',
+    moduleId: 'ai-student-work-301',
+    question: 'Match each student AI use case to whether it undermines or extends learning:',
     pairs: [
-      { left: 'Foundational skill development (e.g., basic math facts)', right: 'Minimal AI - students need to build fluency themselves' },
-      { left: 'Complex research project', right: 'Structured AI - clear guidelines for productive use' },
-      { left: 'Creative writing exploring personal voice', right: 'Limited AI - preserve authentic student expression' },
-      { left: 'Brainstorming and ideation phase', right: 'Open AI - AI as thinking partner for exploration' }
+      { left: 'Student asks AI to write their data analysis', right: 'Undermines — bypasses the analytical thinking the assignment develops' },
+      { left: 'Student asks AI to argue against their hypothesis', right: 'Extends — AI challenges student thinking, student responds' },
+      { left: 'Student pastes a prompt and submits the raw output', right: 'Undermines — no student thinking involved' },
+      { left: 'Student asks AI to explain a concept they\'re stuck on, then applies it', right: 'Extends — AI clarifies, student does the work' }
     ],
-    explanation: 'AI integration should match learning goals. Foundational skills and personal voice need human development; research and brainstorming can productively incorporate AI with appropriate structure.'
+    explanation: 'The distinction is who does the thinking. AI that replaces student cognition undermines learning; AI that responds to student thinking and requires student judgment extends it.'
+  },
+  {
+    type: 'true-false',
+    id: 't3-student-4',
+    moduleId: 'ai-student-work-301',
+    question: 'AI detection tools can reliably determine whether a student used AI to complete an assignment.',
+    correctAnswer: false,
+    explanation: 'AI detection tools produce false positives (flagging human writing as AI) and false negatives (missing actual AI use). They are unreliable, which is exactly why policy and transparent expectations are more effective than surveillance.'
+  },
+
+  // Closing the Loop (3 questions)
+  {
+    type: 'multiple-choice',
+    id: 't3-loop-1',
+    moduleId: 'closing-the-loop-301',
+    question: 'Why should the Classroom Constitution be revised quarterly rather than written once?',
+    options: [
+      'Because the AI tools change too frequently',
+      'Because classrooms, students, and the teacher\'s own understanding evolve — a static document becomes inaccurate over time',
+      'Because administrators require quarterly updates',
+      'Because the original constitution was probably wrong'
+    ],
+    correctIndex: 1,
+    explanation: 'A constitution that doesn\'t change with the classroom stops being useful. New students arrive, your understanding deepens, your practice shifts. Quarterly revision keeps the document honest and current.'
+  },
+  {
+    type: 'select-all',
+    id: 't3-loop-2',
+    moduleId: 'closing-the-loop-301',
+    question: 'The three documents that should "speak to each other" by the end of the curriculum are: Select ALL that apply:',
+    options: [
+      'The revised Classroom Constitution',
+      'The lesson plan database',
+      'The complete PBL unit',
+      'The classroom AI policy',
+      'The school technology plan'
+    ],
+    correctIndices: [0, 2, 3],
+    explanation: 'Constitution, PBL unit, and AI policy are the three living documents. The constitution grounds both; the PBL unit applies the constitution\'s vision; the AI policy governs how AI is used within both. They form a coherent practice.'
+  },
+  {
+    type: 'matching',
+    id: 't3-loop-3',
+    moduleId: 'closing-the-loop-301',
+    question: 'Match each constitution section to the kind of revision it most commonly needs:',
+    pairs: [
+      { left: 'Section 1: Student Demographics', right: 'Update for new students, changed IEP statuses, shifted reading levels' },
+      { left: 'Section 2: Pedagogical Values', right: 'Refine based on what you\'ve learned about AI-assisted teaching' },
+      { left: 'Section 4: Classroom Constraints', right: 'Adjust for new technology, changed schedules, different room setups' },
+      { left: 'Section 5: Vision for Student Outcomes', right: 'Deepen based on what you now believe is possible after teaching with AI' }
+    ],
+    explanation: 'Each section evolves for different reasons. Demographics shift with enrollment, values deepen with experience, constraints change with logistics, and vision expands as you see what\'s possible.'
   }
 ];
 
