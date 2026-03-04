@@ -306,7 +306,7 @@ const ClassroomResources = () => {
 
                           <div className="grid gap-4 sm:grid-cols-2 mb-5">
                             {tool.caseStudy.media?.map((item: {type: string; src: string; alt: string;}, i: number) =>
-                        <div key={i} className="rounded-xl border border-border overflow-hidden aspect-[4/3]">
+                        <div key={i} className="rounded-xl border border-border overflow-hidden aspect-[3/4]">
                                 {item.type === "video" ? (
                                   <video
                                     src={item.src}
