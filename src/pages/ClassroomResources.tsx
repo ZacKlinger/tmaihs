@@ -10,8 +10,7 @@ import workExample from "@/assets/work-example-new.png";
 import claudeLogo from "@/assets/claude-logo.png";
 import playlabLogo from "@/assets/playlab-logo.png";
 import khanmigoLogo from "@/assets/khanmigo-logo.svg";
-import hydroponicsBuild1 from "@/assets/hydroponics-build-1.jpg";
-import hydroponicsBuild2 from "@/assets/hydroponics-build-2.jpg";
+import hydroponicsBuild3 from "@/assets/hydroponics-build-3.jpg";
 
 const aiTools = [
 {
@@ -49,9 +48,9 @@ const aiTools = [
     { label: "Build cost", value: "$1,100 vs. $5,000 kit" },
     { label: "Class profile", value: "8 IEP students, mixed grade levels" }],
 
-    images: [
-    { src: hydroponicsBuild1, alt: "Teacher preparing lumber for hydroponics build at TMAHS" },
-    { src: hydroponicsBuild2, alt: "Student sawing wood for the hydroponics system build" }],
+    media: [
+    { type: "image" as const, src: hydroponicsBuild3, alt: "Students building the hydroponics system at TMAHS" },
+    { type: "video" as const, src: "/videos/hydroponics-build.mov", alt: "Hydroponics build in progress" }],
 
     unitPlan: {
       title: "Designing, Building, and Optimizing a Classroom Hydroponics System",
@@ -306,14 +305,24 @@ const ClassroomResources = () => {
                           </div>
 
                           <div className="grid gap-4 sm:grid-cols-2 mb-5">
-                            {tool.caseStudy.images.map((img: {src: string;alt: string;}, i: number) =>
+                            {tool.caseStudy.media?.map((item: {type: string; src: string; alt: string;}, i: number) =>
                         <div key={i} className="rounded-xl border border-border overflow-hidden">
-                                <img
-                            src={img.src}
-                            alt={img.alt}
-                            className="w-full h-64 object-cover"
-                            loading="lazy" />
-
+                                {item.type === "video" ? (
+                                  <video
+                                    src={item.src}
+                                    className="w-full h-64 object-cover"
+                                    controls
+                                    playsInline
+                                    preload="metadata"
+                                  />
+                                ) : (
+                                  <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    className="w-full h-64 object-cover"
+                                    loading="lazy"
+                                  />
+                                )}
                               </div>
                         )}
                           </div>
