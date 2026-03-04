@@ -310,7 +310,7 @@ const ClassroomResources = () => {
                                 {item.type === "video" ? (
                                   <video
                                     src={item.src}
-                                    className="w-full h-64 object-cover"
+                                    className="w-full h-auto max-h-[500px] object-contain bg-black/5"
                                     controls
                                     playsInline
                                     preload="metadata"
@@ -319,7 +319,7 @@ const ClassroomResources = () => {
                                   <img
                                     src={item.src}
                                     alt={item.alt}
-                                    className="w-full h-64 object-cover"
+                                    className="w-full h-auto max-h-[500px] object-contain bg-black/5"
                                     loading="lazy"
                                   />
                                 )}
