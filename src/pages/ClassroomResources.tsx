@@ -306,11 +306,11 @@ const ClassroomResources = () => {
 
                           <div className="grid gap-4 sm:grid-cols-2 mb-5">
                             {tool.caseStudy.media?.map((item: {type: string; src: string; alt: string;}, i: number) =>
-                        <div key={i} className="rounded-xl border border-border overflow-hidden">
+                        <div key={i} className="rounded-xl border border-border overflow-hidden h-72">
                                 {item.type === "video" ? (
                                   <video
                                     src={item.src}
-                                    className="w-full h-auto"
+                                    className="w-full h-full object-cover"
                                     controls
                                     playsInline
                                     preload="metadata"
@@ -319,7 +319,7 @@ const ClassroomResources = () => {
                                   <img
                                     src={item.src}
                                     alt={item.alt}
-                                    className="w-full h-auto"
+                                    className="w-full h-full object-cover"
                                     loading="lazy"
                                   />
                                 )}
