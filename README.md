@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
+# AI Resource Library for TMAHS
 
-## Project info
+A curated library of research-grounded AI resources for the educators of Thurgood Marshall Academic High School: practical tools, ethical frameworks, and project-based learning templates, with a path of short courses that help teachers bring AI into PBL classrooms on their own terms.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## What's inside
 
-## How can I edit this code?
+| Area | Where it lives |
+|------|----------------|
+| Introductions: what AI is, and why it matters for teaching | `src/pages/WhatIsAI.tsx`, `src/pages/WhyAIMatters.tsx` |
+| Prompt engineering | `src/pages/PromptEngineering.tsx` |
+| Classroom resources | `src/pages/ClassroomResources.tsx` |
+| Ethics | `src/pages/ethics/` |
+| Learning Studio | `src/pages/LearningStudio.tsx` |
+| Community board, backed by a `moderate-content` edge function | `src/pages/Community.tsx`, `src/components/community/` |
+| Certificates and certificate verification | `src/pages/Certificate.tsx`, `src/pages/Verify.tsx` |
+| Sign-in and an admin area | `src/pages/Auth.tsx`, `src/pages/admin/` |
 
-There are several ways of editing your application.
+## The course framework
 
-**Use Lovable**
+[`COURSE_EXPECTATIONS.md`](COURSE_EXPECTATIONS.md) lays out the micro-courses: ten short courses in three tiers, each tier ending in something a teacher actually uses.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+1. **AI Classroom Constitution**: the classroom context and project architecture that make every later prompt specific.
+2. **A complete PBL unit**, built on that constitution.
+3. **A classroom AI policy**: norms and activities for student AI use.
 
-Changes made via Lovable will be committed automatically to this repo.
+The document gives each course its learning outcome, deliverable, checks for understanding, and the misconceptions it addresses.
 
-**Use your preferred IDE**
+## Tech stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- React and TypeScript on Vite
+- Tailwind CSS with shadcn/ui components
+- Supabase: SQL migrations in `supabase/migrations/` and edge functions in `supabase/functions/` (`moderate-content`, `search-assistant`)
+- Built with [Lovable](https://lovable.dev): edits made there land here as commits, and commits pushed here sync back
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Running locally
 
-Follow these steps:
+Requires Node.js and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev       # dev server with hot reload
+npm run build     # production build into dist/
+npm run lint
+npm run preview   # serve the production build
 ```
 
-**Edit a file directly in GitHub**
+## Project layout
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```
+src/pages/        one file per page
+src/components/   shared components, the community board, and shadcn/ui primitives
+supabase/         project config, edge functions, and database migrations
+docs/             voice guide and planning notes
+public/           static assets
+```
